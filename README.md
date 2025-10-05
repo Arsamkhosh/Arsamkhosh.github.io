@@ -143,7 +143,7 @@
     <div class="category">
       <div class="card">
         <h3>دسته‌بندی ۱</h3>
-        <p>محصولات در حال ساخت...</p>
+        <p>به زودی اضافه می شود</p>
       </div>
       <div class="card">
         <h3>دسته‌بندی ۲</h3>
