@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="fa">
 <head>
   <meta charset="UTF-8">
@@ -254,4 +254,4 @@
   <footer>
     <p>© 2025 تمامی حقوق محفوظ است</p>
     <div class="social">
-      <a href="https://instagram.com/arsam.khosh.2012
+      <a href="https://instagram.com/arsam.khosh.2012"
