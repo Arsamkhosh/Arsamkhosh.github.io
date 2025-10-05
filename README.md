@@ -281,4 +281,4 @@
 
     <h2>ارتباط با ما</h2>
     <form action="https://formspree.io/f/mnngzdlw" method="POST">
-      <label for="email">ایمیل شما
+     
