@@ -2,7 +2,7 @@
 <html lang="fa">
 <head>
   <meta charset="UTF-8">
-  <title>سایت خوراکی آرسام</title>
+  <title>سایت فروش اجناس خارجی </title>
   <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet" />
   <style>
     body {
@@ -157,7 +157,7 @@
 
   <header>
     <a href="https://github.com/arsam-khosh" class="github-link" target="_blank">arsam_khosh</a>
-    <p>خوش آمدید به سایت فروش تنقلات خوراکی خارجی آرسام</p>
+    <p>خوش آمدید به سایت فروش اجناس خوراکی خارجی </p>
   </header>
 
   <section>
