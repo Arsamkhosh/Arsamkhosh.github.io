@@ -20,7 +20,7 @@
       box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
     }
 
-    h1 {
+    .brand {
       font-size: 2.8em;
       margin-bottom: 10px;
       background: linear-gradient(to right, #ff0000, #ff9900, #33cc33, #3399ff, #9900cc);
@@ -182,7 +182,7 @@
 </head>
 <body>
   <header>
-    <h1>arsam_khosh</h1>
+    <div class="brand">arsam_khosh</div>
     <p>خوش آمدید به سایت فروش اجناس خوراکی خارجی آنلاین</p>
   </header>
 
