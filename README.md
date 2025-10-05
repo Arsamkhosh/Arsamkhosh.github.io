@@ -6,7 +6,7 @@
     body {
       margin: 0;
       font-family: 'Vazir', sans-serif;
-      background: linear-gradient(135deg, #1a1a1a, #000000);
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
       color: #f0f0f0;
       text-align: center;
     }
@@ -34,22 +34,50 @@
     }
 
     section {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(8px);
       margin: 30px auto;
       padding: 30px;
-      width: 85%;
+      width: 90%;
       border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
     }
 
-    .project {
-      margin: 20px 0;
-      padding: 15px;
-      background: rgba(255, 255, 255, 0.08);
+    .category {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(6px);
       border-radius: 15px;
+      padding: 20px;
+      width: 250px;
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-      font-size: 1.1em;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.4em;
+      color: #00ffff;
+    }
+
+    .card p {
+      font-size: 1em;
+      color: #ccc;
+    }
+
+    h2 {
+      font-size: 2em;
+      margin-top: 40px;
+      color: #fff;
     }
 
     form {
@@ -112,8 +140,19 @@
 
   <section>
     <h2>محصولات من</h2>
-    <div class="project">
-      محصولات در حال ساخت...
+    <div class="category">
+      <div class="card">
+        <h3>دسته‌بندی ۱</h3>
+        <p>محصولات در حال ساخت...</p>
+      </div>
+      <div class="card">
+        <h3>دسته‌بندی ۲</h3>
+        <p>به‌زودی اضافه می‌شود</p>
+      </div>
+      <div class="card">
+        <h3>دسته‌بندی ۳</h3>
+        <p>در حال طراحی و توسعه</p>
+      </div>
     </div>
 
     <h2>ارتباط با ما</h2>
