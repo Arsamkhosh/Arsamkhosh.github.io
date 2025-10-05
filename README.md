@@ -1,7 +1,7 @@
 <html lang="fa">
 <head>
   <meta charset="UTF-8">
-  <title> فروش اجناس خوراکی خارجی  آنلاین   | محصولات </title>
+  <title>فروش اجناس خوراکی خارجی آنلاین | محصولات</title>
   <style>
     body {
       margin: 0;
@@ -55,12 +55,17 @@
       padding: 20px;
       width: 250px;
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+    .card:nth-child(1) { animation-delay: 0.2s; }
+    .card:nth-child(2) { animation-delay: 0.4s; }
+    .card:nth-child(3) { animation-delay: 0.6s; }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     .card h3 {
@@ -84,6 +89,9 @@
       margin-top: 30px;
       text-align: right;
       direction: rtl;
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 0.8s;
+      opacity: 0;
     }
 
     label {
@@ -130,20 +138,59 @@
       color: #fff;
       transform: scale(1.05);
     }
+
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9em;
+      color: #aaa;
+    }
+
+    .social {
+      margin-top: 10px;
+    }
+
+    .social a {
+      margin: 0 10px;
+      color: #00ffff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .social a:hover {
+      color: #ff00cc;
+    }
+
+    @media (max-width: 600px) {
+      .category {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card {
+        width: 90%;
+      }
+
+      form {
+        text-align: center;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>arsam_khosh</h1>
-    <p>خوش آمدید به سایت فروش اجناس خوراکی خارجی  آنلاین </p>
+    <p>خوش آمدید به سایت فروش اجناس خوراکی خارجی آنلاین</p>
   </header>
 
   <section>
-    <h2></h2>محصولات </h2>
+    <h2>محصولات من</h2>
     <div class="category">
       <div class="card">
         <h3>دسته‌بندی ۱</h3>
-        <p>به زودی اضافه می شود</p>
+        <p>به زودی اضافه می‌شود</p>
       </div>
       <div class="card">
         <h3>دسته‌بندی ۲</h3>
@@ -169,5 +216,13 @@
       <button type="submit">ارسال پیام</button>
     </form>
   </section>
+
+  <footer>
+    <p>© 2025 arsam_khosh | تمامی حقوق محفوظ است</p>
+    <div class="social">
+      <a href="https://instagram.com/arsam_khosh" target="_blank">اینستاگرام</a>
+      <a href="mailto:arsam@example.com">ایمیل</a>
+    </div>
+  </footer>
 </body>
 </html>
