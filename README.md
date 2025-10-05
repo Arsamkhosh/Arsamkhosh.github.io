@@ -355,7 +355,7 @@
 
   function addMessage(sender, text) {
     const msg = document.createElement('div');
-    msg.innerHTML = <strong>${sender}:</strong> ${text};
+    msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
     chatLog.appendChild(msg);
     chatLog.scrollTop = chatLog.scrollHeight;
   }
