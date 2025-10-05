@@ -139,7 +139,7 @@
   </header>
 
   <section>
-    <h2>محصولات من</h2>
+    <h2></h2>محصولات </h2>
     <div class="category">
       <div class="card">
         <h3>دسته‌بندی ۱</h3>
