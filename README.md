@@ -244,5 +244,154 @@
       document.body.classList.toggle('light-mode');
     });
   </script>
+  <!-- 💬 چت‌بات هوشمند -->
+<div id="chat-icon" onclick="toggleChat()">💬</div>
+<div id="chat-box">
+  <div id="chat-header">🤖 چت‌بات هوشمند</div>
+  <div id="chat-log"></div>
+  <input type="text" id="chat-input" placeholder="بنویس یا صحبت کن..." onkeydown="handleInput(event)">
+  <div id="chat-controls">
+    <button onclick="speakText()">🔊</button>
+    <button onclick="startListening()">🎙</button>
+  </div>
+</div>
+
+<style>
+  #chat-icon {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #00ffff;
+    color: #000;
+    padding: 12px 16px;
+    border-radius: 50px;
+    font-size: 1.5em;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00ffff;
+    z-index: 1000;
+  }
+
+  #chat-box {
+    position: fixed;
+    bottom: 80px;
+    left: 20px;
+    width: 320px;
+    max-height: 420px;
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #00ffff;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Vazir', sans-serif;
+  }
+
+  #chat-header {
+    background: #00ffff;
+    color: #000;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  #chat-log {
+    padding: 10px;
+    height: 250px;
+    overflow-y: auto;
+    font-size: 0.9em;
+  }
+
+  #chat-input {
+    padding: 10px;
+    border: none;
+    width: calc(100% - 20px);
+    margin: 10px;
+    border-radius: 10px;
+  }
+
+  #chat-controls {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 10px;
+  }
+
+  #chat-controls button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 10px;
+    background: #00ffff;
+    color: #000;
+    cursor: pointer;
+    font-size: 1em;
+  }
+
+  #chat-controls button:hover {
+    background: #ff00cc;
+    color: #fff;
+    box-shadow: 0 0 10px #ff00cc;
+  }
+</style>
+
+<script>
+  const chatBox = document.getElementById('chat-box');
+  const chatLog = document.getElementById('chat-log');
+  const chatInput = document.getElementById('chat-input');
+
+  function toggleChat() {
+    chatBox.style.display = chatBox.style.display === 'flex' ? 'none' : 'flex';
+    chatBox.style.flexDirection = 'column';
+  }
+
+  function handleInput(e) {
+    if (e.key === 'Enter') {
+      const text = chatInput.value;
+      if (text.trim() === '') return;
+      addMessage('شما', text);
+      respond(text);
+      chatInput.value = '';
+    }
+  }
+
+  function addMessage(sender, text) {
+    const msg = document.createElement('div');
+    msg.innerHTML = <strong>${sender}:</strong> ${text};
+    chatLog.appendChild(msg);
+    chatLog.scrollTop = chatLog.scrollHeight;
+  }
+
+  function respond(text) {
+    let reply = 'در حال پردازش...';
+    if (/سلام|hi|salam/i.test(text)) reply = 'سلام! چطور می‌تونم کمکت کنم؟';
+    else if (/قیمت|price/i.test(text)) reply = 'برای اطلاع از قیمت‌ها لطفاً دسته‌بندی مورد نظر رو انتخاب کن.';
+    else if (/خداحافظ|bye/i.test(text)) reply = 'خدانگهدار! هر وقت خواستی برگرد 😊';
+    else reply = 'من هنوز در حال یادگیری هستم، لطفاً سوال دیگه‌ای بپرس.';
+
+    addMessage('چت‌بات', reply);
+    speak(reply);
+  }
+
+  function speak(text) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = /[آ-ی]/.test(text) ? 'fa-IR' : 'en-US';
+    speechSynthesis.speak(utterance);
+  }
+
+  function speakText() {
+    const text = chatInput.value;
+    if (text.trim() !== '') speak(text);
+  }
+
+  function startListening() {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'fa-IR';
+    recognition.onresult = function(event) {
+      const transcript = event.results[0][0].transcript;
+      chatInput.value = transcript;
+      respond(transcript);
+    };
+    recognition.start();
+  }
+</script>
 </body>
 </html>
