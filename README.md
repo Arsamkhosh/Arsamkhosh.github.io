@@ -220,8 +220,7 @@
   <footer>
     <p>© 2025 arsam_khosh | تمامی حقوق محفوظ است</p>
     <div class="social">
-      <a href="https://instagram.com/arsam_khosh" target="_blank">اینستاگرام</a>
-      <a href="mailto:arsam@example.com">ایمیل</a>
+      <a href="https://instagram.com/arsam.khosh.2012" target="_blank">صفحه اینستاگرام من</a>
     </div>
   </footer>
 </body>
