@@ -20,15 +20,6 @@
       box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
     }
 
-    .brand {
-      font-size: 2.8em;
-      margin-bottom: 10px;
-      background: linear-gradient(to right, #ff0000, #ff9900, #33cc33, #3399ff, #9900cc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 10px rgba(255,255,255,0.2);
-    }
-
     p {
       font-size: 1.2em;
       color: #ccc;
@@ -182,7 +173,6 @@
 </head>
 <body>
   <header>
-    <div class="brand">arsam_khosh</div>
     <p>خوش آمدید به سایت فروش اجناس خوراکی خارجی آنلاین</p>
   </header>
 
@@ -206,7 +196,7 @@
     <h2>ارتباط با ما</h2>
     <form action="https://formspree.io/f/mnngzdlw" method="POST">
       <label for="email">ایمیل شما (اجباری):</label>
-      <input type="email" id="email" name="email" placeholder="مثلاً: arsam@example.com" required>
+      <input type="email" id="email" name="email" placeholder="مثلاً: example@example.com" required>
 
       <label for="phone">شماره تماس (اختیاری):</label>
       <input type="tel" id="phone" name="phone" placeholder="مثلاً: 09123456789">
