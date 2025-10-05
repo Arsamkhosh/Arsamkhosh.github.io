@@ -19,6 +19,13 @@
       color: #222;
     }
 
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     #toggle-theme {
       position: fixed;
       top: 20px;
@@ -62,13 +69,6 @@
       100% { text-shadow: 0 0 10px #00ffff; }
     }
 
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
     header, section, footer {
       padding: 40px 20px;
     }
@@ -93,12 +93,31 @@
       padding: 20px;
       width: 250px;
       box-shadow: 0 0 15px rgba(255,255,255,0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s ease forwards;
+      transition: all 0.3s ease;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.3s; }
+    .card:nth-child(2) { animation-delay: 0.5s; }
+    .card:nth-child(3) { animation-delay: 0.7s; }
+
+    .card:hover {
+      background-color: rgba(0, 255, 255, 0.1);
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ffff;
     }
 
     body.light-mode .card {
       background: #f9f9f9;
       color: #333;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    body.light-mode .card:hover {
+      background-color: #e0f7ff;
+      box-shadow: 0 0 15px #00ccff;
     }
 
     form {
@@ -145,7 +164,7 @@
       opacity: 0;
       transform: translateY(20px);
       animation: fadeUp 1s ease forwards;
-      animation-delay: 0.5s;
+      animation-delay: 0.9s;
       transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     }
 
