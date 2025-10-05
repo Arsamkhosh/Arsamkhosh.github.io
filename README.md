@@ -65,10 +65,18 @@
       text-decoration: underline;
       text-shadow: 0 0 5px #00ffff;
     }
+
+    .logo {
+      width: 200px;
+      margin-top: 20px;
+      box-shadow: 0 0 20px #ffffff;
+      border-radius: 10px;
+    }
   </style>
 </head>
 <body>
   <header>
+    <img src="logo.png" alt="لوگوی arsam_khosh" class="logo">
     <h1>arsam_khosh</h1>
     <p>خوش آمدید به سایت من در GitHub!</p>
   </header>
