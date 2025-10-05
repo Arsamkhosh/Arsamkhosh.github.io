@@ -205,5 +205,34 @@
       document.body.classList.toggle('light-mode');
     });
   </script>
+  button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  background-color: #00ffff;
+  color: #000;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.5s;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff00cc;
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #ff00cc;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 </body>
 </html>
