@@ -63,6 +63,25 @@
       color: #fff;
     }
 
+    .github-link {
+      display: inline-block;
+      font-size: 2.2em;
+      font-weight: bold;
+      text-decoration: none;
+      background: linear-gradient(90deg, #00ffff, #ff00cc, #ff9900);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      animation: glow 3s infinite ease-in-out;
+      margin-bottom: 10px;
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 10px #00ffff; }
+      50% { text-shadow: 0 0 20px #ff00cc; }
+      100% { text-shadow: 0 0 10px #00ffff; }
+    }
+
     section {
       margin: 30px auto;
       padding: 30px;
@@ -167,7 +186,7 @@
 
     body.light-mode input,
     body.light-mode textarea {
-      background-color: #eee;
+      background-color: #dcdcdc;
       color: #000;
     }
 
@@ -239,6 +258,7 @@
   <button id="toggle-theme">🌓 تغییر حالت روز/شب</button>
 
   <header>
+    <a href="https://github.com/arsam-khosh" class="github-link" target="_blank">arsam_khosh</a>
     <p>خوش آمدید به سایت فروش اجناس خوراکی خارجی آنلاین</p>
   </header>
 
@@ -251,41 +271,14 @@
       </div>
       <div class="card">
         <h3>دسته‌بندی ۲</h3>
-        <p>در حال ساخت و توسعه</p>
+        <p>به زودی اضافه می‌شود</p>
       </div>
       <div class="card">
         <h3>دسته‌بندی ۳</h3>
-        <p>به زودی اضافه می‌شود</p>
+        <p>در حال ساخت و توسعه</p>
       </div>
     </div>
 
     <h2>ارتباط با ما</h2>
     <form action="https://formspree.io/f/mnngzdlw" method="POST">
-      <label for="email">ایمیل شما (اجباری):</label>
-      <input type="email" id="email" name="email" placeholder="مثلاً: example@example.com" required>
-
-      <label for="phone">شماره تماس (اختیاری):</label>
-      <input type="tel" id="phone" name="phone" placeholder="مثلاً: 09123456789">
-
-      <label for="message">پیام شما:</label>
-      <textarea id="message" name="message" rows="5" placeholder="متن پیام..." required></textarea>
-
-      <button type="submit">ارسال پیام</button>
-    </form>
-  </section>
-
-  <footer>
-    <p>© 2025 تمامی حقوق محفوظ است</p>
-    <div class="social">
-      <a href="https://instagram.com/arsam.khosh.2012" target="_blank">صفحه اینستاگرام من</a>
-    </div>
-  </footer>
-
-  <script>
-    const toggleBtn = document.getElementById('toggle-theme');
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('light-mode');
-    });
-  </script>
-</body>
-</html
+      <label for="email">ایمیل شما
