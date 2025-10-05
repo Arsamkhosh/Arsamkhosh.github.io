@@ -45,14 +45,14 @@
 <body>
   <header>
     <h1>arsam_khosh</h1>
-    <p>خوش آمدید به دنیای رنگی من در GitHub!</p>
+    <p>خوش آمدید به سایت من در GitHub!</p>
   </header>
 
   <section>
     <h2>نمونه‌کارها</h2>
     <div class="project">
-      <h3>پروژه اول: ماشین حساب ساده</h3>
-      <p>یک ماشین حساب تحت وب با HTML/CSS/JavaScript</p>
+      <h3>پروژه اول: درحال ساخت</h3>
+      <p> درحال ساخت HTML/CSS/JavaScript</p>
       <a href="https://github.com/arsam_khosh/calculator" target="_blank">مشاهده در GitHub</a>
     </div>
     <div class="project">
