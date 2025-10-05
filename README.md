@@ -10,19 +10,57 @@
       background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
       color: #f0f0f0;
       text-align: center;
+      transition: all 0.4s ease;
     }
 
-    header {
+    body.light-mode {
+      background: linear-gradient(135deg, #ffffff, #e0e0e0);
+      color: #222;
+    }
+
+    header, section, footer {
       padding: 40px 20px;
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+      transition: all 0.4s ease;
+    }
+
+    body.light-mode header,
+    body.light-mode section,
+    body.light-mode footer {
+      background: rgba(255, 255, 255, 0.8);
+      color: #222;
     }
 
     p {
       font-size: 1.2em;
       color: #ccc;
+    }
+
+    body.light-mode p {
+      color: #333;
+    }
+
+    #toggle-theme {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background-color: #00ffff;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1000;
+      transition: background-color 0.3s ease;
+    }
+
+    #toggle-theme:hover {
+      background-color: #ff00cc;
+      color: #fff;
     }
 
     section {
@@ -49,6 +87,13 @@
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
       animation: fadeInUp 1s ease forwards;
       opacity: 0;
+      transition: all 0.4s ease;
+    }
+
+    body.light-mode .card {
+      background: #f9f9f9;
+      color: #333;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
     .card:nth-child(1) { animation-delay: 0.2s; }
@@ -66,15 +111,27 @@
       color: #00ffff;
     }
 
+    body.light-mode .card h3 {
+      color: #0077cc;
+    }
+
     .card p {
       font-size: 1em;
       color: #ccc;
+    }
+
+    body.light-mode .card p {
+      color: #555;
     }
 
     h2 {
       font-size: 2em;
       margin-top: 40px;
       color: #fff;
+    }
+
+    body.light-mode h2 {
+      color: #222;
     }
 
     form {
@@ -93,6 +150,10 @@
       color: #fff;
     }
 
+    body.light-mode label {
+      color: #222;
+    }
+
     input, textarea {
       width: 100%;
       padding: 12px;
@@ -104,13 +165,14 @@
       font-size: 1em;
     }
 
-    input::placeholder, textarea::placeholder {
-      color: #aaa;
+    body.light-mode input,
+    body.light-mode textarea {
+      background-color: #eee;
+      color: #000;
     }
 
-    input:focus, textarea:focus {
-      outline: none;
-      box-shadow: 0 0 10px #00ffff;
+    input::placeholder, textarea::placeholder {
+      color: #aaa;
     }
 
     button {
@@ -134,10 +196,12 @@
     footer {
       margin-top: 50px;
       padding: 20px;
-      background: rgba(255, 255, 255, 0.05);
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
       font-size: 0.9em;
       color: #aaa;
+    }
+
+    body.light-mode footer {
+      color: #333;
     }
 
     .social {
@@ -172,6 +236,8 @@
   </style>
 </head>
 <body>
+  <button id="toggle-theme">🌓 تغییر حالت روز/شب</button>
+
   <header>
     <p>خوش آمدید به سایت فروش اجناس خوراکی خارجی آنلاین</p>
   </header>
@@ -185,11 +251,11 @@
       </div>
       <div class="card">
         <h3>دسته‌بندی ۲</h3>
-        <p>به‌زودی اضافه می‌شود</p>
+        <p>در حال ساخت و توسعه</p>
       </div>
       <div class="card">
         <h3>دسته‌بندی ۳</h3>
-        <p>در حال طراحی و توسعه</p>
+        <p>به زودی اضافه می‌شود</p>
       </div>
     </div>
 
@@ -214,5 +280,12 @@
       <a href="https://instagram.com/arsam.khosh.2012" target="_blank">صفحه اینستاگرام من</a>
     </div>
   </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('toggle-theme');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+    });
+  </script>
 </body>
-</html>
+</html
