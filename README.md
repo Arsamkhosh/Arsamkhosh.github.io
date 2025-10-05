@@ -195,7 +195,7 @@
   <button id="toggle-theme">🌓 تغییر حالت روز/شب</button>
 
   <header>
-    <a href="https://github.com/arsam-khosh" class="github-link" target="_blank">arsam_khosh</a>
+    <a href="https://arsamkhosh.github.io/" class="github-link" target="_blank">arsam_khosh</a>
     <p>خوش آمدید به سایت فروش اجناس خوراکی خارجی</p>
   </header>
 
