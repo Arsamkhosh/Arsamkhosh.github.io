@@ -116,7 +116,7 @@
     </div>
 
     <h2>ارتباط با ما</h2>
-    <form>
+    <form action="https://formspree.io/f/mnngzdlw" method="POST">
       <label for="email">ایمیل شما:</label>
       <input type="email" id="email" name="email" required>
 
