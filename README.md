@@ -68,16 +68,22 @@
       display: block;
       margin: 10px 0 5px;
       font-weight: bold;
+      color: #fff;
     }
 
     input, textarea {
       width: 100%;
-      padding: 10px;
-      border-radius: 8px;
+      padding: 12px;
+      border-radius: 10px;
       border: none;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       background-color: rgba(255, 255, 255, 0.1);
       color: #fff;
+      font-size: 1em;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #aaa;
     }
 
     input:focus, textarea:focus {
@@ -86,19 +92,21 @@
     }
 
     button {
-      padding: 10px 20px;
+      padding: 12px 25px;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       background-color: #00ffff;
       color: #000;
       font-weight: bold;
+      font-size: 1em;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
     button:hover {
       background-color: #ff00cc;
       color: #fff;
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -117,11 +125,14 @@
 
     <h2>ارتباط با ما</h2>
     <form action="https://formspree.io/f/mnngzdlw" method="POST">
-      <label for="email">ایمیل شما:</label>
-      <input type="email" id="email" name="email" required>
+      <label for="email">ایمیل شما (اجباری):</label>
+      <input type="email" id="email" name="email" placeholder="مثلاً: arsam@example.com" required>
+
+      <label for="phone">شماره تماس (اختیاری):</label>
+      <input type="tel" id="phone" name="phone" placeholder="مثلاً: 09123456789">
 
       <label for="message">پیام شما:</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
+      <textarea id="message" name="message" rows="5" placeholder="متن پیام..." required></textarea>
 
       <button type="submit">ارسال پیام</button>
     </form>
