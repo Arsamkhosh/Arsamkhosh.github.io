@@ -10,7 +10,6 @@
       background: linear-gradient(135deg, #1a1a1a, #000000);
       color: #f0f0f0;
       text-align: center;
-      overflow-x: hidden;
     }
 
     header {
@@ -19,18 +18,6 @@
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
-    }
-
-    .logo {
-      width: 180px;
-      margin-bottom: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
-      transition: transform 0.4s ease;
-    }
-
-    .logo:hover {
-      transform: scale(1.05);
     }
 
     h1 {
@@ -71,22 +58,52 @@
       box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
     }
 
-    a {
-      color: #00ffff;
-      text-decoration: none;
-      font-weight: bold;
-      text-shadow: 0 0 5px #00ffff;
+    form {
+      margin-top: 30px;
+      text-align: right;
+      direction: rtl;
     }
 
-    a:hover {
-      color: #ff00cc;
-      text-shadow: 0 0 8px #ff00cc;
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 15px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      box-shadow: 0 0 10px #00ffff;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #00ffff;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff00cc;
+      color: #fff;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="لوگوی arsam_khosh" class="logo">
     <h1>arsam_khosh</h1>
     <p>خوش آمدید به سایت من در GitHub!</p>
   </header>
@@ -97,11 +114,17 @@
       <h3>پروژه اول: درحال ساخت</h3>
       <p>به‌زودی با یه پروژه خفن برمی‌گردم!</p>
     </div>
-    <div class="project">
-      <h3>پروژه دوم: وب‌سایت شخصی</h3>
-      <p>سایت معرفی خودم با طراحی رنگین‌کمانی و افکت‌های مدرن</p>
-      <a href="#">مشاهده پروژه</a>
-    </div>
+
+    <h2>ارتباط با ما</h2>
+    <form>
+      <label for="email">ایمیل شما:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">پیام شما:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit">ارسال پیام</button>
+    </form>
   </section>
 </body>
 </html>
