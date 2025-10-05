@@ -1,5 +1,5 @@
-# Arsamkhosh.github.i
-<!DOCTYPE html>
+# Arsamkhosh.github.io
+ <p>در حال ساخت</p>
 <html lang="fa">
 <head>
   <meta charset="UTF-8">
@@ -52,13 +52,13 @@
     <h2>نمونه‌کارها</h2>
     <div class="project">
       <h3>پروژه اول: درحال ساخت</h3>
-      <p> درحال ساخت HTML/CSS/JavaScript</p>
-      <a href="https://github.com/arsam_khosh/calculator" target="_blank">مشاهده در GitHub</a>
+    
+   
     </div>
     <div class="project">
       <h3>پروژه دوم: وب‌سایت شخصی</h3>
-      <p>سایت معرفی خودم با طراحی رنگین‌کمانی</p>
-      <a href="https://github.com/arsam_khosh/personal-site" target="_blank">مشاهده در GitHub</a>
+      <p>سایت معرفی خودم با طراحی خودم </p>
+    
     </div>
   </section>
 </body>
