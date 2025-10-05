@@ -34,15 +34,6 @@
       color: #222;
     }
 
-    p {
-      font-size: 1.2em;
-      color: #ccc;
-    }
-
-    body.light-mode p {
-      color: #333;
-    }
-
     #toggle-theme {
       position: fixed;
       top: 20px;
@@ -71,7 +62,6 @@
       background: linear-gradient(90deg, #00ffff, #ff00cc, #ff9900);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      position: relative;
       animation: glow 3s infinite ease-in-out;
       margin-bottom: 10px;
     }
@@ -82,11 +72,14 @@
       100% { text-shadow: 0 0 10px #00ffff; }
     }
 
-    section {
-      margin: 30px auto;
-      padding: 30px;
-      width: 90%;
-      border-radius: 20px;
+    h2 {
+      font-size: 2em;
+      margin-top: 40px;
+      color: #fff;
+    }
+
+    body.light-mode h2 {
+      color: #222;
     }
 
     .category {
@@ -141,16 +134,6 @@
 
     body.light-mode .card p {
       color: #555;
-    }
-
-    h2 {
-      font-size: 2em;
-      margin-top: 40px;
-      color: #fff;
-    }
-
-    body.light-mode h2 {
-      color: #222;
     }
 
     form {
@@ -223,10 +206,6 @@
       color: #333;
     }
 
-    .social {
-      margin-top: 10px;
-    }
-
     .social a {
       margin: 0 10px;
       color: #00ffff;
@@ -281,4 +260,11 @@
 
     <h2>ارتباط با ما</h2>
     <form action="https://formspree.io/f/mnngzdlw" method="POST">
-     
+      <label for="email">ایمیل شما (اجباری):</label>
+      <input type="email" id="email" name="email" placeholder="مثلاً: example@example.com" required>
+
+      <label for="phone">شماره تماس (اختیاری):</label>
+      <input type="tel" id="phone" name="phone" placeholder="مثلاً: 09123456789">
+
+      <label for="message">پیام شما:</label>
+      <textarea id="message
