@@ -203,7 +203,7 @@
     <h2>محصولات من</h2>
     <div class="category">
       <div class="card">
-        <h3>دسته‌بندی ۱</h3>
+        <h3>نوشیدنی ها</h3>
         <p>به زودی اضافه می‌شود</p>
       </div>
       <div class="card">
