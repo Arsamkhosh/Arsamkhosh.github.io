@@ -1,1 +1,33 @@
-a
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <title>چت آنلاین</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div id="auth">
+      <h2>ثبت‌نام / ورود</h2>
+      <input type="text" id="authUser" placeholder="نام کاربری" />
+      <input type="password" id="authPass" placeholder="رمز عبور" />
+      <button onclick="register()">ثبت‌نام</button>
+      <button onclick="login()">ورود</button>
+      <p id="authError" class="error"></p>
+    </div>
+
+    <div id="chat" style="display:none;">
+      <h3>خوش آمدی، <span id="userDisplay"></span></h3>
+      <div id="messages"></div>
+      <input type="text" id="messageInput" placeholder="پیام عمومی..." />
+      <button onclick="sendPublic()">ارسال عمومی</button>
+      <hr />
+      <input type="text" id="privateTo" placeholder="نام کاربری گیرنده" />
+      <input type="text" id="privateInput" placeholder="پیام خصوصی..." />
+      <button onclick="sendPrivate()">ارسال خصوصی</button>
+    </div>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
