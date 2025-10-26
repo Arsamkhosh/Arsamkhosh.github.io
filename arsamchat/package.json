@@ -1,1 +1,18 @@
+{
+  "name": "arsamchat",
+  "version": "1.0.0",
+  "description": "Chat with login and private messaging (Node + Express + Socket.io)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.8.0",
+    "bcrypt": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
 
