@@ -49,5 +49,93 @@ button{padding:10px 12px;border-radius:8px;border:none;background:#ff6b35;color:
 
 <div class="main">
   <div class="chat-header">
-    <div id="targetTitle
+    <div id="targetTitle">عمومی (همه)</div>
+    <div id="status" class="small">قطع</div>
+  </div>
+  <div id="messages" class="messages"></div>
+  <div class="composer">
+    <input id="txt" placeholder="پیام خود را بنویس..." />
+    <button id="sendBtn">ارسال</button>
+  </div>
+</div>
 
+<script src="/socket.io/socket.io.js"></script>
+<script>
+const socket = io();
+const overlay = document.getElementById('loginOverlay');
+const usernameInput = document.getElementById('username');
+const passwordInput = document.getElementById('password');
+const registerBtn = document.getElementById('registerBtn');
+const loginBtn = document.getElementById('loginBtn');
+const loginMsg = document.getElementById('loginMsg');
+
+const meNameEl = document.getElementById('meName');
+const usersEl = document.getElementById('users');
+const messagesEl = document.getElementById('messages');
+const txt = document.getElementById('txt');
+const sendBtn = document.getElementById('sendBtn');
+const statusEl = document.getElementById('status');
+const targetTitle = document.getElementById('targetTitle');
+
+let myName = null;
+let currentTarget = null;
+
+function addMessage(msg) {
+  const el = document.createElement('div');
+  el.className = 'msg ' + (msg.from===myName?'me':'other');
+  const meta = document.createElement('div');
+  meta.className='meta';
+  meta.textContent = `${msg.from}${msg.to?' → '+msg.to:''} • ${new Date(msg.ts).toLocaleTimeString()}`;
+  const text = document.createElement('div');
+  text.textContent = msg.text;
+  el.appendChild(meta);
+  el.appendChild(text);
+  messagesEl.appendChild(el);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+
+function renderUsers(list){
+  usersEl.innerHTML='';
+  list.forEach(u=>{
+    const div=document.createElement('div');
+    div.className='user-item online';
+    div.textContent=u;
+    div.addEventListener('click',()=>{currentTarget=u===myName?null:u; targetTitle.textContent=currentTarget?'خصوصی → '+u:'عمومی (همه)';});
+    usersEl.appendChild(div);
+  });
+}
+
+socket.on('connect',()=>statusEl.textContent='متصل');
+socket.on('disconnect',()=>statusEl.textContent='قطع');
+socket.on('user_list', list=>renderUsers(list));
+socket.on('message', msg=>{
+  if(!msg.to||msg.to===myName||msg.from===myName) addMessage(msg);
+});
+
+function loginOrRegister(url){
+  fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:usernameInput.value,password:passwordInput.value})})
+  .then(r=>r.json()).then(res=>{
+    if(res.ok){
+      myName=usernameInput.value;
+      meNameEl.textContent=myName;
+      overlay.style.display='none';
+      socket.emit('registerSocket', myName);
+    } else loginMsg.textContent=res.error;
+  });
+}
+
+registerBtn.onclick=()=>loginOrRegister('/register');
+loginBtn.onclick=()=>loginOrRegister('/login');
+
+sendBtn.onclick=sendMessage;
+txt.addEventListener('keydown',e=>{if(e.key==='Enter') sendMessage();});
+function sendMessage(){
+  if(!myName)return alert('ابتدا وارد شوید.');
+  const text=txt.value.trim();
+  if(!text)return;
+  socket.emit('send_message',{to:currentTarget,text},res=>{if(!res.ok)alert(res.error||'ارسال ناموفق'); else txt.value='';});
+}
+</script>
+
+</body>
+</html>
