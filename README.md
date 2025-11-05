@@ -2,6 +2,11 @@
 <button id="chatToggle" style="background:#ff69b4;color:white;padding:10px 20px;border:none;border-radius:30px;font-size:16px;cursor:pointer;">
   🐣 پیام بده!
 </button>
+<div id="chatBox" style="display:none;">
+  <input type="text" id="username" placeholder="نام یکتای خودتو وارد کن">
+  <textarea id="message" placeholder="پیامتو بنویس..." rows="4"></textarea>
+  <button onclick="sendMessage()">📩 ارسال پیام</button>
+</div>
 
 <!-- پنجره پیام‌رسان -->
 <div id="chatBox" style="display:none;width:300px;background:white;border-radius:15px;box-shadow:0 0 10px rgba(0,0,0,0.2);padding:15px;margin-top:10px;">
