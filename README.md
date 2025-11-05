@@ -1,127 +1,163 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>پیام‌رسان گوگولی</title>
-  <style>
-    body {
-      font-family: 'Vazir', sans-serif;
-      background: #fef6ff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 50px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پیام‌رسان قشنگ من 💌</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600&display=swap');
 
-    .chat-btn {
-      background-color: #ff69b4;
-      color: white;
-      border: none;
-      padding: 15px 25px;
-      border-radius: 50px;
-      font-size: 18px;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
+  body {
+    font-family: 'Vazirmatn', sans-serif;
+    background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .chat-box {
-      display: none;
-      margin-top: 20px;
-      width: 320px;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      padding: 15px;
-    }
+  .chat-container {
+    width: 360px;
+    background: #fff;
+    border-radius: 25px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: floatUp 0.6s ease;
+  }
 
-    .chat-box input, .chat-box textarea {
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 10px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      font-size: 14px;
-    }
+  @keyframes floatUp {
+    from { transform: translateY(40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
 
-    .chat-box button {
-      background-color: #00bfff;
-      color: white;
-      border: none;
-      padding: 10px;
-      border-radius: 10px;
-      cursor: pointer;
-      width: 100%;
-      font-size: 16px;
-    }
+  .chat-header {
+    background: linear-gradient(90deg, #ff6fbf, #6fc3ff);
+    color: #fff;
+    text-align: center;
+    padding: 14px;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
 
-    .messages {
-      margin-top: 20px;
-      width: 320px;
-      background: #fff;
-      border-radius: 10px;
-      padding: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
+  .chat-box {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #fefefe;
+  }
 
-    .message {
-      background: #f0f8ff;
-      padding: 8px;
-      margin-bottom: 8px;
-      border-radius: 8px;
-      font-size: 14px;
-    }
+  .msg {
+    padding: 10px 14px;
+    border-radius: 20px;
+    max-width: 75%;
+    font-size: 15px;
+    line-height: 1.4;
+    animation: fadeIn 0.3s ease;
+  }
 
-    .message strong {
-      color: #ff69b4;
-    }
-  </style>
+  .msg.me {
+    background: linear-gradient(135deg, #a1ffce, #faffd1);
+    align-self: flex-end;
+    border-bottom-right-radius: 5px;
+  }
+
+  .msg.other {
+    background: #f1f1f1;
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .chat-input {
+    display: flex;
+    padding: 12px;
+    background: #fafafa;
+    border-top: 1px solid #eee;
+  }
+
+  input {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.2s;
+  }
+
+  input:focus {
+    border-color: #6fc3ff;
+    box-shadow: 0 0 5px rgba(111,195,255,0.3);
+  }
+
+  button {
+    background: linear-gradient(135deg, #6fc3ff, #ff6fbf);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+</style>
 </head>
 <body>
 
-  <button class="chat-btn" onclick="toggleChat()">🐥 پیام بده!</button>
-
-  <div class="chat-box" id="chatBox">
-    <input type="text" id="username" placeholder="نام یکتای خودتو وارد کن">
-    <textarea id="message" rows="3" placeholder="پیامتو بنویس..."></textarea>
-    <button onclick="sendMessage()">📨 ارسال پیام</button>
+<div class="chat-container">
+  <div class="chat-header">🌸 پیام‌رسان قشنگ من 🌸</div>
+  <div id="chatBox" class="chat-box">
+    <div class="msg other">سلام! خوش اومدی 😊</div>
   </div>
+  <div class="chat-input">
+    <input id="messageInput" type="text" placeholder="بنویس چی تو دلت هست... ✨">
+    <button onclick="sendMessage()">📩</button>
+  </div>
+</div>
 
-  <div class="messages" id="messages"></div>
+<script>
+  const chatBox = document.getElementById('chatBox');
+  const input = document.getElementById('messageInput');
 
-  <script>
-    const usedNames = new Set();
+  function sendMessage() {
+    const msg = input.value.trim();
+    if (!msg) return;
 
-    function toggleChat() {
-      const box = document.getElementById('chatBox');
-      box.style.display = box.style.display === 'none' ? 'block' : 'none';
-    }
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'msg me';
+    messageDiv.textContent = msg;
+    chatBox.appendChild(messageDiv);
+    input.value = '';
+    chatBox.scrollTop = chatBox.scrollHeight;
 
-    function sendMessage() {
-      const name = document.getElementById('username').value.trim();
-      const msg = document.getElementById('message').value.trim();
+    // پاسخ نمایشی
+    setTimeout(() => {
+      const reply = document.createElement('div');
+      reply.className = 'msg other';
+      reply.textContent = 'چه جالب 😄';
+      chatBox.appendChild(reply);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }, 1000);
+  }
 
-      if (!name || !msg) {
-        alert('نام و پیام الزامی هست!');
-        return;
-      }
-
-      if (usedNames.has(name)) {
-        alert('این نام قبلاً استفاده شده! لطفاً یه نام یکتای دیگه وارد کن.');
-        return;
-      }
-
-      usedNames.add(name);
-
-      const messagesDiv = document.getElementById('messages');
-      const newMsg = document.createElement('div');
-      newMsg.className = 'message';
-      newMsg.innerHTML = <strong>${name}</strong>: ${msg};
-      messagesDiv.appendChild(newMsg);
-
-      document.getElementById('username').value = '';
-      document.getElementById('message').value = '';
-    }
-  </script>
+  input.addEventListener('keypress', e => {
+    if (e.key === 'Enter') sendMessage();
+  });
+</script>
 
 </body>
 </html>
