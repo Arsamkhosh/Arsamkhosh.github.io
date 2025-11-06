@@ -24,6 +24,7 @@
       background: linear-gradient(90deg, #00ffff, #ff00cc, #ff9900);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      transition: all 0.5s;
     }
 
     h2 {
@@ -204,6 +205,23 @@
       transform: scale(1.02);
     }
 
+    /* دکمه روز و شب */
+    #theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(90deg,#00ffff,#ff00cc);
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 0 10px #00ffff;
+      transition: all 0.3s;
+    }
+
     /* ریسپانسیو موبایل */
     @media (max-width: 600px){
       .projects { flex-direction: column; align-items: center; }
@@ -266,22 +284,7 @@
     </div>
   </div>
 
-  <!-- دکمه حالت روز و شب -->
-  <button id="theme-toggle" style="
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 10px;
-    background: linear-gradient(90deg,#00ffff,#ff00cc);
-    color: #000;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 1000;
-    box-shadow: 0 0 10px #00ffff;
-    transition: all 0.3s;
-  ">🌙 شب/☀️ روز</button>
+  <button id="theme-toggle">🌙 شب/☀️ روز</button>
 
   <script>
     // فرم ضد اسپم
@@ -304,50 +307,52 @@
       chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
     }
 
-    // افکت تایپ کردن متن
-    function typeText(element, text, speed = 50) {
+    // افکت تایپ متن با گرادیان
+    function typeGradientText(element, text, speed = 100) {
       element.textContent = '';
       let i = 0;
       const interval = setInterval(() => {
         element.textContent += text[i];
         i++;
-        if (i >= text.length) clearInterval(interval);
+        if(i >= text.length) clearInterval(interval);
       }, speed);
+
+      let angle = 0;
+      const gradientInterval = setInterval(() => {
+        element.style.background = `linear-gradient(${angle}deg, #ff00cc, #00ffff, #ff9900, #00ff00, #ff00ff)`;
+        element.style.backgroundClip = 'text';
+        element.style.webkitBackgroundClip = 'text';
+        element.style.color = 'transparent';
+        angle += 2;
+      }, 80);
+      return gradientInterval;
     }
 
-    // افکت رنگین‌کمانی روی کارت
-    function rainbowEffect(element) {
-      const colors = ['#ff00cc','#00ffff','#ff9900','#00ff00','#ff0000','#ff00ff'];
-      let i = 0;
-      const interval = setInterval(() => {
-        element.style.boxShadow = `0 0 20px ${colors[i % colors.length]}`;
-        i++;
-      }, 300);
-      return interval; 
-    }
+    // اجرا روی هدر
+    const headerTitle = document.querySelector('header h1');
+    typeGradientText(headerTitle, 'پروژه‌های من', 100);
 
     // کارت‌های پروژه
     const projectCards = document.querySelectorAll('.project-card');
-
     projectCards.forEach(card => {
       card.addEventListener('click', () => {
-        // پرش کارت
         card.style.transition = 'transform 0.2s';
         card.style.transform = 'translateY(-10px) scale(1.05)';
         setTimeout(() => card.style.transform = 'translateY(0) scale(1)', 200);
 
-        // رنگین‌کمانی
-        const rainbowInterval = rainbowEffect(card);
+        typeGradientText(card, 'در حال ساخت می‌باشد', 50);
 
-        // تایپ متن
-        typeText(card, 'در حال ساخت می‌باشد', 50);
-
-        // توقف رنگین‌کمانی بعد از ۳ ثانیه
+        const colors = ['#ff00cc','#00ffff','#ff9900','#00ff00','#ff0000','#ff00ff'];
+        let j = 0;
+        const rainbowInterval = setInterval(() => {
+          card.style.boxShadow = `0 0 25px ${colors[j % colors.length]}`;
+          j++;
+        }, 250);
         setTimeout(() => clearInterval(rainbowInterval), 3000);
       });
     });
 
-    // حالت روز و شب با انیمیشن
+    // حالت روز و شب
     const themeToggle = document.getElementById('theme-toggle');
     let isDark = true;
 
@@ -381,53 +386,5 @@
       }
     });
   </script>
-  <script>
-  // افکت تایپ برای پروژه‌ها و هدر با گرادیان متحرک
-  function typeGradientText(element, text, speed = 100) {
-    element.textContent = '';
-    let i = 0;
-    const interval = setInterval(() => {
-      element.textContent += text[i];
-      i++;
-      if(i >= text.length) clearInterval(interval);
-    }, speed);
-
-    // گرادیان متحرک
-    let angle = 0;
-    setInterval(() => {
-      element.style.background = `linear-gradient(${angle}deg, #ff00cc, #00ffff, #ff9900, #00ff00, #ff00ff)`;
-      element.style.backgroundClip = 'text';
-      element.style.webkitBackgroundClip = 'text';
-      element.style.color = 'transparent';
-      angle += 2;
-    }, 100);
-  }
-
-  // اجرا روی هدر
-  const headerTitle = document.querySelector('header h1');
-  typeGradientText(headerTitle, 'پروژه‌های من', 100);
-
-  // اجرا روی پروژه‌ها هنگام کلیک
-  const projectCards = document.querySelectorAll('.project-card');
-  projectCards.forEach(card => {
-    card.addEventListener('click', () => {
-      card.style.transition = 'transform 0.2s';
-      card.style.transform = 'translateY(-10px) scale(1.05)';
-      setTimeout(() => card.style.transform = 'translateY(0) scale(1)', 200);
-
-      // تایپ با گرادیان روی کارت
-      typeGradientText(card, 'در حال ساخت می‌باشد', 50);
-
-      // رنگین‌کمانی سایه کارت
-      const colors = ['#ff00cc','#00ffff','#ff9900','#00ff00','#ff0000','#ff00ff'];
-      let j = 0;
-      const rainbowInterval = setInterval(() => {
-        card.style.boxShadow = `0 0 20px ${colors[j % colors.length]}`;
-        j++;
-      }, 300);
-      setTimeout(() => clearInterval(rainbowInterval), 3000);
-    });
-  });
-</script>
 </body>
 </html>
