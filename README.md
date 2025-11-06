@@ -216,6 +216,114 @@ function validateForm(f){
   return true;
 }
 </script>
+<script>
+  // انتخاب پروژه‌ها و ورودی‌ها
+  const projectCards = document.querySelectorAll('.project-card');
+  const inputs = document.querySelectorAll('input, textarea');
+
+  // تغییر تم روز/شب
+  let isDark = true;
+  const themeButton = document.getElementById('theme-toggle');
+  themeButton.addEventListener('click', () => {
+    if(isDark){
+      document.body.style.background = 'linear-gradient(135deg, #d0d0d0, #f0f0f0)';
+      document.body.style.color = '#333';
+      themeButton.textContent = '🌞';
+      projectCards.forEach(c=>{
+        c.style.background='#c0c0c0';
+        c.style.color='#111';
+        c.style.boxShadow='0 0 20px rgba(255,200,100,0.5)';
+      });
+      inputs.forEach(f=>{
+        f.style.backgroundColor='#e0e0e0';
+        f.style.color='#111';
+        f.style.boxShadow='0 0 15px rgba(255,200,100,0.3)';
+      });
+      isDark = false;
+    } else {
+      document.body.style.background='linear-gradient(135deg, #0f0f0f, #1a1a1a)';
+      document.body.style.color='#fff';
+      themeButton.textContent = '🌙';
+      projectCards.forEach(c=>{
+        c.style.background='rgba(255,255,255,0.05)';
+        c.style.color='#fff';
+        c.style.boxShadow='0 0 20px rgba(50,150,255,0.5)';
+      });
+      inputs.forEach(f=>{
+        f.style.backgroundColor='rgba(255,255,255,0.1)';
+        f.style.color='#fff';
+        f.style.boxShadow='0 0 15px rgba(50,150,255,0.3)';
+      });
+      isDark = true;
+    }
+  });
+
+  // تابع تایپ متن
+  function typeText(el, text, speed=50){
+    el.textContent='';
+    let i=0;
+    const interval = setInterval(()=>{
+      el.textContent+=text[i];
+      i++;
+      if(i>=text.length) clearInterval(interval);
+    }, speed);
+  }
+
+  // افکت Particle Explosion
+  function particleExplosion(card){
+    for(let j=0;j<15;j++){
+      const p = document.createElement('div');
+      p.style.position='absolute';
+      p.style.width='5px';
+      p.style.height='5px';
+      p.style.background=['#ff00cc','#00ffff','#ff9900','#00ff00','#ff0'][Math.floor(Math.random()*5)];
+      p.style.borderRadius='50%';
+      const rect = card.getBoundingClientRect();
+      p.style.top = rect.top + rect.height/2 + window.scrollY + 'px';
+      p.style.left = rect.left + rect.width/2 + window.scrollX + 'px';
+      p.style.opacity = '1';
+      p.style.transition = 'all 0.8s ease-out';
+      document.body.appendChild(p);
+      const angle = Math.random()*2*Math.PI;
+      const radius = 50 + Math.random()*50;
+      setTimeout(()=>{
+        p.style.top = parseFloat(p.style.top) + Math.sin(angle)*radius + 'px';
+        p.style.left = parseFloat(p.style.left) + Math.cos(angle)*radius + 'px';
+        p.style.opacity='0';
+      },10);
+      setTimeout(()=> p.remove(),800);
+    }
+  }
+
+  // کلیک روی پروژه‌ها
+  projectCards.forEach((card, index)=>{
+    card.addEventListener('click', ()=>{
+      if(index === 0) typeText(card,'سرور ماینکرفت',40);
+      else typeText(card,'در حال ساخت',40);
+      particleExplosion(card);
+    });
+  });
+
+  // چت بات
+  function toggleChat(){
+    const chat = document.getElementById('chat-box');
+    chat.style.display = (chat.style.display==='flex')?'none':'flex';
+  }
+
+  // فرم ضد اسپم
+  function validateForm(f){
+    if(f.website.value.trim()!==''){
+      document.getElementById('formMessage').textContent='فرم ارسال نشد (شناسایی اسپم)';
+      return false;
+    }
+    document.getElementById('formMessage').textContent='در حال ارسال...';
+    setTimeout(()=>{
+      f.reset();
+      document.getElementById('formMessage').textContent='پیام با موفقیت ارسال شد!';
+    },1000);
+    return true;
+  }
+</script>
 
 </body>
 </html>
