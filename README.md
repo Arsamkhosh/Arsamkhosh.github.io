@@ -597,5 +597,161 @@
     }
   });
 </script>
+<!-- دکمه روز و شب -->
+<button id="theme-toggle">🌞 روز/🌙 شب</button>
+
+<script>
+  // استایل دکمه بالا سمت چپ
+  const themeButton = document.getElementById('theme-toggle');
+  themeButton.style.position = 'fixed';
+  themeButton.style.top = '20px';
+  themeButton.style.left = '20px';
+  themeButton.style.padding = '10px 18px';
+  themeButton.style.border = 'none';
+  themeButton.style.borderRadius = '10px';
+  themeButton.style.background = 'linear-gradient(90deg, #00ffff, #ff00cc)';
+  themeButton.style.color = '#000';
+  themeButton.style.fontWeight = 'bold';
+  themeButton.style.cursor = 'pointer';
+  themeButton.style.zIndex = '1000';
+  themeButton.style.transition = 'all 0.3s';
+
+  themeButton.addEventListener('mouseenter', () => {
+    themeButton.style.transform = 'scale(1.05)';
+    themeButton.style.boxShadow = '0 0 15px #ff00cc';
+    themeButton.style.color = '#fff';
+  });
+  themeButton.addEventListener('mouseleave', () => {
+    themeButton.style.transform = 'scale(1)';
+    themeButton.style.boxShadow = 'none';
+    themeButton.style.color = '#000';
+  });
+
+  let isDark = true;
+
+  const projectCards = document.querySelectorAll('.project-card');
+
+  const hueObj = { value: 0 };
+
+  // پس‌زمینه متحرک در حالت شب
+  setInterval(() => {
+    if(isDark){
+      document.body.style.background = `linear-gradient(135deg, #000, hsl(${hueObj.value}, 80%, 15%))`;
+      hueObj.value = (hueObj.value + 0.5) % 360;
+    }
+  }, 30);
+
+  // تایپ متن با گرادیان
+  function typeGradientText(element, text, speed = 100) {
+    element.textContent = '';
+    let i = 0;
+    const interval = setInterval(() => {
+      element.textContent += text[i];
+      i++;
+      if(i >= text.length) clearInterval(interval);
+    }, speed);
+
+    let angle = 0;
+    const gradInterval = setInterval(() => {
+      element.style.background = `linear-gradient(${angle}deg, #ff00cc,#00ffff,#ff9900,#00ff00,#ff00ff)`;
+      element.style.backgroundClip = 'text';
+      element.style.webkitBackgroundClip = 'text';
+      element.style.color = 'transparent';
+      angle += 2;
+    }, 60);
+    return gradInterval;
+  }
+
+  const headerTitle = document.querySelector('header h1');
+  typeGradientText(headerTitle, 'پروژه‌های من', 80);
+
+  // پروژه‌ها
+  projectCards.forEach(card => {
+    card.style.transition = 'transform 0.3s, box-shadow 0.3s';
+    card.addEventListener('mouseenter', () => {
+      card.style.transform = 'translateY(-10px) scale(1.05)';
+      card.style.boxShadow = '0 0 20px #00ffff';
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'translateY(0) scale(1)';
+      card.style.boxShadow = '0 0 15px rgba(0,255,255,0.2)';
+    });
+
+    card.addEventListener('click', () => {
+      typeGradientText(card, 'در حال ساخت می‌باشد', 40);
+      const colors = ['#ff00cc','#00ffff','#ff9900','#00ff00','#ff0000','#ff00ff'];
+      let j = 0;
+      const rainbowInterval = setInterval(() => {
+        card.style.boxShadow = `0 0 25px ${colors[j % colors.length]}`;
+        j++;
+      }, 150);
+      setTimeout(() => clearInterval(rainbowInterval), 2500);
+    });
+  });
+
+  // چت بات
+  function toggleChat(){
+    const chat = document.getElementById('chat-box');
+    chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
+  }
+
+  // فرم ضد اسپم
+  function validateForm(form){
+    if(form.website.value.trim() !== ''){
+      document.getElementById('formMessage').textContent = 'فرم ارسال نشد (شناسایی اسپم)';
+      return false;
+    }
+    document.getElementById('formMessage').textContent = 'در حال ارسال...';
+    setTimeout(() => {
+      form.reset();
+      document.getElementById('formMessage').textContent = 'پیام با موفقیت ارسال شد!';
+    }, 1000);
+    return true;
+  }
+
+  // تغییر حالت روز و شب
+  themeButton.addEventListener('click', () => {
+    if(isDark){
+      // حالت روز طوسی
+      document.body.style.background = 'linear-gradient(135deg, #d0d0d0, #f0f0f0)';
+      document.body.style.color = '#333';
+      themeButton.textContent = '🌙 شب/🌞 روز';
+
+      projectCards.forEach(c => {
+        c.style.background = '#c0c0c0';
+        c.style.color = '#111';
+        c.style.boxShadow = '0 0 15px rgba(0,0,0,0.2)';
+      });
+
+      document.querySelectorAll('input, textarea').forEach(f => {
+        f.style.backgroundColor = '#e0e0e0';
+        f.style.color = '#111';
+        f.style.boxShadow = '0 0 10px rgba(0,0,0,0.1)';
+      });
+
+      isDark = false;
+    } else {
+      // حالت شب با پس‌زمینه سیاه
+      document.body.style.background = '#000';
+      document.body.style.color = '#fff';
+      themeButton.textContent = '🌞 روز/🌙 شب';
+
+      projectCards.forEach(c => {
+        c.style.background = 'rgba(255,255,255,0.05)';
+        c.style.color = '#fff';
+        c.style.boxShadow = '0 0 15px rgba(0,255,255,0.2)';
+      });
+
+      document.querySelectorAll('input, textarea').forEach(f => {
+        f.style.backgroundColor = 'rgba(255,255,255,0.1)';
+        f.style.color = '#fff';
+        f.style.boxShadow = '0 0 10px #00ffff';
+      });
+
+      isDark = true;
+    }
+  });
+</script>
+
 </body>
 </html>
