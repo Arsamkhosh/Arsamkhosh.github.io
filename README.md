@@ -12,6 +12,7 @@
     color: #fff;
     text-align: center;
     transition: all 0.5s;
+    overflow-x: hidden;
   }
   header, section, footer { padding: 40px 20px; transition: all 0.5s; }
   h1 {
@@ -69,6 +70,12 @@
     font-size: 1.5em; cursor: pointer; z-index: 1000; box-shadow: 0 0 15px #00ffff; transition: all 0.3s;
   }
   #theme-toggle:hover { transform: scale(1.1); box-shadow: 0 0 20px #ff00cc; }
+  /* ستاره‌ها */
+  .star {
+    position: fixed; width: 2px; height: 2px; background: #fff; border-radius: 50%; pointer-events: none; z-index: 0;
+    animation: twinkle 3s infinite;
+  }
+  @keyframes twinkle { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
 </style>
 </head>
 <body>
@@ -79,6 +86,12 @@
   <h1>پروژه‌های من</h1>
   <p>!خوش آمدید به سایت من، در ادامه پروژه‌ها را ببینید</p>
 </header>
+
+<section id="about-me">
+  <h2>درباره من</h2>
+  <p>سلام! من <strong>ارسام خوش‌اخلاق</strong> هستم، علاقه‌مند به طراحی وب، رابط کاربری و تجربه کاربری. این سایت را برای نمایش پروژه‌هایم و ارتباط با دیگران ایجاد کرده‌ام.</p>
+  <p>اگر پیشنهادی یا سوالی داری، خوشحال می‌شوم از طریق فرم تماس یا اینستاگرام با من در ارتباط باشی.</p>
+</section>
 
 <section id="projects-section">
   <h2>پروژه‌ها</h2>
@@ -123,58 +136,86 @@
 </div>
 
 <script>
-  let isDark = true;
-  const themeButton = document.getElementById('theme-toggle');
-  const projectCards = document.querySelectorAll('.project-card');
-  const inputs = document.querySelectorAll('input, textarea');
+let isDark = true;
+const themeButton = document.getElementById('theme-toggle');
+const projectCards = document.querySelectorAll('.project-card');
+const inputs = document.querySelectorAll('input, textarea');
 
-  // تغییر تم روز و شب
-  themeButton.addEventListener('click', () => {
-    if(isDark){
-      document.body.style.background = 'linear-gradient(135deg, #d0d0d0, #f0f0f0)';
-      document.body.style.color = '#333';
-      themeButton.textContent = '🌞';
-      projectCards.forEach(c=>{ c.style.background='#c0c0c0'; c.style.color='#111'; c.style.boxShadow='0 0 20px rgba(255,200,100,0.5)'; });
-      inputs.forEach(f=>{ f.style.backgroundColor='#e0e0e0'; f.style.color='#111'; f.style.boxShadow='0 0 15px rgba(255,200,100,0.3)'; });
-      isDark=false;
-    } else {
-      document.body.style.background='linear-gradient(135deg, #0f0f0f, #1a1a1a)';
-      document.body.style.color='#fff';
-      themeButton.textContent = '🌙';
-      projectCards.forEach(c=>{ c.style.background='rgba(255,255,255,0.05)'; c.style.color='#fff'; c.style.boxShadow='0 0 20px rgba(50,150,255,0.5)'; });
-      inputs.forEach(f=>{ f.style.backgroundColor='rgba(255,255,255,0.1)'; f.style.color='#fff'; f.style.boxShadow='0 0 15px rgba(50,150,255,0.3)'; });
-      isDark=true;
-    }
-  });
+function typeText(element, text, speed=50){
+  element.textContent = '';
+  let i=0;
+  const interval = setInterval(()=>{
+    element.textContent += text[i];
+    i++;
+    if(i>=text.length) clearInterval(interval);
+  }, speed);
+}
 
-  // کلیک روی پروژه‌ها
-  projectCards.forEach((card,i)=>{
-    card.addEventListener('click', ()=>{
-      if(i===0) card.textContent='سرور ماینکرفت';
-      else card.textContent='در حال ساخت';
-      // افکت رنگی
-      let colors=['#ff00cc','#00ffff','#ff9900','#00ff00','#ff0000','#ff00ff']; let j=0;
-      const rainbow = setInterval(()=>{ card.style.boxShadow=`0 0 25px ${colors[j%colors.length]}`; j++; },150);
-      setTimeout(()=>clearInterval(rainbow),2000);
-    });
-  });
-
-  // چت بات
-  function toggleChat(){
-    const chat = document.getElementById('chat-box');
-    chat.style.display = (chat.style.display==='flex')?'none':'flex';
+let stars = [];
+function createStars(count){
+  for(let i=0;i<count;i++){
+    const s = document.createElement('div');
+    s.classList.add('star');
+    s.style.top = Math.random()*window.innerHeight+'px';
+    s.style.left = Math.random()*window.innerWidth+'px';
+    s.style.width = Math.random()*3+1+'px';
+    s.style.height = s.style.width;
+    s.style.animationDuration = 2+Math.random()*3+'s';
+    document.body.appendChild(s);
+    stars.push(s);
   }
+}
+createStars(100);
 
-  // فرم ضد اسپم
-  function validateForm(f){
-    if(f.website.value.trim()!==''){
-      document.getElementById('formMessage').textContent='فرم ارسال نشد (شناسایی اسپم)';
-      return false;
-    }
-    document.getElementById('formMessage').textContent='در حال ارسال...';
-    setTimeout(()=>{ f.reset(); document.getElementById('formMessage').textContent='پیام با موفقیت ارسال شد!'; },1000);
-    return true;
+themeButton.addEventListener('click', () => {
+  if(isDark){
+    document.body.style.background = 'linear-gradient(135deg, #d0d0d0, #f0f0f0)';
+    document.body.style.color = '#333';
+    themeButton.textContent = '🌞';
+    projectCards.forEach(c=>{ c.style.background='#c0c0c0'; c.style.color='#111'; c.style.boxShadow='0 0 20px rgba(255,200,100,0.5)'; });
+    inputs.forEach(f=>{ f.style.backgroundColor='#e0e0e0'; f.style.color='#111'; f.style.boxShadow='0 0 15px rgba(255,200,100,0.3)'; });
+    stars.forEach(s=> s.style.display='none');
+    isDark=false;
+  } else {
+    document.body.style.background='linear-gradient(135deg, #0f0f0f, #1a1a1a)';
+    document.body.style.color='#fff';
+    themeButton.textContent = '🌙';
+    projectCards.forEach(c=>{ c.style.background='rgba(255,255,255,0.05)'; c.style.color='#fff'; c.style.boxShadow='0 0 20px rgba(50,150,255,0.5)'; });
+    inputs.forEach(f=>{ f.style.backgroundColor='rgba(255,255,255,0.1)'; f.style.color='#fff'; f.style.boxShadow='0 0 15px rgba(50,150,255,0.3)'; });
+    stars.forEach(s=> s.style.display='block');
+    isDark=true;
   }
+});
+
+projectCards.forEach((card,i)=>{
+  card.addEventListener('click', ()=>{
+    if(i===0) typeText(card,'سرور ماینکرفت',40);
+    else typeText(card,'در حال ساخت',40);
+    let colors=['#ff00cc','#00ffff','#ff9900','#00ff00','#ff0000','#ff00ff'];
+    let j=0;
+    const interval = setInterval(()=>{
+      card.style.boxShadow=`0 0 25px ${colors[j%colors.length]}`;
+      j++;
+    },150);
+    setTimeout(()=>clearInterval(interval),2500);
+  });
+});
+
+function toggleChat(){
+  const chat = document.getElementById('chat-box');
+  chat.style.display = (chat.style.display==='flex')?'none':'flex';
+}
+
+function validateForm(f){
+  if(f.website.value.trim()!==''){
+    document.getElementById('formMessage').textContent='فرم ارسال نشد (شناسایی اسپم)';
+    return false;
+  }
+  document.getElementById('formMessage').textContent='در حال ارسال...';
+  setTimeout(()=>{ f.reset(); document.getElementById('formMessage').textContent='پیام با موفقیت ارسال شد!'; },1000);
+  return true;
+}
 </script>
+
 </body>
 </html>
