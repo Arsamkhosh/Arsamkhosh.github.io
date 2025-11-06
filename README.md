@@ -386,5 +386,115 @@
       }
     });
   </script>
+  <!-- دکمه روز و شب -->
+<button id="theme-toggle">🌞 روز/🌙 شب</button>
+
+<script>
+  // پس‌زمینه متحرک گرادیان
+  let hue = 0;
+  setInterval(() => {
+    document.body.style.background = `linear-gradient(135deg, hsl(${hue}, 80%, 10%), hsl(${(hue+60)%360}, 80%, 15%))`;
+    hue = (hue + 1) % 360;
+  }, 50);
+
+  // تایپ متن با گرادیان
+  function typeGradientText(element, text, speed = 100) {
+    element.textContent = '';
+    let i = 0;
+    const interval = setInterval(() => {
+      element.textContent += text[i];
+      i++;
+      if(i >= text.length) clearInterval(interval);
+    }, speed);
+
+    let angle = 0;
+    const gradInterval = setInterval(() => {
+      element.style.background = `linear-gradient(${angle}deg, #ff00cc,#00ffff,#ff9900,#00ff00,#ff00ff)`;
+      element.style.backgroundClip = 'text';
+      element.style.webkitBackgroundClip = 'text';
+      element.style.color = 'transparent';
+      angle += 2;
+    }, 80);
+    return gradInterval;
+  }
+
+  // اجرا روی هدر
+  const headerTitle = document.querySelector('header h1');
+  typeGradientText(headerTitle, 'پروژه‌های من', 100);
+
+  // کارت‌های پروژه
+  const projectCards = document.querySelectorAll('.project-card');
+  projectCards.forEach(card => {
+    card.addEventListener('click', () => {
+      // پرش کارت
+      card.style.transition = 'transform 0.2s';
+      card.style.transform = 'translateY(-10px) scale(1.05)';
+      setTimeout(() => card.style.transform = 'translateY(0) scale(1)', 200);
+
+      // تایپ متن "در حال ساخت می‌باشد"
+      typeGradientText(card, 'در حال ساخت می‌باشد', 50);
+
+      // رنگین‌کمانی سایه کارت
+      const colors = ['#ff00cc','#00ffff','#ff9900','#00ff00','#ff0000','#ff00ff'];
+      let j = 0;
+      const rainbowInterval = setInterval(() => {
+        card.style.boxShadow = `0 0 25px ${colors[j % colors.length]}`;
+        j++;
+      }, 200);
+      setTimeout(() => clearInterval(rainbowInterval), 3000);
+    });
+  });
+
+  // چت بات
+  function toggleChat(){
+    const chat = document.getElementById('chat-box');
+    chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
+  }
+
+  // فرم ضد اسپم
+  function validateForm(form){
+    if(form.website.value.trim() !== ''){
+      document.getElementById('formMessage').textContent = 'فرم ارسال نشد (شناسایی اسپم)';
+      return false;
+    }
+    document.getElementById('formMessage').textContent = 'در حال ارسال...';
+    setTimeout(() => {
+      form.reset();
+      document.getElementById('formMessage').textContent = 'پیام با موفقیت ارسال شد!';
+    }, 1000);
+    return true;
+  }
+
+  // حالت روز و شب با ایموجی درست
+  const themeToggle = document.getElementById('theme-toggle');
+  let isDark = true;
+  themeToggle.addEventListener('click', () => {
+    if(isDark){
+      document.body.style.color = '#000';
+      themeToggle.textContent = '🌙 شب/🌞 روز';
+      document.querySelectorAll('.project-card').forEach(c => {
+        c.style.background = 'rgba(0,0,0,0.05)';
+        c.style.color = '#000';
+      });
+      document.querySelectorAll('input, textarea').forEach(f => {
+        f.style.backgroundColor = 'rgba(0,0,0,0.05)';
+        f.style.color = '#000';
+      });
+      isDark = false;
+    } else {
+      document.body.style.color = '#f0f0f0';
+      themeToggle.textContent = '🌞 روز/🌙 شب';
+      document.querySelectorAll('.project-card').forEach(c => {
+        c.style.background = 'rgba(255,255,255,0.05)';
+        c.style.color = '#fff';
+      });
+      document.querySelectorAll('input, textarea').forEach(f => {
+        f.style.backgroundColor = 'rgba(255,255,255,0.1)';
+        f.style.color = '#fff';
+      });
+      isDark = true;
+    }
+  });
+</script>
 </body>
 </html>
