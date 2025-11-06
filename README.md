@@ -217,7 +217,7 @@
   </div>
 
   <!-- دکمه روز و شب -->
-  <button id="theme-toggle">🌞 روز/🌙 شب</button>
+  <button id="theme-toggle"> روز/ شب</button>
 
   <script>
     // پس‌زمینه متحرک حالت شب
@@ -302,7 +302,7 @@
         // حالت روز
         document.body.style.background = 'linear-gradient(135deg, #d0d0d0, #f0f0f0)';
         document.body.style.color = '#333';
-        themeToggle.textContent = '🌙 شب/🌞 روز';
+        themeToggle.textContent = ' شب/ روز';
 
         document.querySelectorAll('.project-card').forEach(c => {
           c.style.background = '#c0c0c0';
@@ -321,7 +321,7 @@
       } else {
         // حالت شب
         document.body.style.color = '#f0f0f0';
-        themeToggle.textContent = '🌞 روز/🌙 شب';
+        themeToggle.textContent = ' روز/ شب';
 
         document.querySelectorAll('.project-card').forEach(c => {
           c.style.background = 'rgba(255,255,255,0.05)';
