@@ -206,7 +206,7 @@
   <section id="contact-section">
     <h2>ارتباط با من</h2>
     <form action="https://formspree.io/f/mnngzdlw" method="POST" onsubmit="return validateForm(this);">
-      <label for="name">نام (اختیاری):</label>
+      <label for="name">نام (اجباری):</label>
       <input type="text" id="name" name="name" placeholder="نام شما">
 
       <label for="email">ایمیل (اجباری):</label>
