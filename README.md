@@ -2,7 +2,7 @@
 <html lang="fa">
 <head>
   <meta charset="UTF-8">
-  <title>سایت فروش اجناس خارجی</title>
+  <title>پروژه‌های من</title>
   <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet" />
 
   <style>
@@ -12,6 +12,7 @@
       background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
       color: #f0f0f0;
       text-align: center;
+      scroll-behavior: smooth;
     }
 
     header, section, footer {
@@ -30,9 +31,31 @@
       margin-top: 30px;
     }
 
+    .projects {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .project-card {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      width: 200px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,255,255,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00ffff;
+    }
+
     form {
       max-width: 500px;
-      margin: 20px auto;
+      margin: 40px auto;
       text-align: right;
       direction: rtl;
       background: rgba(255, 255, 255, 0.05);
@@ -95,20 +118,93 @@
       margin-top: 8px;
     }
 
-    footer p {
+    footer {
       margin-top: 40px;
-      font-size: 0.9em;
+    }
+
+    footer a {
+      color: #00ffff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      color: #ff00cc;
+    }
+
+    /* چت بات */
+    #chat-icon {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #00ffff;
+      color: #000;
+      padding: 12px 16px;
+      border-radius: 50px;
+      font-size: 1.5em;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00ffff;
+      z-index: 1000;
+    }
+
+    #chat-box {
+      position: fixed;
+      bottom: 80px;
+      left: 20px;
+      width: 250px;
+      background: #1a1a1a;
+      color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #00ffff;
+      display: none;
+      flex-direction: column;
+      font-family: 'Vazir', sans-serif;
+      overflow: hidden;
+      z-index: 1000;
+    }
+
+    #chat-header {
+      background: #00ffff;
+      color: #000;
+      padding: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .chat-options button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-bottom: 1px solid #00ffff;
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .chat-options button:hover {
+      background: #00ffff;
+      color: #000;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>سایت فروش اجناس خارجی</h1>
-    <p>خوش آمدید! لطفاً فرم زیر را پر کنید.</p>
+    <h1>پروژه‌های من</h1>
+    <p>خوش آمدید! در ادامه پروژه‌ها و فرم تماس را می‌بینید.</p>
   </header>
 
-  <section>
-    <h2>ارتباط با ما</h2>
+  <section id="projects-section">
+    <h2>پروژه‌ها</h2>
+    <div class="projects">
+      <div class="project-card">پروژه 1</div>
+      <div class="project-card">پروژه 2</div>
+      <div class="project-card">پروژه 3</div>
+    </div>
+  </section>
+
+  <section id="contact-section">
+    <h2>ارتباط با من</h2>
     <form action="https://formspree.io/f/mnngzdlw" method="POST" onsubmit="return validateForm(this);">
       <label for="name">نام (اختیاری):</label>
       <input type="text" id="name" name="name" placeholder="نام شما">
@@ -122,7 +218,6 @@
       <label for="message">پیام شما:</label>
       <textarea id="message" name="message" rows="5" required placeholder="متن پیام..."></textarea>
 
-      <!-- Honeypot برای جلوگیری از اسپم -->
       <input type="text" name="website" id="website_hp" class="hp" autocomplete="off">
 
       <button type="submit">ارسال پیام</button>
@@ -131,8 +226,21 @@
   </section>
 
   <footer>
-    <p>© 2025 تمامی حقوق محفوظ است</p>
+    <p>© 2025 تمامی حقوق محفوظ است | 
+      <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank">اینستاگرام من</a>
+    </p>
   </footer>
+
+  <!-- چت بات -->
+  <div id="chat-icon" onclick="toggleChat()">💬</div>
+  <div id="chat-box">
+    <div id="chat-header">🤖 منو</div>
+    <div class="chat-options">
+      <button onclick="window.open('https://instagram.com/arsam.khosh.akhlagh.2012','_blank')">اینستاگرام من</button>
+      <button onclick="document.getElementById('contact-section').scrollIntoView({behavior:'smooth'});toggleChat();">ارتباط با ما</button>
+      <button onclick="document.getElementById('projects-section').scrollIntoView({behavior:'smooth'});toggleChat();">پروژه‌ها</button>
+    </div>
+  </div>
 
   <script>
     function validateForm(form){
@@ -142,6 +250,11 @@
       }
       document.getElementById('formMessage').textContent = 'در حال ارسال...';
       return true;
+    }
+
+    function toggleChat(){
+      const chat = document.getElementById('chat-box');
+      chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
     }
   </script>
 </body>
