@@ -468,6 +468,134 @@
     }
   });
 </script>
+<!-- دکمه روز و شب -->
+<button id="theme-toggle">🌞 روز/🌙 شب</button>
 
+<script>
+  let isDark = true;
+  let hue = 0;
+
+  // پس‌زمینه متحرک رنگین‌کمانی روی سیاه
+  setInterval(() => {
+    if(isDark){
+      document.body.style.background = `linear-gradient(135deg, #000, hsl(${hue}, 80%, 15%))`;
+      hue = (hue + 0.5) % 360;
+    }
+  }, 30);
+
+  // تایپ متن با گرادیان
+  function typeGradientText(element, text, speed = 100) {
+    element.textContent = '';
+    let i = 0;
+    const interval = setInterval(() => {
+      element.textContent += text[i];
+      i++;
+      if(i >= text.length) clearInterval(interval);
+    }, speed);
+
+    let angle = 0;
+    const gradInterval = setInterval(() => {
+      element.style.background = `linear-gradient(${angle}deg, #ff00cc,#00ffff,#ff9900,#00ff00,#ff00ff)`;
+      element.style.backgroundClip = 'text';
+      element.style.webkitBackgroundClip = 'text';
+      element.style.color = 'transparent';
+      angle += 2;
+    }, 60);
+    return gradInterval;
+  }
+
+  // تایپ هدر
+  const headerTitle = document.querySelector('header h1');
+  typeGradientText(headerTitle, 'پروژه‌های من', 80);
+
+  // پروژه‌ها
+  const projectCards = document.querySelectorAll('.project-card');
+  projectCards.forEach(card => {
+    card.style.transition = 'transform 0.3s, box-shadow 0.3s';
+    card.addEventListener('mouseenter', () => {
+      card.style.transform = 'translateY(-10px) scale(1.05)';
+      card.style.boxShadow = '0 0 20px #00ffff';
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'translateY(0) scale(1)';
+      card.style.boxShadow = '0 0 15px rgba(0,255,255,0.2)';
+    });
+
+    card.addEventListener('click', () => {
+      typeGradientText(card, 'در حال ساخت می‌باشد', 40);
+      const colors = ['#ff00cc','#00ffff','#ff9900','#00ff00','#ff0000','#ff00ff'];
+      let j = 0;
+      const rainbowInterval = setInterval(() => {
+        card.style.boxShadow = `0 0 25px ${colors[j % colors.length]}`;
+        j++;
+      }, 150);
+      setTimeout(() => clearInterval(rainbowInterval), 2500);
+    });
+  });
+
+  // چت بات
+  function toggleChat(){
+    const chat = document.getElementById('chat-box');
+    chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
+  }
+
+  // فرم ضد اسپم
+  function validateForm(form){
+    if(form.website.value.trim() !== ''){
+      document.getElementById('formMessage').textContent = 'فرم ارسال نشد (شناسایی اسپم)';
+      return false;
+    }
+    document.getElementById('formMessage').textContent = 'در حال ارسال...';
+    setTimeout(() => {
+      form.reset();
+      document.getElementById('formMessage').textContent = 'پیام با موفقیت ارسال شد!';
+    }, 1000);
+    return true;
+  }
+
+  // دکمه روز و شب
+  const themeToggle = document.getElementById('theme-toggle');
+  themeToggle.addEventListener('click', () => {
+    if(isDark){
+      // حالت روز طوسی و ملایم
+      document.body.style.background = 'linear-gradient(135deg, #d0d0d0, #f0f0f0)';
+      document.body.style.color = '#333';
+      themeToggle.textContent = '🌙 شب/🌞 روز';
+
+      document.querySelectorAll('.project-card').forEach(c => {
+        c.style.background = '#c0c0c0';
+        c.style.color = '#111';
+        c.style.boxShadow = '0 0 15px rgba(0,0,0,0.2)';
+      });
+
+      document.querySelectorAll('input, textarea').forEach(f => {
+        f.style.backgroundColor = '#e0e0e0';
+        f.style.color = '#111';
+        f.style.boxShadow = '0 0 10px rgba(0,0,0,0.1)';
+      });
+
+      isDark = false;
+    } else {
+      // حالت شب با پس‌زمینه سیاه
+      document.body.style.background = '#000';
+      document.body.style.color = '#fff';
+      themeToggle.textContent = '🌞 روز/🌙 شب';
+
+      document.querySelectorAll('.project-card').forEach(c => {
+        c.style.background = 'rgba(255,255,255,0.05)';
+        c.style.color = '#fff';
+        c.style.boxShadow = '0 0 15px rgba(0,255,255,0.2)';
+      });
+
+      document.querySelectorAll('input, textarea').forEach(f => {
+        f.style.backgroundColor = 'rgba(255,255,255,0.1)';
+        f.style.color = '#fff';
+        f.style.boxShadow = '0 0 10px #00ffff';
+      });
+
+      isDark = true;
+    }
+  });
+</script>
 </body>
 </html>
