@@ -351,5 +351,70 @@
       }
     });
   </script>
+  <button id="theme-toggle">🌙</button> <!-- حالت پیش‌فرض شب -->
+
+<script>
+  let isDark = true; // پیش‌فرض شب
+
+  const themeButton = document.getElementById('theme-toggle');
+
+  // تابع تغییر تم
+  themeButton.addEventListener('click', () => {
+    if(isDark){
+      // حالت روز
+      document.body.style.background = 'linear-gradient(135deg, #d0d0d0, #f0f0f0)'; // روشن‌تر
+      document.body.style.color = '#333';
+      themeButton.textContent = '🌞';
+      projectCards.forEach(c=>{
+        c.style.background='#c0c0c0';
+        c.style.color='#111';
+        c.style.boxShadow='0 0 15px rgba(0,0,0,0.2)';
+      });
+      document.querySelectorAll('input,textarea').forEach(f=>{
+        f.style.backgroundColor='#e0e0e0';
+        f.style.color='#111';
+        f.style.boxShadow='0 0 10px rgba(0,0,0,0.1)';
+      });
+      isDark = false;
+    } else {
+      // حالت شب
+      document.body.style.background='linear-gradient(135deg, #0f0f0f, #1a1a1a)'; // تاریک‌تر
+      document.body.style.color='#fff';
+      themeButton.textContent = '🌙';
+      projectCards.forEach(c=>{
+        c.style.background='rgba(255,255,255,0.05)';
+        c.style.color='#fff';
+        c.style.boxShadow='0 0 15px rgba(0,255,255,0.2)';
+      });
+      document.querySelectorAll('input,textarea').forEach(f=>{
+        f.style.backgroundColor='rgba(255,255,255,0.1)';
+        f.style.color='#fff';
+        f.style.boxShadow='0 0 10px #00ffff';
+      });
+      isDark = true;
+    }
+  });
+</script>
+
+<style>
+  #theme-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 12px 16px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(90deg, #00ffff, #ff00cc);
+    font-size: 1.5em;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 0 15px #00ffff;
+    transition: all 0.3s;
+  }
+  #theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #ff00cc;
+  }
+</style>
 </body>
 </html>
