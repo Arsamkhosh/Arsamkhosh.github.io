@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="fa">
 <head>
   <meta charset="UTF-8">
@@ -12,26 +12,20 @@
       color: #f0f0f0;
       text-align: center;
       scroll-behavior: smooth;
-      transition: background 0.5s, color 0.5s;
     }
-
     header, section, footer {
       padding: 40px 20px;
     }
-
     h1 {
       font-size: 2.5em;
       background: linear-gradient(90deg, #00ffff, #ff00cc, #ff9900);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      transition: all 0.5s;
     }
-
     h2 {
       font-size: 2em;
       margin-top: 30px;
     }
-
     .projects {
       display: flex;
       justify-content: center;
@@ -39,22 +33,15 @@
       gap: 20px;
       margin-top: 20px;
     }
-
     .project-card {
       background: rgba(255,255,255,0.05);
       padding: 20px;
       width: 200px;
       border-radius: 15px;
       box-shadow: 0 0 15px rgba(0,255,255,0.2);
-      transition: transform 0.3s, box-shadow 0.3s, background 0.5s, color 0.5s;
       cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-
-    .project-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #00ffff;
-    }
-
     form {
       max-width: 500px;
       margin: 40px auto;
@@ -64,15 +51,12 @@
       padding: 20px;
       border-radius: 15px;
       box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-      transition: background 0.5s, color 0.5s;
     }
-
     label {
       display: block;
       margin: 10px 0 5px;
       font-weight: bold;
     }
-
     input, textarea {
       width: 100%;
       padding: 12px;
@@ -84,13 +68,11 @@
       font-size: 1em;
       transition: all 0.3s;
     }
-
     input:focus, textarea:focus {
       outline: none;
       background-color: rgba(0, 255, 255, 0.1);
       box-shadow: 0 0 10px #00ffff;
     }
-
     button {
       padding: 12px 25px;
       border: none;
@@ -101,40 +83,16 @@
       cursor: pointer;
       transition: all 0.3s;
     }
-
     button:hover {
       transform: scale(1.05);
       box-shadow: 0 0 15px #ff00cc;
       color: #fff;
     }
-
-    .hp {
-      position: absolute;
-      left: -9999px;
-      top: -9999px;
-      visibility: hidden;
-    }
-
-    .note {
-      font-size: 0.85em;
-      color: #ccc;
-      margin-top: 8px;
-    }
-
-    footer {
-      margin-top: 40px;
-    }
-
-    footer a {
-      color: #00ffff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    footer a:hover {
-      color: #ff00cc;
-    }
-
+    .hp { position: absolute; left: -9999px; top: -9999px; visibility: hidden; }
+    .note { font-size: 0.85em; color: #ccc; margin-top: 8px; }
+    footer { margin-top: 40px; }
+    footer a { color: #00ffff; text-decoration: none; font-weight: bold; }
+    footer a:hover { color: #ff00cc; }
     /* چت بات */
     #chat-icon {
       position: fixed;
@@ -148,37 +106,22 @@
       cursor: pointer;
       box-shadow: 0 0 10px #00ffff;
       z-index: 1000;
-      animation: pulse 2s infinite;
     }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-    }
-
     #chat-box {
       position: fixed;
       bottom: 80px;
       left: 20px;
-      width: 300px;
-      max-height: 400px;
-      background: #111;
+      width: 250px;
+      background: #1a1a1a;
       color: #fff;
       border-radius: 15px;
-      box-shadow: 0 0 20px #00ffff;
+      box-shadow: 0 0 15px #00ffff;
       display: none;
       flex-direction: column;
       font-family: 'Vazir', sans-serif;
       overflow: hidden;
       z-index: 1000;
-      animation: fadeIn 0.3s ease-in-out;
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     #chat-header {
       background: #00ffff;
       color: #000;
@@ -186,47 +129,36 @@
       font-weight: bold;
       text-align: center;
     }
-
     .chat-options button {
       width: 100%;
-      padding: 12px;
+      padding: 10px;
       border: none;
       border-bottom: 1px solid #00ffff;
-      background: linear-gradient(90deg, #0ff0ff00, #0ff0ff11);
+      background: transparent;
       color: #fff;
       cursor: pointer;
       transition: 0.3s;
-      font-weight: bold;
     }
-
-    .chat-options button:hover {
-      background: #00ffff;
-      color: #000;
-      transform: scale(1.02);
-    }
-
+    .chat-options button:hover { background: #00ffff; color: #000; }
     /* دکمه روز و شب */
     #theme-toggle {
       position: fixed;
-      top: 20px;
+      bottom: 20px;
       right: 20px;
-      padding: 10px 15px;
+      padding: 10px 20px;
+      border-radius: 30px;
       border: none;
-      border-radius: 10px;
-      background: linear-gradient(90deg,#00ffff,#ff00cc);
+      background: linear-gradient(90deg, #00ffff, #ff00cc);
       color: #000;
       font-weight: bold;
       cursor: pointer;
       z-index: 1000;
-      box-shadow: 0 0 10px #00ffff;
       transition: all 0.3s;
     }
-
-    /* ریسپانسیو موبایل */
-    @media (max-width: 600px){
-      .projects { flex-direction: column; align-items: center; }
-      .project-card { width: 90%; max-width: 300px; }
-      #chat-box { width: 250px; }
+    #theme-toggle:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #ff00cc;
+      color: #fff;
     }
   </style>
 </head>
@@ -249,7 +181,7 @@
     <h2>ارتباط با من</h2>
     <form action="https://formspree.io/f/mnngzdlw" method="POST" onsubmit="return validateForm(this);">
       <label for="name">نام (اجباری):</label>
-      <input type="text" id="name" name="name" placeholder="نام شما">
+      <input type="text" id="name" name="name" placeholder="نام شما" required>
 
       <label for="email">ایمیل (اجباری):</label>
       <input type="email" id="email" name="email" required placeholder="example@example.com">
@@ -284,30 +216,21 @@
     </div>
   </div>
 
-  <button id="theme-toggle">🌙 شب/☀️ روز</button>
+  <!-- دکمه روز و شب -->
+  <button id="theme-toggle">🌞 روز/🌙 شب</button>
 
   <script>
-    // فرم ضد اسپم
-    function validateForm(form){
-      if(form.website.value.trim() !== ''){
-        document.getElementById('formMessage').textContent = 'فرم ارسال نشد (شناسایی اسپم)';
-        return false;
+    // پس‌زمینه متحرک حالت شب
+    let hue = 0;
+    let isDark = true;
+    setInterval(() => {
+      if(isDark){
+        document.body.style.background = `linear-gradient(135deg, hsl(${hue}, 80%, 10%), hsl(${(hue+60)%360}, 80%, 15%))`;
+        hue = (hue + 1) % 360;
       }
-      document.getElementById('formMessage').textContent = 'در حال ارسال...';
-      setTimeout(() => {
-        form.reset();
-        document.getElementById('formMessage').textContent = 'پیام با موفقیت ارسال شد!';
-      }, 1000);
-      return true;
-    }
+    }, 50);
 
-    // چت بات
-    function toggleChat(){
-      const chat = document.getElementById('chat-box');
-      chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
-    }
-
-    // افکت تایپ متن با گرادیان
+    // تایپ متن با گرادیان
     function typeGradientText(element, text, speed = 100) {
       element.textContent = '';
       let i = 0;
@@ -318,21 +241,21 @@
       }, speed);
 
       let angle = 0;
-      const gradientInterval = setInterval(() => {
-        element.style.background = `linear-gradient(${angle}deg, #ff00cc, #00ffff, #ff9900, #00ff00, #ff00ff)`;
+      const gradInterval = setInterval(() => {
+        element.style.background = `linear-gradient(${angle}deg, #ff00cc,#00ffff,#ff9900,#00ff00,#ff00ff)`;
         element.style.backgroundClip = 'text';
         element.style.webkitBackgroundClip = 'text';
         element.style.color = 'transparent';
         angle += 2;
       }, 80);
-      return gradientInterval;
+      return gradInterval;
     }
 
-    // اجرا روی هدر
+    // اجرای تایپ روی هدر
     const headerTitle = document.querySelector('header h1');
     typeGradientText(headerTitle, 'پروژه‌های من', 100);
 
-    // کارت‌های پروژه
+    // پروژه‌ها
     const projectCards = document.querySelectorAll('.project-card');
     projectCards.forEach(card => {
       card.addEventListener('click', () => {
@@ -347,154 +270,75 @@
         const rainbowInterval = setInterval(() => {
           card.style.boxShadow = `0 0 25px ${colors[j % colors.length]}`;
           j++;
-        }, 250);
+        }, 200);
         setTimeout(() => clearInterval(rainbowInterval), 3000);
       });
     });
 
-    // حالت روز و شب
-    const themeToggle = document.getElementById('theme-toggle');
-    let isDark = true;
+    // چت بات
+    function toggleChat(){
+      const chat = document.getElementById('chat-box');
+      chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
+    }
 
+    // فرم ضد اسپم
+    function validateForm(form){
+      if(form.website.value.trim() !== ''){
+        document.getElementById('formMessage').textContent = 'فرم ارسال نشد (شناسایی اسپم)';
+        return false;
+      }
+      document.getElementById('formMessage').textContent = 'در حال ارسال...';
+      setTimeout(() => {
+        form.reset();
+        document.getElementById('formMessage').textContent = 'پیام با موفقیت ارسال شد!';
+      }, 1000);
+      return true;
+    }
+
+    // دکمه روز و شب
+    const themeToggle = document.getElementById('theme-toggle');
     themeToggle.addEventListener('click', () => {
       if(isDark){
-        document.body.style.background = 'linear-gradient(135deg, #ffffff, #e0e0e0)';
-        document.body.style.color = '#000';
+        // حالت روز
+        document.body.style.background = 'linear-gradient(135deg, #d0d0d0, #f0f0f0)';
+        document.body.style.color = '#333';
+        themeToggle.textContent = '🌙 شب/🌞 روز';
+
         document.querySelectorAll('.project-card').forEach(c => {
-          c.style.background = 'rgba(0,0,0,0.05)';
+          c.style.background = '#c0c0c0';
+          c.style.color = '#111';
           c.style.boxShadow = '0 0 15px rgba(0,0,0,0.2)';
-          c.style.color = '#000';
+          c.style.transition = 'all 0.3s';
         });
+
         document.querySelectorAll('input, textarea').forEach(f => {
-          f.style.backgroundColor = 'rgba(0,0,0,0.05)';
-          f.style.color = '#000';
+          f.style.backgroundColor = '#e0e0e0';
+          f.style.color = '#111';
+          f.style.boxShadow = '0 0 10px rgba(0,0,0,0.1)';
         });
+
         isDark = false;
       } else {
-        document.body.style.background = 'linear-gradient(135deg, #0f0f0f, #1a1a1a)';
+        // حالت شب
         document.body.style.color = '#f0f0f0';
+        themeToggle.textContent = '🌞 روز/🌙 شب';
+
         document.querySelectorAll('.project-card').forEach(c => {
           c.style.background = 'rgba(255,255,255,0.05)';
-          c.style.boxShadow = '0 0 15px rgba(0,255,255,0.2)';
           c.style.color = '#fff';
+          c.style.boxShadow = '0 0 15px rgba(0,255,255,0.2)';
+          c.style.transition = 'all 0.3s';
         });
+
         document.querySelectorAll('input, textarea').forEach(f => {
           f.style.backgroundColor = 'rgba(255,255,255,0.1)';
           f.style.color = '#fff';
+          f.style.boxShadow = '0 0 10px #00ffff';
         });
+
         isDark = true;
       }
     });
   </script>
-  <!-- دکمه روز و شب -->
-<button id="theme-toggle">🌞 روز/🌙 شب</button>
-
-<script>
-  // پس‌زمینه متحرک گرادیان
-  let hue = 0;
-  setInterval(() => {
-    document.body.style.background = `linear-gradient(135deg, hsl(${hue}, 80%, 10%), hsl(${(hue+60)%360}, 80%, 15%))`;
-    hue = (hue + 1) % 360;
-  }, 50);
-
-  // تایپ متن با گرادیان
-  function typeGradientText(element, text, speed = 100) {
-    element.textContent = '';
-    let i = 0;
-    const interval = setInterval(() => {
-      element.textContent += text[i];
-      i++;
-      if(i >= text.length) clearInterval(interval);
-    }, speed);
-
-    let angle = 0;
-    const gradInterval = setInterval(() => {
-      element.style.background = `linear-gradient(${angle}deg, #ff00cc,#00ffff,#ff9900,#00ff00,#ff00ff)`;
-      element.style.backgroundClip = 'text';
-      element.style.webkitBackgroundClip = 'text';
-      element.style.color = 'transparent';
-      angle += 2;
-    }, 80);
-    return gradInterval;
-  }
-
-  // اجرا روی هدر
-  const headerTitle = document.querySelector('header h1');
-  typeGradientText(headerTitle, 'پروژه‌های من', 100);
-
-  // کارت‌های پروژه
-  const projectCards = document.querySelectorAll('.project-card');
-  projectCards.forEach(card => {
-    card.addEventListener('click', () => {
-      // پرش کارت
-      card.style.transition = 'transform 0.2s';
-      card.style.transform = 'translateY(-10px) scale(1.05)';
-      setTimeout(() => card.style.transform = 'translateY(0) scale(1)', 200);
-
-      // تایپ متن "در حال ساخت می‌باشد"
-      typeGradientText(card, 'در حال ساخت می‌باشد', 50);
-
-      // رنگین‌کمانی سایه کارت
-      const colors = ['#ff00cc','#00ffff','#ff9900','#00ff00','#ff0000','#ff00ff'];
-      let j = 0;
-      const rainbowInterval = setInterval(() => {
-        card.style.boxShadow = `0 0 25px ${colors[j % colors.length]}`;
-        j++;
-      }, 200);
-      setTimeout(() => clearInterval(rainbowInterval), 3000);
-    });
-  });
-
-  // چت بات
-  function toggleChat(){
-    const chat = document.getElementById('chat-box');
-    chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
-  }
-
-  // فرم ضد اسپم
-  function validateForm(form){
-    if(form.website.value.trim() !== ''){
-      document.getElementById('formMessage').textContent = 'فرم ارسال نشد (شناسایی اسپم)';
-      return false;
-    }
-    document.getElementById('formMessage').textContent = 'در حال ارسال...';
-    setTimeout(() => {
-      form.reset();
-      document.getElementById('formMessage').textContent = 'پیام با موفقیت ارسال شد!';
-    }, 1000);
-    return true;
-  }
-
-  // حالت روز و شب با ایموجی درست
-  const themeToggle = document.getElementById('theme-toggle');
-  let isDark = true;
-  themeToggle.addEventListener('click', () => {
-    if(isDark){
-      document.body.style.color = '#000';
-      themeToggle.textContent = '🌙 شب/🌞 روز';
-      document.querySelectorAll('.project-card').forEach(c => {
-        c.style.background = 'rgba(0,0,0,0.05)';
-        c.style.color = '#000';
-      });
-      document.querySelectorAll('input, textarea').forEach(f => {
-        f.style.backgroundColor = 'rgba(0,0,0,0.05)';
-        f.style.color = '#000';
-      });
-      isDark = false;
-    } else {
-      document.body.style.color = '#f0f0f0';
-      themeToggle.textContent = '🌞 روز/🌙 شب';
-      document.querySelectorAll('.project-card').forEach(c => {
-        c.style.background = 'rgba(255,255,255,0.05)';
-        c.style.color = '#fff';
-      });
-      document.querySelectorAll('input, textarea').forEach(f => {
-        f.style.backgroundColor = 'rgba(255,255,255,0.1)';
-        f.style.color = '#fff';
-      });
-      isDark = true;
-    }
-  });
-</script>
 </body>
 </html>
