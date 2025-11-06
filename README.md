@@ -1,10 +1,9 @@
-
+<!DOCTYPE html>
 <html lang="fa">
 <head>
   <meta charset="UTF-8">
   <title>پروژه‌های من</title>
   <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet" />
-
   <style>
     body {
       margin: 0;
@@ -13,6 +12,7 @@
       color: #f0f0f0;
       text-align: center;
       scroll-behavior: smooth;
+      transition: background 0.5s, color 0.5s;
     }
 
     header, section, footer {
@@ -45,7 +45,8 @@
       width: 200px;
       border-radius: 15px;
       box-shadow: 0 0 15px rgba(0,255,255,0.2);
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.5s, color 0.5s;
+      cursor: pointer;
     }
 
     .project-card:hover {
@@ -62,6 +63,7 @@
       padding: 20px;
       border-radius: 15px;
       box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+      transition: background 0.5s, color 0.5s;
     }
 
     label {
@@ -145,22 +147,35 @@
       cursor: pointer;
       box-shadow: 0 0 10px #00ffff;
       z-index: 1000;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
     }
 
     #chat-box {
       position: fixed;
       bottom: 80px;
       left: 20px;
-      width: 250px;
-      background: #1a1a1a;
+      width: 300px;
+      max-height: 400px;
+      background: #111;
       color: #fff;
       border-radius: 15px;
-      box-shadow: 0 0 15px #00ffff;
+      box-shadow: 0 0 20px #00ffff;
       display: none;
       flex-direction: column;
       font-family: 'Vazir', sans-serif;
       overflow: hidden;
       z-index: 1000;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     #chat-header {
@@ -173,18 +188,27 @@
 
     .chat-options button {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       border: none;
       border-bottom: 1px solid #00ffff;
-      background: transparent;
+      background: linear-gradient(90deg, #0ff0ff00, #0ff0ff11);
       color: #fff;
       cursor: pointer;
       transition: 0.3s;
+      font-weight: bold;
     }
 
     .chat-options button:hover {
       background: #00ffff;
       color: #000;
+      transform: scale(1.02);
+    }
+
+    /* ریسپانسیو موبایل */
+    @media (max-width: 600px){
+      .projects { flex-direction: column; align-items: center; }
+      .project-card { width: 90%; max-width: 300px; }
+      #chat-box { width: 250px; }
     }
   </style>
 </head>
@@ -242,21 +266,168 @@
     </div>
   </div>
 
+  <!-- دکمه حالت روز و شب -->
+  <button id="theme-toggle" style="
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(90deg,#00ffff,#ff00cc);
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 0 10px #00ffff;
+    transition: all 0.3s;
+  ">🌙 شب/☀️ روز</button>
+
   <script>
+    // فرم ضد اسپم
     function validateForm(form){
       if(form.website.value.trim() !== ''){
         document.getElementById('formMessage').textContent = 'فرم ارسال نشد (شناسایی اسپم)';
         return false;
       }
       document.getElementById('formMessage').textContent = 'در حال ارسال...';
+      setTimeout(() => {
+        form.reset();
+        document.getElementById('formMessage').textContent = 'پیام با موفقیت ارسال شد!';
+      }, 1000);
       return true;
     }
 
+    // چت بات
     function toggleChat(){
       const chat = document.getElementById('chat-box');
       chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
     }
+
+    // افکت تایپ کردن متن
+    function typeText(element, text, speed = 50) {
+      element.textContent = '';
+      let i = 0;
+      const interval = setInterval(() => {
+        element.textContent += text[i];
+        i++;
+        if (i >= text.length) clearInterval(interval);
+      }, speed);
+    }
+
+    // افکت رنگین‌کمانی روی کارت
+    function rainbowEffect(element) {
+      const colors = ['#ff00cc','#00ffff','#ff9900','#00ff00','#ff0000','#ff00ff'];
+      let i = 0;
+      const interval = setInterval(() => {
+        element.style.boxShadow = `0 0 20px ${colors[i % colors.length]}`;
+        i++;
+      }, 300);
+      return interval; 
+    }
+
+    // کارت‌های پروژه
+    const projectCards = document.querySelectorAll('.project-card');
+
+    projectCards.forEach(card => {
+      card.addEventListener('click', () => {
+        // پرش کارت
+        card.style.transition = 'transform 0.2s';
+        card.style.transform = 'translateY(-10px) scale(1.05)';
+        setTimeout(() => card.style.transform = 'translateY(0) scale(1)', 200);
+
+        // رنگین‌کمانی
+        const rainbowInterval = rainbowEffect(card);
+
+        // تایپ متن
+        typeText(card, 'در حال ساخت می‌باشد', 50);
+
+        // توقف رنگین‌کمانی بعد از ۳ ثانیه
+        setTimeout(() => clearInterval(rainbowInterval), 3000);
+      });
+    });
+
+    // حالت روز و شب با انیمیشن
+    const themeToggle = document.getElementById('theme-toggle');
+    let isDark = true;
+
+    themeToggle.addEventListener('click', () => {
+      if(isDark){
+        document.body.style.background = 'linear-gradient(135deg, #ffffff, #e0e0e0)';
+        document.body.style.color = '#000';
+        document.querySelectorAll('.project-card').forEach(c => {
+          c.style.background = 'rgba(0,0,0,0.05)';
+          c.style.boxShadow = '0 0 15px rgba(0,0,0,0.2)';
+          c.style.color = '#000';
+        });
+        document.querySelectorAll('input, textarea').forEach(f => {
+          f.style.backgroundColor = 'rgba(0,0,0,0.05)';
+          f.style.color = '#000';
+        });
+        isDark = false;
+      } else {
+        document.body.style.background = 'linear-gradient(135deg, #0f0f0f, #1a1a1a)';
+        document.body.style.color = '#f0f0f0';
+        document.querySelectorAll('.project-card').forEach(c => {
+          c.style.background = 'rgba(255,255,255,0.05)';
+          c.style.boxShadow = '0 0 15px rgba(0,255,255,0.2)';
+          c.style.color = '#fff';
+        });
+        document.querySelectorAll('input, textarea').forEach(f => {
+          f.style.backgroundColor = 'rgba(255,255,255,0.1)';
+          f.style.color = '#fff';
+        });
+        isDark = true;
+      }
+    });
   </script>
+  <script>
+  // افکت تایپ برای پروژه‌ها و هدر با گرادیان متحرک
+  function typeGradientText(element, text, speed = 100) {
+    element.textContent = '';
+    let i = 0;
+    const interval = setInterval(() => {
+      element.textContent += text[i];
+      i++;
+      if(i >= text.length) clearInterval(interval);
+    }, speed);
+
+    // گرادیان متحرک
+    let angle = 0;
+    setInterval(() => {
+      element.style.background = `linear-gradient(${angle}deg, #ff00cc, #00ffff, #ff9900, #00ff00, #ff00ff)`;
+      element.style.backgroundClip = 'text';
+      element.style.webkitBackgroundClip = 'text';
+      element.style.color = 'transparent';
+      angle += 2;
+    }, 100);
+  }
+
+  // اجرا روی هدر
+  const headerTitle = document.querySelector('header h1');
+  typeGradientText(headerTitle, 'پروژه‌های من', 100);
+
+  // اجرا روی پروژه‌ها هنگام کلیک
+  const projectCards = document.querySelectorAll('.project-card');
+  projectCards.forEach(card => {
+    card.addEventListener('click', () => {
+      card.style.transition = 'transform 0.2s';
+      card.style.transform = 'translateY(-10px) scale(1.05)';
+      setTimeout(() => card.style.transform = 'translateY(0) scale(1)', 200);
+
+      // تایپ با گرادیان روی کارت
+      typeGradientText(card, 'در حال ساخت می‌باشد', 50);
+
+      // رنگین‌کمانی سایه کارت
+      const colors = ['#ff00cc','#00ffff','#ff9900','#00ff00','#ff0000','#ff00ff'];
+      let j = 0;
+      const rainbowInterval = setInterval(() => {
+        card.style.boxShadow = `0 0 20px ${colors[j % colors.length]}`;
+        j++;
+      }, 300);
+      setTimeout(() => clearInterval(rainbowInterval), 3000);
+    });
+  });
+</script>
 </body>
 </html>
-
