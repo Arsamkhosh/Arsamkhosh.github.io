@@ -253,5 +253,163 @@ function validateForm(f) {
   .then(r => { msg.textContent = r.ok ? '✅ پیام ارسال شد!' : '❌ خطا در ارسال.'; });
 }
 </script>
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پروژه‌های آرسام گنگ</title>
+<link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  font-family: 'Vazir', sans-serif;
+  background: linear-gradient(135deg, #0a0a0a, #111);
+  color: white;
+  overflow-x: hidden;
+}
+header {
+  text-align: center;
+  padding: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #00ffff;
+}
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+  transition: 0.3s;
+}
+.project-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+.project-title {
+  font-size: 20px;
+  color: #00ffff;
+  margin-bottom: 10px;
+}
+.project-desc {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #ccc;
+}
+.project-tech {
+  font-size: 13px;
+  color: #999;
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #bbb;
+}
+footer p { margin: 5px 0; }
+footer a { color: #00ffff; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+#server-box {
+  background: #000;
+  border: 2px solid #00ffff;
+  border-radius: 12px;
+  padding: 10px;
+  font-family: monospace;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+#server-box span {
+  color: #00ff99;
+  font-weight: bold;
+}
+#server-box button {
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg,#00ffff,#ff00cc);
+  color: #000;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+#player-count {
+  color: #0f0;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 8px;
+}
+</style>
+</head>
+<body>
+
+<header>🔥 پروژه‌های آرسام گنگ 🔥</header>
+
+<section id="projects-section">
+  <div class="projects">
+
+    <div class="project-card">
+      <div class="project-title">🌍 سرور ماینکرفت LAVA JUMP</div>
+      <div class="project-desc">بپر، رقابت کن و از سرور من لذت ببر!</div>
+      <div id="server-box">
+        <span id="server-ip">lavajumptest.falixsrv.me</span>
+        <button onclick="copyIP()">📋 کپی</button>
+      </div>
+      <p id="player-count">در حال بررسی...</p>
+    </div>
+
+    <div class="project-card">
+      <div class="project-title">پروژه سایت شخصی 🌐</div>
+      <div class="project-desc">این سایت رو خودم طراحی و کدنویسی کردم تا مهارت‌هامو نشون بدم.</div>
+      <div class="project-tech">HTML / CSS / JavaScript</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-title">ادیت ویدیو 🎬</div>
+      <div class="project-desc">ادیت ویدیو یکی از سرگرمی‌های منِ آرسام گنگه 😎</div>
+      <div class="project-tech">CapCut / Filmora / Shotcut</div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 تمامی حقوق محفوظ است</p>
+  <p><a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank">اینستاگرام من</a></p>
+</footer>
+
+<script>
+function copyIP() {
+  const ip = document.getElementById('server-ip').textContent;
+  navigator.clipboard.writeText(ip).then(() => {
+    alert('✅ آی‌پی کپی شد: ' + ip);
+  });
+}
+
+async function updatePlayers() {
+  try {
+    const res = await fetch('https://api.mcsrvstat.us/2/lavajumptest.falixsrv.me');
+    const data = await res.json();
+    const playerCount = data.players?.online ?? 0;
+    const maxPlayers = data.players?.max ?? 0;
+    document.getElementById('player-count').textContent =
+      `🎮 بازیکنان آنلاین: ${playerCount}/${maxPlayers}`;
+  } catch {
+    document.getElementById('player-count').textContent = '❌ سرور در دسترس نیست';
+  }
+}
+updatePlayers();
+setInterval(updatePlayers, 60000);
+</script>
+
+</body>
+</html>
 </body>
 </html>
