@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="fa">
 <head>
 <meta charset="UTF-8">
@@ -204,12 +204,12 @@
   <div class="projects">
     <div class="project-card">
       <div class="project-title">سرور ماینکرفت 🎮</div>
-      <div class="project-desc">سرور خصوصی برای دوستداران بازی ماینکرفت با پلاگین‌های اختصاصی و دنیای منحصربه‌فرد</div>
+      <div class="project-desc">سرور اختصاصی  برای ماینکرفت با پلاگین‌ های مختصوص دارم و برای همکاری به اینستگرام یا بخش ارتباط با ما به من پبام بده </div>
       <div class="project-tech">Java / Spigot / Minecraft</div>
     </div>
     <div class="project-card">
       <div class="project-title">سایت شخصی 🌐</div>
-      <div class="project-desc">این سایت با تمرکز بر UX و طراحی نئون مدرن توسط من ساخته شده است</div>
+      <div class="project-desc"> من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم</div>
       <div class="project-tech">HTML / CSS / JavaScript</div>
     </div>
     <div class="project-card">
