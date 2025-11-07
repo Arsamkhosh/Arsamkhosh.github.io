@@ -226,7 +226,7 @@
     <div class="project-card">
       <div class="project-title">ادیت ویدیو</div>
       <div class="project-desc">من به ادیت ویدیو هم علاقه دارم و پبجی در یوتوب دارم که کار های ادیتم رو توی اون قرار میدم</div>
-      <div class="project-tech">React / Node.js / MongoDB</div>
+      <div class="project-tech">capcut / flimora 14 / shotcut</ inshot div>
     </div>
   </div>
 </section>
