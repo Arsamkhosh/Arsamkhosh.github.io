@@ -45,6 +45,11 @@ form { max-width:500px; margin:40px auto; background:rgba(255,255,255,0.08);
 input, textarea { width:100%; padding:12px; border-radius:10px; border:1px solid rgba(0,255,255,0.3);
     background-color: rgba(255,255,255,0.1); color:#fff; margin-bottom:15px; transition:0.5s;}
 ::placeholder { color:#aaa; opacity:1; }
+/* دکمه ارسال فرم */
+form button { width:100%; padding:12px; font-size:1em; font-weight:bold;
+    border:none; border-radius:12px; background:linear-gradient(135deg,#00ffff,#ff00cc);
+    color:#000; cursor:pointer; transition:0.3s; box-shadow:0 0 15px rgba(255,0,255,0.4);}
+form button:hover { transform:scale(1.05); }
 
 /* تم روشن */
 .light-theme-body { background:linear-gradient(135deg,#d3d3d3,#f0f0f0) !important; color:#333 !important;}
@@ -55,7 +60,7 @@ input, textarea { width:100%; padding:12px; border-radius:10px; border:1px solid
 .light-theme-input { background-color:#e0e0e0 !important; color:#333 !important; border:1px solid #aaa !important;}
 .light-theme-input::placeholder { color:#555 !important; }
 
-/* دکمه منو عمودی پایین چپ */
+/* منوی عمودی پایین سمت چپ */
 #menu-btn { position:fixed; bottom:20px; left:20px; width:60px; height:60px;
     border-radius:50%; background:linear-gradient(135deg,#00ffff,#ff00cc);
     display:flex; justify-content:center; align-items:center; font-size:28px; color:#000;
@@ -65,19 +70,6 @@ input, textarea { width:100%; padding:12px; border-radius:10px; border:1px solid
 #menu-panel button { padding:10px 15px; border:none; border-radius:10px; background:linear-gradient(135deg,#00ffff,#ff00cc);
     color:#000; cursor:pointer; font-weight:bold; transition:0.3s;}
 #menu-panel button:hover { transform:scale(1.05); }
-
-/* چت‌بات */
-#chat-icon { position: fixed; bottom:100px; right:20px; background:linear-gradient(135deg,#00ffff,#ff00cc);
-    border-radius:50%; width:60px; height:60px; display:flex; align-items:center; justify-content:center;
-    font-size:28px; color:#000; cursor:pointer; box-shadow:0 0 20px rgba(255,0,255,0.4); transition:0.3s;}
-#chat-icon:hover { transform:scale(1.1);}
-#chat-box { position:fixed; bottom:180px; right:20px; width:260px; background:rgba(0,0,0,0.9);
-    border-radius:15px; padding:15px; display:none; flex-direction:column; gap:10px; box-shadow:0 0 25px rgba(0,255,255,0.3);}
-#chat-box.show { display:flex; }
-#chat-header { font-weight:bold; color:#00ffff; margin-bottom:10px; }
-.chat-options button { padding:8px; border:none; border-radius:10px; background:linear-gradient(135deg,#00ffff,#ff00cc);
-    color:#000; cursor:pointer; font-weight:bold; transition:0.3s;}
-.chat-options button:hover { transform:scale(1.05); }
 
 /* ستاره‌ها */
 .star { position:fixed; width:2px; height:2px; background:#fff; border-radius:50%; pointer-events:none; z-index:0;
@@ -150,23 +142,12 @@ input, textarea { width:100%; padding:12px; border-radius:10px; border:1px solid
   <p>© 2025 تمامی حقوق محفوظ است | <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank">اینستاگرام من</a></p>
 </footer>
 
-<!-- منوی عمودی -->
+<!-- منوی عمودی پایین سمت چپ -->
 <div id="menu-btn" onclick="toggleMenu()">☰</div>
 <div id="menu-panel">
   <button onclick="scrollToSection('about-me')">درباره من</button>
   <button onclick="scrollToSection('projects-section')">پروژه‌ها</button>
   <button onclick="scrollToSection('contact-section')">ارتباط با من</button>
-</div>
-
-<!-- چت‌بات -->
-<div id="chat-icon" onclick="toggleChat()">💬</div>
-<div id="chat-box">
-  <div id="chat-header">🤖 منو</div>
-  <div class="chat-options">
-    <button onclick="window.open('https://instagram.com/arsam.khosh.akhlagh.2012','_blank')">اینستاگرام من</button>
-    <button onclick="scrollToSection('contact-section'); toggleChat();">ارتباط با ما</button>
-    <button onclick="scrollToSection('projects-section'); toggleChat();">پروژه‌ها</button>
-  </div>
 </div>
 
 <script>
@@ -191,14 +172,10 @@ function createStars(count){
 createStars(60);
 
 // تم شب/روز
-const themeButton=document.getElementById('theme-toggle');
-if(localStorage.getItem('theme')==='light') setLightTheme();
-themeButton?.addEventListener('click',()=>isDark?setLightTheme():setDarkTheme());
 function setLightTheme(){
   document.body.classList.add('light-theme-body');
   document.querySelector('form').classList.add('light-theme-form');
   aboutCard.classList.add('light-theme-about'); 
-  themeButton.textContent='🌞';
   projectCards.forEach(c=>c.classList.add('light-theme-project-card'));
   inputs.forEach(f=>f.classList.add('light-theme-input'));
   document.querySelectorAll('.star').forEach(s=>s.style.display='none');
@@ -208,7 +185,6 @@ function setDarkTheme(){
   document.body.classList.remove('light-theme-body');
   document.querySelector('form').classList.remove('light-theme-form');
   aboutCard.classList.remove('light-theme-about'); 
-  themeButton.textContent='🌙';
   projectCards.forEach(c=>c.classList.remove('light-theme-project-card'));
   inputs.forEach(f=>f.classList.remove('light-theme-input'));
   document.querySelectorAll('.star').forEach(s=>s.style.display='block');
@@ -224,9 +200,6 @@ function scrollToSection(id){
   document.getElementById(id).scrollIntoView({behavior:'smooth'});
   document.getElementById('menu-panel').style.display='none';
 }
-
-// چت‌بات
-function toggleChat(){ document.getElementById('chat-box').classList.toggle('show'); }
 
 // افکت کلیک پروژه
 function particleExplosion(el){
