@@ -334,5 +334,80 @@ function validateForm(f){
   return false;
 }
 </script>
+<!-- 🌙☀️ تم شب/روز -->
+<button id="theme-toggle" title="تغییر تم" style="position:fixed;top:15px;left:15px;width:45px;height:45px;border:none;border-radius:50%;font-size:22px;cursor:pointer;background:rgba(255,255,255,0.15);box-shadow:0 0 15px rgba(0,255,255,0.4);display:flex;align-items:center;justify-content:center;">🌙</button>
+
+<!-- 💬 دکمه چت بات پایین سمت چپ -->
+<div id="chat-icon" onclick="toggleChat()" style="position:fixed;bottom:20px;left:20px;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#00ffff,#ff00cc);display:flex;align-items:center;justify-content:center;font-size:28px;color:#000;cursor:pointer;box-shadow:0 0 20px rgba(255,0,255,0.4);transition:transform 0.3s;">💬</div>
+
+<!-- منوی چت بات عمودی -->
+<div id="chat-box" style="position:fixed;bottom:90px;left:20px;width:200px;background:rgba(0,0,0,0.9);border-radius:15px;padding:10px;display:none;flex-direction:column;gap:8px;box-shadow:0 0 25px rgba(0,255,255,0.3);">
+  <div id="chat-header" style="font-weight:bold;color:#00ffff;margin-bottom:5px;">🤖 منو</div>
+  <div class="chat-options" style="display:flex;flex-direction:column;gap:5px;">
+    <button onclick="window.open('https://instagram.com/arsam.khosh.akhlagh.2012','_blank')" style="padding:8px;border:none;border-radius:10px;background:linear-gradient(135deg,#00ffff,#ff00cc);color:#000;font-weight:bold;cursor:pointer;transition:0.3s;">اینستاگرام من</button>
+    <button onclick="document.getElementById('contact-section').scrollIntoView({behavior:'smooth'});toggleChat();" style="padding:8px;border:none;border-radius:10px;background:linear-gradient(135deg,#00ffff,#ff00cc);color:#000;font-weight:bold;cursor:pointer;transition:0.3s;">ارتباط با ما</button>
+    <button onclick="document.getElementById('projects-section').scrollIntoView({behavior:'smooth'});toggleChat();" style="padding:8px;border:none;border-radius:10px;background:linear-gradient(135deg,#00ffff,#ff00cc);color:#000;font-weight:bold;cursor:pointer;transition:0.3s;">پروژه‌ها</button>
+  </div>
+</div>
+
+<script>
+// 🌟 ستاره‌ها
+function createStars(count){
+  for(let i=0;i<count;i++){
+    const s=document.createElement('div');
+    s.classList.add('star');
+    s.style.position='fixed';
+    s.style.top=Math.random()*window.innerHeight+'px';
+    s.style.left=Math.random()*window.innerWidth+'px';
+    s.style.width=Math.random()*2+1+'px';
+    s.style.height=s.style.width;
+    s.style.borderRadius='50%';
+    s.style.background='#fff';
+    s.style.pointerEvents='none';
+    s.style.zIndex='0';
+    s.style.animation='twinkle '+(2+Math.random()*3)+'s infinite';
+    document.body.appendChild(s);
+  }
+}
+createStars(60);
+
+// ✨ انیمیشن چشمک ستاره‌ها
+const styleTwinkle=document.createElement('style');
+styleTwinkle.innerHTML=`@keyframes twinkle{0%,100%{opacity:0.2;}50%{opacity:1;}}`;
+document.head.appendChild(styleTwinkle);
+
+// 🌓 تم شب/روز با آیکون
+const themeButton=document.getElementById('theme-toggle');
+let isDark=true;
+
+if(localStorage.getItem('theme')==='light') setLightTheme();
+
+themeButton.onclick=()=> isDark?setLightTheme():setDarkTheme();
+
+function setLightTheme(){
+  document.body.classList.add('light-theme-body');
+  themeButton.textContent='☀️';
+  document.querySelectorAll('.star').forEach(s=>s.style.display='none');
+  isDark=false; localStorage.setItem('theme','light');
+}
+
+function setDarkTheme(){
+  document.body.classList.remove('light-theme-body');
+  themeButton.textContent='🌙';
+  document.querySelectorAll('.star').forEach(s=>s.style.display='block');
+  isDark=true; localStorage.setItem('theme','dark');
+}
+
+// 💬 باز/بسته کردن چت بات
+function toggleChat(){
+  const chat=document.getElementById('chat-box');
+  chat.classList.toggle('show');
+  if(chat.classList.contains('show')){
+    chat.style.display='flex';
+  }else{
+    chat.style.display='none';
+  }
+}
+</script>
 </body>
 </html>
