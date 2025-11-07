@@ -452,5 +452,77 @@ function validateForm(f) {
   // بسته شدن خودکار بعد از 10 ثانیه
   setTimeout(()=>{ chatBox.classList.remove('show'); }, 13000);
 </script>
+<!-- دکمه چت بات پایین سمت چپ -->
+<div id="chat-icon" onclick="toggleChat()">💬</div>
+<div id="chat-box">
+  <div id="chat-header">🤖 منو</div>
+  <div class="chat-options">
+    <button onclick="window.open('https://instagram.com/arsam.khosh.akhlagh.2012','_blank')">اینستاگرام من</button>
+    <button onclick="document.getElementById('contact-section').scrollIntoView({behavior:'smooth'});toggleChat();">ارتباط با ما</button>
+    <button onclick="document.getElementById('projects-section').scrollIntoView({behavior:'smooth'});toggleChat();">پروژه‌ها</button>
+  </div>
+</div>
+
+<style>
+  /* دکمه چت بات */
+  #chat-icon {
+    position: fixed;
+    bottom: 20px; left: 20px;
+    background: linear-gradient(135deg,#00ffff,#ff00cc);
+    border-radius: 50%;
+    width: 60px; height: 60px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; color: #000;
+    cursor: pointer; box-shadow: 0 0 20px rgba(255,0,255,0.4);
+    transition: transform 0.3s;
+    z-index: 9999;
+  }
+  #chat-icon:hover { transform: scale(1.1); }
+
+  /* جعبه چت */
+  #chat-box {
+    position: fixed; bottom: 90px; left: 20px;
+    width: 220px; background: rgba(0,0,0,0.9);
+    border-radius: 15px; padding: 15px;
+    display: none; flex-direction: column; gap: 10px;
+    box-shadow: 0 0 25px rgba(0,255,255,0.3);
+    animation: fadeIn 0.3s;
+    z-index: 9998;
+  }
+  #chat-box.show { display: flex; }
+
+  #chat-header {
+    font-weight: bold; color: #00ffff; margin-bottom: 10px;
+    text-align: center; font-size: 16px;
+  }
+
+  .chat-options button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg,#00ffff,#ff00cc);
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.3s;
+  }
+  .chat-options button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #ff00cc, 0 0 10px #00ffff;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<script>
+  function toggleChat() {
+    const chat = document.getElementById('chat-box');
+    chat.classList.toggle('show');
+  }
+</script>
 </body>
 </html>
