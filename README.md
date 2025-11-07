@@ -132,9 +132,9 @@
 </section>
 
 <footer>
-  <p>© 2025 تمامی حقوق محفوظ است | 
-    <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank">اینستاگرام من</a>
-  </p>
+  <p>© 2025 تمامی حقوق محفوظ است |</p>
+  
+  </p>  <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank">اینستاگرام من</a> <p> 
 </footer>
 
 <div id="chat-icon" onclick="toggleChat()">💬</div>
