@@ -2,11 +2,12 @@
 <head>
 <meta charset="UTF-8">
 <title>پروژه‌های من</title>
-<link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
   body {
     margin: 0;
-    font-family: 'Vazir', sans-serif;
+    font-family: 'Vazirmatn', sans-serif; /* نام فونت به Vazirmatn تغییر کرد */
     /* تم دارک پیش‌فرض */
     background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
     color: #fff;
@@ -15,19 +16,19 @@
     overflow-x: hidden;
   }
 
-  header, section, footer { padding: 40px 5%; transition: all 0.5s; } /* Padding بهتر */
+  header, section, footer { padding: 40px 5%; transition: all 0.5s; }
 
   h1 {
-    font-size: 2.8em; /* بزرگتر */
+    font-size: 2.8em;
     background: linear-gradient(90deg, #00ffff, #ff00cc, #ff9900);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 10px;
-    text-shadow: 0 0 5px rgba(0,255,255,0.5); /* کمی سایه برای نئون */
+    text-shadow: 0 0 5px rgba(0,255,255,0.5);
   }
   h2 { color: #00ffff; margin-bottom: 20px; font-size: 1.8em; }
 
-  /* --- استایل جدید کارت‌های پروژه --- */
+  /* --- استایل کارت‌های پروژه --- */
   .projects {
     display: flex; justify-content: center; flex-wrap: wrap;
     gap: 30px; margin-top: 20px;
@@ -35,21 +36,21 @@
 
   .project-card {
     position: relative;
-    background: rgba(255,255,255,0.08); /* کمی روشن‌تر */
+    background: rgba(255,255,255,0.08);
     padding: 25px;
-    width: 300px; /* پهن‌تر */
-    min-height: 220px; /* حداقل ارتفاع */
+    width: 300px;
+    min-height: 220px;
     border-radius: 15px;
-    border-left: 5px solid #00ffff; /* خط نئون در کنار */
+    border-left: 5px solid #00ffff;
     box-shadow: 0 4px 20px rgba(0,255,255,0.1);
     text-align: right;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s, background 0.5s, border-left 0.3s;
   }
   .project-card:hover {
-    transform: translateY(-5px); /* حرکت کمتر */
-    box-shadow: 0 0 30px #ff00cc, 0 0 10px #00ffff; /* دو سایه رنگی */
-    border-left: 5px solid #ff00cc; /* تغییر رنگ خط در هاور */
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px #ff00cc, 0 0 10px #00ffff;
+    border-left: 5px solid #ff00cc;
   }
 
   .project-title { font-size: 1.4em; font-weight: bold; margin-bottom: 10px; color: #00ffff; }
@@ -63,7 +64,7 @@
   .project-link:hover { background: #00ffff; }
 
 
-  /* --- بهبود بخش درباره من --- */
+  /* --- بخش درباره من --- */
   .about-card {
     max-width: 600px;
     margin: 20px auto;
@@ -80,21 +81,21 @@
   .profile-pic {
     width: 100px; height: 100px;
     border-radius: 50%;
-    background: #00ffff; /* رنگ نئون برای پس زمینه عکس پروفایل */
+    background: #00ffff;
     margin-left: 20px;
     border: 4px solid #ff00cc;
     overflow: hidden;
     box-shadow: 0 0 15px #00ffff;
-    flex-shrink: 0; /* برای ریسپانسیو بودن */
+    flex-shrink: 0;
     transition: border 0.5s, background 0.5s, box-shadow 0.5s;
   }
   .about-text p { font-size: 1.1em; line-height: 1.8; }
 
 
-  /* --- بهبود فرم تماس --- */
+  /* --- فرم تماس --- */
   form {
     max-width: 500px; margin: 40px auto;
-    background: rgba(255, 255, 255, 0.08); /* کمی روشن‌تر */
+    background: rgba(255, 255, 255, 0.08);
     padding: 25px; border-radius: 15px;
     box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
     direction: rtl; text-align: right;
@@ -109,7 +110,7 @@
   }
   ::placeholder { color: #aaa; opacity: 1; }
   
-  /* --- تم روز طوسی (مورد درخواست شما) --- */
+  /* --- تم روز طوسی (Light Theme) --- */
   .light-theme-body {
     background: linear-gradient(135deg, #d3d3d3, #f0f0f0) !important; /* گرادیانت طوسی روشن */
     color: #333 !important; /* متن خاکستری تیره */
@@ -117,7 +118,7 @@
   .light-theme-project-card, .light-theme-form, .light-theme-about {
     background: #c0c0c0 !important; /* باکس‌های طوسی میانه */
     box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
-    border-left: 5px solid #333 !important; /* خط سیاه/تیره در کنار */
+    border-left: 5px solid #333 !important;
   }
   .light-theme-about .profile-pic { border: 4px solid #555 !important; background: #999 !important; box-shadow: none !important; }
   .light-theme-input {
@@ -126,7 +127,6 @@
     border: 1px solid #aaa !important;
   }
   .light-theme-input::placeholder { color: #555 !important; }
-  /* ... بقیه استایل‌ها بدون تغییر ... */
 
   /* ستاره‌ها */
   .star {
@@ -244,6 +244,7 @@ function createStars(count){
 createStars(60);
 
 // 🌓 حالت تم
+// این چک می‌کند که آیا تم روز قبلاً ذخیره شده است یا خیر
 if(localStorage.getItem('theme')==='light') setLightTheme();
 
 themeButton.onclick=()=> isDark?setLightTheme():setDarkTheme();
@@ -263,7 +264,7 @@ function setLightTheme(){
 }
 
 function setDarkTheme(){
-  // حذف کلاس‌های تم طوسی
+  // حذف کلاس‌های تم طوسی برای بازگشت به دارک
   document.body.classList.remove('light-theme-body');
   document.querySelector('form').classList.remove('light-theme-form');
   aboutCard.classList.remove('light-theme-about'); 
@@ -299,7 +300,6 @@ function particleExplosion(el){
     setTimeout(()=>p.remove(),800);
   }
 }
-// کلیک روی کارت‌ها فقط افکت انفجار را اجرا می‌کند
 projectCards.forEach((c)=>{
   c.onclick=()=> particleExplosion(c);
 });
