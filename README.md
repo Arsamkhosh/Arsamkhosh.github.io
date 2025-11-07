@@ -1,415 +1,430 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>پروژه‌های من</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>پروژه‌های آرسام گنگ</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
-
 <style>
+  :root{
+    --neon-1: #00ffff;
+    --neon-2: #ff00cc;
+    --accent-grad: linear-gradient(135deg,var(--neon-1),var(--neon-2));
+    --bg-dark-start: #0a0a0a;
+    --bg-dark-end: #111111;
+    --bg-light-start: #f0f0f0;
+    --bg-light-end: #e6e6e6;
+  }
+  html,body{height:100%;margin:0;padding:0;font-family:'Vazirmatn',sans-serif;box-sizing:border-box}
   body {
-    margin: 0;
-    font-family: 'Vazirmatn', sans-serif;
-    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-    color: #fff;
-    text-align: center;
-    overflow-x: hidden;
+    margin:0;
+    background: linear-gradient(135deg,var(--bg-dark-start),var(--bg-dark-end));
+    color: #eaeaea;
+    transition: background .45s ease, color .45s ease;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
   }
 
-  header, section, footer { padding: 40px 5%; }
+  header{ padding:28px 18px 8px 18px; text-align:center }
+  header h1{ margin:0; font-size:2.2rem; color:var(--neon-1); text-shadow:0 0 8px rgba(0,255,255,0.08) }
+  header p{ margin:6px 0 0 0; color:#cfeff0; opacity:0.9 }
 
-  h1 {
-    font-size: 2.8em;
-    background: linear-gradient(90deg, #00ffff, #ff00cc, #ff9900);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 5px rgba(0,255,255,0.5);
-  }
+  main{ padding: 18px; max-width:1100px; margin:0 auto 30px auto; }
 
-  h2 { color: #00ffff; margin-bottom: 20px; font-size: 1.8em; }
-
+  /* Projects grid */
   .projects {
-    display: flex; justify-content: center; flex-wrap: wrap;
-    gap: 30px; margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 18px;
+    margin-top: 18px;
   }
-
   .project-card {
-    background: rgba(255,255,255,0.08);
-    padding: 25px;
-    width: 300px;
-    min-height: 200px;
-    border-radius: 15px;
-    border-left: 5px solid #00ffff;
-    box-shadow: 0 4px 20px rgba(0,255,255,0.1);
-    text-align: right;
-    transition: 0.3s;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 6px 22px rgba(0,0,0,0.45);
+    transition: transform .18s, box-shadow .18s;
+    overflow: visible;
+  }
+  .project-card:hover { transform: translateY(-6px); box-shadow: 0 14px 40px rgba(0,0,0,0.55); }
+  .project-title { color: var(--neon-1); font-weight:700; font-size:1.05rem; margin-bottom:8px; }
+  .project-desc { color:#cfdada; margin-bottom:10px; line-height:1.5; }
+  .project-tech { color:#ffd399; font-weight:700; font-size:0.9rem; }
+
+  /* Server box (terminal-like) */
+  .server-terminal {
+    background: #000;
+    border-radius: 10px;
+    border: 1px solid rgba(0,255,255,0.12);
+    padding: 12px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Vazir", monospace;
+    color: #00ff99;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  .server-terminal .ip { font-weight:700; font-size:0.98rem; }
+  .server-terminal .actions { display:flex; gap:8px; align-items:center; }
+  .btn-copy {
+    background: var(--accent-grad);
+    border: none;
+    color:#000;
+    padding:8px 10px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:700;
+    box-shadow: 0 8px 20px rgba(255,0,204,0.06);
+    transition: transform .12s, box-shadow .12s;
+  }
+  .btn-copy:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(255,0,204,0.10); }
+
+  #player-count {
+    color: #7cff7c;
+    margin-top:10px;
+    font-weight:700;
+    text-align:center;
   }
 
-  .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 30px #ff00cc, 0 0 10px #00ffff;
-    border-left: 5px solid #ff00cc;
-  }
-
-  .project-title { font-size: 1.4em; font-weight: bold; color: #00ffff; }
-  .project-desc { color: #ccc; margin-bottom: 15px; font-size: 0.9em; }
-  .project-tech { font-size: 0.8em; color: #ff9900; font-weight: bold; }
-
-  /* بخش درباره من */
+  /* About card */
   .about-card {
-    max-width: 600px; margin: 20px auto;
-    background: rgba(255, 255, 255, 0.08);
-    padding: 30px; border-radius: 20px;
-    display: flex; align-items: center; text-align: right;
+    display:flex;
+    gap:14px;
+    align-items:center;
+    background: rgba(255,255,255,0.03);
+    padding:12px;
+    border-radius:12px;
   }
   .profile-pic {
-    width: 100px; height: 100px; border-radius: 50%;
-    background: #00ffff; margin-left: 20px;
-    border: 4px solid #ff00cc; box-shadow: 0 0 15px #00ffff;
+    width:82px; height:82px; border-radius:50%;
+    background:var(--neon-1); border:3px solid var(--neon-2);
+    box-shadow: 0 6px 20px rgba(0,255,255,0.06);
+    flex-shrink:0;
   }
+  .about-text p{ margin:0; color:#dfe; line-height:1.6 }
 
-  /* فرم تماس */
-  form {
-    max-width: 500px; margin: 40px auto;
-    background: rgba(255, 255, 255, 0.08);
-    padding: 25px; border-radius: 15px;
-    box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
-    text-align: right;
+  /* Contact */
+  .contact-card {
+    background: rgba(255,255,255,0.03);
+    border-radius:12px;
+    padding:14px;
   }
+  form { display:flex; flex-direction:column; gap:10px; }
   input, textarea {
-    width: 100%; padding: 12px; border-radius: 10px;
-    border: 1px solid rgba(0,255,255,0.3);
-    background-color: rgba(255,255,255,0.1);
-    color: #fff; margin-bottom: 15px;
+    padding:10px; border-radius:10px; border:1px solid rgba(0,255,255,0.08);
+    background: rgba(255,255,255,0.02); color:inherit; resize:vertical; font-family:inherit;
   }
-
-  button {
-    background: linear-gradient(135deg, #00ffff, #ff00cc);
-    color: #000; border: none; border-radius: 10px;
-    padding: 10px 20px; cursor: pointer; font-weight: bold;
-    transition: 0.3s;
+  input::placeholder, textarea::placeholder { color:#9fbaba; }
+  .btn-submit {
+    padding:10px 12px; border-radius:12px; border:none;
+    background: var(--accent-grad); color:#000; font-weight:800; cursor:pointer;
+    transition: transform .12s, box-shadow .12s;
   }
-  button:hover { transform: scale(1.05); }
+  .btn-submit:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(255,0,204,0.08); }
 
-  /* تم روز و شب */
+  /* Theme toggle top-left */
   #theme-toggle {
-    position: fixed; top: 15px; left: 15px;
-    background: rgba(255,255,255,0.15);
-    border: none; color: white; font-size: 22px;
-    border-radius: 50%; width: 45px; height: 45px;
-    cursor: pointer; box-shadow: 0 0 15px rgba(0,255,255,0.4);
+    position: fixed; top: 16px; left: 16px; width:48px; height:48px;
+    border-radius:50%; border:none; background: rgba(255,255,255,0.06);
+    color:inherit; cursor:pointer; z-index:1200; font-size:20px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
   }
 
-  /* چت بات */
+  /* Chat widget left-bottom */
   #chat-icon {
-    position: fixed; bottom: 20px; left: 20px;
-    background: linear-gradient(135deg,#00ffff,#ff00cc);
-    border-radius: 50%;
-    width: 60px; height: 60px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 28px; color: #000;
-    cursor: pointer; box-shadow: 0 0 20px rgba(255,0,255,0.4);
+    position: fixed; left:16px; bottom:16px; width:58px; height:58px; border-radius:50%;
+    background: var(--accent-grad); display:flex; align-items:center; justify-content:center;
+    cursor:pointer; z-index:1200; color:#000; font-size:22px; box-shadow: 0 12px 36px rgba(0,0,0,0.5);
   }
-
   #chat-box {
-    position: fixed; bottom: 100px; left: 20px;
-    width: 260px; background: rgba(0,0,0,0.9);
-    border-radius: 15px; padding: 15px;
-    display: none; flex-direction: column; gap: 10px;
-    box-shadow: 0 0 25px rgba(0,255,255,0.3);
+    position: fixed; left:16px; bottom:86px; width:230px; border-radius:12px;
+    background: rgba(0,0,0,0.9); padding:10px; display:none; z-index:1199;
   }
-
-  #chat-box.show { display: flex; }
-  #chat-header { font-weight: bold; color: #00ffff; margin-bottom: 10px; }
-
+  #chat-box.show { display:block; }
+  #chat-header { color:var(--neon-1); font-weight:800; text-align:center; margin-bottom:8px; }
   .chat-options button {
-    padding: 8px; border: none; border-radius: 10px;
-    background: linear-gradient(135deg,#00ffff,#ff00cc);
-    color: #000; font-weight: bold; cursor: pointer;
+    width:100%; padding:8px; border-radius:10px; border:none; background:var(--accent-grad); font-weight:800; cursor:pointer; margin-bottom:8px;
+  }
+  .chat-options button:last-child{ margin-bottom:0 }
+
+  /* Toast (copy) */
+  .toast {
+    position: fixed; left:50%; transform:translateX(-50%); bottom:22px;
+    background: rgba(0,0,0,0.85); color:#fff; padding:10px 14px; border-radius:10px;
+    box-shadow:0 8px 28px rgba(0,0,0,0.6); z-index:1300; display:none;
+    font-weight:700;
   }
 
-  footer {
-    margin-top: 50px;
-    background: rgba(255,255,255,0.05);
-    padding: 20px; color: #ccc;
-  }
+  /* Stars (dark only) */
+  .star { position:fixed; width:2px; height:2px; border-radius:50%; background:#fff; opacity:.9; z-index:0; pointer-events:none; animation:twinkle 3s infinite; }
+  @keyframes twinkle{0%,100%{opacity:.15;}50%{opacity:1;}}
 
-  footer a {
-    color: #00ffff; text-decoration: none;
-  }
+  footer { text-align:center; margin-top:26px; padding:18px; color:#bfcfcf }
+  footer .footer-instagram { margin-top:10px; }
+  a { color: var(--neon-1) }
 
-  @media (max-width: 650px) {
-    .projects { flex-direction: column; align-items: center; }
-    .project-card { width: 90%; }
-    .about-card { flex-direction: column; text-align: center; }
+  /* Light theme overrides */
+  .light body, .light-theme {
+    background: linear-gradient(135deg,var(--bg-light-start),var(--bg-light-end)) !important;
+    color: #222 !important;
+  }
+  .light-theme .project-card { background: #f2f2f2; color:#222 }
+  .light-theme .about-card { background:#f5f5f5; color:#222 }
+  .light-theme input, .light-theme textarea { background:#fff; color:#222; border:1px solid #d0d0d0 }
+  .light-theme #player-count { color:#006600; }
+  .light-theme .server-terminal { background:#0b0b0b; border-color:#666; color:#00aa66 }
+
+  /* Responsive */
+  @media (max-width:720px){
+    .projects { grid-template-columns: 1fr; padding:10px; }
+    #chat-box { left:12px; width:210px; }
+    #theme-toggle { left:12px; top:12px; }
   }
 </style>
 </head>
 <body>
 
-<button id="theme-toggle">🌙</button>
+<!-- Theme toggle -->
+<button id="theme-toggle" aria-label="تغییر حالت">🌙</button>
 
+<!-- Header -->
 <header>
-  <h1>پروژه‌های من</h1>
-  <p>خوش اومدی به سایت من، آرسام گنگ 😎🔥</p>
+  <h1>پروژه‌های آرسام گنگ</h1>
+  <p>خوش آمدی آرسام گنگ! اینجا پروژه‌ها، سرور و راه ارتباطی من هست.</p>
 </header>
 
-<section id="about-me">
-  <h2>درباره من</h2>
-  <div class="about-card">
-    <div class="profile-pic"></div>
-    <div class="about-text">
-      <p>سلام! من <strong>آرسام گنگ</strong> هستم، یه توسعه‌دهنده وب و عاشق ماینکرفت 🎮 و طراحی چیزای خفن ✨</p>
-    </div>
-  </div>
-</section>
+<main>
 
-<section id="projects-section">
-  <h2>پروژه‌ها</h2>
-  <div class="projects">
-
-    <div class="project-card">
-      <div class="project-title">سرور ماینکرفت 🎮</div>
-      <div class="project-desc">یک سرور برای دوستداران ماینکرفت، با پلاگین‌های اختصاصی و دنیای منحصربه‌فرد!</div>
-      <div class="project-tech">Java / Spigot / Minecraft</div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-title">پروژه سایت شخصی 🌐</div>
-      <div class="project-desc">سایتی که خودم طراحی و ساخته‌ام.</div>
-      <div class="project-tech">HTML / CSS / JS</div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-title">ادیت ویدیو 🎬</div>
-      <div class="project-desc">عاشق ادیت ویدیو هستم و کارهام رو توی یوتیوب می‌ذارم.</div>
-      <div class="project-tech">CapCut / Filmora / Shotcut</div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-title">🌍 سرور LAVA JUMP</div>
-      <div class="project-desc">بپر و رقابت کن توی سرور من! 👇</div>
-      <div class="project-ip" style="display:flex;align-items:center;justify-content:space-between;">
-        <span id="server-ip" style="font-weight:bold;color:#00ffff;">lavajumptest.falixsrv.me</span>
-        <button onclick="copyIP()">📋 کپی</button>
+  <!-- About -->
+  <section id="about-me" style="margin-bottom:18px;">
+    <div class="about-card">
+      <div class="profile-pic" aria-hidden="true"></div>
+      <div class="about-text">
+        <p>سلام! من <strong>آرسام گنگ</strong> هستم — توسعه‌دهنده وب، ماینکرفت‌باز و سازنده سرورهای اختصاصی. اینجا نمونه‌کارها و راه‌های ارتباط با من قرار داره.</p>
       </div>
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- Projects -->
+  <section id="projects-section" aria-labelledby="projects-heading">
+    <h2 id="projects-heading" style="color:var(--neon-1); margin:8px 0 12px 0;">پروژه‌ها</h2>
+    <div class="projects">
 
-<section id="contact-section">
-  <h2>ارتباط با من</h2>
-  <form action="https://formspree.io/f/mnngzdlw" method="POST" onsubmit="validateForm(this); return false;">
-    <label for="name">نام:</label>
-    <input type="text" id="name" name="name" required placeholder="نام شما">
-    <label for="email">ایمیل:</label>
-    <input type="email" id="email" name="email" required placeholder="example@example.com">
-    <label for="message">پیام:</label>
-    <textarea id="message" name="message" rows="5" required placeholder="متن پیام..."></textarea>
-    <button type="submit">ارسال پیام</button>
-    <p id="formMessage" style="margin-top:10px;"></p>
-  </form>
-</section>
+      <!-- Server card -->
+      <article class="project-card" aria-labelledby="server-title">
+        <div class="project-title" id="server-title">🌍 سرور ماینکرفت LAVA JUMP</div>
+        <div class="project-desc">بپر، رقابت کن و از سرور من لذت ببر! آدرس سرور و وضعیت آنلاین در زیر نمایش داده می‌شود.</div>
 
+        <div class="server-terminal" role="region" aria-label="آی‌پی سرور">
+          <div class="ip" id="server-ip">lavajumptest.falixsrv.me</div>
+          <div class="actions">
+            <button class="btn-copy" id="copy-btn" title="کپی آی‌پی">📋 کپی</button>
+          </div>
+        </div>
+
+        <div id="player-count" aria-live="polite">در حال بررسی وضعیت سرور...</div>
+      </article>
+
+      <!-- Other project cards -->
+      <article class="project-card" aria-labelledby="proj-1">
+        <div class="project-title" id="proj-1">سایت شخصی 🌐</div>
+        <div class="project-desc">طراحی و پیاده‌سازی سایت شخصی با تمرکز روی ظاهر نئون و تجربه‌ی کاربری.</div>
+        <div class="project-tech">HTML / CSS / JavaScript</div>
+      </article>
+
+      <article class="project-card" aria-labelledby="proj-2">
+        <div class="project-title" id="proj-2">ادیت ویدیو 🎬</div>
+        <div class="project-desc">ادیت و تولید محتوا برای یوتیوب و شبکه‌های اجتماعی.</div>
+        <div class="project-tech">CapCut / Filmora / Shotcut</div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact-section" style="margin-top:20px;">
+    <h2 style="color:var(--neon-1); margin-bottom:8px;">ارتباط با من</h2>
+    <div class="contact-card">
+      <form id="contact-form" action="https://formspree.io/f/mnngzdlw" method="POST" onsubmit="return validateForm(this);">
+        <input type="hidden" name="website" value="">
+        <input id="name" name="name" type="text" placeholder="نام شما" required />
+        <input id="email" name="email" type="email" placeholder="example@example.com" required />
+        <textarea id="message" name="message" rows="5" placeholder="متن پیام..." required></textarea>
+        <button class="btn-submit" type="submit">ارسال پیام</button>
+        <p id="formMessage" style="margin-top:8px;font-weight:700;text-align:right;"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
 <footer>
   <p>© 2025 تمامی حقوق محفوظ است</p>
-  <p><a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank">📸 اینستاگرام من</a></p>
+  <p class="footer-instagram"><a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank" rel="noopener">اینستاگرام من</a></p>
 </footer>
 
-<div id="chat-icon" onclick="toggleChat()">💬</div>
-<div id="chat-box">
+<!-- Chat widget -->
+<div id="chat-icon" role="button" aria-label="باز کردن منو">💬</div>
+<div id="chat-box" role="dialog" aria-hidden="true">
   <div id="chat-header">🤖 منو</div>
   <div class="chat-options">
-    <button onclick="window.open('https://instagram.com/arsam.khosh.akhlagh.2012','_blank')">اینستاگرام</button>
-    <button onclick="document.getElementById('contact-section').scrollIntoView({behavior:'smooth'});toggleChat();">ارتباط با من</button>
-    <button onclick="document.getElementById('projects-section').scrollIntoView({behavior:'smooth'});toggleChat();">پروژه‌ها</button>
+    <button onclick="document.getElementById('projects-section').scrollIntoView({behavior:'smooth'}); toggleChat();">پروژه‌ها</button>
+    <button onclick="document.getElementById('about-me').scrollIntoView({behavior:'smooth'}); toggleChat();">درباره من</button>
+    <button onclick="document.getElementById('contact-section').scrollIntoView({behavior:'smooth'}); toggleChat();">ارتباط با ما</button>
   </div>
 </div>
 
-<script>
-const themeButton = document.getElementById('theme-toggle');
-let dark = true;
-themeButton.onclick = () => {
-  dark = !dark;
-  document.body.style.background = dark ? "linear-gradient(135deg,#0f0f0f,#1a1a1a)" : "linear-gradient(135deg,#d3d3d3,#f0f0f0)";
-  document.body.style.color = dark ? "#fff" : "#333";
-  themeButton.textContent = dark ? "🌙" : "☀️";
-};
-
-function toggleChat(){
-  document.getElementById('chat-box').classList.toggle('show');
-}
-
-function copyIP() {
-  const ip = document.getElementById('server-ip').textContent;
-  navigator.clipboard.writeText(ip);
-  alert('✅ آی‌پی کپی شد: ' + ip);
-}
-
-function validateForm(f) {
-  const msg = document.getElementById('formMessage');
-  msg.textContent = 'در حال ارسال...';
-  fetch(f.action, { method: f.method, body: new FormData(f), headers: {'Accept':'application/json'} })
-  .then(r => { msg.textContent = r.ok ? '✅ پیام ارسال شد!' : '❌ خطا در ارسال.'; });
-}
-</script>
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>پروژه‌های آرسام گنگ</title>
-<link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet">
-<style>
-body {
-  margin: 0;
-  font-family: 'Vazir', sans-serif;
-  background: linear-gradient(135deg, #0a0a0a, #111);
-  color: white;
-  overflow-x: hidden;
-}
-header {
-  text-align: center;
-  padding: 20px;
-  font-size: 28px;
-  font-weight: bold;
-  color: #00ffff;
-}
-.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-.project-card {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-  transition: 0.3s;
-}
-.project-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-}
-.project-title {
-  font-size: 20px;
-  color: #00ffff;
-  margin-bottom: 10px;
-}
-.project-desc {
-  font-size: 14px;
-  margin-bottom: 10px;
-  color: #ccc;
-}
-.project-tech {
-  font-size: 13px;
-  color: #999;
-}
-footer {
-  text-align: center;
-  padding: 20px;
-  margin-top: 30px;
-  font-size: 14px;
-  color: #bbb;
-}
-footer p { margin: 5px 0; }
-footer a { color: #00ffff; text-decoration: none; }
-footer a:hover { text-decoration: underline; }
-#server-box {
-  background: #000;
-  border: 2px solid #00ffff;
-  border-radius: 12px;
-  padding: 10px;
-  font-family: monospace;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-#server-box span {
-  color: #00ff99;
-  font-weight: bold;
-}
-#server-box button {
-  border: none;
-  border-radius: 8px;
-  background: linear-gradient(135deg,#00ffff,#ff00cc);
-  color: #000;
-  padding: 5px 10px;
-  font-weight: bold;
-  cursor: pointer;
-}
-#player-count {
-  color: #0f0;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 8px;
-}
-</style>
-</head>
-<body>
-
-<header>🔥 پروژه‌های آرسام گنگ 🔥</header>
-
-<section id="projects-section">
-  <div class="projects">
-
-    <div class="project-card">
-      <div class="project-title">🌍 سرور ماینکرفت LAVA JUMP</div>
-      <div class="project-desc">بپر، رقابت کن و از سرور من لذت ببر!</div>
-      <div id="server-box">
-        <span id="server-ip">lavajumptest.falixsrv.me</span>
-        <button onclick="copyIP()">📋 کپی</button>
-      </div>
-      <p id="player-count">در حال بررسی...</p>
-    </div>
-
-    <div class="project-card">
-      <div class="project-title">پروژه سایت شخصی 🌐</div>
-      <div class="project-desc">این سایت رو خودم طراحی و کدنویسی کردم تا مهارت‌هامو نشون بدم.</div>
-      <div class="project-tech">HTML / CSS / JavaScript</div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-title">ادیت ویدیو 🎬</div>
-      <div class="project-desc">ادیت ویدیو یکی از سرگرمی‌های منِ آرسام گنگه 😎</div>
-      <div class="project-tech">CapCut / Filmora / Shotcut</div>
-    </div>
-
-  </div>
-</section>
-
-<footer>
-  <p>© 2025 تمامی حقوق محفوظ است</p>
-  <p><a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank">اینستاگرام من</a></p>
-</footer>
+<!-- Toast -->
+<div id="toast" class="toast" role="status" aria-live="polite">کپی شد</div>
 
 <script>
-function copyIP() {
-  const ip = document.getElementById('server-ip').textContent;
-  navigator.clipboard.writeText(ip).then(() => {
-    alert('✅ آی‌پی کپی شد: ' + ip);
-  });
-}
-
-async function updatePlayers() {
-  try {
-    const res = await fetch('https://api.mcsrvstat.us/2/lavajumptest.falixsrv.me');
-    const data = await res.json();
-    const playerCount = data.players?.online ?? 0;
-    const maxPlayers = data.players?.max ?? 0;
-    document.getElementById('player-count').textContent =
-      `🎮 بازیکنان آنلاین: ${playerCount}/${maxPlayers}`;
-  } catch {
-    document.getElementById('player-count').textContent = '❌ سرور در دسترس نیست';
+/* ---------- Stars (dark only) ---------- */
+function createStars(count=60){
+  for(let i=0;i<count;i++){
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = 1 + Math.random()*2;
+    s.style.width = s.style.height = size + 'px';
+    s.style.left = (Math.random()*100) + 'vw';
+    s.style.top  = (Math.random()*100) + 'vh';
+    s.style.opacity = (0.2 + Math.random()*0.8).toString();
+    document.body.appendChild(s);
   }
 }
-updatePlayers();
-setInterval(updatePlayers, 60000);
-</script>
+createStars(70);
 
-</body>
-</html>
+/* ---------- Theme (sun/moon) ---------- */
+const themeButton = document.getElementById('theme-toggle');
+let isDark = true;
+const stored = localStorage.getItem('site-theme');
+if(stored === 'light') applyLight(); else applyDark();
+
+themeButton.addEventListener('click', () => {
+  isDark ? applyLight() : applyDark();
+});
+
+function applyLight(){
+  document.body.classList.add('light-theme');
+  document.body.style.background = `linear-gradient(135deg, ${getComputedStyle(document.documentElement).getPropertyValue('--bg-light-start') || '#f0f0f0'}, ${getComputedStyle(document.documentElement).getPropertyValue('--bg-light-end') || '#e6e6e6'})`;
+  document.body.style.color = '#222';
+  document.querySelectorAll('.project-card').forEach(c=>c.classList.add('light-theme'));
+  document.querySelectorAll('input,textarea').forEach(i=>i.classList.add('light-theme-input'));
+  document.querySelectorAll('.star').forEach(s=>s.style.display='none');
+  themeButton.textContent='☀';
+  isDark = false;
+  localStorage.setItem('site-theme','light');
+}
+
+function applyDark(){
+  document.body.classList.remove('light-theme');
+  document.body.style.background = 'linear-gradient(135deg,#0a0a0a,#111)';
+  document.body.style.color = '#eaeaea';
+  document.querySelectorAll('.project-card').forEach(c=>c.classList.remove('light-theme'));
+  document.querySelectorAll('input,textarea').forEach(i=>i.classList.remove('light-theme-input'));
+  document.querySelectorAll('.star').forEach(s=>s.style.display='block');
+  themeButton.textContent='🌙';
+  isDark = true;
+  localStorage.setItem('site-theme','dark');
+}
+
+/* ---------- Chat widget ---------- */
+const chatIcon = document.getElementById('chat-icon');
+const chatBox = document.getElementById('chat-box');
+function toggleChat(){
+  const show = chatBox.classList.toggle('show');
+  chatBox.setAttribute('aria-hidden', !show);
+}
+chatIcon.addEventListener('click', toggleChat);
+
+/* ---------- Toast helper ---------- */
+const toast = document.getElementById('toast');
+function showToast(text='کپی شد', dur=1600){
+  toast.textContent = text;
+  toast.style.display = 'block';
+  toast.style.opacity = '1';
+  setTimeout(()=> {
+    toast.style.opacity = '0';
+    setTimeout(()=> toast.style.display='none', 300);
+  }, dur);
+}
+
+/* ---------- Copy IP ---------- */
+const copyBtn = document.getElementById('copy-btn');
+copyBtn.addEventListener('click', ()=> {
+  const ip = document.getElementById('server-ip').textContent.trim();
+  navigator.clipboard.writeText(ip).then(()=> {
+    showToast('✅ آی‌پی کپی شد: ' + ip);
+  }).catch(()=> {
+    showToast('❌ کپی نشد — مرورگر اجازه نداد');
+  });
+});
+
+/* ---------- Server status (players) ---------- */
+async function updatePlayers(){
+  const countEl = document.getElementById('player-count');
+  const ip = document.getElementById('server-ip').textContent.trim();
+  countEl.textContent = 'در حال بررسی وضعیت سرور...';
+  try {
+    // mcsrvstat.us API
+    const res = await fetch('https://api.mcsrvstat.us/2/' + encodeURIComponent(ip));
+    if(!res.ok) throw new Error('network');
+    const data = await res.json();
+    const online = data.players?.online ?? 0;
+    const max = data.players?.max ?? (data.debug?.query?.max_players ?? 0);
+    // if server offline, data.online may be undefined
+    if(typeof data.online !== 'undefined' && data.online === false){
+      countEl.textContent = '❌ سرور آفلاین است';
+    } else {
+      countEl.textContent = `🎮 بازیکنان آنلاین: ${online}/${max}`;
+    }
+  } catch(err){
+    countEl.textContent = '❌ خطا در دریافت وضعیت سرور';
+    console.error(err);
+  }
+}
+// initial and periodic update
+updatePlayers();
+setInterval(updatePlayers, 60000); // آپدیت هر 60 ثانیه
+
+/* ---------- Contact form (Formspree) ---------- */
+function validateForm(f){
+  const msg = document.getElementById('formMessage');
+  if (!f) return false;
+  if (f.website && f.website.value.trim() !== ''){ msg.textContent = '❌ اسپم شناسایی شد'; return false; }
+  msg.style.color = isDark ? '#00ff99' : '#0066aa';
+  msg.textContent = 'در حال ارسال...';
+  fetch(f.action, { method: f.method, body: new FormData(f), headers: {'Accept':'application/json'} })
+    .then(res => {
+      if(res.ok){
+        f.reset();
+        msg.textContent = '✅ پیام با موفقیت ارسال شد!';
+      } else {
+        msg.textContent = '❌ خطا در ارسال پیام. دوباره تلاش کنید.';
+      }
+    })
+    .catch(err => {
+      msg.textContent = '❌ مشکلی رخ داد. اتصال اینترنت را بررسی کنید.';
+      console.error(err);
+    });
+  return false; // جلوگیری از submit عادی
+}
+
+/* ---------- Small UX: keyboard accessible cards ---------- */
+document.querySelectorAll('.project-card').forEach(card=>{
+  card.tabIndex = 0;
+  card.addEventListener('keypress', e=>{
+    if(e.key === 'Enter' || e.key === ' ') particleEffect(card);
+  });
+});
+
+/* ---------- Particle feedback (small) ---------- */
+function particleEffect(el){
+  // small top-left glow
+  el.animate([{transform:'scale(1)'},{transform:'scale(1.02)'},{transform:'scale(1)'}],{duration:220});
+}
+</script>
 </body>
 </html>
