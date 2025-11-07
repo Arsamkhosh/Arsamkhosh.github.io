@@ -28,6 +28,7 @@
   }
   h2 { color: #00ffff; margin-bottom: 20px; font-size: 1.8em; }
 
+  /* --- کارت پروژه‌ها --- */
   .projects {
     display: flex; justify-content: center; flex-wrap: wrap;
     gap: 30px; margin-top: 20px;
@@ -38,25 +39,14 @@
     background: rgba(255,255,255,0.08);
     padding: 25px;
     width: 300px;
-    min-height: 220px;
+    min-height: 200px;
     border-radius: 15px;
     border-left: 5px solid #00ffff;
     box-shadow: 0 4px 20px rgba(0,255,255,0.1);
     text-align: right;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s, background 0.5s, border-left 0.3s;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s ease forwards;
   }
-
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
   .project-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 0 30px #ff00cc, 0 0 10px #00ffff;
@@ -66,13 +56,8 @@
   .project-title { font-size: 1.4em; font-weight: bold; margin-bottom: 10px; color: #00ffff; }
   .project-desc { color: #ccc; margin-bottom: 15px; font-size: 0.9em; }
   .project-tech { font-size: 0.8em; color: #ff9900; font-weight: bold; }
-  .project-link {
-    display: inline-block; padding: 8px 15px; border-radius: 8px;
-    background: #ff00cc; color: #000; font-weight: bold; text-decoration: none;
-    margin-top: 15px; transition: 0.3s;
-  }
-  .project-link:hover { background: #00ffff; }
 
+  /* --- درباره من --- */
   .about-card {
     max-width: 600px;
     margin: 20px auto;
@@ -96,23 +81,42 @@
     box-shadow: 0 0 15px #00ffff;
     flex-shrink: 0;
   }
+  .about-text p { font-size: 1.1em; line-height: 1.8; }
 
+  /* --- فرم تماس --- */
   form {
     max-width: 500px; margin: 40px auto;
     background: rgba(255, 255, 255, 0.08);
     padding: 25px; border-radius: 15px;
     box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
     direction: rtl; text-align: right;
+    transition: background 0.5s, box-shadow 0.5s;
   }
 
   input, textarea {
     width: 100%; padding: 12px; border-radius: 10px; border: 1px solid rgba(0,255,255,0.3);
     background-color: rgba(255,255,255,0.1);
     color: #fff; margin-bottom: 15px;
+    transition: background-color 0.5s, color 0.5s, border 0.5s;
   }
-  ::placeholder { color: #aaa; }
+  ::placeholder { color: #aaa; opacity: 1; }
 
-  /* 🌞 تم روشن */
+  /* --- دکمه تغییر تم --- */
+  #theme-toggle {
+    position: fixed; top: 15px; left: 15px;
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    font-size: 22px;
+    border-radius: 50%;
+    width: 45px; height: 45px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0,255,255,0.4);
+    transition: 0.3s;
+  }
+  #theme-toggle:hover { transform: rotate(20deg) scale(1.1); }
+
+  /* --- تم روشن --- */
   .light-theme-body {
     background: linear-gradient(135deg, #d3d3d3, #f0f0f0) !important;
     color: #333 !important;
@@ -122,22 +126,59 @@
     box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
     border-left: 5px solid #333 !important;
   }
+  .light-theme-about .profile-pic {
+    border: 4px solid #555 !important; background: #999 !important; box-shadow: none !important;
+  }
   .light-theme-input {
     background-color: #e0e0e0 !important;
     color: #333 !important;
     border: 1px solid #aaa !important;
   }
+  .light-theme-input::placeholder { color: #555 !important; }
 
+  /* --- چت‌بات --- */
+  #chat-icon {
+    position: fixed; bottom: 20px; right: 20px;
+    background: linear-gradient(135deg,#00ffff,#ff00cc);
+    border-radius: 50%;
+    width: 60px; height: 60px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; color: #000;
+    cursor: pointer; box-shadow: 0 0 20px rgba(255,0,255,0.4);
+    transition: transform 0.3s;
+  }
+  #chat-icon:hover { transform: scale(1.1); }
+
+  #chat-box {
+    position: fixed; bottom: 100px; right: 20px;
+    width: 260px; background: rgba(0,0,0,0.9);
+    border-radius: 15px; padding: 15px;
+    display: none; flex-direction: column; gap: 10px;
+    box-shadow: 0 0 25px rgba(0,255,255,0.3);
+    animation: fadeIn 0.3s;
+  }
+  #chat-box.show { display: flex; }
+  #chat-header { font-weight: bold; color: #00ffff; margin-bottom: 10px; }
+  .chat-options button {
+    padding: 8px; border: none; border-radius: 10px;
+    background: linear-gradient(135deg,#00ffff,#ff00cc);
+    color: #000; cursor: pointer; font-weight: bold;
+    transition: 0.3s;
+  }
+  .chat-options button:hover { transform: scale(1.05); }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* --- ستاره‌ها --- */
   .star {
     position: fixed; width: 2px; height: 2px; background: #fff; border-radius: 50%;
     pointer-events: none; z-index: 0;
     animation: twinkle 3s infinite;
   }
   @keyframes twinkle { 0%,100%{opacity:0.2;}50%{opacity:1;} }
-
-  footer {
-    margin-top: 60px;
-  }
 
   @media (max-width: 650px) {
     .projects { flex-direction: column; align-items: center; }
@@ -148,8 +189,8 @@
   }
 </style>
 </head>
-
 <body>
+
 <button id="theme-toggle">🌙</button>
 
 <header>
@@ -162,7 +203,7 @@
   <div class="about-card" id="about-card">
     <div class="profile-pic"></div>
     <div class="about-text">
-      <p>سلام! من <strong>ارسام خوش‌اخلاق</strong> هستم. یک توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌های فرانت‌اند. عاشق ترکیب خلاقیت در طراحی و منطق در برنامه‌نویسی هستم. 🎮</p>
+      <p>سلام! من <strong>ارسام خوش‌اخلاق</strong> هستم. یک توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌های فرانت‌اند. عاشق خلاقیت در طراحی و منطق در برنامه‌نویسی‌ام 🌐✨</p>
     </div>
   </div>
 </section>
@@ -172,21 +213,20 @@
   <div class="projects">
     <div class="project-card">
       <div class="project-title">سرور ماینکرفت 🎮</div>
-      <div class="project-desc">سرور خصوصی با پلاگین‌های اختصاصی و دنیای خاص برای بازیکنان.</div>
+      <div class="project-desc">این یک سرور خصوصی برای دوستداران بازی ماینکرفت است. ما روی توسعه پلاگین‌های اختصاصی و ایجاد یک دنیای منحصربه‌فرد تمرکز داریم.</div>
       <div class="project-tech">Java / Spigot / Minecraft</div>
-      <a href="#" class="project-link">مشاهده جزئیات</a>
     </div>
+
     <div class="project-card">
-      <div class="project-title">سایت شخصی</div>
-      <div class="project-desc">طراحی مدرن با افکت‌های نئون و UX قوی.</div>
+      <div class="project-title">پروژه سایت شخصی 🌐</div>
+      <div class="project-desc">طراحی و پیاده‌سازی این وب‌سایت شخصی با تمرکز بر UX و طراحی نئون مدرن، نشان‌دهنده توانایی‌های فرانت‌اند من است.</div>
       <div class="project-tech">HTML / CSS / JavaScript</div>
-      <a href="#" class="project-link">مشاهده جزئیات</a>
     </div>
+
     <div class="project-card">
-      <div class="project-title">سیستم مدیریت محتوا</div>
-      <div class="project-desc">سیستم وبلاگ ساده و سریع (در حال ساخت).</div>
+      <div class="project-title">سیستم مدیریت محتوا 🧠</div>
+      <div class="project-desc">یک سیستم مدیریت ساده برای وبلاگ‌ها و سایت‌های کوچک که با هدف سادگی و کارایی توسعه داده شده است. (در دست ساخت)</div>
       <div class="project-tech">React / Node.js / MongoDB</div>
-      <a href="#" class="project-link">در حال ساخت...</a>
     </div>
   </div>
 </section>
@@ -210,74 +250,24 @@
   <p>© 2025 تمامی حقوق محفوظ است | <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank">اینستاگرام من</a></p>
 </footer>
 
-<!-- 💬 چت‌بات -->
 <div id="chat-icon" onclick="toggleChat()">💬</div>
 <div id="chat-box">
   <div id="chat-header">🤖 منو</div>
   <div class="chat-options">
     <button onclick="window.open('https://instagram.com/arsam.khosh.akhlagh.2012','_blank')">اینستاگرام من</button>
-    <button onclick="document.getElementById('contact-section').scrollIntoView({behavior:'smooth'});toggleChat();">ارتباط با من</button>
+    <button onclick="document.getElementById('contact-section').scrollIntoView({behavior:'smooth'});toggleChat();">ارتباط با ما</button>
     <button onclick="document.getElementById('projects-section').scrollIntoView({behavior:'smooth'});toggleChat();">پروژه‌ها</button>
   </div>
 </div>
 
-<!-- ✨ استایل چت‌بات و دکمه تم -->
-<style>
-#theme-toggle {
-  position: fixed; top: 15px; left: 15px;
-  font-size: 22px; background: rgba(255,255,255,0.1);
-  color: #00ffff; border: none; border-radius: 50%;
-  width: 50px; height: 50px; cursor: pointer;
-  transition: all 0.4s ease; box-shadow: 0 0 10px rgba(0,255,255,0.3);
-  z-index: 1000;
-}
-#theme-toggle:hover { transform: rotate(20deg) scale(1.1); background: rgba(0,255,255,0.2); }
-
-#chat-icon {
-  position: fixed; bottom: 25px; right: 25px;
-  background: linear-gradient(45deg,#ff00cc,#00ffff);
-  color: white; font-size: 28px; border-radius: 50%;
-  width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 0 20px rgba(0,255,255,0.5); cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  z-index: 999;
-}
-#chat-icon:hover { transform: scale(1.15) rotate(10deg); box-shadow: 0 0 25px rgba(255,0,255,0.6); }
-
-#chat-box {
-  position: fixed; bottom: 100px; right: 30px;
-  width: 250px; background: rgba(20,20,20,0.95);
-  border-radius: 15px; box-shadow: 0 0 20px rgba(0,255,255,0.3);
-  transform: scale(0); opacity: 0; transition: all 0.4s ease;
-  overflow: hidden; z-index: 998;
-}
-#chat-box.show { transform: scale(1); opacity: 1; }
-
-#chat-header {
-  background: linear-gradient(90deg,#ff00cc,#00ffff);
-  color: #000; padding: 10px; font-weight: bold;
-}
-.chat-options { display: flex; flex-direction: column; gap: 8px; padding: 15px; }
-.chat-options button {
-  background: rgba(255,255,255,0.1); color: #fff;
-  border: 1px solid rgba(0,255,255,0.3);
-  border-radius: 10px; padding: 10px; cursor: pointer;
-  transition: all 0.3s ease;
-}
-.chat-options button:hover {
-  background: linear-gradient(45deg,#00ffff,#ff00cc);
-  color: #000; transform: scale(1.05);
-}
-</style>
-
 <script>
-const themeButton=document.getElementById('theme-toggle');
-const projectCards=document.querySelectorAll('.project-card');
-const inputs=document.querySelectorAll('input, textarea');
-const aboutCard=document.getElementById('about-card'); 
-let isDark=true;
+const themeButton = document.getElementById('theme-toggle');
+const projectCards = document.querySelectorAll('.project-card');
+const inputs = document.querySelectorAll('input, textarea');
+const aboutCard = document.getElementById('about-card'); 
+let isDark = true;
 
-// 🌟 ستاره‌ها
+// ستاره‌ها
 function createStars(count){
   for(let i=0;i<count;i++){
     const s=document.createElement('div');
@@ -292,24 +282,25 @@ function createStars(count){
 }
 createStars(60);
 
-// 🌓 تم روشن/تاریک
+// تم روز/شب
 if(localStorage.getItem('theme')==='light') setLightTheme();
 themeButton.onclick=()=> isDark?setLightTheme():setDarkTheme();
 
 function setLightTheme(){
   document.body.classList.add('light-theme-body');
   document.querySelector('form').classList.add('light-theme-form');
-  aboutCard.classList.add('light-theme-about');
+  aboutCard.classList.add('light-theme-about'); 
   themeButton.textContent='🌞';
   projectCards.forEach(c=>c.classList.add('light-theme-project-card'));
   inputs.forEach(f=>f.classList.add('light-theme-input'));
   document.querySelectorAll('.star').forEach(s=>s.style.display='none');
   isDark=false; localStorage.setItem('theme','light');
 }
+
 function setDarkTheme(){
   document.body.classList.remove('light-theme-body');
   document.querySelector('form').classList.remove('light-theme-form');
-  aboutCard.classList.remove('light-theme-about');
+  aboutCard.classList.remove('light-theme-about'); 
   themeButton.textContent='🌙';
   projectCards.forEach(c=>c.classList.remove('light-theme-project-card'));
   inputs.forEach(f=>f.classList.remove('light-theme-input'));
@@ -317,13 +308,13 @@ function setDarkTheme(){
   isDark=true; localStorage.setItem('theme','dark');
 }
 
-// 💬 چت‌بات
+// چت‌بات
 function toggleChat(){
   const chat=document.getElementById('chat-box');
   chat.classList.toggle('show');
 }
 
-// ✨ افکت کلیک روی پروژه‌ها
+// افکت کلیک روی پروژه
 function particleExplosion(el){
   for(let j=0;j<10;j++){
     const p=document.createElement('div');
@@ -340,19 +331,35 @@ function particleExplosion(el){
     setTimeout(()=>p.remove(),800);
   }
 }
-projectCards.forEach(c=>{ c.onclick=()=>particleExplosion(c); });
+projectCards.forEach((c)=>{ c.onclick=()=> particleExplosion(c); });
 
-// 📩 فرم ضد اسپم
+// فرم تماس
 function validateForm(f) {
-  const formMessage=document.getElementById('formMessage');
-  if(f.website.value.trim()!==''){ formMessage.textContent='❌ اسپم شناسایی شد'; return false; }
-  formMessage.textContent='در حال ارسال... ⏳';
-  fetch(f.action,{method:f.method,body:new FormData(f),headers:{'Accept':'application/json'}})
-  .then(r=>{
-    if(r.ok){ f.reset(); formMessage.textContent='✅ پیام با موفقیت ارسال شد!'; formMessage.style.color='#00ffff'; }
-    else{ formMessage.textContent='❌ خطا در ارسال پیام. دوباره تلاش کنید.'; formMessage.style.color='#ff00cc'; }
+  const formMessage = document.getElementById('formMessage');
+  if (f.website.value.trim() !== '') {
+    formMessage.textContent = '❌ اسپم شناسایی شد';
+    return false;
+  }
+  formMessage.textContent = 'در حال ارسال... ⏳';
+  fetch(f.action, {
+    method: f.method,
+    body: new FormData(f),
+    headers: { 'Accept': 'application/json' }
   })
-  .catch(e=>{ formMessage.textContent='❌ مشکلی رخ داد. لطفاً ارتباط خود را چک کنید.'; formMessage.style.color='#ff00cc'; });
+  .then(response => {
+    if (response.ok) {
+      f.reset();
+      formMessage.textContent = '✅ پیام با موفقیت ارسال شد!';
+      formMessage.style.color = '#00ffff'; 
+    } else {
+      formMessage.textContent = '❌ خطا در ارسال پیام.';
+      formMessage.style.color = '#ff00cc'; 
+    }
+  })
+  .catch(error => {
+    formMessage.textContent = '❌ مشکلی رخ داد.';
+    formMessage.style.color = '#ff00cc';
+  });
   return false;
 }
 </script>
