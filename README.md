@@ -351,5 +351,106 @@ function validateForm(f) {
   return false;
 }
 </script>
+<!-- Chatbot Neon پیشرفته - قبل از <body> -->
+<style>
+  /* دکمه اصلی چت */
+  #chat-icon {
+    position: fixed; bottom: 20px; left: 20px;
+    width: 60px; height: 60px; border-radius: 50%;
+    background: linear-gradient(135deg,#00ffff,#ff00cc);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; cursor: pointer;
+    box-shadow: 0 0 15px #00ffff, 0 0 25px #ff00cc;
+    transition: all 0.3s ease;
+    z-index: 1000;
+  }
+  #chat-icon:hover {
+    transform: scale(1.15) rotate(10deg);
+    box-shadow: 0 0 20px #00ffff, 0 0 35px #ff00cc;
+  }
+
+  /* جعبه چت */
+  #chat-box {
+    position: fixed; bottom: 90px; left: 20px;
+    width: 230px;
+    background: rgba(0,0,0,0.95);
+    border-radius: 15px;
+    padding: 15px;
+    display: flex; flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 0 20px #00ffff, 0 0 30px #ff00cc;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    z-index: 999;
+  }
+  #chat-box.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  #chat-header {
+    font-weight: bold; color: #00ffff; text-align: center;
+    border-bottom: 1px solid rgba(0,255,255,0.3); padding-bottom: 5px;
+    font-size: 16px;
+    text-shadow: 0 0 5px #00ffff;
+  }
+
+  .chat-options {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+
+  .chat-options button {
+    padding: 10px;
+    border: none; border-radius: 10px;
+    background: linear-gradient(135deg,#00ffff,#ff00cc);
+    color: #000; cursor: pointer; font-weight: bold;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px #00ffff, 0 0 10px #ff00cc;
+  }
+  .chat-options button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px #00ffff, 0 0 18px #ff00cc;
+  }
+
+  /* افکت باز و بسته شدن خودکار */
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  #chat-icon {
+    animation: bounce 2s infinite;
+  }
+</style>
+
+<div id="chat-icon">💬</div>
+<div id="chat-box">
+  <div id="chat-header">🤖 منو</div>
+  <div class="chat-options">
+    <button onclick="window.open('https://instagram.com/arsam.khosh.akhlagh.2012','_blank')">اینستاگرام</button>
+    <button onclick="document.getElementById('contact-section').scrollIntoView({behavior:'smooth'});toggleChat();">ارتباط با ما</button>
+    <button onclick="document.getElementById('projects-section').scrollIntoView({behavior:'smooth'});toggleChat();">پروژه‌ها</button>
+  </div>
+</div>
+
+<script>
+  const chatIcon = document.getElementById('chat-icon');
+  const chatBox = document.getElementById('chat-box');
+
+  // باز و بسته کردن با کلیک
+  function toggleChat() {
+    chatBox.classList.toggle('show');
+  }
+  chatIcon.addEventListener('click', toggleChat);
+
+  // باز شدن خودکار بعد از 3 ثانیه
+  setTimeout(()=>{ chatBox.classList.add('show'); }, 3000);
+
+  // بسته شدن خودکار بعد از 10 ثانیه
+  setTimeout(()=>{ chatBox.classList.remove('show'); }, 13000);
+</script>
 </body>
 </html>
