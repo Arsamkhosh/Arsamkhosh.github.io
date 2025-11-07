@@ -125,7 +125,6 @@
     <input type="tel" id="phone" name="phone" placeholder="09123456789">
     <label for="message">پیام شما:</label>
     <textarea id="message" name="message" rows="5" required placeholder="متن پیام..."></textarea>
-    <input type="text" name="website" class="hp" autocomplete="off">
     <button type="submit">ارسال پیام</button>
     <p id="formMessage" class="note"></p>
   </form>
