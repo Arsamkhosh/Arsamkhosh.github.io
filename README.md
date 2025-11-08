@@ -1,4 +1,4 @@
-چ<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="utf-8">
@@ -13,6 +13,8 @@
   --bg-dark-start:#0a0a0a;
   --bg-dark-end:#111111;
 }
+
+/* ---------- Body ---------- */
 body{
   margin:0;
   padding:0;
@@ -44,7 +46,9 @@ body{
 }
 
 /* ---------- Header ---------- */
-header{padding:40px 0 10px;}
+header{
+  padding:40px 0 10px;
+}
 h1{
   color:var(--neon-1);
   font-size:2.3rem;
@@ -55,28 +59,18 @@ h1{
 h1:hover{transform:scale(1.03); text-shadow:0 0 35px var(--neon-1),0 0 65px var(--neon-2);}
 
 /* ---------- About Me ---------- */
-section{
+#about-me{
   margin:40px auto;
   max-width:700px;
-  background:rgba(255,255,255,0.03);
-  border-radius:14px;
-  padding:25px;
-  box-shadow:0 8px 25px rgba(0,0,0,0.5);
-  transition:0.3s;
 }
-section:hover{box-shadow:0 0 25px rgba(0,255,255,0.2);}
 .about-card{
   display:flex;
-  gap:20px;
+  gap:16px;
   align-items:center;
-  padding:20px;
-  border-radius:16px;
   background:rgba(255,255,255,0.03);
-  box-shadow:0 5px 20px rgba(0,0,0,0.45);
-  transition:all 0.3s ease;
-}
-.about-card:hover{
-  box-shadow:0 0 20px rgba(0,255,255,0.3),0 0 30px rgba(255,0,204,0.3);
+  border-radius:14px;
+  padding:20px;
+  box-shadow:0 6px 22px rgba(0,0,0,0.45);
 }
 .profile-pic{
   width:100px;
@@ -89,22 +83,23 @@ section:hover{box-shadow:0 0 25px rgba(0,255,255,0.2);}
   animation:glow 2.5s infinite alternate;
 }
 @keyframes glow{
-  0%{box-shadow:0 0 8px var(--neon-1),0 0 16px var(--neon-2);}
-  50%{box-shadow:0 0 15px var(--neon-1),0 0 25px var(--neon-2);}
-  100%{box-shadow:0 0 12px var(--neon-1),0 0 20px var(--neon-2);}
+  0%{ box-shadow:0 0 8px var(--neon-1),0 0 16px var(--neon-2);}
+  50%{ box-shadow:0 0 15px var(--neon-1),0 0 25px var(--neon-2);}
+  100%{ box-shadow:0 0 12px var(--neon-1),0 0 20px var(--neon-2);}
+}
+.about-card p{
+  font-size:1.05rem;
+  line-height:1.6;
+  color:#dfe;
 }
 
 /* ---------- Projects ---------- */
-.projects{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:20px;
-  margin-top:20px;
-}
 .project-card{
-  padding:20px;
-  border-radius:14px;
+  margin:20px auto;
+  max-width:700px;
   background:rgba(255,255,255,0.03);
+  border-radius:14px;
+  padding:20px;
   box-shadow:0 6px 22px rgba(0,0,0,0.45);
   transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -113,7 +108,7 @@ section:hover{box-shadow:0 0 25px rgba(0,255,255,0.2);}
   box-shadow:0 14px 40px rgba(0,0,0,0.55);
 }
 .project-title{
-  font-size:1.2rem;
+  font-size:1.3rem;
   font-weight:700;
   color:var(--neon-1);
   margin-bottom:8px;
@@ -138,9 +133,8 @@ section:hover{box-shadow:0 0 25px rgba(0,255,255,0.2);}
   font-family:ui-monospace,Monaco,"Roboto Mono",monospace;
   color:#00ff99;
   display:flex;
-  gap:10px;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   margin-top:10px;
 }
 .btn-copy{
@@ -158,40 +152,34 @@ section:hover{box-shadow:0 0 25px rgba(0,255,255,0.2);}
   box-shadow:0 8px 20px rgba(255,0,204,0.1);
 }
 
-/* ---------- Contact Form ---------- */
+/* ---------- Contact ---------- */
 .contact-card{
+  max-width:700px;
+  margin:20px auto;
   background:rgba(255,255,255,0.03);
-  border-radius:12px;
-  padding:25px;
-  box-shadow:0 6px 22px rgba(0,0,0,0.45);
-  margin-top:20px;
+  border-radius:14px;
+  padding:20px;
 }
 .contact-card input, .contact-card textarea{
-  padding:12px;
+  width:90%;
+  padding:10px;
   border-radius:10px;
-  border:1px solid rgba(0,255,255,0.08);
-  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(0,255,255,0.1);
+  background:rgba(255,255,255,0.03);
   color:#eaeaea;
   font-family:inherit;
-  width:100%;
-  margin-bottom:12px;
-}
-.contact-card input::placeholder, .contact-card textarea::placeholder{color:#9fbaba;}
-.contact-card input:focus, .contact-card textarea:focus{
-  border-color:var(--neon-1);
-  box-shadow:0 0 15px var(--neon-1);
-  outline:none;
+  margin-bottom:10px;
 }
 .btn-submit{
-  padding:10px 18px;
-  border-radius:30px;
-  border:none;
   background:var(--accent-grad);
   color:#000;
-  font-weight:700;
+  border:none;
+  padding:8px 18px;
+  border-radius:30px;
+  font-weight:800;
   cursor:pointer;
-  transition:0.3s;
   box-shadow:0 0 10px rgba(255,0,204,0.25);
+  transition:0.3s;
 }
 .btn-submit:hover{
   transform:scale(1.05);
@@ -209,24 +197,34 @@ footer a{color:var(--neon-1);}
   display:flex;
   gap:15px;
   justify-content:center;
-  margin-top:25px;
+  margin-top:15px;
 }
 .social-buttons a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
   width:50px;
   height:50px;
+  background:#111;
+  color:#fff;
   border-radius:50%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:var(--accent-grad);
-  color:#000;
-  font-weight:700;
+  transition:all 0.3s ease;
   text-decoration:none;
-  transition:0.3s;
+  box-shadow: 0 0 10px rgba(0,255,255,0.2), 0 0 15px rgba(255,0,204,0.2);
 }
 .social-buttons a:hover{
-  transform:translateY(-5px) scale(1.1);
+  transform: translateY(-5px) scale(1.1);
   box-shadow:0 0 15px #00ffff,0 0 25px #ff00cc,0 0 35px #ff00cc;
+}
+.social-buttons svg{
+  width:24px;
+  height:24px;
+}
+
+/* ---------- Responsive ---------- */
+@media(max-width:720px){
+  .about-card, .project-card, .contact-card{width:90%;}
+  .profile-pic{width:80px;height:80px;}
 }
 </style>
 </head>
@@ -236,50 +234,55 @@ footer a{color:var(--neon-1);}
   <h1>پروژه‌های من</h1>
 </header>
 
-<main>
+<!-- Stars -->
+<script>
+for(let i=0;i<150;i++){
+  const s=document.createElement('div');
+  s.className='star';
+  const size=1+Math.random()*2;
+  s.style.width=s.style.height=size+'px';
+  s.style.left=(Math.random()*100)+'vw';
+  s.style.top=(Math.random()*100)+'vh';
+  s.style.opacity=(0.2+Math.random()*0.8).toString();
+  document.body.appendChild(s);
+}
+</script>
 
 <!-- About Me -->
 <section id="about-me">
-  <h2>درباره من</h2>
   <div class="about-card">
     <div class="profile-pic"></div>
-    <div class="about-text">
-      <p>سلام! من <strong>آرسام خوش اخلاق</strong> هستم — توسعه‌دهنده وب، ماینکرفت باز و سازنده سرورهای اختصاصی. اینجا نمونه‌کارها و راه‌های ارتباط با من قرار داره.</p>
-    </div>
+    <p>سلام! من <strong>آرسام خوش اخلاق</strong> هستم — توسعه‌دهنده وب، ماینکرفت‌ باز و سازنده سرورهای اختصاصی.</p>
   </div>
 </section>
 
 <!-- Projects -->
 <section id="projects-section">
-  <h2>پروژه‌ها</h2>
-  <div class="projects">
-    <div class="project-card">
-      <div class="project-title">🌍 سرور ماینکرفت LAVA JUMP</div>
-      <div class="project-desc">رقابت کن و از سرور ما لذت ببر! آدرس سرور و وضعیت آنلاین در زیر نمایش داده می‌شود.</div>
-      <div class="server-terminal">
-        <div class="ip" id="server-ip">lavajumptest.falixsrv.me</div>
-        <button class="btn-copy" id="copy-btn">📋 کپی</button>
-      </div>
-      <div id="player-count">در حال بررسی وضعیت سرور...</div>
+  <div class="project-card">
+    <div class="project-title">🌍 سرور ماینکرفت LAVA JUMP</div>
+    <div class="project-desc">رقابت کن و از سرور ما لذت ببر! آدرس سرور و وضعیت آنلاین در زیر نمایش داده می‌شود.</div>
+    <div class="server-terminal">
+      <div class="ip" id="server-ip">lavajumptest.falixsrv.me</div>
+      <button class="btn-copy" id="copy-btn">📋 کپی</button>
     </div>
+    <div id="player-count">در حال بررسی وضعیت سرور...</div>
+  </div>
 
-    <div class="project-card">
-      <div class="project-title">سایت شخصی 🌐</div>
-      <div class="project-desc">طراحی و پیاده‌سازی سایت شخصی با تمرکز روی ظاهر نئون و تجربه‌ی کاربری.</div>
-      <div class="project-tech">HTML / CSS / JavaScript</div>
-    </div>
+  <div class="project-card">
+    <div class="project-title">سایت شخصی 🌐</div>
+    <div class="project-desc">طراحی و پیاده‌سازی سایت شخصی با تمرکز روی ظاهر نئون و تجربه‌ی کاربری.</div>
+    <div class="project-tech">HTML / CSS / JavaScript</div>
+  </div>
 
-    <div class="project-card">
-      <div class="project-title">ادیت ویدیو 🎬</div>
-      <div class="project-desc">ادیت و تولید محتوا برای یوتیوب و شبکه‌های اجتماعی.</div>
-      <div class="project-tech">CapCut / Filmora / Shotcut</div>
-    </div>
+  <div class="project-card">
+    <div class="project-title">ادیت ویدیو 🎬</div>
+    <div class="project-desc">ادیت و تولید محتوا برای یوتیوب و شبکه‌های اجتماعی.</div>
+    <div class="project-tech">CapCut / Filmora / Shotcut</div>
   </div>
 </section>
 
 <!-- Contact -->
 <section id="contact-section">
-  <h2>ارتباط با من</h2>
   <div class="contact-card">
     <form id="contact-form" action="https://formspree.io/f/mnngzdlw" method="POST">
       <input type="text" name="name" placeholder="نام شما" required>
@@ -290,60 +293,12 @@ footer a{color:var(--neon-1);}
   </div>
 </section>
 
-</main>
-
+<!-- Footer -->
 <footer>
-  <p>© 2025 آرسام خوش اخلاق</p>
+  <p>© 2025تمامی حقوق محفوظ است —</p>
   <div class="social-buttons">
-    <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank">IG</a>
-    <a href="https://github.com/username" target="_blank">GH</a>
-    <a href="https://twitter.com/username" target="_blank">TW</a>
-  </div>
-</footer>
-
-<script>
-/* ---------- Stars ---------- */
-document.addEventListener('DOMContentLoaded', function(){
-  const starCount = 150;
-  for(let i=0;i<starCount;i++){
-    const s = document.createElement('div');
-    s.className='star';
-    const size = 1 + Math.random()*2;
-    s.style.width = s.style.height = size+'px';
-    s.style.left = (Math.random()*100)+'vw';
-    s.style.top = (Math.random()*100)+'vh';
-    s.style.opacity = (0.2+Math.random()*0.8).toString();
-    document.body.appendChild(s);
-  }
-});
-
-/* Copy IP */
-document.getElementById('copy-btn').addEventListener('click', ()=>{
-  const ip = document.getElementById('server-ip').textContent.trim();
-  navigator.clipboard.writeText(ip).then(()=>alert('آی‌پی کپی شد: '+ip));
-});
-
-/* Server status */
-async function updatePlayers(){
-  const countEl = document.getElementById('player-count');
-  const ip = document.getElementById('server-ip').textContent.trim();
-  countEl.textContent='در حال بررسی وضعیت سرور...';
-  try{
-    const res = await fetch('https://api.mcsrvstat.us/2/'+encodeURIComponent(ip));
-    const data = await res.json();
-    if(data.online===false){countEl.textContent='❌ سرور آفلاین است';}
-    else{
-      const online = data.players?.online ?? 0;
-      const max = data.players?.max ?? 0;
-      countEl.textContent=`🎮 بازیکنان آنلاین: ${online}/${max}`;
-    }
-  }catch{
-    countEl.textContent='❌ خطا در دریافت وضعیت سرور';
-  }
-}
-updatePlayers();
-setInterval(updatePlayers,10000);
-</script>
-
-</body>
-</html>
+    <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank" aria-label="اینستاگرام">
+      <svg viewBox="0 0 448 512" fill="currentColor"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9 114.9-51.3 114.9-114.9-51.3-114.9-114.9-114.9zm0 190.5c-41.6 0-75.6-33.9-75.6-75.6s33.9-75.6 75.6-75.6 75.6 33.9 75.6 75.6-33.9 75.6-75.6 75.6zm146.4-194.3c0 14.9-12.1 27-27 27-14.9 0-27-12.1-27-27s12.1-27 27-27c14.9 0 27 12.1 27 27zm76.1 27.2c-1.7-35.7-9.9-67.3-36.1-93.5-26.2-26.2-57.8-34.4-93.5-36.1-37-2.1-148.1-2.1-185.1 0-35.7 1.7-67.3 9.9-93.5 36.1s-34.4 57.8-36.1 93.5c-2.1 37-2.1 148.1 0 185.1 1.7 35.7 9.9 67.3 36.1 93.5s57.8 34.4 93.5 36.1c37 2.1 148.1 2.1 185.1 0 35.7-1.7 67.3-9.9 93.5-36.1s34.4-57.8 36.1-93.5c2.1-37 2.1-148.1 0-185.1zm-48.3 232c-7.8 19.5-22.9 34.6-42.4 42.4-29.4 11.7-99.3 9-132.8 9s-103.4 2.6-132.8-9c-19.5-7.8-34.6-22.9-42.4-42.4-11.7-29.4-9-99.3-9-132.8s-2.6-103.4 9-132.8c7.8-19.5 22.9-34.6 42.4-42.4 29.4-11.7 99.3-9 132.8-9s103.4-2.6 132.8 9c19.5 7.8 34.6 22.9 42.4 42.4 11.7 29.4 9 99.3 9 132.8s2.7 103.4-9 132.8z"/></svg>
+    </a>
+    <a href="https://github.com/username" target="_blank" aria-label="گیت‌هاب">
+      <svg viewBox="0 0 496 512" fill="currentColor"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-2.9 0-5.2-1.6-5.2-3.6 0-2 2.3-3.6 5.2-3.6 2.9 0 5.2 1.6 5.2 3.6zm-33.5-6.2c-.7 1.5 1.5 3.2 5.1 3.6 3.6.4 7.2-.4 7.9-1.9.7-1.5-1.5-3.2-5.1-3.6-3.6-.4-7.2.4-7.9 1.9zM244.8 8C109.1 8 0 117.1 0 252.8c0 108.9 70.8 201.4 169.2 234.2 12.3 2.3 16.8-5.3 16.8-11.8 0-5.8-.2-21-0.3-41.3-68.7 14.9-83.3-33.2-83.3-33.2-11.2-28.5-27.3-36.1-27.3-36.1-22.3-15.3 1.7-15 1.7-15 24.6 1.7 37.6 25.3 37.6 25.3 21.9 37.5 57.5 26.7 71.5 20.4 2.2-15.8 8.6-26.7 15.6-32.8-54.8-6.2-112.5-27.4-112.5-122 0-27 9.6-49 25.4-66.3-2.6-6.2-11-31.2 2.4-65 0 0 20.7-6.6 67.8 25.2 19.7-5.5 40.8-8.3 61.8-8.4 21 .1 42.1 2.9 61.9 8.4 47-31.8 67.6-25.2 67.6-25.2 13.5 33.8 5 58.8 2.4 65 15.8 17.3 25.3 39.3 25.3 66.3 0 94.8-57.8 115.7-112.8 121.9 8.8 7.6 16.7 22.5 16.7 45.4 0 32.8-.3 59.3-.3 67.4 0
