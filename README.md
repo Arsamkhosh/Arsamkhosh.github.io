@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>پروژه‌های من</title>
+<title>صفحه شخصی آرسام</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -14,7 +14,6 @@
   --bg-dark-end:#111111;
 }
 
-/* ---------- Body ---------- */
 body{
   margin:0;
   padding:0;
@@ -153,12 +152,10 @@ h1:hover{transform:scale(1.03); text-shadow:0 0 35px var(--neon-1),0 0 65px var(
 }
 
 /* ---------- Contact ---------- */
-.contact-card{
-  max-width:700px;
-  margin:20px auto;
-  background:rgba(255,255,255,0.03);
-  border-radius:14px;
-  padding:20px;
+.contact-card form{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
 }
 .contact-card input, .contact-card textarea{
   width:90%;
@@ -168,7 +165,6 @@ h1:hover{transform:scale(1.03); text-shadow:0 0 35px var(--neon-1),0 0 65px var(
   background:rgba(255,255,255,0.03);
   color:#eaeaea;
   font-family:inherit;
-  margin-bottom:10px;
 }
 .btn-submit{
   background:var(--accent-grad);
@@ -231,7 +227,7 @@ footer a{color:var(--neon-1);}
 <body>
 
 <header>
-  <h1>پروژه‌های من</h1>
+  <h1>صفحه شخصی من</h1>
 </header>
 
 <!-- Stars -->
@@ -250,17 +246,19 @@ for(let i=0;i<150;i++){
 
 <!-- About Me -->
 <section id="about-me">
-  <div class="project-card">
-    <div class="project-title">درباره من</div>
-    <div class="about-card">
-      <div class="profile-pic"></div>
-      <p>سلام! من <strong>آرسام خوش اخلاق</strong> هستم — توسعه‌دهنده وب، ماینکرفت‌ باز و سازنده سرورهای اختصاصی.</p>
-    </div>
+  <div class="about-card">
+    <div class="profile-pic"></div>
+    <p>سلام! من <strong>آرسام خوش اخلاق</strong> هستم — توسعه‌دهنده وب، ماینکرفت‌باز و سازنده سرورهای اختصاصی.</p>
   </div>
 </section>
 
 <!-- Projects -->
 <section id="projects-section">
+  <div class="project-card">
+    <div class="project-title">در باره من 📝</div>
+    <div class="project-desc">اینجا می‌تونی درباره من و تجربه‌ها و علاقه‌مندی‌هام بدونی.</div>
+  </div>
+
   <div class="project-card">
     <div class="project-title">🌍 سرور ماینکرفت LAVA JUMP</div>
     <div class="project-desc">رقابت کن و از سرور ما لذت ببر! آدرس سرور و وضعیت آنلاین در زیر نمایش داده می‌شود.</div>
@@ -286,7 +284,8 @@ for(let i=0;i<150;i++){
 
 <!-- Contact -->
 <section id="contact-section">
-  <div class="contact-card">
+  <div class="project-card">
+    <div class="project-title">ارتباط با من ✉</div>
     <form id="contact-form" action="https://formspree.io/f/mnngzdlw" method="POST">
       <input type="text" name="name" placeholder="نام شما" required>
       <input type="email" name="email" placeholder="example@example.com" required>
@@ -315,3 +314,5 @@ for(let i=0;i<150;i++){
     </a>
   </div>
 </footer>
+</body>
+</html>
