@@ -28,21 +28,38 @@ body{
   z-index:1;
 }
 
+/* ---------- Stars ---------- */
+.star{
+  position:fixed;
+  width:2px;
+  height:2px;
+  border-radius:50%;
+  background:#fff;
+  opacity:0.8;
+  z-index:0;
+  pointer-events:none;
+  animation:twinkle 3s infinite;
+}
+@keyframes twinkle{
+  0%,100%{opacity:0.2;}
+  50%{opacity:1;}
+}
+
 /* ---------- Header & Special Neon Effect (Enhanced) ---------- */
 header{
   padding:40px 0 10px;
 }
 h1{
   /* افکت نئون قوی‌تر */
-  color:#fff; /* رنگ متن داخلی سفید برای درخشش بیشتر */
+  color:#fff;
   font-size:2.8rem;
   font-weight:800;
   text-shadow:
-    0 0 7px var(--neon-1),     /* لایه نزدیک و کوچک */
+    0 0 7px var(--neon-1),
     0 0 15px var(--neon-1),
     0 0 25px var(--neon-2),
     0 0 40px var(--neon-2),
-    0 0 70px var(--neon-2);   /* لایه دور و پخش‌تر */
+    0 0 70px var(--neon-2);
   cursor:pointer;
   transition:all 0.3s ease;
 }
@@ -52,8 +69,8 @@ h1:hover{
     0 0 10px var(--neon-1),
     0 0 30px var(--neon-1),
     0 0 50px var(--neon-2),
-    0 0 80px var(--neon-2),
-    0 0 120px var(--neon-2);
+  0 0 80px var(--neon-2),
+  0 0 120px var(--neon-2);
 }
 
 /* ---------- Neon Divider (جداکننده نئون) ---------- */
@@ -197,13 +214,29 @@ h1:hover{
   border-radius:30px;
   font-weight:800;
   cursor:pointer;
+  /* افزودن افکت چشمک‌زن نئون */
   box-shadow:0 0 10px rgba(255,0,204,0.25);
   transition:0.3s;
+  animation:neon-flicker 1.5s infinite alternate;
 }
 .btn-submit:hover{
   transform:scale(1.05);
   box-shadow:0 0 20px rgba(255,0,204,0.45);
 }
+
+/* انیمیشن چشمک‌زن نئون برای دکمه */
+@keyframes neon-flicker {
+  0%, 100% {
+    box-shadow: 0 0 8px var(--neon-2), 0 0 12px var(--neon-1);
+  }
+  50% {
+    box-shadow: 0 0 15px var(--neon-2), 0 0 25px var(--neon-1);
+  }
+  70% {
+    box-shadow: 0 0 5px var(--neon-2), 0 0 10px var(--neon-1);
+  }
+}
+
 
 /* ---------- Footer ---------- */
 footer{
@@ -314,7 +347,7 @@ for(let i=0;i<150;i++){
 <footer>
   <p>© 2025 تمامی حقوق محفوظ است — آرسام خوش اخلاق</p>
   <div class="social-buttons">
-            <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank" aria-label="اینستاگرام">
+        <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank" aria-label="اینستاگرام">
       <svg viewBox="0 0 448 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9 114.9-51.3 114.9-114.9-51.3-114.9-114.9-114.9zm0 190.5c-41.6 0-75.6-33.9-75.6-75.6s33.9-75.6 75.6-75.6 75.6 33.9 75.6 75.6-33.9 75.6-75.6 75.6zm146.4-194.3c0 14.9-12.1 27-27 27-14.9 0-27-12.1-27-27s12.1-27 27-27c14.9 0 27 12.1 27 27zm76.1 27.2c-1.7-35.7-9.9-67.3-36.1-93.5-26.2-26.2-57.8-34.4-93.5-36.1-37-2.1-148.1-2.1-185.1 0-35.7 1.7-67.3 9.9-93.5 36.1s-34.4 57.8-36.1 93.5c-2.1 37-2.1 148.1 0 185.1 1.7 35.7 9.9 67.3 36.1 93.5s57.8 34.4 93.5 36.1c37 2.1 148.1 2.1 185.1 0 35.7-1.7 67.3-9.9 93.5-36.1s34.4-57.8 36.1-93.5c2.1-37 2.1-148.1 0-185.1zm-48.3 232c-7.8 19.5-22.9 34.6-42.4 42.4-29.4 11.7-99.3 9-132.8 9s-103.4 2.6-132.8-9c-19.5-7.8-34.6-22.9-42.4-42.4-11.7-29.4-9-99.3-9-132.8s-2.6-103.4 9-132.8c7.8-19.5 22.9-34.6 42.4-42.4 29.4-11.7 99.3-9 132.8-9s103.4-2.6 132.8 9c19.5 7.8 34.6 22.9 42.4 42.4 11.7 29.4 9 99.3 9 132.8s2.7 103.4-9 132.8z"/></svg>
     </a>
 
@@ -332,9 +365,10 @@ for(let i=0;i<150;i++){
 // Server IP from HTML
 const serverIP = document.getElementById('server-ip').textContent.trim();
 const playerCountEl = document.getElementById('player-count');
+// استفاده از API معتبر برای دریافت وضعیت سرور ماینکرفت
 const apiURL = `https://api.mcstatus.io/v2/status/java/${serverIP}`;
 
-// Function to fetch and display server status (Updated for real API)
+// Function to fetch and display server status (Real API fetch)
 async function fetchServerStatus() {
   try {
     playerCountEl.textContent = 'در حال ارتباط با سرور...';
@@ -368,5 +402,6 @@ document.getElementById('copy-btn').addEventListener('click', () => {
   alert('آدرس سرور کپی شد: ' + serverIP);
 });
 </script>
+
 </body>
 </html>
