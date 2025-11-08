@@ -1,431 +1,321 @@
-[<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>پروژه‌ های من</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>پروژه‌های من</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --neon-1: #00ffff;
-    --neon-2: #ff00cc;
-    --accent-grad: linear-gradient(135deg,var(--neon-1),var(--neon-2));
-    --bg-dark-start: #0a0a0a;
-    --bg-dark-end: #111111;
-    --bg-light-start: #f0f0f0;
-    --bg-light-end: #e6e6e6;
-  }
-  html,body{height:100%;margin:0;padding:0;font-family:'Vazirmatn',sans-serif;box-sizing:border-box}
-  body {
-    margin:0;
-    background: linear-gradient(135deg,var(--bg-dark-start),var(--bg-dark-end));
-    color: #eaeaea;
-    transition: background .45s ease, color .45s ease;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-  }
+:root{
+  --neon-1:#00ffff;
+  --neon-2:#ff00cc;
+  --accent-grad:linear-gradient(135deg,var(--neon-1),var(--neon-2));
+  --bg-dark-start:#0a0a0a;
+  --bg-dark-end:#111111;
+}
 
-  header{ padding:28px 18px 8px 18px; text-align:center }
-  header h1{ margin:0; font-size:2.2rem; color:var(--neon-1); text-shadow:0 0 8px rgba(0,255,255,0.08) }
-  header p{ margin:6px 0 0 0; color:#cfeff0; opacity:0.9 }
+/* ---------- Body ---------- */
+body{
+  margin:0;
+  padding:0;
+  font-family:'Vazirmatn',sans-serif;
+  background:linear-gradient(135deg,var(--bg-dark-start),var(--bg-dark-end));
+  color:#eaeaea;
+  text-align:center;
+  overflow-x:hidden;
+  min-height:100vh;
+  position:relative;
+  z-index:1;
+}
 
-  main{ padding: 18px; max-width:1100px; margin:0 auto 30px auto; }
+/* ---------- Stars ---------- */
+.star{
+  position:fixed;
+  width:2px;
+  height:2px;
+  border-radius:50%;
+  background:#fff;
+  opacity:0.8;
+  z-index:0;
+  pointer-events:none;
+  animation:twinkle 3s infinite;
+}
+@keyframes twinkle{
+  0%,100%{opacity:0.2;}
+  50%{opacity:1;}
+}
 
-  /* Projects grid */
-  .projects {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
-    gap: 18px;
-    margin-top: 18px;
-  }
-  .project-card {
-    background: rgba(255,255,255,0.03);
-    border-radius: 12px;
-    padding: 16px;
-    box-shadow: 0 6px 22px rgba(0,0,0,0.45);
-    transition: transform .18s, box-shadow .18s;
-    overflow: visible;
-  }
-  .project-card:hover { transform: translateY(-6px); box-shadow: 0 14px 40px rgba(0,0,0,0.55); }
-  .project-title { color: var(--neon-1); font-weight:700; font-size:1.05rem; margin-bottom:8px; }
-  .project-desc { color:#cfdada; margin-bottom:10px; line-height:1.5; }
-  .project-tech { color:#ffd399; font-weight:700; font-size:0.9rem; }
+/* ---------- Header ---------- */
+header{
+  padding:40px 0 10px;
+}
+h1{
+  color:var(--neon-1);
+  font-size:2.3rem;
+  text-shadow:0 0 20px var(--neon-1),0 0 40px var(--neon-2);
+  cursor:pointer;
+  transition:all 0.3s ease;
+}
+h1:hover{transform:scale(1.03); text-shadow:0 0 35px var(--neon-1),0 0 65px var(--neon-2);}
 
-  /* Server box (terminal-like) */
-  .server-terminal {
-    background: #000;
-    border-radius: 10px;
-    border: 1px solid rgba(0,255,255,0.12);
-    padding: 12px;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Vazir", monospace;
-    color: #00ff99;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
-  .server-terminal .ip { font-weight:700; font-size:0.98rem; }
-  .server-terminal .actions { display:flex; gap:8px; align-items:center; }
-  .btn-copy {
-    background: var(--accent-grad);
-    border: none;
-    color:#000;
-    padding:8px 10px;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:700;
-    box-shadow: 0 8px 20px rgba(255,0,204,0.06);
-    transition: transform .12s, box-shadow .12s;
-  }
-  .btn-copy:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(255,0,204,0.10); }
+/* ---------- About Me ---------- */
+#about-me{
+  margin:40px auto;
+  max-width:700px;
+}
+.about-card{
+  display:flex;
+  gap:16px;
+  align-items:center;
+  background:rgba(255,255,255,0.03);
+  border-radius:14px;
+  padding:20px;
+  box-shadow:0 6px 22px rgba(0,0,0,0.45);
+}
+.profile-pic{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  background:var(--neon-1);
+  border:3px solid var(--neon-2);
+  box-shadow:0 0 10px var(--neon-1),0 0 20px var(--neon-2),0 0 30px var(--neon-1);
+  flex-shrink:0;
+  animation:glow 2.5s infinite alternate;
+}
+@keyframes glow{
+  0%{ box-shadow:0 0 8px var(--neon-1),0 0 16px var(--neon-2);}
+  50%{ box-shadow:0 0 15px var(--neon-1),0 0 25px var(--neon-2);}
+  100%{ box-shadow:0 0 12px var(--neon-1),0 0 20px var(--neon-2);}
+}
+.about-card p{
+  font-size:1.05rem;
+  line-height:1.6;
+  color:#dfe;
+}
 
-  #player-count {
-    color: #7cff7c;
-    margin-top:10px;
-    font-weight:700;
-    text-align:center;
-  }
+/* ---------- Projects ---------- */
+.project-card{
+  margin:20px auto;
+  max-width:700px;
+  background:rgba(255,255,255,0.03);
+  border-radius:14px;
+  padding:20px;
+  box-shadow:0 6px 22px rgba(0,0,0,0.45);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.project-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 14px 40px rgba(0,0,0,0.55);
+}
+.project-title{
+  font-size:1.3rem;
+  font-weight:700;
+  color:var(--neon-1);
+  margin-bottom:8px;
+}
+.project-desc{
+  font-size:1rem;
+  color:#cfdada;
+  margin-bottom:10px;
+}
+.project-tech{
+  font-size:0.9rem;
+  color:#ffd399;
+  font-weight:700;
+}
 
-  /* About card */
-  .about-card {
-    display:flex;
-    gap:14px;
-    align-items:center;
-    background: rgba(255,255,255,0.03);
-    padding:12px;
-    border-radius:12px;
-  }
-  .profile-pic {
-    width:82px; height:82px; border-radius:50%;
-    background:var(--neon-1); border:3px solid var(--neon-2);
-    box-shadow: 0 6px 20px rgba(0,255,255,0.06);
-    flex-shrink:0;
-  }
-  .about-text p{ margin:0; color:#dfe; line-height:1.6 }
+/* ---------- Server Terminal ---------- */
+.server-terminal{
+  background:#000;
+  border-radius:10px;
+  border:1px solid rgba(0,255,255,0.12);
+  padding:12px;
+  font-family:ui-monospace,Monaco,"Roboto Mono",monospace;
+  color:#00ff99;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:10px;
+}
+.btn-copy{
+  background:var(--accent-grad);
+  border:none;
+  color:#000;
+  padding:6px 10px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:700;
+  transition:all 0.15s ease;
+}
+.btn-copy:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(255,0,204,0.1);
+}
 
-  /* Contact */
-  .contact-card {
-    background: rgba(255,255,255,0.03);
-    border-radius:12px;
-    padding:14px;
-  }
-  form { display:flex; flex-direction:column; gap:10px; }
-  input, textarea {
-    padding:10px; border-radius:10px; border:1px solid rgba(0,255,255,0.08);
-    background: rgba(255,255,255,0.02); color:inherit; resize:vertical; font-family:inherit;
-  }
-  input::placeholder, textarea::placeholder { color:#9fbaba; }
-  .btn-submit {
-    padding:10px 12px; border-radius:12px; border:none;
-    background: var(--accent-grad); color:#000; font-weight:800; cursor:pointer;
-    transition: transform .12s, box-shadow .12s;
-  }
-  .btn-submit:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(255,0,204,0.08); }
+/* ---------- Contact ---------- */
+.contact-card{
+  max-width:700px;
+  margin:20px auto;
+  background:rgba(255,255,255,0.03);
+  border-radius:14px;
+  padding:20px;
+}
+.contact-card input, .contact-card textarea{
+  width:90%;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid rgba(0,255,255,0.1);
+  background:rgba(255,255,255,0.03);
+  color:#eaeaea;
+  font-family:inherit;
+  margin-bottom:10px;
+}
+.btn-submit{
+  background:var(--accent-grad);
+  color:#000;
+  border:none;
+  padding:8px 18px;
+  border-radius:30px;
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:0 0 10px rgba(255,0,204,0.25);
+  transition:0.3s;
+}
+.btn-submit:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 20px rgba(255,0,204,0.45);
+}
 
-  /* Theme toggle top-left */
-  #theme-toggle {
-    position: fixed; top: 16px; left: 16px; width:48px; height:48px;
-    border-radius:50%; border:none; background: rgba(255,255,255,0.06);
-    color:inherit; cursor:pointer; z-index:1200; font-size:20px;
-    display:flex; align-items:center; justify-content:center;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
-  }
+/* ---------- Footer ---------- */
+footer{
+  margin-top:30px;
+  padding:18px;
+  color:#bfcfcf;
+}
+footer a{color:var(--neon-1);}
+.social-buttons{
+  display:flex;
+  gap:15px;
+  justify-content:center;
+  margin-top:15px;
+}
+.social-buttons a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:50px;
+  height:50px;
+  background:#111;
+  color:#fff;
+  border-radius:50%;
+  transition:all 0.3s ease;
+  text-decoration:none;
+  box-shadow: 0 0 10px rgba(0,255,255,0.2), 0 0 15px rgba(255,0,204,0.2);
+}
+.social-buttons a:hover{
+  transform: translateY(-5px) scale(1.1);
+  box-shadow:0 0 15px #00ffff,0 0 25px #ff00cc,0 0 35px #ff00cc;
+}
+.social-buttons svg{
+  width:24px;
+  height:24px;
+}
 
-  /* Chat widget left-bottom */
-  #chat-icon {
-    position: fixed; left:16px; bottom:16px; width:58px; height:58px; border-radius:50%;
-    background: var(--accent-grad); display:flex; align-items:center; justify-content:center;
-    cursor:pointer; z-index:1200; color:#000; font-size:22px; box-shadow: 0 12px 36px rgba(0,0,0,0.5);
-  }
-  #chat-box {
-    position: fixed; left:16px; bottom:86px; width:230px; border-radius:12px;
-    background: rgba(0,0,0,0.9); padding:10px; display:none; z-index:1199;
-  }
-  #chat-box.show { display:block; }
-  #chat-header { color:var(--neon-1); font-weight:800; text-align:center; margin-bottom:8px; }
-  .chat-options button {
-    width:100%; padding:8px; border-radius:10px; border:none; background:var(--accent-grad); font-weight:800; cursor:pointer; margin-bottom:8px;
-  }
-  .chat-options button:last-child{ margin-bottom:0 }
-
-  /* Toast (copy) */
-  .toast {
-    position: fixed; left:50%; transform:translateX(-50%); bottom:22px;
-    background: rgba(0,0,0,0.85); color:#fff; padding:10px 14px; border-radius:10px;
-    box-shadow:0 8px 28px rgba(0,0,0,0.6); z-index:1300; display:none;
-    font-weight:700;
-  }
-
-  /* Stars (dark only) */
-  .star { position:fixed; width:2px; height:2px; border-radius:50%; background:#fff; opacity:.9; z-index:0; pointer-events:none; animation:twinkle 3s infinite; }
-  @keyframes twinkle{0%,100%{opacity:.15;}50%{opacity:1;}}
-
-  footer { text-align:center; margin-top:26px; padding:18px; color:#bfcfcf }
-  footer .footer-instagram { margin-top:10px; }
-  a { color: var(--neon-1) }
-
-  /* Light theme overrides */
-  .light body, .light-theme {
-    background: linear-gradient(135deg,var(--bg-light-start),var(--bg-light-end)) !important;
-    color: #222 !important;
-  }
-  .light-theme .project-card { background: #f2f2f2; color:#222 }
-  .light-theme .about-card { background:#f5f5f5; color:#222 }
-  .light-theme input, .light-theme textarea { background:#fff; color:#222; border:1px solid #d0d0d0 }
-  .light-theme #player-count { color:#006600; }
-  .light-theme .server-terminal { background:#0b0b0b; border-color:#666; color:#00aa66 }
-
-  /* Responsive */
-  @media (max-width:720px){
-    .projects { grid-template-columns: 1fr; padding:10px; }
-    #chat-box { left:12px; width:210px; }
-    #theme-toggle { left:12px; top:12px; }
-  }
+/* ---------- Responsive ---------- */
+@media(max-width:720px){
+  .about-card, .project-card, .contact-card{width:90%;}
+  .profile-pic{width:80px;height:80px;}
+}
 </style>
 </head>
 <body>
 
-<!-- Theme toggle -->
-<button id="theme-toggle" aria-label="تغییر حالت">🌙</button>
-
-<!-- Header -->
 <header>
   <h1>پروژه‌های من</h1>
-  <p>خوش آمدی به سایت من ! اینجا پروژه‌ها، سرور و راه ارتباطی من هست.</p>
 </header>
 
-<main>
+<!-- Stars -->
+<script>
+for(let i=0;i<150;i++){
+  const s=document.createElement('div');
+  s.className='star';
+  const size=1+Math.random()*2;
+  s.style.width=s.style.height=size+'px';
+  s.style.left=(Math.random()*100)+'vw';
+  s.style.top=(Math.random()*100)+'vh';
+  s.style.opacity=(0.2+Math.random()*0.8).toString();
+  document.body.appendChild(s);
+}
+</script>
 
-  <!-- About -->
-  <section id="about-me" style="margin-bottom:18px;">
-    <div class="about-card">
-      <div class="profile-pic" aria-hidden="true"></div>
-      <div class="about-text">
-        <p>سلام! من <strong> من آرسام خوش اخلاق </strong> هستم — توسعه‌دهنده وب، ماینکرفت‌ باز و سازنده سرورهای اختصاصی. اینجا نمونه‌کارها و راه‌های ارتباط با من قرار داره.</p>
-      </div>
+<!-- About Me -->
+<section id="about-me">
+  <div class="about-card">
+    <div class="profile-pic"></div>
+    <p>سلام! من <strong>آرسام خوش اخلاق</strong> هستم — توسعه‌دهنده وب، ماینکرفت‌ باز و سازنده سرورهای اختصاصی.</p>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects-section">
+  <div class="project-card">
+    <div class="project-title">🌍 سرور ماینکرفت LAVA JUMP</div>
+    <div class="project-desc">رقابت کن و از سرور ما لذت ببر! آدرس سرور و وضعیت آنلاین در زیر نمایش داده می‌شود.</div>
+    <div class="server-terminal">
+      <div class="ip" id="server-ip">lavajumptest.falixsrv.me</div>
+      <button class="btn-copy" id="copy-btn">📋 کپی</button>
     </div>
-  </section>
+    <div id="player-count">در حال بررسی وضعیت سرور...</div>
+  </div>
 
-  <!-- Projects -->
-  <section id="projects-section" aria-labelledby="projects-heading">
-    <h2 id="projects-heading" style="color:var(--neon-1); margin:8px 0 12px 0;">پروژه‌ها</h2>
-    <div class="projects">
+  <div class="project-card">
+    <div class="project-title">سایت شخصی 🌐</div>
+    <div class="project-desc">طراحی و پیاده‌سازی سایت شخصی با تمرکز روی ظاهر نئون و تجربه‌ی کاربری.</div>
+    <div class="project-tech">HTML / CSS / JavaScript</div>
+  </div>
 
-      <!-- Server card -->
-      <article class="project-card" aria-labelledby="server-title">
-        <div class="project-title" id="server-title">🌍 سرور ماینکرفت LAVA JUMP</div>
-        <div class="project-desc">، رقابت کن و از سرور ما لذت ببر! آدرس سرور و وضعیت آنلاین در زیر نمایش داده می‌شود.</div>
+  <div class="project-card">
+    <div class="project-title">ادیت ویدیو 🎬</div>
+    <div class="project-desc">ادیت و تولید محتوا برای یوتیوب و شبکه‌های اجتماعی.</div>
+    <div class="project-tech">CapCut / Filmora / Shotcut</div>
+  </div>
+</section>
 
-        <div class="server-terminal" role="region" aria-label="آی‌پی سرور">
-          <div class="ip" id="server-ip">lavajumptest.falixsrv.me</div>
-          <div class="actions">
-            <button class="btn-copy" id="copy-btn" title="کپی آی‌پی">📋 کپی</button>
-          </div>
-        </div>
-
-        <div id="player-count" aria-live="polite">در حال بررسی وضعیت سرور...</div>
-      </article>
-
-      <!-- Other project cards -->
-      <article class="project-card" aria-labelledby="proj-1">
-        <div class="project-title" id="proj-1">سایت شخصی 🌐</div>
-        <div class="project-desc">طراحی و پیاده‌سازی سایت شخصی با تمرکز روی ظاهر نئون و تجربه‌ی کاربری.</div>
-        <div class="project-tech">HTML / CSS / JavaScript</div>
-      </article>
-
-      <article class="project-card" aria-labelledby="proj-2">
-        <div class="project-title" id="proj-2">ادیت ویدیو 🎬</div>
-        <div class="project-desc">ادیت و تولید محتوا برای یوتیوب و شبکه‌های اجتماعی.</div>
-        <div class="project-tech">CapCut / Filmora / Shotcut</div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact-section" style="margin-top:20px;">
-    <h2 style="color:var(--neon-1); margin-bottom:8px;">ارتباط با من</h2>
-    <div class="contact-card">
-      <form id="contact-form" action="https://formspree.io/f/mnngzdlw" method="POST" onsubmit="return validateForm(this);">
-        <input type="hidden" name="website" value="">
-        <input id="name" name="name" type="text" placeholder="نام شما" required />
-        <input id="email" name="email" type="email" placeholder="example@example.com" required />
-        <textarea id="message" name="message" rows="5" placeholder="متن پیام..." required></textarea>
-        <button class="btn-submit" type="submit">ارسال پیام</button>
-        <p id="formMessage" style="margin-top:8px;font-weight:700;text-align:right;"></p>
-      </form>
-    </div>
-  </section>
-
-</main>
+<!-- Contact -->
+<section id="contact-section">
+  <div class="contact-card">
+    <form id="contact-form" action="https://formspree.io/f/mnngzdlw" method="POST">
+      <input type="text" name="name" placeholder="نام شما" required>
+      <input type="email" name="email" placeholder="example@example.com" required>
+      <textarea name="message" rows="4" placeholder="متن پیام..." required></textarea>
+      <button class="btn-submit" type="submit">ارسال ✉</button>
+    </form>
+  </div>
+</section>
 
 <!-- Footer -->
 <footer>
-  <p>© 2025 تمامی حقوق محفوظ است</p>
-  <p class="footer-instagram"><a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank" rel="noopener">اینستاگرام من</a></p>
-</footer>
+  <p>© 2025 تمامی حقوق محفوظ است — آرسام خوش اخلاق</p>
+  <div class="social-buttons">
+    <!-- اینستاگرام -->
+    <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank" aria-label="اینستاگرام">
+      <svg viewBox="0 0 448 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9 114.9-51.3 114.9-114.9-51.3-114.9-114.9-114.9zm0 190.5c-41.6 0-75.6-33.9-75.6-75.6s33.9-75.6 75.6-75.6 75.6 33.9 75.6 75.6-33.9 75.6-75.6 75.6zm146.4-194.3c0 14.9-12.1 27-27 27-14.9 0-27-12.1-27-27s12.1-27 27-27c14.9 0 27 12.1 27 27zm76.1 27.2c-1.7-35.7-9.9-67.3-36.1-93.5-26.2-26.2-57.8-34.4-93.5-36.1-37-2.1-148.1-2.1-185.1 0-35.7 1.7-67.3 9.9-93.5 36.1s-34.4 57.8-36.1 93.5c-2.1 37-2.1 148.1 0 185.1 1.7 35.7 9.9 67.3 36.1 93.5s57.8 34.4 93.5 36.1c37 2.1 148.1 2.1 185.1 0 35.7-1.7 67.3-9.9 93.5-36.1s34.4-57.8 36.1-93.5c2.1-37 2.1-148.1 0-185.1zm-48.3 232c-7.8 19.5-22.9 34.6-42.4 42.4-29.4 11.7-99.3 9-132.8 9s-103.4 2.6-132.8-9c-19.5-7.8-34.6-22.9-42.4-42.4-11.7-29.4-9-99.3-9-132.8s-2.6-103.4 9-132.8c7.8-19.5 22.9-34.6 42.4-42.4 29.4-11.7 99.3-9 132.8-9s103.4-2.6 132.8 9c19.5 7.8 34.6 22.9 42.4 42.4 11.7 29.4 9 99.3 9 132.8s2.7 103.4-9 132.8z"/>
+      </svg>
+    </a>
 
-<!-- Chat widget -->
-<div id="chat-icon" role="button" aria-label="باز کردن منو">💬</div>
-<div id="chat-box" role="dialog" aria-hidden="true">
-  <div id="chat-header">🤖 منو</div>
-  <div class="chat-options">
-    <button onclick="document.getElementById('projects-section').scrollIntoView({behavior:'smooth'}); toggleChat();">پروژه‌ها</button>
-    <button onclick="document.getElementById('about-me').scrollIntoView({behavior:'smooth'}); toggleChat();">درباره من</button>
-    <button onclick="document.getElementById('contact-section').scrollIntoView({behavior:'smooth'}); toggleChat();">ارتباط با ما</button>
+    <!-- گیت‌هاب -->
+    <a href="https://arsamkhosh.github.io" target="_blank" aria-label="گیت‌هاب">
+      <svg viewBox="0 0 496 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-2.9 0-5.2-1.6-5.2-3.6 0-2 2.3-3.6 5.2-3.6 2.9 0 5.2 1.6 5.2 3.6zm-33.5-6.2c-.7 1.5 1.5 3.2 5.1 3.6 3.6.4 7.2-.4 7.9-1.9.7-1.5-1.5-3.2-5.1-3.6-3.6-.4-7.2.4-7.9 1.9zM248 8C111 8 0 119 0 256c0 110.3 71.3 203.8 170 237 12.4 2.3 17-5.4 17-12v-42.1c-69.1 15-83.8-33.2-83.8-33.2-11.2-28.5-27.3-36.2-27.3-36.2-22.3-15.2 1.7-14.9 1.7-14.9 24.6 1.7 37.6 25.3 37.6 25.3 21.9 37.5 57.5 26.7 71.5 20.4 2.2-15.8 8.6-26.7 15.6-32.8-55-6.2-112.5-27.4-112.5-121.8 0-27 9.6-49 25.4-66.3-2.6-6.2-11-31.3 2.4-65 0 0 20.7-6.6 67.8 25.2 19.7-5.5 40.8-8.3 61.8-8.4 21 0 42.1 2.9 61.8 8.4 47.1-31.8 67.8-25.2 67.8-25.2 13.5 33.8 5 58.8 2.4 65 15.8 17.3 25.4 39.3 25.4 66.3 0 94.7-57.8 115.6-112.9 121.8 8.8 7.6 16.7 22.5 16.7 45.4v67.4c0 6.6 4.6 14.3 17 12C424.7 459.8 496 366.3 496 256 496 119 385 8 248 8z"/>
+      </svg>
+    </a>
+
+    <!-- توییتر -->
+    <a href="https://twitter.com/username" target="_blank" aria-label="توییتر">
+      <svg viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M459.4 151.7c.3 4.1 .3 8.3 .3 12.4 0 126.7-96.5 273-273 273-54.3 0-104.8-15.9-147.3-43.1 7.6 .9 15.1 1.3 23 .1 45.2-4 86.8-24.5 119.7-58.5-42.2-.8-77.9-28.7-90.1-67 5.9 .9 11.9 1.3 18 .1-44.3-8.9-77.5-47.9-77.5-94.8v-1.3c13 7.2 28 11.7 43.8 12.3-26-17.4-43-47-43-80.5 0-17.8 4.8-34.5 13.1-48.9 47.6 58.3 118.7 96.6 198.8 100.6-1.6-7-2.5-14.2-2.5-21.7 0-52.9 42.9-95.8 95.8-95.8 27.6 0 52.5 11.7 70 30.4 21.8-4.3 42.4-12.3 60.9-23.3-7.2 22.5-22.5 41.4-42.3 53.3 19.3-2.3 37.8-7.5 54.9-15.2-12.8 19.2-28.8 36.1-47.2 49.6z"/>
+      </svg>
+    </a>
   </div>
-</div>
-
-<!-- Toast -->
-<div id="toast" class="toast" role="status" aria-live="polite">کپی شد</div>
-
-<script>
-/* ---------- Stars (dark only) ---------- */
-function createStars(count=60){
-  for(let i=0;i<count;i++){
-    const s = document.createElement('div');
-    s.className = 'star';
-    const size = 1 + Math.random()*2;
-    s.style.width = s.style.height = size + 'px';
-    s.style.left = (Math.random()*100) + 'vw';
-    s.style.top  = (Math.random()*100) + 'vh';
-    s.style.opacity = (0.2 + Math.random()*0.8).toString();
-    document.body.appendChild(s);
-  }
-}
-createStars(70);
-
-/* ---------- Theme (sun/moon) ---------- */
-const themeButton = document.getElementById('theme-toggle');
-let isDark = true;
-const stored = localStorage.getItem('site-theme');
-if(stored === 'light') applyLight(); else applyDark();
-
-themeButton.addEventListener('click', () => {
-  isDark ? applyLight() : applyDark();
-});
-
-function applyLight(){
-  document.body.classList.add('light-theme');
-  document.body.style.background = linear-gradient(135deg, ${getComputedStyle(document.documentElement).getPropertyValue('--bg-light-start') || '#f0f0f0'}, ${getComputedStyle(document.documentElement).getPropertyValue('--bg-light-end') || '#e6e6e6'});
-  document.body.style.color = '#222';
-  document.querySelectorAll('.project-card').forEach(c=>c.classList.add('light-theme'));
-  document.querySelectorAll('input,textarea').forEach(i=>i.classList.add('light-theme-input'));
-  document.querySelectorAll('.star').forEach(s=>s.style.display='none');
-  themeButton.textContent='☀';
-  isDark = false;
-  localStorage.setItem('site-theme','light');
-}
-
-function applyDark(){
-  document.body.classList.remove('light-theme');
-  document.body.style.background = 'linear-gradient(135deg,#0a0a0a,#111)';
-  document.body.style.color = '#eaeaea';
-  document.querySelectorAll('.project-card').forEach(c=>c.classList.remove('light-theme'));
-  document.querySelectorAll('input,textarea').forEach(i=>i.classList.remove('light-theme-input'));
-  document.querySelectorAll('.star').forEach(s=>s.style.display='block');
-  themeButton.textContent='🌙';
-  isDark = true;
-  localStorage.setItem('site-theme','dark');
-}
-
-/* ---------- Chat widget ---------- */
-const chatIcon = document.getElementById('chat-icon');
-const chatBox = document.getElementById('chat-box');
-function toggleChat(){
-  const show = chatBox.classList.toggle('show');
-  chatBox.setAttribute('aria-hidden', !show);
-}
-chatIcon.addEventListener('click', toggleChat);
-
-/* ---------- Toast helper ---------- */
-const toast = document.getElementById('toast');
-function showToast(text='کپی شد', dur=1600){
-  toast.textContent = text;
-  toast.style.display = 'block';
-  toast.style.opacity = '1';
-  setTimeout(()=> {
-    toast.style.opacity = '0';
-    setTimeout(()=> toast.style.display='none', 300);
-  }, dur);
-}
-
-/* ---------- Copy IP ---------- */
-const copyBtn = document.getElementById('copy-btn');
-copyBtn.addEventListener('click', ()=> {
-  const ip = document.getElementById('server-ip').textContent.trim();
-  navigator.clipboard.writeText(ip).then(()=> {
-    showToast('✅ آی‌پی کپی شد: ' + ip);
-  }).catch(()=> {
-    showToast('❌ کپی نشد — مرورگر اجازه نداد');
-  });
-});
-
-/* ---------- Server status (players) ---------- */
-async function updatePlayers(){
-  const countEl = document.getElementById('player-count');
-  const ip = document.getElementById('server-ip').textContent.trim();
-  countEl.textContent = 'در حال بررسی وضعیت سرور...';
-  try {
-    // mcsrvstat.us API
-    const res = await fetch('https://api.mcsrvstat.us/2/' + encodeURIComponent(ip));
-    if(!res.ok) throw new Error('network');
-    const data = await res.json();
-    const online = data.players?.online ?? 0;
-    const max = data.players?.max ?? (data.debug?.query?.max_players ?? 0);
-    // if server offline, data.online may be undefined
-    if(typeof data.online !== 'undefined' && data.online === false){
-      countEl.textContent = '❌ سرور آفلاین است';
-    } else {
-      countEl.textContent = 🎮 بازیکنان آنلاین: ${online}/${max};
-    }
-  } catch(err){
-    countEl.textContent = '❌ خطا در دریافت وضعیت سرور';
-    console.error(err);
-  }
-}
-// initial and periodic update
-updatePlayers();
-setInterval(updatePlayers, 60000); // آپدیت هر 60 ثانیه
-
-/* ---------- Contact form (Formspree) ---------- */
-function validateForm(f){
-  const msg = document.getElementById('formMessage');
-  if (!f) return false;
-  if (f.website && f.website.value.trim() !== ''){ msg.textContent = '❌ اسپم شناسایی شد'; return false; }
-  msg.style.color = isDark ? '#00ff99' : '#0066aa';
-  msg.textContent = 'در حال ارسال...';
-  fetch(f.action, { method: f.method, body: new FormData(f), headers: {'Accept':'application/json'} })
-    .then(res => {
-      if(res.ok){
-        f.reset();
-        msg.textContent = '✅ پیام با موفقیت ارسال شد!';
-      } else {
-        msg.textContent = '❌ خطا در ارسال پیام. دوباره تلاش کنید.';
-      }
-    })
-    .catch(err => {
-      msg.textContent = '❌ مشکلی رخ داد. اتصال اینترنت را بررسی کنید.';
-      console.error(err);
-    });
-  return false; // جلوگیری از submit عادی
-}
-
-/* ---------- Small UX: keyboard accessible cards ---------- */
-document.querySelectorAll('.project-card').forEach(card=>{
-  card.tabIndex = 0;
-  card.addEventListener('keypress', e=>{
-    if(e.key === 'Enter' || e.key === ' ') particleEffect(card);
-  });
-});
-
-/* ---------- Particle feedback (small) ---------- */
-function particleEffect(el){
-  // small top-left glow
-  el.animate([{transform:'scale(1)'},{transform:'scale(1.02)'},{transform:'scale(1)'}],{duration:220});
-}
-</script>
-</body>
-</html>
-](https://caesarcipher.online/)
+</footer>
