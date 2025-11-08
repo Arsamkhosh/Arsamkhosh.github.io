@@ -686,5 +686,43 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 });
 </script>
+<style>
+.social-buttons {
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  margin-top:16px;
+}
+.social-buttons a {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  background:#222;
+  color:#fff;
+  border-radius:6px;
+  font-size:18px;
+  transition: all 0.2s ease;
+  text-decoration:none;
+}
+.social-buttons a:hover{
+  box-shadow: 0 0 12px #00ffff, 0 0 20px #ff00cc;
+  transform: translateY(-2px);
+  color:#fff;
+}
+</style>
+
+<div class="social-buttons">
+  <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank" aria-label="اینستاگرام">
+    <i class="fab fa-instagram"></i> <!-- آیکون FontAwesome یا SVG -->
+  </a>
+  <a href="https://github.com/username" target="_blank" aria-label="گیت‌هاب">
+    <i class="fab fa-github"></i>
+  </a>
+  <a href="https://twitter.com/username" target="_blank" aria-label="توییتر">
+    <i class="fab fa-twitter"></i>
+  </a>
+</div>
 </body>
 </html>
