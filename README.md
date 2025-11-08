@@ -292,5 +292,71 @@ form.addEventListener('submit',async(e)=>{
   .projects{grid-template-columns:1fr;}
 }
 </style>
+<style>
+/* ---------- About Me ---------- */
+#about-me h2{
+  font-size:2.2rem;
+  margin-bottom:20px;
+  text-shadow:0 0 10px rgba(0,255,255,0.7), 0 0 20px rgba(255,0,204,0.6);
+}
+
+#about-me .about-card{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:25px;
+  border-radius:16px;
+  background:rgba(255,255,255,0.03);
+  box-shadow:0 6px 25px rgba(0,0,0,0.5);
+  transition:all 0.3s ease;
+}
+#about-me .about-card:hover{
+  box-shadow:0 0 25px rgba(0,255,255,0.3), 0 0 40px rgba(255,0,204,0.3);
+}
+
+/* ---------- Profile Pic (دایره نئون) ---------- */
+.profile-pic{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  background:var(--neon-1);
+  border:4px solid var(--neon-2);
+  box-shadow: 0 0 15px var(--neon-1), 0 0 25px var(--neon-2), 0 0 40px var(--neon-1);
+  flex-shrink:0;
+  animation: glow 2.5s infinite alternate;
+}
+
+/* افکت نئون متحرک */
+@keyframes glow{
+  0%{ box-shadow:0 0 10px var(--neon-1), 0 0 20px var(--neon-2); }
+  50%{ box-shadow:0 0 25px var(--neon-1), 0 0 40px var(--neon-2); }
+  100%{ box-shadow:0 0 15px var(--neon-1), 0 0 30px var(--neon-2); }
+}
+
+/* ---------- متن About Me ---------- */
+#about-me .about-text p{
+  font-size:1.1rem;
+  line-height:1.7;
+  color:#dfe;
+}
+
+/* ---------- ریسپانسیو ---------- */
+@media(max-width:720px){
+  #about-me .about-card{
+    flex-direction:column;
+    text-align:center;
+  }
+  .profile-pic{
+    width:100px;
+    height:100px;
+  }
+  #about-me h2{
+    font-size:1.8rem;
+  }
+  #about-me .about-text p{
+    font-size:1rem;
+  }
+}
+</style>
 </body>
 </html>
