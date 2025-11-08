@@ -7,14 +7,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --neon-1:#00ffff; /* فیروزه‌ای */
-  --neon-2:#ff00cc; /* صورتی/بنفش */
+  --neon-1:#00ffff;
+  --neon-2:#ff00cc;
   --accent-grad:linear-gradient(135deg,var(--neon-1),var(--neon-2));
   --bg-dark-start:#0a0a0a;
   --bg-dark-end:#111111;
 }
 
-/* ---------- Body ---------- */
 body{
   margin:0;
   padding:0;
@@ -45,7 +44,7 @@ body{
   50%{opacity:1;}
 }
 
-/* ---------- Header & Neon Effect ---------- */
+/* ---------- Header ---------- */
 header{
   padding:40px 0 10px;
 }
@@ -70,17 +69,6 @@ h1:hover{
     0 0 50px var(--neon-2),
     0 0 80px var(--neon-2),
     0 0 120px var(--neon-2);
-}
-
-/* ---------- Neon Divider ---------- */
-.neon-divider{
-  width:72%; 
-  max-width:760px; 
-  height:2px; 
-  margin:28px auto; 
-  border:none;
-  border-radius:1px;
-  background:linear-gradient(90deg, var(--neon-1), var(--neon-2));
 }
 
 /* ---------- About Me ---------- */
@@ -186,12 +174,15 @@ h1:hover{
 }
 
 /* ---------- Contact ---------- */
+#contact-section{
+  margin-top:40px;
+}
 .contact-card{
   max-width:700px;
   margin:20px auto;
   background:rgba(255,255,255,0.03);
   border-radius:14px;
-  padding:20px;
+  padding:30px 20px;
 }
 .contact-card input, .contact-card textarea{
   width:90%;
@@ -201,13 +192,13 @@ h1:hover{
   background:rgba(255,255,255,0.03);
   color:#eaeaea;
   font-family:inherit;
-  margin-bottom:10px;
+  margin-bottom:15px;
 }
 .btn-submit{
   background:var(--accent-grad);
   color:#000;
   border:none;
-  padding:8px 18px;
+  padding:10px 20px;
   border-radius:30px;
   font-weight:800;
   cursor:pointer;
@@ -220,7 +211,7 @@ h1:hover{
   box-shadow:0 0 20px rgba(255,0,204,0.45);
 }
 @keyframes neon-flicker {
-  0%, 100% { box-shadow: 0 0 8px var(--neon-2), 0 0 12px var(--neon-1);}
+  0%,100% { box-shadow: 0 0 8px var(--neon-2), 0 0 12px var(--neon-1);}
   50% { box-shadow: 0 0 15px var(--neon-2), 0 0 25px var(--neon-1);}
   70% { box-shadow: 0 0 5px var(--neon-2), 0 0 10px var(--neon-1);}
 }
@@ -274,7 +265,6 @@ footer a{color:var(--neon-1);}
 </header>
 
 <script>
-// Stars
 for(let i=0;i<150;i++){
   const s=document.createElement('div');
   s.className='star';
@@ -287,6 +277,7 @@ for(let i=0;i<150;i++){
 }
 </script>
 
+<!-- ---------- About Me ---------- -->
 <section id="about-me">
   <div class="about-card">
     <div class="profile-pic"></div>
@@ -294,8 +285,7 @@ for(let i=0;i<150;i++){
   </div>
 </section>
 
-<hr class="neon-divider">
-
+<!-- ---------- Projects ---------- -->
 <section id="projects-section">
   <div class="project-card">
     <div class="project-title">🌍 سرور ماینکرفت LAVA JUMP</div>
@@ -320,8 +310,8 @@ for(let i=0;i<150;i++){
   </div>
 </section>
 
+<!-- ---------- Contact ---------- -->
 <section id="contact-section">
-  <hr class="neon-divider">
   <div class="contact-card">
     <form id="contact-form" action="https://formspree.io/f/mnngzdlw" method="POST">
       <input type="text" name="name" placeholder="نام شما" required>
@@ -332,21 +322,21 @@ for(let i=0;i<150;i++){
   </div>
 </section>
 
+<!-- ---------- Footer ---------- -->
 <footer>
   <p>© 2025 تمامی حقوق محفوظ است — آرسام خوش اخلاق</p>
   <div class="social-buttons">
-        <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank" aria-label="اینستاگرام">
-      <svg viewBox="0 0 448 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9 114.9-51.3 114.9-114.9-51.3-114.9-114.9-114.9zm0 190.5c-41.6 0-75.6-33.9-75.6-75.6s33.9-75.6 75.6-75.6 75.6 33.9 75.6 75.6-33.9 75.6-75.6 75.6zm146.4-194.3c0 14.9-12.1 27-27 27-14.9 0-27-12.1-27-27s12.1-27 27-27c14.9 0 27 12.1 27 27zm76.1 27.2c-1.7-35.7-9.9-67.3-36.1-93.5-26.2-26.2-57.8-34.4-93.5-36.1-37-2.1-148.1-2.1-185.1 0-35.7 1.7-67.3 9.9-93.5 36.1s-34.4 57.8-36.1 93.5c-2.1 37-2.1 148.1 0 185.1 1.7 35.7 9.9 67.3 36.1 93.5s57.8 34.4 93.5 36.1c37 2.1 148.1 2.1 185.1 0 35.7-1.7 67.3-9.9 93.5-36.1s34.4-57.8 36.1-93.5c2.1-37 2.1-148.1 0-185.1zm-48.3 232c-7.8 19.5-22.9 34.6-42.4 42.4-29.4 11.7-99.3 9-132.8 9s-103.4 2.6-132.8-9c-19.5-7.8-34.6-22.9-42.4-42.4-11.7-29.4-9-99.3-9-132.8s-2.6-103.4 9-132.8c7.8-19.5 22.9-34.6 42.4-42.4 29.4-11.7 99.3-9 132.8-9s103.4-2.6 132.8 9c19.5 7.8 34.6 22.9 42.4 42.4 11.7 29.4 9 99.3 9 132.8s2.7 103.4-9 132.8z"/></svg>
-    </a>
-
-        <a href="https://github.com/arsamkhosh" target="_blank" aria-label="گیت‌هاب">
+      <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank" aria-label="اینستاگرام">
+      <svg viewBox="0 0 448 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9 114.9-51.3 114.9-114.9-51.3-114.9-114.9-114.9zm0 190.5c-41.6 0-75.6-33.9-75.6-75.6s33.9-75.6 75.6-75.6 75.6 33.9 75.6 75.6-33.9 75.6-75.6 75.6zm146.4-194.3c0 14.9-12.1 27-27 27-14.9 0-27-12.1-27-27s12.1-27 27-27c14.9 0 27 12.1 27 27z"/></svg>
+      </a>
+      <a href="https://github.com/arsamkhosh" target="_blank" aria-label="گیت‌هاب">
       <svg viewBox="0 0 496 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-2.9 0-5.2-1.6-5.2-3.6 0-2 2.3-3.6 5.2-3.6 2.9 0 5.2 1.6 5.2 3.6zm-33.5-6.2c-.7 1.5 1.5 3.2 5.1 3.6 3.6.4 7.2-.4 7.9-1.9.7-1.5-1.5-3.2-5.1-3.6-3.6-.4-7.2.4-7.9 1.9zM248 8C111 8 0 119 0 256c0 110.3 71.3 203.8 170 237 12.4 2.3 17-5.4 17-12v-42.1c-69.1 15-83.8-33.2-83.8-33.2-11.2-28.5-27.3-36.2-27.3-36.2-22.3-15.2 1.7-14.9 1.7-14.9 24.6 1.7 37.6 25.3 37.6 25.3 21.9 37.5 57.5 26.7 71.5 20.4 2.2-15.8 8.6-26.7 15.6-32.8-55-6.2-112.5-27.4-112.5-121.8 0-27 9.6-49 25.4-66.3-2.6-6.2-11-31.3 2.4-65 0 0 20.7-6.6 67.8 25.2 19.7-5.5 40.8-8.3 61.8-8.4 21 0 42.1 2.9 61.8 8.4 47.1-31.8 67.8-25.2 67.8-25.2 13.5 33.8 5 58.8 2.4 65 15.8 17.3 25.4 39.3 25.4 66.3 0 94.7-57.8 115.6-112.9 121.8 8.8 7.6 16.7 22.5 16.7 45.4v67.4c0 6.6 4.6 14.3 17 12C424.7 459.8 496 366.3 496 256 496 119 385 8 248 8z"/></svg>
-    </a>
+      </a>
   </div>
 </footer>
 
 <script>
-// Server IP & status
+// Server IP from HTML
 const serverIP = document.getElementById('server-ip').textContent.trim();
 const playerCountEl = document.getElementById('player-count');
 const apiURL = `https://api.mcstatus.io/v2/status/java/${serverIP}`;
@@ -361,20 +351,21 @@ async function fetchServerStatus() {
       playerCountEl.textContent = `✅ سرور آنلاین! بازیکنان: ${players} نفر`;
       playerCountEl.classList.add('online');
     } else {
-      playerCountEl.textContent = '❌ سرور در حال حاضر آفلاین است.';
+      playerCountEl.textContent = '❌ سرور آفلاین است';
       playerCountEl.classList.add('offline');
     }
-  } catch (error) {
-    console.error("Error fetching server status:", error);
-    playerCountEl.textContent = '❗ مشکلی در اتصال به سرور رخ داد.';
+  } catch(e) {
+    playerCountEl.textContent = '⚠️ وضعیت سرور قابل دریافت نیست';
     playerCountEl.classList.add('offline');
   }
 }
 fetchServerStatus();
-setInterval(fetchServerStatus, 30000); 
-document.getElementById('copy-btn').addEventListener('click', () => {
+setInterval(fetchServerStatus,10000);
+
+// Copy IP
+document.getElementById('copy-btn').addEventListener('click',()=>{
   navigator.clipboard.writeText(serverIP);
-  alert('آدرس سرور کپی شد: ' + serverIP);
+  alert(`آدرس سرور ${serverIP} کپی شد!`);
 });
 </script>
 
