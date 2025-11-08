@@ -408,5 +408,218 @@ form.addEventListener('submit',async(e)=>{
 
 /* ---------- ریسپانسیو ---------- */
 @media(max-wi
+       <style>
+:root{
+  --neon-1:#00ffff;
+  --neon-2:#ff00cc;
+}
+
+/* ---------- Stars ---------- */
+.star{
+  position:fixed;
+  width:2px;
+  height:2px;
+  border-radius:50%;
+  background:#fff;
+  opacity:0.8;
+  z-index:0;
+  pointer-events:none;
+  animation:twinkle 3s infinite;
+}
+@keyframes twinkle{
+  0%,100%{opacity:0.2;}
+  50%{opacity:1;}
+}
+
+/* ---------- About Me ---------- */
+#about-me h2{
+  font-size:2rem;
+  margin-bottom:18px;
+  text-shadow:0 0 8px rgba(0,255,255,0.7),0 0 16px rgba(255,0,204,0.6);
+}
+#about-me .about-card{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:20px;
+  border-radius:16px;
+  background:rgba(255,255,255,0.03);
+  box-shadow:0 5px 20px rgba(0,0,0,0.45);
+  transition:all 0.3s ease;
+}
+#about-me .about-card:hover{
+  box-shadow:0 0 20px rgba(0,255,255,0.3),0 0 30px rgba(255,0,204,0.3);
+}
+.profile-pic{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  background:var(--neon-1);
+  border:3px solid var(--neon-2);
+  box-shadow:0 0 10px var(--neon-1),0 0 20px var(--neon-2),0 0 30px var(--neon-1);
+  flex-shrink:0;
+  animation:glow 2.5s infinite alternate;
+}
+@keyframes glow{
+  0%{box-shadow:0 0 8px var(--neon-1),0 0 16px var(--neon-2);}
+  50%{box-shadow:0 0 15px var(--neon-1),0 0 25px var(--neon-2);}
+  100%{box-shadow:0 0 12px var(--neon-1),0 0 20px var(--neon-2);}
+}
+#about-me .about-text p{
+  font-size:1.05rem;
+  line-height:1.6;
+  color:#dfe;
+}
+
+/* ---------- Projects ---------- */
+.projects{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:20px;
+  margin-top:20px;
+}
+.project-card{
+  padding:20px;
+  border-radius:14px;
+  background:rgba(255,255,255,0.03);
+  box-shadow:0 6px 22px rgba(0,0,0,0.45);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.project-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 14px 40px rgba(0,0,0,0.55);
+}
+.project-title{
+  font-size:1.2rem;
+  font-weight:700;
+  color:var(--neon-1);
+  margin-bottom:8px;
+}
+.project-desc{
+  font-size:1rem;
+  color:#cfdada;
+  margin-bottom:10px;
+}
+.project-tech{
+  font-size:0.9rem;
+  color:#ffd399;
+  font-weight:700;
+}
+
+/* ---------- Server Terminal ---------- */
+.server-terminal{
+  background:#000;
+  border-radius:10px;
+  border:1px solid rgba(0,255,255,0.12);
+  padding:12px;
+  font-family:ui-monospace,Monaco,"Roboto Mono",monospace;
+  color:#00ff99;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:10px;
+}
+.btn-copy{
+  background:linear-gradient(135deg,var(--neon-1),var(--neon-2));
+  border:none;
+  color:#000;
+  padding:6px 10px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:700;
+  transition:all 0.15s ease;
+}
+.btn-copy:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(255,0,204,0.1);
+}
+
+/* ---------- Contact Form ---------- */
+.contact-card{
+  background:rgba(255,255,255,0.03);
+  border-radius:12px;
+  padding:14px;
+}
+input,textarea{
+  padding:8px; border-radius:10px; border:1px solid rgba(0,255,255,0.08);
+  background:rgba(255,255,255,0.02); color:#eaeaea; font-family:inherit;
+  width:100%;
+}
+input::placeholder,textarea::placeholder{color:#9fbaba;}
+.btn-submit{
+  padding:8px 10px; border-radius:10px; border:none;
+  background:linear-gradient(135deg,var(--neon-1),var(--neon-2));
+  color:#000; font-weight:700; cursor:pointer;
+  transition:all 0.12s ease;
+}
+.btn-submit:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(255,0,204,0.08);
+  font-weight:800;
+}
+
+/* ---------- Responsive ---------- */
+@media(max-width:720px){
+  #about-me .about-card{flex-direction:column;text-align:center;}
+  .profile-pic{width:80px;height:80px;}
+  #about-me h2{font-size:1.6rem;}
+  #about-me .about-text p{font-size:0.95rem;}
+  .projects{grid-template-columns:1fr;}
+}
+</style>
+
+<script>
+/* ---------- Stars Creation ---------- */
+function createStars(count=70){
+  for(let i=0;i<count;i++){
+    const s=document.createElement('div');
+    s.className='star';
+    const size=1+Math.random()*2;
+    s.style.width=s.style.height=size+'px';
+    s.style.left=(Math.random()*100)+'vw';
+    s.style.top=(Math.random()*100)+'vh';
+    s.style.opacity=(0.2+Math.random()*0.8).toString();
+    document.body.appendChild(s);
+  }
+}
+createStars();
+
+/* ---------- Copy IP ---------- */
+document.addEventListener('DOMContentLoaded',()=> {
+  const copyBtn=document.getElementById('copy-btn');
+  if(copyBtn){
+    copyBtn.addEventListener('click',()=> {
+      const ip=document.getElementById('server-ip').textContent.trim();
+      navigator.clipboard.writeText(ip).then(()=> {
+        alert('آی‌پی کپی شد: '+ip);
+      });
+    });
+  }
+
+  /* ---------- Server Players ---------- */
+  async function updatePlayers(){
+    const countEl=document.getElementById('player-count');
+    const ip=document.getElementById('server-ip').textContent.trim();
+    countEl.textContent='در حال بررسی وضعیت سرور...';
+    try{
+      const res=await fetch('https://api.mcsrvstat.us/2/'+encodeURIComponent(ip));
+      const data=await res.json();
+      const online=data.players?.online ?? 0;
+      const max=data.players?.max ?? (data.debug?.query?.max_players ?? 0);
+      if(data.online===false){
+        countEl.textContent='❌ سرور آفلاین است';
+      }else{
+        countEl.textContent=`🎮 بازیکنان آنلاین: ${online}/${max}`;
+      }
+    }catch(err){
+      countEl.textContent='❌ خطا در دریافت وضعیت سرور';
+      console.error(err);
+    }
+  }
+  updatePlayers();
+  setInterval(updatePlayers,10000); // آپدیت هر 10 ثانیه
+});
+</script>
 </body>
 </html>
