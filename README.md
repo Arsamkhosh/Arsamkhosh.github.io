@@ -239,5 +239,58 @@ form.addEventListener('submit',async(e)=>{
   else{alert('❌ خطا در ارسال پیام، دوباره امتحان کنید.');}
 });
 </script>
+<style>
+/* ----------------- About Me بزرگتر ----------------- */
+#about-me .about-card{
+  padding:25px;
+}
+#about-me h2{
+  font-size:2.2rem;
+  margin-bottom:20px;
+}
+
+/* ----------------- پروژه‌ها کنار هم ----------------- */
+.projects{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap:20px;
+  margin-top:20px;
+}
+
+/* ----------------- کارت پروژه ----------------- */
+.project-card{
+  padding:20px;
+  border-radius:14px;
+  background:rgba(255,255,255,0.03);
+  box-shadow:0 6px 22px rgba(0,0,0,0.45);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.project-card:hover{
+  transform: translateY(-6px);
+  box-shadow:0 14px 40px rgba(0,0,0,0.55);
+}
+.project-title{
+  font-size:1.2rem;
+  font-weight:700;
+  color:var(--neon-1);
+  margin-bottom:8px;
+}
+.project-desc{
+  font-size:1rem;
+  color:#cfdada;
+  margin-bottom:10px;
+}
+.project-tech{
+  font-size:0.9rem;
+  color:#ffd399;
+  font-weight:700;
+}
+
+/* ----------------- ریسپانسیو ----------------- */
+@media(max-width:720px){
+  #about-me h2{font-size:1.8rem;}
+  .projects{grid-template-columns:1fr;}
+}
+</style>
 </body>
 </html>
