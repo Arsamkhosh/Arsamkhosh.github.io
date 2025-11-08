@@ -724,5 +724,28 @@ document.addEventListener('DOMContentLoaded', function(){
     <i class="fab fa-twitter"></i>
   </a>
 </div>
+<button class="fancy-btn">
+  <span>اینستاگرام</span>
+</button>
+
+<style>
+.fancy-btn {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: white;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.fancy-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+</style>
 </body>
 </html>
