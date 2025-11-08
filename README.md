@@ -634,5 +634,57 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 });
 </script>
+<style>
+:root{
+  --neon-1:#00ffff;
+  --neon-2:#ff00cc;
+}
+
+/* ---------- کل صفحه ستاره دار ---------- */
+.star{
+  position:fixed;
+  width:2px;
+  height:2px;
+  border-radius:50%;
+  background:#fff;
+  opacity:0.8;
+  z-index:0;
+  pointer-events:none;
+  animation:twinkle 3s infinite;
+}
+@keyframes twinkle{
+  0%,100%{opacity:0.2;}
+  50%{opacity:1;}
+}
+
+/* ---------- Body ---------- */
+body{
+  margin:0;
+  padding:0;
+  min-height:100vh;
+  background:linear-gradient(135deg,#0a0a0a,#111);
+  color:#eaeaea;
+  font-family:'Vazirmatn',sans-serif;
+  overflow-x:hidden;
+  position:relative;
+  z-index:1;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const starCount = 150; // تعداد ستاره‌ها
+  for(let i=0;i<starCount;i++){
+    const s = document.createElement('div');
+    s.className='star';
+    const size = 1 + Math.random()*2;
+    s.style.width = s.style.height = size + 'px';
+    s.style.left = (Math.random()*100)+'vw';
+    s.style.top = (Math.random()*100)+'vh';
+    s.style.opacity = (0.2 + Math.random()*0.8).toString();
+    document.body.appendChild(s);
+  }
+});
+</script>
 </body>
 </html>
