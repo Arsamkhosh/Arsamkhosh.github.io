@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>پروژه‌های من</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
 :root{
   --neon-1:#00ffff;
@@ -14,7 +15,6 @@
   --bg-dark-end:#111111;
 }
 
-/* ---------- Body ---------- */
 body{
   margin:0;
   padding:0;
@@ -23,12 +23,10 @@ body{
   color:#eaeaea;
   text-align:center;
   overflow-x:hidden;
-  min-height:100vh;
   position:relative;
-  z-index:1;
 }
 
-/* ---------- Stars ---------- */
+/* ---------- ستاره‌ها ---------- */
 .star{
   position:fixed;
   width:2px;
@@ -45,8 +43,10 @@ body{
   50%{opacity:1;}
 }
 
-/* ---------- Header ---------- */
-header{padding:40px 0 10px;}
+/* ---------- هدر ---------- */
+header{
+  padding:40px 0 10px;
+}
 h1{
   color:var(--neon-1);
   font-size:2.3rem;
@@ -54,9 +54,12 @@ h1{
   cursor:pointer;
   transition:all 0.3s ease;
 }
-h1:hover{transform:scale(1.03); text-shadow:0 0 35px var(--neon-1),0 0 65px var(--neon-2);}
+h1:hover{
+  transform:scale(1.03);
+  text-shadow:0 0 35px var(--neon-1),0 0 65px var(--neon-2);
+}
 
-/* ---------- Sections ---------- */
+/* ---------- About Me ---------- */
 section{
   margin:40px auto;
   max-width:700px;
@@ -68,24 +71,15 @@ section{
 }
 section:hover{box-shadow:0 0 25px rgba(0,255,255,0.2);}
 
-/* ---------- About Me ---------- */
-#about-me h2{
-  font-size:2rem;
-  margin-bottom:18px;
-  text-shadow:0 0 8px rgba(0,255,255,0.7),0 0 16px rgba(255,0,204,0.6);
-}
-#about-me .about-card{
+.about-card{
   display:flex;
+  gap:14px;
   align-items:center;
-  gap:18px;
-  padding:20px;
-  border-radius:16px;
   background:rgba(255,255,255,0.03);
-  box-shadow:0 5px 20px rgba(0,0,0,0.45);
+  border-radius:12px;
+  padding:16px;
+  box-shadow:0 6px 22px rgba(0,0,0,0.45);
   transition:all 0.3s ease;
-}
-#about-me .about-card:hover{
-  box-shadow:0 0 20px rgba(0,255,255,0.3),0 0 30px rgba(255,0,204,0.3);
 }
 .profile-pic{
   width:100px;
@@ -101,11 +95,6 @@ section:hover{box-shadow:0 0 25px rgba(0,255,255,0.2);}
   0%{box-shadow:0 0 8px var(--neon-1),0 0 16px var(--neon-2);}
   50%{box-shadow:0 0 15px var(--neon-1),0 0 25px var(--neon-2);}
   100%{box-shadow:0 0 12px var(--neon-1),0 0 20px var(--neon-2);}
-}
-#about-me .about-text p{
-  font-size:1.05rem;
-  line-height:1.6;
-  color:#dfe;
 }
 
 /* ---------- Projects ---------- */
@@ -158,7 +147,7 @@ section:hover{box-shadow:0 0 25px rgba(0,255,255,0.2);}
   margin-top:10px;
 }
 .btn-copy{
-  background:linear-gradient(135deg,var(--neon-1),var(--neon-2));
+  background:var(--accent-grad);
   border:none;
   color:#000;
   padding:6px 10px;
@@ -176,25 +165,79 @@ section:hover{box-shadow:0 0 25px rgba(0,255,255,0.2);}
 .contact-card{
   background:rgba(255,255,255,0.03);
   border-radius:12px;
-  padding:14px;
+  padding:20px;
+  box-shadow:0 6px 25px rgba(0,0,0,0.4);
+}
+.contact-card form{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
 }
 input,textarea{
-  padding:8px; border-radius:10px; border:1px solid rgba(0,255,255,0.08);
-  background:rgba(255,255,255,0.02); color:#eaeaea; font-family:inherit;
   width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid rgba(0,255,255,0.1);
+  background:rgba(255,255,255,0.05);
+  color:#fff;
+  font-family:inherit;
+  text-align:right;
 }
-input::placeholder,textarea::placeholder{color:#9fbaba;}
+input::placeholder,textarea::placeholder{color:#aaa;}
+input:focus,textarea:focus{
+  border-color:var(--neon-1);
+  box-shadow:0 0 12px var(--neon-1);
+  outline:none;
+}
 .btn-submit{
-  padding:8px 10px; border-radius:10px; border:none;
-  background:linear-gradient(135deg,var(--neon-1),var(--neon-2));
-  color:#000; font-weight:700; cursor:pointer;
-  transition:all 0.12s ease;
-}
-.btn-submit:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 20px rgba(255,0,204,0.08);
+  background:var(--accent-grad);
+  color:#000;
+  border:none;
+  padding:10px 20px;
+  border-radius:30px;
   font-weight:800;
+  cursor:pointer;
+  box-shadow:0 0 12px rgba(255,0,204,0.3);
+  position:relative;
+  overflow:hidden;
+  transition:0.3s;
 }
+.btn-submit::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:rgba(255,255,255,0.3);
+  transform:skewX(-25deg);
+  transition:0.4s;
+}
+.btn-submit:hover::before{left:100%;}
+.btn-submit:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 20px rgba(255,0,204,0.45);
+}
+.success-message{
+  display:none;
+  margin-top:10px;
+  color:#00ff88;
+  font-weight:bold;
+  text-shadow:0 0 8px #00ff88;
+  animation:fadeIn 0.8s ease forwards;
+}
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(5px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ---------- Footer ---------- */
+footer{
+  margin-top:30px;
+  padding:18px;
+  color:#bfcfcf;
+}
+footer a{color:var(--neon-1);}
 
 /* ---------- Social Buttons ---------- */
 .social-buttons {
@@ -228,31 +271,31 @@ input::placeholder,textarea::placeholder{color:#9fbaba;}
   height:24px;
 }
 
-/* ---------- Footer ---------- */
-footer{
-  color:#bfcfcf;
-  text-align:center;
-  text-shadow:0 0 5px #00ffff,0 0 10px #ff00cc;
-  margin-top:30px;
-  padding:18px;
+/* ---------- Responsive ---------- */
+@media(max-width:720px){
+  #about-me .about-card{flex-direction:column;text-align:center;}
+  .profile-pic{width:80px;height:80px;}
+  #about-me h2{font-size:1.6rem;}
+  #about-me .about-text p{font-size:0.95rem;}
+  .projects{grid-template-columns:1fr;}
 }
 </style>
-</head>
-<body>
 
+</head>
+
+<body>
 <header>
   <h1>پروژه‌های من</h1>
 </header>
 
 <main>
-
 <!-- About Me -->
 <section id="about-me">
   <h2>درباره من</h2>
   <div class="about-card">
     <div class="profile-pic"></div>
     <div class="about-text">
-      <p>سلام! من توسعه‌دهنده وب، ماینکرفت‌ باز و سازنده سرورهای اختصاصی هستم. اینجا نمونه‌کارها و راه‌های ارتباط با من قرار داره.</p>
+      <p>سلام! من <strong>آرسام خوش اخلاق</strong> هستم — توسعه‌دهنده وب، ماینکرفت‌باز و سازنده سرورهای اختصاصی. اینجا نمونه‌کارها و راه‌های ارتباط با من قرار داره.</p>
     </div>
   </div>
 </section>
@@ -270,11 +313,13 @@ footer{
       </div>
       <div id="player-count">در حال بررسی وضعیت سرور...</div>
     </div>
+
     <div class="project-card">
       <div class="project-title">سایت شخصی 🌐</div>
       <div class="project-desc">طراحی و پیاده‌سازی سایت شخصی با تمرکز روی ظاهر نئون و تجربه‌ی کاربری.</div>
       <div class="project-tech">HTML / CSS / JavaScript</div>
     </div>
+
     <div class="project-card">
       <div class="project-title">ادیت ویدیو 🎬</div>
       <div class="project-desc">ادیت و تولید محتوا برای یوتیوب و شبکه‌های اجتماعی.</div>
@@ -297,43 +342,42 @@ footer{
   </div>
 </section>
 
-<!-- Social Buttons -->
+</main>
+
+<!-- Social -->
 <div class="social-buttons">
   <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank" aria-label="اینستاگرام">
-    <!-- svg اینستاگرام اینجا قرار می‌گیرد -->
+    <!-- SVG اینستاگرام -->
   </a>
   <a href="https://github.com/username" target="_blank" aria-label="گیت‌هاب">
-    <!-- svg گیت‌هاب اینجا قرار می‌گیرد -->
+    <!-- SVG گیت‌هاب -->
   </a>
   <a href="https://twitter.com/username" target="_blank" aria-label="توییتر">
-    <!-- svg توییتر اینجا قرار می‌گیرد -->
+    <!-- SVG توییتر -->
   </a>
 </div>
 
-</main>
-
+<!-- Footer -->
 <footer>
-  © 2025 تمامی حقوق محفوظ است
+  <p>© 2025 تمامی حقوق متعلق به آرسام خوش اخلاق است</p>
 </footer>
 
 <script>
-/* ---------- Stars Creation ---------- */
-function createStars(count=150){
-  for(let i=0;i<count;i++){
-    const s=document.createElement('div');
+/* ---------- Stars ---------- */
+document.addEventListener('DOMContentLoaded', function(){
+  const starCount = 150;
+  for(let i=0;i<starCount;i++){
+    const s = document.createElement('div');
     s.className='star';
-    const size=1+Math.random()*2;
-    s.style.width=s.style.height=size+'px';
-    s.style.left=(Math.random()*100)+'vw';
-    s.style.top=(Math.random()*100)+'vh';
-    s.style.opacity=(0.2+Math.random()*0.8).toString();
+    const size = 1 + Math.random()*2;
+    s.style.width = s.style.height = size + 'px';
+    s.style.left = (Math.random()*100)+'vw';
+    s.style.top = (Math.random()*100)+'vh';
+    s.style.opacity = (0.2 + Math.random()*0.8).toString();
     document.body.appendChild(s);
   }
-}
-createStars();
 
-/* ---------- Copy IP ---------- */
-document.addEventListener('DOMContentLoaded',()=> {
+  /* ---------- Copy IP ---------- */
   const copyBtn=document.getElementById('copy-btn');
   if(copyBtn){
     copyBtn.addEventListener('click',()=> {
@@ -366,18 +410,19 @@ document.addEventListener('DOMContentLoaded',()=> {
   }
   updatePlayers();
   setInterval(updatePlayers,10000);
-});
 
-/* ---------- Contact Form ---------- */
-const form=document.getElementById('contact-form');
-const successMsg=document.getElementById('successMessage');
-form.addEventListener('submit',async(e)=>{
-  e.preventDefault();
-  const data=new FormData(form);
-  const res=await fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}});
-  if(res.ok){form.reset();successMsg.style.display='block';setTimeout(()=>successMsg.style.display='none',4000);}
-  else{alert('❌ خطا در ارسال پیام، دوباره امتحان کنید.');}
+  /* ---------- Contact Form ---------- */
+  const form=document.getElementById('contact-form');
+  const successMsg=document.getElementById('successMessage');
+  form.addEventListener('submit',async(e)=>{
+    e.preventDefault();
+    const data=new FormData(form);
+    const res=await fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}});
+    if(res.ok){form.reset();successMsg.style.display='block';setTimeout(()=>successMsg.style.display='none',4000);}
+    else{alert('❌ خطا در ارسال پیام، دوباره امتحان کنید.');}
+  });
 });
 </script>
+
 </body>
 </html>
