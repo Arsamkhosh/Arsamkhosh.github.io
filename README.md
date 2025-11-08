@@ -9,7 +9,6 @@
 :root{
   --neon-1:#00ffff;
   --neon-2:#ff00cc;
-  --accent-grad:linear-gradient(135deg,var(--neon-1),var(--neon-2));
   --bg-dark-start:#0a0a0a;
   --bg-dark-end:#111111;
 }
@@ -24,10 +23,9 @@ body{
   overflow-x:hidden;
   min-height:100vh;
   position:relative;
-  z-index:1;
 }
 
-/* ---------- Stars ---------- */
+/* ستاره‌ها */
 .star{
   position:fixed;
   width:2px;
@@ -44,7 +42,6 @@ body{
   50%{opacity:1;}
 }
 
-/* ---------- Header ---------- */
 header{
   padding:40px 0 10px;
 }
@@ -52,37 +49,27 @@ h1{
   color:#fff;
   font-size:2.8rem;
   font-weight:800;
-  text-shadow:
-    0 0 7px var(--neon-1),
-    0 0 15px var(--neon-1),
-    0 0 25px var(--neon-2),
-    0 0 40px var(--neon-2),
-    0 0 70px var(--neon-2);
+  text-shadow:0 0 7px var(--neon-1),0 0 15px var(--neon-1),0 0 25px var(--neon-2),0 0 40px var(--neon-2),0 0 70px var(--neon-2);
   cursor:pointer;
   transition:all 0.3s ease;
 }
 h1:hover{
   transform:scale(1.03);
-  text-shadow:
-    0 0 10px var(--neon-1),
-    0 0 30px var(--neon-1),
-    0 0 50px var(--neon-2),
-    0 0 80px var(--neon-2),
-    0 0 120px var(--neon-2);
+  text-shadow:0 0 10px var(--neon-1),0 0 30px var(--neon-1),0 0 50px var(--neon-2),0 0 80px var(--neon-2),0 0 120px var(--neon-2);
 }
 
-/* ---------- About Me ---------- */
-#about-me{
-  margin:40px auto;
-  max-width:700px;
-}
-.about-card{
+/* کارت‌ها */
+.card{
   display:flex;
+  flex-direction:row;
   gap:16px;
   align-items:center;
+  justify-content:center;
   background:rgba(255,255,255,0.03);
   border-radius:14px;
   padding:20px;
+  max-width:700px;
+  margin:40px auto;
   box-shadow:0 6px 22px rgba(0,0,0,0.45);
 }
 .profile-pic{
@@ -100,13 +87,14 @@ h1:hover{
   50%{ box-shadow:0 0 15px var(--neon-1),0 0 25px var(--neon-2);}
   100%{ box-shadow:0 0 12px var(--neon-1),0 0 20px var(--neon-2);}
 }
-.about-card p{
+.card p{
   font-size:1.05rem;
   line-height:1.6;
   color:#dfe;
+  text-align:right;
 }
 
-/* ---------- Projects ---------- */
+/* پروژه‌ها */
 .project-card{
   margin:20px auto;
   max-width:700px;
@@ -137,49 +125,10 @@ h1:hover{
   font-weight:700;
 }
 
-/* ---------- Server Terminal ---------- */
-.server-terminal{
-  background:#000;
-  border-radius:10px;
-  border:1px solid rgba(0,255,255,0.12);
-  padding:12px;
-  font-family:ui-monospace,Monaco,"Roboto Mono",monospace;
-  color:#00ff99;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-top:10px;
-}
-#player-count.online{
-  color:var(--neon-1);
-  font-weight:700;
-}
-#player-count.offline{
-  color:var(--neon-2);
-  font-weight:700;
-}
-.btn-copy{
-  background:var(--accent-grad);
-  border:none;
-  color:#000;
-  padding:6px 10px;
-  border-radius:8px;
-  cursor:pointer;
-  font-weight:700;
-  transition:all 0.15s ease;
-}
-.btn-copy:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 20px rgba(255,0,204,0.1);
-}
-
-/* ---------- Contact ---------- */
-#contact-section{
-  margin-top:40px;
-}
+/* فرم ارتباط */
 .contact-card{
   max-width:700px;
-  margin:20px auto;
+  margin:40px auto;
   background:rgba(255,255,255,0.03);
   border-radius:14px;
   padding:30px 20px;
@@ -192,10 +141,10 @@ h1:hover{
   background:rgba(255,255,255,0.03);
   color:#eaeaea;
   font-family:inherit;
-  margin-bottom:15px;
+  margin-bottom:12px;
 }
 .btn-submit{
-  background:var(--accent-grad);
+  background:linear-gradient(135deg,var(--neon-1),var(--neon-2));
   color:#000;
   border:none;
   padding:10px 20px;
@@ -211,55 +160,26 @@ h1:hover{
   box-shadow:0 0 20px rgba(255,0,204,0.45);
 }
 @keyframes neon-flicker {
-  0%,100% { box-shadow: 0 0 8px var(--neon-2), 0 0 12px var(--neon-1);}
-  50% { box-shadow: 0 0 15px var(--neon-2), 0 0 25px var(--neon-1);}
-  70% { box-shadow: 0 0 5px var(--neon-2), 0 0 10px var(--neon-1);}
+  0%, 100% { box-shadow:0 0 8px var(--neon-2),0 0 12px var(--neon-1);}
+  50% { box-shadow:0 0 15px var(--neon-2),0 0 25px var(--neon-1);}
+  70% { box-shadow:0 0 5px var(--neon-2),0 0 10px var(--neon-1);}
 }
 
-/* ---------- Footer ---------- */
-footer{
-  margin-top:30px;
-  padding:18px;
-  color:#bfcfcf;
-}
+/* Footer */
+footer{margin-top:30px;padding:18px;color:#bfcfcf;}
 footer a{color:var(--neon-1);}
-.social-buttons{
-  display:flex;
-  gap:15px;
-  justify-content:center;
-  margin-top:15px;
-}
-.social-buttons a{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  width:50px;
-  height:50px;
-  background:#111;
-  color:#fff;
-  border-radius:50%;
-  transition:all 0.3s ease;
-  text-decoration:none;
-  box-shadow: 0 0 10px rgba(0,255,255,0.2), 0 0 15px rgba(255,0,204,0.2);
-}
-.social-buttons a:hover{
-  transform: translateY(-5px) scale(1.1);
-  box-shadow:0 0 15px #00ffff,0 0 25px #ff00cc,0 0 35px #ff00cc;
-}
-.social-buttons svg{
-  width:24px;
-  height:24px;
-}
+.social-buttons{display:flex;gap:15px;justify-content:center;margin-top:15px;}
+.social-buttons a{display:flex;align-items:center;justify-content:center;width:50px;height:50px;background:#111;color:#fff;border-radius:50%;transition:all 0.3s ease;text-decoration:none;box-shadow:0 0 10px rgba(0,255,255,0.2),0 0 15px rgba(255,0,204,0.2);}
+.social-buttons a:hover{transform: translateY(-5px) scale(1.1);box-shadow:0 0 15px #00ffff,0 0 25px #ff00cc,0 0 35px #ff00cc;}
+.social-buttons svg{width:24px;height:24px;}
 
-/* ---------- Responsive ---------- */
 @media(max-width:720px){
-  .about-card, .project-card, .contact-card{width:90%;}
+  .card,.project-card,.contact-card{width:90%;flex-direction:column;}
   .profile-pic{width:80px;height:80px;}
 }
 </style>
 </head>
 <body>
-
 <header>
   <h1>پروژه‌های من</h1>
 </header>
@@ -277,15 +197,15 @@ for(let i=0;i<150;i++){
 }
 </script>
 
-<!-- ---------- About Me ---------- -->
+<!-- بخش درباره من -->
 <section id="about-me">
-  <div class="about-card">
+  <div class="card">
     <div class="profile-pic"></div>
-    <p>سلام! من <strong>آرسام خوش اخلاق</strong> هستم — توسعه‌دهنده وب، ماینکرفت‌باز و سازنده سرورهای اختصاصی.</p>
+    <p>سلام! من <strong>آرسام خوش اخلاق</strong> هستم — توسعه‌دهنده وب، ماینکرفت‌باز و سازنده سرورهای اختصاصی. عاشق طراحی نئون و ایجاد تجربه‌های جذاب برای کاربران هستم.</p>
   </div>
 </section>
 
-<!-- ---------- Projects ---------- -->
+<!-- بخش پروژه‌ها -->
 <section id="projects-section">
   <div class="project-card">
     <div class="project-title">🌍 سرور ماینکرفت LAVA JUMP</div>
@@ -296,13 +216,11 @@ for(let i=0;i<150;i++){
     </div>
     <div id="player-count">در حال بررسی وضعیت سرور...</div>
   </div>
-
   <div class="project-card">
     <div class="project-title">سایت شخصی 🌐</div>
     <div class="project-desc">طراحی و پیاده‌سازی سایت شخصی با تمرکز روی ظاهر نئون و تجربه‌ی کاربری.</div>
     <div class="project-tech">HTML / CSS / JavaScript</div>
   </div>
-
   <div class="project-card">
     <div class="project-title">ادیت ویدیو 🎬</div>
     <div class="project-desc">ادیت و تولید محتوا برای یوتیوب و شبکه‌های اجتماعی.</div>
@@ -310,7 +228,7 @@ for(let i=0;i<150;i++){
   </div>
 </section>
 
-<!-- ---------- Contact ---------- -->
+<!-- فرم ارتباط -->
 <section id="contact-section">
   <div class="contact-card">
     <form id="contact-form" action="https://formspree.io/f/mnngzdlw" method="POST">
@@ -322,21 +240,21 @@ for(let i=0;i<150;i++){
   </div>
 </section>
 
-<!-- ---------- Footer ---------- -->
+<!-- Footer -->
 <footer>
   <p>© 2025 تمامی حقوق محفوظ است — آرسام خوش اخلاق</p>
   <div class="social-buttons">
-      <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank" aria-label="اینستاگرام">
-      <svg viewBox="0 0 448 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9 114.9-51.3 114.9-114.9-51.3-114.9-114.9-114.9zm0 190.5c-41.6 0-75.6-33.9-75.6-75.6s33.9-75.6 75.6-75.6 75.6 33.9 75.6 75.6-33.9 75.6-75.6 75.6zm146.4-194.3c0 14.9-12.1 27-27 27-14.9 0-27-12.1-27-27s12.1-27 27-27c14.9 0 27 12.1 27 27z"/></svg>
-      </a>
-      <a href="https://github.com/arsamkhosh" target="_blank" aria-label="گیت‌هاب">
-      <svg viewBox="0 0 496 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-2.9 0-5.2-1.6-5.2-3.6 0-2 2.3-3.6 5.2-3.6 2.9 0 5.2 1.6 5.2 3.6zm-33.5-6.2c-.7 1.5 1.5 3.2 5.1 3.6 3.6.4 7.2-.4 7.9-1.9.7-1.5-1.5-3.2-5.1-3.6-3.6-.4-7.2.4-7.9 1.9zM248 8C111 8 0 119 0 256c0 110.3 71.3 203.8 170 237 12.4 2.3 17-5.4 17-12v-42.1c-69.1 15-83.8-33.2-83.8-33.2-11.2-28.5-27.3-36.2-27.3-36.2-22.3-15.2 1.7-14.9 1.7-14.9 24.6 1.7 37.6 25.3 37.6 25.3 21.9 37.5 57.5 26.7 71.5 20.4 2.2-15.8 8.6-26.7 15.6-32.8-55-6.2-112.5-27.4-112.5-121.8 0-27 9.6-49 25.4-66.3-2.6-6.2-11-31.3 2.4-65 0 0 20.7-6.6 67.8 25.2 19.7-5.5 40.8-8.3 61.8-8.4 21 0 42.1 2.9 61.8 8.4 47.1-31.8 67.8-25.2 67.8-25.2 13.5 33.8 5 58.8 2.4 65 15.8 17.3 25.4 39.3 25.4 66.3 0 94.7-57.8 115.6-112.9 121.8 8.8 7.6 16.7 22.5 16.7 45.4v67.4c0 6.6 4.6 14.3 17 12C424.7 459.8 496 366.3 496 256 496 119 385 8 248 8z"/></svg>
-      </a>
+    <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank" aria-label="اینستاگرام">
+      <!-- SVG اینستا -->
+    </a>
+    <a href="https://github.com/arsamkhosh" target="_blank" aria-label="گیت‌هاب">
+      <!-- SVG گیت‌هاب -->
+    </a>
   </div>
 </footer>
 
 <script>
-// Server IP from HTML
+// Server IP
 const serverIP = document.getElementById('server-ip').textContent.trim();
 const playerCountEl = document.getElementById('player-count');
 const apiURL = `https://api.mcstatus.io/v2/status/java/${serverIP}`;
@@ -346,26 +264,26 @@ async function fetchServerStatus() {
     playerCountEl.className = '';
     const response = await fetch(apiURL);
     const data = await response.json();
-    if (data.online) {
-      const players = data.players.online;
-      playerCountEl.textContent = `✅ سرور آنلاین! بازیکنان: ${players} نفر`;
+    if(data.online){
+      playerCountEl.textContent = `✅ سرور آنلاین! بازیکنان: ${data.players.online} نفر`;
       playerCountEl.classList.add('online');
     } else {
-      playerCountEl.textContent = '❌ سرور آفلاین است';
+      playerCountEl.textContent = '❌ سرور در حال حاضر آفلاین است.';
       playerCountEl.classList.add('offline');
     }
-  } catch(e) {
-    playerCountEl.textContent = '⚠️ وضعیت سرور قابل دریافت نیست';
+  } catch(e){
+    console.error(e);
+    playerCountEl.textContent = '❗ مشکلی در اتصال به سرور رخ داد.';
     playerCountEl.classList.add('offline');
   }
 }
 fetchServerStatus();
-setInterval(fetchServerStatus,10000);
+setInterval(fetchServerStatus,30000);
 
 // Copy IP
-document.getElementById('copy-btn').addEventListener('click',()=>{
+document.getElementById('copy-btn').addEventListener('click', ()=>{
   navigator.clipboard.writeText(serverIP);
-  alert(`آدرس سرور ${serverIP} کپی شد!`);
+  alert('آدرس سرور کپی شد: ' + serverIP);
 });
 </script>
 
