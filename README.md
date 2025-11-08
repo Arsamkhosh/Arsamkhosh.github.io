@@ -724,6 +724,53 @@ document.addEventListener('DOMContentLoaded', function(){
     <i class="fab fa-twitter"></i>
   </a>
 </div>
+<!-- FontAwesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papN1qKkFqZhjQ8M+5L+h0sB/nkHbYzv3AqK2C+o92piV5r6kT6x6/bR+XjPqHklXv1h+qU4eN8E1ZhU4CwE9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+<!-- Social Buttons -->
+<div class="social-buttons">
+  <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank" aria-label="اینستاگرام">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://github.com/username" target="_blank" aria-label="گیت‌هاب">
+    <i class="fab fa-github"></i>
+  </a>
+  <a href="https://twitter.com/username" target="_blank" aria-label="توییتر">
+    <i class="fab fa-twitter"></i>
+  </a>
+</div>
+
+<style>
+/* ---------- Social Buttons ---------- */
+.social-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 25px;
+  z-index: 2;
+  position: relative;
+}
+
+.social-buttons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: #111;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 20px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0,255,255,0.2), 0 0 15px rgba(255,0,204,0.2);
+}
+
+.social-buttons a:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 0 15px #00ffff, 0 0 25px #ff00cc, 0 0 35px #ff00cc;
+  color: #fff;
+}
+</style>
 </body>
 </html>
