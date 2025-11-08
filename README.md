@@ -621,5 +621,19 @@ document.addEventListener('DOMContentLoaded',()=> {
   setInterval(updatePlayers,10000); // آپدیت هر 10 ثانیه
 });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  for(let i=0;i<70;i++){
+    const s = document.createElement('div');
+    s.className='star';
+    const size = 1 + Math.random()*2;
+    s.style.width = s.style.height = size + 'px';
+    s.style.left = (Math.random()*100)+'vw';
+    s.style.top = (Math.random()*100)+'vh';
+    s.style.opacity = (0.2 + Math.random()*0.8).toString();
+    document.body.appendChild(s);
+  }
+});
+</script>
 </body>
 </html>
