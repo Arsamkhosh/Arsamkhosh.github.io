@@ -7,26 +7,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --neon-1:#00ffff;
-  --neon-2:#ff00cc;
+  --neon-1:#00ffff; 
+  --neon-2:#ff00cc; 
   --accent-grad:linear-gradient(135deg,var(--neon-1),var(--neon-2));
-  --bg-day:#cce7ff;
-  --bg-night:#0a0a0a;
+  --bg-dark-start:#0a0a0a;
+  --bg-dark-end:#111111;
 }
 
-/* ---------- Body ---------- */
 body{
   margin:0;
   padding:0;
   font-family:'Vazirmatn',sans-serif;
+  background:linear-gradient(135deg,var(--bg-dark-start),var(--bg-dark-end));
+  color:#eaeaea;
   text-align:center;
   overflow-x:hidden;
   min-height:100vh;
   position:relative;
-  transition:background 0.5s ease;
+  z-index:1;
 }
 
-/* ---------- Stars ---------- */
 .star{
   position:fixed;
   width:2px;
@@ -43,7 +43,6 @@ body{
   50%{opacity:1;}
 }
 
-/* ---------- Header & Neon ---------- */
 header{
   padding:40px 0 10px;
 }
@@ -51,16 +50,25 @@ h1{
   color:#fff;
   font-size:2.8rem;
   font-weight:800;
-  text-shadow:0 0 7px var(--neon-1),0 0 15px var(--neon-1),0 0 25px var(--neon-2),0 0 40px var(--neon-2),0 0 70px var(--neon-2);
+  text-shadow:
+    0 0 7px var(--neon-1),
+    0 0 15px var(--neon-1),
+    0 0 25px var(--neon-2),
+    0 0 40px var(--neon-2),
+    0 0 70px var(--neon-2);
   cursor:pointer;
   transition:all 0.3s ease;
 }
 h1:hover{
   transform:scale(1.03);
-  text-shadow:0 0 10px var(--neon-1),0 0 30px var(--neon-1),0 0 50px var(--neon-2),0 0 80px var(--neon-2),0 0 120px var(--neon-2);
+  text-shadow:
+    0 0 10px var(--neon-1),
+    0 0 30px var(--neon-1),
+    0 0 50px var(--neon-2),
+    0 0 80px var(--neon-2),
+    0 0 120px var(--neon-2);
 }
 
-/* ---------- Neon Divider ---------- */
 .neon-divider{
   width:70%;
   max-width:600px;
@@ -68,10 +76,12 @@ h1:hover{
   background:var(--accent-grad);
   margin:40px auto;
   border:none;
-  box-shadow:0 0 10px var(--neon-1),0 0 20px var(--neon-2);
+  border-radius:2px;
+  box-shadow:
+    0 0 10px var(--neon-1),
+    0 0 20px var(--neon-2);
 }
 
-/* ---------- About Me ---------- */
 #about-me{
   margin:40px auto;
   max-width:700px;
@@ -104,9 +114,9 @@ h1:hover{
   font-size:1.05rem;
   line-height:1.6;
   color:#dfe;
+  text-align:right;
 }
 
-/* ---------- Projects ---------- */
 .project-card{
   margin:20px auto;
   max-width:700px;
@@ -137,7 +147,6 @@ h1:hover{
   font-weight:700;
 }
 
-/* ---------- Server Terminal ---------- */
 .server-terminal{
   background:#000;
   border-radius:10px;
@@ -173,7 +182,6 @@ h1:hover{
   box-shadow:0 8px 20px rgba(255,0,204,0.1);
 }
 
-/* ---------- Contact ---------- */
 .contact-card{
   max-width:700px;
   margin:20px auto;
@@ -208,12 +216,11 @@ h1:hover{
   box-shadow:0 0 20px rgba(255,0,204,0.45);
 }
 @keyframes neon-flicker {
-  0%, 100% { box-shadow: 0 0 8px var(--neon-2), 0 0 12px var(--neon-1); }
-  50% { box-shadow: 0 0 15px var(--neon-2), 0 0 25px var(--neon-1); }
-  70% { box-shadow: 0 0 5px var(--neon-2), 0 0 10px var(--neon-1); }
+  0%, 100% { box-shadow: 0 0 8px var(--neon-2), 0 0 12px var(--neon-1);}
+  50% { box-shadow: 0 0 15px var(--neon-2), 0 0 25px var(--neon-1);}
+  70% { box-shadow: 0 0 5px var(--neon-2), 0 0 10px var(--neon-1);}
 }
 
-/* ---------- Footer ---------- */
 footer{
   margin-top:30px;
   padding:18px;
@@ -243,9 +250,11 @@ footer a{color:var(--neon-1);}
   transform: translateY(-5px) scale(1.1);
   box-shadow:0 0 15px #00ffff,0 0 25px #ff00cc,0 0 35px #ff00cc;
 }
-.social-buttons svg{ width:24px; height:24px; }
+.social-buttons svg{
+  width:24px;
+  height:24px;
+}
 
-/* ---------- Responsive ---------- */
 @media(max-width:720px){
   .about-card, .project-card, .contact-card{width:90%;}
   .profile-pic{width:80px;height:80px;}
@@ -258,10 +267,24 @@ footer a{color:var(--neon-1);}
   <h1>پروژه‌های من</h1>
 </header>
 
+<script>
+// ستاره‌ها
+for(let i=0;i<150;i++){
+  const s=document.createElement('div');
+  s.className='star';
+  const size=1+Math.random()*2;
+  s.style.width=s.style.height=size+'px';
+  s.style.left=(Math.random()*100)+'vw';
+  s.style.top=(Math.random()*100)+'vh';
+  s.style.opacity=(0.2+Math.random()*0.8).toString();
+  document.body.appendChild(s);
+}
+</script>
+
 <section id="about-me">
   <div class="about-card">
     <div class="profile-pic"></div>
-    <p>سلام! من <strong>آرسام خوش اخلاق</strong> هستم — توسعه‌دهنده وب، ماینکرفت‌باز و سازنده سرورهای اختصاصی.</p>
+    <p>سلام! من <strong>آرسام خوش اخلاق</strong> هستم — توسعه‌دهنده وب، ماینکرفت‌باز و سازنده سرورهای اختصاصی. اینجا می‌تونید پروژه‌ها و فعالیت‌های من رو ببینید.</p>
   </div>
 </section>
 
@@ -316,67 +339,27 @@ footer a{color:var(--neon-1);}
 </footer>
 
 <script>
-// ---------- Day/Night ----------
-function setDayNight() {
-  const hour = new Date().getHours();
-  if(hour >= 7 && hour < 19){ // روز
-    document.body.style.background = "linear-gradient(135deg, #cce7ff, #99d1ff)";
-    document.querySelectorAll('.star').forEach(s=>s.style.display='none');
-  } else { // شب
-    document.body.style.background = "linear-gradient(135deg,#0a0a0a,#111)";
-    document.querySelectorAll('.star').forEach(s=>s.style.display='block');
-  }
-}
-
-// ---------- Stars ----------
-for(let i=0;i<150;i++){
-  const s=document.createElement('div');
-  s.className='star';
-  const size=1+Math.random()*2;
-  s.style.width=s.style.height=size+'px';
-  s.style.left=(Math.random()*100)+'vw';
-  s.style.top=(Math.random()*100)+'vh';
-  s.style.opacity=(0.2+Math.random()*0.8).toString();
-  document.body.appendChild(s);
-}
-
-setDayNight();
-setInterval(setDayNight,60000); // آپدیت هر دقیقه
-
-// ---------- Server Status ----------
-const serverIP = document.getElementById('server-ip').textContent.trim();
-const playerCountEl = document.getElementById('player-count');
-const apiURL = `https://api.mcstatus.io/v2/status/java/${serverIP}`;
-
-async function fetchServerStatus() {
-  try{
-    playerCountEl.textContent = 'در حال ارتباط با سرور...';
-    playerCountEl.className = '';
-    const res = await fetch(apiURL);
-    const data = await res.json();
-    if(data.online){
-      const players = data.players.online;
-      playerCountEl.textContent = `✅ سرور آنلاین! بازیکنان: ${players} نفر`;
-      playerCountEl.classList.add('online');
-    } else {
-      playerCountEl.textContent = '❌ سرور در حال حاضر آفلاین است.';
-      playerCountEl.classList.add('offline');
-    }
-  } catch(e){
-    console.error(e);
-    playerCountEl.textContent = '❗ مشکلی در اتصال به سرور رخ داد.';
-    playerCountEl.classList.add('offline');
-  }
-}
-
-fetchServerStatus();
-setInterval(fetchServerStatus,30000);
-
-// ---------- Copy IP ----------
-document.getElementById('copy-btn').addEventListener('click',()=>{
-  navigator.clipboard.writeText(serverIP);
-  alert('آدرس سرور کپی شد: ' + serverIP);
+// کپی آی‌پی
+const copyBtn = document.getElementById('copy-btn');
+copyBtn.addEventListener('click',()=>{
+  navigator.clipboard.writeText(document.getElementById('server-ip').innerText);
+  alert('آدرس سرور کپی شد!');
 });
+
+// شبیه‌سازی تعداد بازیکن آنلاین
+const playerCount=document.getElementById('player-count');
+function updatePlayers(){
+  const online=Math.floor(Math.random()*50);
+  if(online>0){
+    playerCount.innerText=`تعداد بازیکن آنلاین: ${online}`;
+    playerCount.className='online';
+  }else{
+    playerCount.innerText='سرور آفلاین است';
+    playerCount.className='offline';
+  }
+}
+updatePlayers();
+setInterval(updatePlayers,10000);
 </script>
 
 </body>
