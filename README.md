@@ -152,7 +152,7 @@
   <div class="faq-answer">بله سایت و سرور ماینکرفت براتون میسازم ولی در اذا مبلقی</div>
 </div>
   <div class="faq-item">
-    <div class="question">سوال 2: چطور می‌توانم با شما در ارتباط باشم ؟</div>
+    <div class="question"> چطور می‌توانم با شما در ارتباط باشم ؟</div>
     <div class="answer">به راحتی می‌توانید از فرم تماس یا لینک اینستاگرام با من در ارتباط باشی </div>
   </div>
 </section>
