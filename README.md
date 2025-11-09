@@ -274,6 +274,52 @@
   animateTrail();
 
 </script>
+<head>
+  <!-- دنباله موس قبل از body -->
+  <style>
+    .mouse-trail {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: #00ffff;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: screen;
+      will-change: transform, opacity;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const trails = [];
+      const trailCount = 15; // تعداد نقاط دنباله
+      for(let i=0; i<trailCount; i++){
+        const t = document.createElement('div');
+        t.className = 'mouse-trail';
+        const size = 6 - i*0.3;
+        t.style.width = t.style.height = size+'px';
+        document.body.appendChild(t);
+        trails.push({el: t, x: window.innerWidth/2, y: window.innerHeight/2});
+      }
 
+      let mouseX = window.innerWidth/2, mouseY = window.innerHeight/2;
+      document.addEventListener('mousemove', e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      function animateTrail(){
+        trails.forEach((t,i)=>{
+          t.x += (mouseX - t.x) * 0.25;
+          t.y += (mouseY - t.y) * 0.25;
+          t.el.style.transform = `translate(${t.x - t.el.offsetWidth/2}px, ${t.y - t.el.offsetHeight/2}px)`;
+          t.el.style.opacity = (1 - i/trailCount) * 0.8;
+        });
+        requestAnimationFrame(animateTrail);
+      }
+      animateTrail();
+    });
+  </script>
+</head>
 </body>
 </html>
