@@ -289,8 +289,10 @@
     const hours=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
     const minutes=Math.floor((diff%(1000*60*60))/(1000*60));
     const seconds=Math.floor((diff%(1000*60))/1000);
-    document.getElementById('project-timer').textContent=`${days} روز ${hours} ساعت ${minutes} دقیقه ${seconds} ثانیه`;
-  }
+    document.getElementById('days').textContent = d;
+    document.getElementById('hours').textContent = h;
+    document.getElementById('minutes').textContent = m;
+    document.getElementById('seconds').textContent = s;
   setInterval(updateTimer,1000);
   updateTimer();
 </script>
