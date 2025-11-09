@@ -276,5 +276,43 @@
     });
   });
 </script>
+<script>
+  // دنباله موس رنگی و واضح
+  const colors = ['#00ffff','#ff00cc','#ff9900','#00ff00','#ffffff'];
+  const trailCount = 20;
+  const trails = [];
+
+  for(let i=0;i<trailCount;i++){
+    const t = document.createElement('div');
+    t.style.position='fixed';
+    t.style.width=(10-i*0.3)+'px';
+    t.style.height=(10-i*0.3)+'px';
+    t.style.borderRadius='50%';
+    t.style.background = colors[i % colors.length];
+    t.style.pointerEvents='none';
+    t.style.opacity = (1 - i/trailCount) * 0.8;
+    t.style.zIndex = 9999;
+    document.body.appendChild(t);
+    trails.push({el:t, x:window.innerWidth/2, y:window.innerHeight/2});
+  }
+
+  let mouseX = window.innerWidth/2;
+  let mouseY = window.innerHeight/2;
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function animateTrail(){
+    trails.forEach((t,i)=>{
+      t.x += (mouseX - t.x)*0.2;
+      t.y += (mouseY - t.y)*0.2;
+      t.el.style.transform = `translate(${t.x - t.el.offsetWidth/2}px, ${t.y - t.el.offsetHeight/2}px)`;
+      t.el.style.opacity = (1 - i/trailCount) * 0.8;
+    });
+    requestAnimationFrame(animateTrail);
+  }
+  animateTrail();
+</script>
 </body>
 </html>
