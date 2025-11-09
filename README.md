@@ -135,14 +135,25 @@
 </section>
 
 <section class="faq">
-  <h2>پرسش و پاسخ</h2>
+  <h2>پرسش و پاسخ پر تکرار</h2>
   <div class="faq-item">
-    <div class="question">سوال 1: این سایت با چه زبانی ساخته شده؟</div>
+    <div class="question"> این سایت با چه زبانی ساخته شده؟</div>
     <div class="answer">این سایت با HTML، CSS و JavaScript ساخته شده است.</div>
   </div>
   <div class="faq-item">
-    <div class="question">سوال 2: چطور می‌توان با شما تماس گرفت؟</div>
-    <div class="answer">می‌توانید از فرم تماس یا لینک اینستاگرام من استفاده کنید.</div>
+  <div class="faq-question">آموزش به صورت رایگان میدی؟</div>
+  <div class="faq-answer">آموزش میدم ولی رایگان نه</div>
+</div><div class="faq-item">
+  <div class="faq-question">میشه بیام توی سرورتون برای کمک ؟</div>
+  <div class="faq-answer">بله حتما با استفاده از فرم تماس و اینستگرام به من بگو</div>
+</div>
+  <div class="faq-item">
+  <div class="faq-question">سفارش سایت و سرور میگیری</div>
+  <div class="faq-answer">بله سایت و سرور ماینکرفت براتون میسازم ولی در اذا مبلقی</div>
+</div>
+  <div class="faq-item">
+    <div class="question">سوال 2: چطور می‌توانم با شما در ارتباط باشم ؟</div>
+    <div class="answer">به راحتی می‌توانید از فرم تماس یا لینک اینستاگرام با من در ارتباط باشی </div>
   </div>
 </section>
 
