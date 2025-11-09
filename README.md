@@ -231,5 +231,43 @@ function animateTrail(){
 }
 animateTrail();
 </script>
+<script>
+// دنباله موس نئون/Glow تمیز
+const colors = ['#00ffff','#ff00cc','#ff9900','#00ff00','#ffffff'];
+const trailCount = 25;
+const trails = [];
+
+for(let i=0;i<trailCount;i++){
+  const t = document.createElement('div');
+  t.style.position = 'fixed';
+  const size = 12 - i*0.4;
+  t.style.width = t.style.height = size + 'px';
+  t.style.borderRadius = '50%';
+  t.style.background = colors[i % colors.length];
+  t.style.pointerEvents = 'none';
+  t.style.opacity = (1 - i/trailCount) * 0.8;
+  t.style.zIndex = 9999;
+  t.style.boxShadow = `0 0 ${size*2}px ${colors[i % colors.length]}, 0 0 ${size}px ${colors[i % colors.length]}`;
+  document.body.appendChild(t);
+  trails.push({el:t, x:window.innerWidth/2, y:window.innerHeight/2});
+}
+
+let mouseX = window.innerWidth/2;
+let mouseY = window.innerHeight/2;
+document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+
+function animateTrail(){
+  trails.forEach((t,i)=>{
+    t.x += (mouseX - t.x)*0.2;
+    t.y += (mouseY - t.y)*0.2;
+    t.el.style.transform = `translate(${t.x - t.el.offsetWidth/2}px, ${t.y - t.el.offsetHeight/2}px)`;
+    t.el.style.opacity = (1 - i/trailCount) * 0.8;
+    const size = 12 - i*0.4;
+    t.el.style.boxShadow = `0 0 ${size*2}px ${colors[i % colors.length]}, 0 0 ${size}px ${colors[i % colors.length]}`;
+  });
+  requestAnimationFrame(animateTrail);
+}
+animateTrail();
+</script>
 </body>
 </html>
