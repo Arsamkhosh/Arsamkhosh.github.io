@@ -294,5 +294,40 @@
   });
 
 </script>
+<script>
+  // دنباله موس
+  document.addEventListener('DOMContentLoaded', () => {
+    const trails = [];
+    const trailCount = 15; // تعداد نقاط دنباله
+    for(let i=0; i<trailCount; i++){
+      const t = document.createElement('div');
+      t.style.position = 'fixed';
+      t.style.width = (6 - i*0.3)+'px';
+      t.style.height = (6 - i*0.3)+'px';
+      t.style.borderRadius = '50%';
+      t.style.background = '#00ffff';
+      t.style.pointerEvents = 'none';
+      t.style.opacity = 0.8;
+      t.style.zIndex = 9999;
+      t.style.transition = 'transform 0.1s linear, opacity 0.3s';
+      document.body.appendChild(t);
+      trails.push({el:t, x: window.innerWidth/2, y: window.innerHeight/2});
+    }
+
+    let mouseX = window.innerWidth/2, mouseY = window.innerHeight/2;
+    document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+
+    function animateTrail(){
+      trails.forEach((t,i)=>{
+        t.x += (mouseX - t.x) * 0.25;
+        t.y += (mouseY - t.y) * 0.25;
+        t.el.style.transform = `translate(${t.x - t.el.offsetWidth/2}px, ${t.y - t.el.offsetHeight/2}px)`;
+        t.el.style.opacity = (1 - i/trailCount) * 0.8;
+      });
+      requestAnimationFrame(animateTrail);
+    }
+    animateTrail();
+  });
+</script>
 </body>
 </html>
