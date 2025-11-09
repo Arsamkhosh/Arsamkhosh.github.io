@@ -321,5 +321,50 @@
     });
   </script>
 </head>
+<style>
+.social-buttons {
+  position: fixed;
+  bottom: 20px; /* فاصله از پایین صفحه */
+  left: 50%; 
+  transform: translateX(-50%); /* وسط صفحه */
+  display: flex;
+  gap: 15px;
+  z-index: 9999;
+}
+
+.social-buttons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: #00ffff;
+  border-radius: 50%;
+  color: #000;
+  text-decoration: none;
+  box-shadow: 0 0 10px #00ffff, 0 0 15px #ff00cc;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.social-buttons a:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 15px #00ffff, 0 0 25px #ff00cc;
+}
+
+.social-buttons svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+</style>
+
+<div class="social-buttons" role="navigation" aria-label="لینک‌های اجتماعی">
+  <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank" aria-label="اینستاگرام">
+    <svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9 114.9-51.3 114.9-114.9-51.3-114.9-114.9-114.9zm0 190.5c-41.6 0-75.6-33.9-75.6-75.6s33.9-75.6 75.6-75.6 75.6 33.9 75.6 75.6-33.9 75.6-75.6 75.6zm146.4-194.3c0 14.9-12.1 27-27 27-14.9 0-27-12.1-27-27s12.1-27 27-27c14.9 0 27 12.1 27 27z"/></svg>
+  </a>
+  <a href="https://arsamkhosh.github.io" target="_blank" aria-label="گیت‌هاب">
+    <svg viewBox="0 0 496 512"><path d="M248 8C111 8 0 119 0 256c0 110.3 71.3 203.8 170 237 12.4 2.3 17-5.4 17-12v-42.1c-69.1 15-83.8-33.2-83.8-33.2-11.2-28.5-27.3-36.2-27.3-36.2-22.3-15.2 1.7-14.9 1.7-14.9 24.6 1.7 37.6 25.3 37.6 25.3 21.9 37.5 57.5 26.7 71.5 20.4 2.2-15.8 8.6-26.7 15.6-32.8-55-6.2-112.5-27.4-112.5-121.8 0-27 9.6-49 25.4-66.3 ..."/></svg>
+  </a>
+</div>
 </body>
 </html>
