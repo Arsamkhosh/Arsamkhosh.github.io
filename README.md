@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="fa">
 <head>
 <meta charset="UTF-8">
@@ -129,13 +130,42 @@
     .profile-pic { margin-left: 0; margin-bottom: 20px; }
     .about-text { text-align: center; }
   }
+
+  /* دکمه‌های اجتماعی پایین صفحه کنار هم */
+  .social-buttons {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    z-index: 9999;
+  }
+  .social-buttons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; height: 50px;
+    background: #00ffff;
+    border-radius: 50%;
+    color: #000;
+    text-decoration: none;
+    box-shadow: 0 0 10px #00ffff, 0 0 15px #ff00cc;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .social-buttons a:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 15px #00ffff, 0 0 25px #ff00cc;
+  }
+  .social-buttons svg { width: 22px; height: 22px; fill: currentColor; }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>خوش آمدید </h1>
-  <p>!خوش آمدید به سایت من، در ادامه پروژه‌ها را میبینید</p>
+  <h1>خوش آمدید</h1>
+  <p>!خوش آمدید به سایت من، در ادامه پروژه‌ها را می‌بینید</p>
 </header>
 
 <section id="about-me">
@@ -153,7 +183,7 @@
   <div class="projects">
     <div class="project-card">
       <div class="project-title">سرور ماینکرفت 🎮</div>
-      <div class="project-desc">سرور اختصاصی  برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستگرام یا بخش ارتباط با ما پیام بده </div>
+      <div class="project-desc">سرور اختصاصی  برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده</div>
       <div class="project-tech">Java / Spigot / Minecraft</div>
     </div>
     <div class="project-card">
@@ -185,8 +215,18 @@
 </section>
 
 <footer>
-  <p>© 2025 تمامی حقوق محفوظ است<br><a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank">اینستاگرام من</a></p>
+  <p>© 2025 تمامی حقوق محفوظ است</p>
 </footer>
+
+<!-- دکمه‌های اجتماعی -->
+<div class="social-buttons" role="navigation" aria-label="لینک‌های اجتماعی">
+  <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank" aria-label="اینستاگرام">
+    <svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9 114.9-51.3 114.9-114.9-51.3-114.9-114.9-114.9zm0 190.5c-41.6 0-75.6-33.9-75.6-75.6s33.9-75.6 75.6-75.6 75.6 33.9 75.6 75.6-33.9 75.6-75.6 75.6zm146.4-194.3c0 14.9-12.1 27-27 27-14.9 0-27-12.1-27-27s12.1-27 27-27c14.9 0 27 12.1 27 27z"/></svg>
+  </a>
+  <a href="https://arsamkhosh.github.io" target="_blank" aria-label="گیت‌هاب">
+    <svg viewBox="0 0 496 512"><path d="M248 8C111 8 0 119 0 256c0 110.3 71.3 203.8 170 237 12.4 2.3 17-5.4 17-12v-42.1c-69.1 15-83.8-33.2-83.8-33.2-11.2-28.5-27.3-36.2-27.3-36.2-22.3-15.2 1.7-14.9 1.7-14.9 24.6 1.7 37.6 25.3 37.6 25.3 21.9 37.5 57.5 26.7 71.5 20.4 2.2-15.8 8.6-26.7 15.6-32.8-55-6.2-112.5-27.4-112.5-121.8 0-27 9.6-49 25.4-66.3 ..."/></svg>
+  </a>
+</div>
 
 <script>
   // ستاره‌ها
@@ -200,27 +240,6 @@
     s.style.animationDuration=2+Math.random()*3+'s';
     document.body.appendChild(s);
   }
-
-  // افکت کلیک پروژه‌ها
-  const projectCards = document.querySelectorAll('.project-card');
-  projectCards.forEach((c)=>{ 
-    c.onclick=()=> {
-      for(let j=0;j<10;j++){
-        const p=document.createElement('div');
-        p.style.position='absolute';
-        p.style.width='5px';p.style.height='5px';
-        p.style.background='#00ffff';
-        const r=c.getBoundingClientRect();
-        p.style.top=r.top+r.height/2+window.scrollY+'px';
-        p.style.left=r.left+r.width/2+window.scrollX+'px';
-        p.style.transition='0.8s ease';
-        document.body.appendChild(p);
-        const ang=Math.random()*2*Math.PI,dist=50+Math.random()*50;
-        setTimeout(()=>{p.style.top=parseFloat(p.style.top)+Math.sin(ang)*dist+'px';p.style.left=parseFloat(p.style.left)+Math.cos(ang)*dist+'px';p.style.opacity='0';},10);
-        setTimeout(()=>p.remove(),800);
-      }
-    };
-  });
 
   // فرم تماس
   function validateForm(f) {
@@ -272,99 +291,7 @@
     requestAnimationFrame(animateTrail);
   }
   animateTrail();
-
 </script>
-<head>
-  <!-- دنباله موس قبل از body -->
-  <style>
-    .mouse-trail {
-      position: fixed;
-      top: 0;
-      left: 0;
-      background: #00ffff;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      mix-blend-mode: screen;
-      will-change: transform, opacity;
-    }
-  </style>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const trails = [];
-      const trailCount = 15; // تعداد نقاط دنباله
-      for(let i=0; i<trailCount; i++){
-        const t = document.createElement('div');
-        t.className = 'mouse-trail';
-        const size = 6 - i*0.3;
-        t.style.width = t.style.height = size+'px';
-        document.body.appendChild(t);
-        trails.push({el: t, x: window.innerWidth/2, y: window.innerHeight/2});
-      }
 
-      let mouseX = window.innerWidth/2, mouseY = window.innerHeight/2;
-      document.addEventListener('mousemove', e => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-      });
-
-      function animateTrail(){
-        trails.forEach((t,i)=>{
-          t.x += (mouseX - t.x) * 0.25;
-          t.y += (mouseY - t.y) * 0.25;
-          t.el.style.transform = `translate(${t.x - t.el.offsetWidth/2}px, ${t.y - t.el.offsetHeight/2}px)`;
-          t.el.style.opacity = (1 - i/trailCount) * 0.8;
-        });
-        requestAnimationFrame(animateTrail);
-      }
-      animateTrail();
-    });
-  </script>
-</head>
-<style>
-.social-buttons {
-  position: fixed;
-  bottom: 20px; /* فاصله از پایین صفحه */
-  left: 20px;   /* فاصله از چپ صفحه */
-  display: flex;
-  flex-direction: column; /* دکمه‌ها زیر هم */
-  gap: 15px;
-  z-index: 9999;
-}
-
-.social-buttons a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  background: #00ffff;
-  border-radius: 50%;
-  color: #000;
-  text-decoration: none;
-  box-shadow: 0 0 10px #00ffff, 0 0 15px #ff00cc;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.social-buttons a:hover {
-  transform: scale(1.2);
-  box-shadow: 0 0 15px #00ffff, 0 0 25px #ff00cc;
-}
-
-.social-buttons svg {
-  width: 22px;
-  height: 22px;
-  fill: currentColor;
-}
-</style>
-
-<div class="social-buttons" role="navigation" aria-label="لینک‌های اجتماعی">
-  <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank" aria-label="اینستاگرام">
-    <svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9 114.9-51.3 114.9-114.9-51.3-114.9-114.9-114.9zm0 190.5c-41.6 0-75.6-33.9-75.6-75.6s33.9-75.6 75.6-75.6 75.6 33.9 75.6 75.6-33.9 75.6-75.6 75.6zm146.4-194.3c0 14.9-12.1 27-27 27-14.9 0-27-12.1-27-27s12.1-27 27-27c14.9 0 27 12.1 27 27z"/></svg>
-  </a>
-  <a href="https://arsamkhosh.github.io" target="_blank" aria-label="گیت‌هاب">
-    <svg viewBox="0 0 496 512"><path d="M248 8C111 8 0 119 0 256c0 110.3 71.3 203.8 170 237 12.4 2.3 17-5.4 17-12v-42.1c-69.1 15-83.8-33.2-83.8-33.2-11.2-28.5-27.3-36.2-27.3-36.2-22.3-15.2 1.7-14.9 1.7-14.9 24.6 1.7 37.6 25.3 37.6 25.3 21.9 37.5 57.5 26.7 71.5 20.4 2.2-15.8 8.6-26.7 15.6-32.8-55-6.2-112.5-27.4-112.5-121.8 0-27 9.6-49 25.4-66.3 ..."/></svg>
-  </a>
-</div>
 </body>
 </html>
