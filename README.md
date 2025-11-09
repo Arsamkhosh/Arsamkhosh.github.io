@@ -325,9 +325,9 @@
 .social-buttons {
   position: fixed;
   bottom: 20px; /* فاصله از پایین صفحه */
-  left: 50%; 
-  transform: translateX(-50%); /* وسط صفحه */
+  left: 20px;   /* فاصله از چپ صفحه */
   display: flex;
+  flex-direction: column; /* دکمه‌ها زیر هم */
   gap: 15px;
   z-index: 9999;
 }
@@ -336,8 +336,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
   background: #00ffff;
   border-radius: 50%;
   color: #000;
@@ -358,7 +358,7 @@
 }
 </style>
 
-<div class="social-buttons" role="navigation" aria-label="لینک‌های صفحه مجازی">
+<div class="social-buttons" role="navigation" aria-label="لینک‌های اجتماعی">
   <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank" aria-label="اینستاگرام">
     <svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9 114.9-51.3 114.9-114.9-51.3-114.9-114.9-114.9zm0 190.5c-41.6 0-75.6-33.9-75.6-75.6s33.9-75.6 75.6-75.6 75.6 33.9 75.6 75.6-33.9 75.6-75.6 75.6zm146.4-194.3c0 14.9-12.1 27-27 27-14.9 0-27-12.1-27-27s12.1-27 27-27c14.9 0 27 12.1 27 27z"/></svg>
   </a>
