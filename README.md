@@ -15,15 +15,40 @@ body {
   transition:all 0.5s;
 }
 header, section, footer { padding: 40px 5%; transition: all 0.5s; }
-h1 { font-size:2.8em; background: linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px; text-shadow:0 0 5px rgba(0,255,255,0.5);}
+
+/* عنوان اصلی نئونی */
+h1 {
+  font-size:2.8em;
+  background: linear-gradient(90deg,#00ffff,#ff00cc,#ff9900);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:10px;
+  text-shadow:0 0 10px rgba(0,255,255,0.5);
+}
 h2 { color:#00ffff; margin-bottom:20px; font-size:1.8em; }
 
 /* پروژه‌ها */
 .projects { display:flex; justify-content:center; flex-wrap:wrap; gap:30px; margin-top:20px; }
-.project-card { position:relative; background:rgba(255,255,255,0.08); padding:25px; width:300px; min-height:200px; border-radius:15px; border-left:5px solid #00ffff; box-shadow:0 4px 20px rgba(0,255,255,0.1); text-align:right; cursor:pointer; transition: transform 0.3s, box-shadow 0.3s, background 0.5s, border-left 0.3s;}
-.project-card:hover { transform:translateY(-5px); box-shadow:0 0 30px #ff00cc,0 0 10px #00ffff; border-left:5px solid #ff00cc; }
-.project-title { font-size:1.4em; font-weight:bold; margin-bottom:10px; color:#00ffff;}
-.project-desc { color:#ccc; margin-bottom:10px; font-size:0.9em;}
+.project-card {
+  position:relative;
+  background:rgba(255,255,255,0.08);
+  padding:25px;
+  width:300px;
+  min-height:200px;
+  border-radius:15px;
+  border-left:5px solid #00ffff;
+  box-shadow:0 4px 20px rgba(0,255,255,0.1);
+  text-align:right;
+  cursor:pointer;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.5s, border-left 0.3s;
+}
+.project-card:hover {
+  transform:translateY(-5px);
+  box-shadow:0 0 30px #ff00cc,0 0 10px #00ffff;
+  border-left:5px solid #ff00cc;
+}
+.project-title { font-size:1.4em; font-weight:bold; margin-bottom:10px; color:#00ffff; }
+.project-desc { color:#ccc; margin-bottom:10px; font-size:0.9em; }
 .project-tech { font-size:0.8em; color:#ff9900; font-weight:bold; }
 
 /* درباره من */
@@ -38,14 +63,14 @@ input,textarea{ width:100%; padding:12px; border-radius:10px; border:1px solid r
 button[type="submit"] { background: linear-gradient(135deg,#00ffff,#ff00cc); color:#000; font-weight:bold; padding:10px 20px; border:none; border-radius:12px; cursor:pointer; transition:0.3s;}
 button[type="submit"]:hover{ transform:scale(1.05); }
 
-/* تایمر شمارش معکوس */
+/* تایمر */
 #countdown { text-align:center; margin:50px 0; }
 .countdown-container { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; }
-.countdown-box { background: rgba(0,255,255,0.1); border:2px solid #00ffff; border-radius:10px; width:80px; height:80px; display:flex; flex-direction:column; justify-content:center; align-items:center; font-family:'Vazirmatn',sans-serif; font-weight:bold; color:#00ffff; box-shadow:0 0 10px rgba(0,255,255,0.3); transition: all 0.3s;}
+.countdown-box { background: rgba(0,255,255,0.1); border:2px solid #00ffff; border-radius:10px; width:80px; height:80px; display:flex; flex-direction:column; justify-content:center; align-items:center; font-family:'Vazirmatn',sans-serif; font-weight:bold; color:#00ffff; box-shadow:0 0 10px rgba(0,0,0,0.3); transition: all 0.3s;}
 .countdown-box div{ font-size:0.7em; margin-top:3px; color:#fff;}
 .countdown-box:hover{ transform:scale(1.1); box-shadow:0 0 15px #00ffff,0 0 25px #ff00cc; }
 
-/* پرسش و پاسخ (FAQ) */
+/* FAQ */
 .faq { max-width:800px; margin:50px auto; text-align:right; direction:rtl; }
 .faq-item { background: rgba(255,255,255,0.08); padding:15px; border-radius:10px; margin-bottom:10px; cursor:pointer; border:2px solid #00ffff; transition:0.3s; }
 .faq-item:hover { box-shadow:0 0 15px #00ffff,0 0 25px #ff00cc; }
@@ -66,6 +91,7 @@ button[type="submit"]:hover{ transform:scale(1.05); }
   .about-text { text-align:center; }
 }
 
+/* فوتر */
 footer{ 
   margin-top:50px; 
   color:#ccc; 
@@ -77,7 +103,6 @@ footer{
 }
 footer a{ color:#00ffff; text-decoration:none;}
 footer a:hover{ text-decoration:underline; }
-
 </style>
 </head>
 <body>
@@ -142,26 +167,11 @@ footer a:hover{ text-decoration:underline; }
 
 <section class="faq">
   <h2>پرسش و پاسخ پر تکرار</h2>
-  <div class="faq-item">
-    <div class="question">این سایت با چه زبانی ساخته شده؟</div>
-    <div class="answer">این سایت با HTML، CSS و JavaScript ساخته شده است.</div>
-  </div>
-  <div class="faq-item">
-    <div class="question">آموزش به صورت رایگان میدی؟</div>
-    <div class="answer">آموزش میدم ولی رایگان نه</div>
-  </div>
-  <div class="faq-item">
-    <div class="question">میشه بیام توی سرورتون برای کمک؟</div>
-    <div class="answer">بله حتما با استفاده از فرم تماس و اینستاگرام به من بگو</div>
-  </div>
-  <div class="faq-item">
-    <div class="question">سفارش سایت و سرور میگیری؟</div>
-    <div class="answer">بله سایت و سرور ماینکرفت براتون می‌سازم ولی در اذا مبلغی</div>
-  </div>
-  <div class="faq-item">
-    <div class="question">چطور می‌توانم با شما در ارتباط باشم؟</div>
-    <div class="answer">به راحتی می‌توانید از فرم تماس یا لینک اینستاگرام با من در ارتباط باشید</div>
-  </div>
+  <div class="faq-item"><div class="question">این سایت با چه زبانی ساخته شده؟</div><div class="answer">این سایت با HTML، CSS و JavaScript ساخته شده است.</div></div>
+  <div class="faq-item"><div class="question">آموزش به صورت رایگان میدی؟</div><div class="answer">آموزش میدم ولی رایگان نه</div></div>
+  <div class="faq-item"><div class="question">میشه بیام توی سرورتون برای کمک؟</div><div class="answer">بله حتما با استفاده از فرم تماس و اینستاگرام به من بگو</div></div>
+  <div class="faq-item"><div class="question">سفارش سایت و سرور میگیری؟</div><div class="answer">بله سایت و سرور ماینکرفت براتون می‌سازم ولی در اذا مبلغی</div></div>
+  <div class="faq-item"><div class="question">چطور می‌توانم با شما در ارتباط باشم؟</div><div class="answer">به راحتی می‌توانید از فرم تماس یا لینک اینستاگرام با من در ارتباط باشید</div></div>
 </section>
 
 <section id="contact-section">
@@ -185,126 +195,102 @@ footer a:hover{ text-decoration:underline; }
 </footer>
 
 <script>
-  // ستاره‌ها
-  for(let i=0;i<60;i++){
-    const s=document.createElement('div');
-    s.classList.add('star');
-    s.style.top=Math.random()*window.innerHeight+'px';
-    s.style.left=Math.random()*window.innerWidth+'px';
-    s.style.width=Math.random()*2+1+'px';
-    s.style.height=s.style.width;
-    s.style.animationDuration=2+Math.random()*3+'s';
-    document.body.appendChild(s);
-  }
+// ستاره‌ها
+for(let i=0;i<60;i++){
+  const s=document.createElement('div');
+  s.classList.add('star');
+  s.style.top=Math.random()*window.innerHeight+'px';
+  s.style.left=Math.random()*window.innerWidth+'px';
+  s.style.width=Math.random()*2+1+'px';
+  s.style.height=s.style.width;
+  s.style.animationDuration=2+Math.random()*3+'s';
+  document.body.appendChild(s);
+}
 
-  // دنباله موس تمیز و عملیاتی
-  const trailCount = 20;
-  const trails = [];
-  const colors = ['#00ffff','#ff00cc','#ff9900','#00ff00','#ffffff'];
-
-  for(let i=0;i<trailCount;i++){
-    const t = document.createElement('div');
-    t.className='mouse-trail';
-    const size = 10 - i*0.4;
-    t.style.width = t.style.height = size+'px';
-    t.style.background = colors[i % colors.length];
-    t.style.opacity = (1 - i/trailCount)*0.8;
-    document.body.appendChild(t);
-    trails.push({el:t,x:window.innerWidth/2,y:window.innerHeight/2});
-  }
-
-  let mouseX = window.innerWidth/2;
-  let mouseY = window.innerHeight/2;
-
-  document.addEventListener('mousemove', e => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+// دنباله موس رنگی و روان
+const trailCount=20, colors=['#00ffff','#ff00cc','#ff9900','#00ff00','#ffffff'];
+const trails=[];
+for(let i=0;i<trailCount;i++){
+  const t=document.createElement('div');
+  t.className='mouse-trail';
+  const size=10-i*0.4;
+  t.style.width=t.style.height=size+'px';
+  t.style.background=colors[i%colors.length];
+  t.style.opacity=(1-i/trailCount)*0.8;
+  document.body.appendChild(t);
+  trails.push({el:t,x:window.innerWidth/2,y:window.innerHeight/2});
+}
+let mouseX=window.innerWidth/2, mouseY=window.innerHeight/2;
+document.addEventListener('mousemove',e=>{ mouseX=e.clientX; mouseY=e.clientY; });
+function animateTrail(){
+  trails.forEach((t,i)=>{
+    t.x+=(mouseX-t.x)*0.2;
+    t.y+=(mouseY-t.y)*0.2;
+    t.el.style.transform=`translate(${t.x-t.el.offsetWidth/2}px,${t.y-t.el.offsetHeight/2}px)`;
+    t.el.style.opacity=(1-i/trailCount)*0.8;
   });
+  requestAnimationFrame(animateTrail);
+}
+animateTrail();
 
-  function animateTrail(){
-    trails.forEach((t,i)=>{
-      t.x += (mouseX - t.x)*0.2;
-      t.y += (mouseY - t.y)*0.2;
-      t.el.style.transform = `translate(${t.x - t.el.offsetWidth/2}px, ${t.y - t.el.offsetHeight/2}px)`;
-      t.el.style.opacity = (1 - i/trailCount)*0.8;
-    });
-    requestAnimationFrame(animateTrail);
-  }
-  animateTrail();
+// فرم تماس
+function validateForm(f){
+  const formMessage=document.getElementById('formMessage');
+  if(f.website.value.trim()!==''){ formMessage.textContent='❌ اسپم شناسایی شد'; return false; }
+  formMessage.textContent='در حال ارسال... ⏳';
+  fetch(f.action,{method:f.method,body:new FormData(f),headers:{'Accept':'application/json'}})
+  .then(response=>{
+    if(response.ok){ f.reset(); formMessage.textContent='✅ پیام با موفقیت ارسال شد!'; formMessage.style.color='#00ffff'; }
+    else{ formMessage.textContent='❌ خطا در ارسال پیام.'; formMessage.style.color='#ff00cc'; }
+  }).catch(err=>{ formMessage.textContent='❌ مشکلی رخ داد.'; formMessage.style.color='#ff00cc'; });
+  return false;
+}
 
-  // فرم تماس
-  function validateForm(f){
-    const formMessage=document.getElementById('formMessage');
-    if(f.website.value.trim()!==''){ formMessage.textContent='❌ اسپم شناسایی شد'; return false; }
-    formMessage.textContent='در حال ارسال... ⏳';
-    fetch(f.action,{method:f.method,body:new FormData(f),headers:{'Accept':'application/json'}})
-    .then(response=>{
-      if(response.ok){ f.reset(); formMessage.textContent='✅ پیام با موفقیت ارسال شد!'; formMessage.style.color='#00ffff'; }
-      else{ formMessage.textContent='❌ خطا در ارسال پیام.'; formMessage.style.color='#ff00cc'; }
-    }).catch(err=>{ formMessage.textContent='❌ مشکلی رخ داد.'; formMessage.style.color='#ff00cc'; });
-    return false;
-  }
-
-  // افکت کلیک پروژه‌ها
-  document.querySelectorAll('.project-card').forEach(c=>{
-    c.onclick=()=>{ 
-      for(let j=0;j<10;j++){
-        const p=document.createElement('div');
-        p.style.position='absolute'; p.style.width='5px'; p.style.height='5px';
-        p.style.background='#00ffff';
-        const r=c.getBoundingClientRect();
-        p.style.top=r.top+r.height/2+window.scrollY+'px';
-        p.style.left=r.left+r.width/2+window.scrollX+'px';
-        p.style.transition='0.8s ease';
-        document.body.appendChild(p);
-        const ang=Math.random()*2*Math.PI, dist=50+Math.random()*50;
-        setTimeout(()=>{ p.style.top=parseFloat(p.style.top)+Math.sin(ang)*dist+'px'; p.style.left=parseFloat(p.style.left)+Math.cos(ang)*dist+'px'; p.style.opacity='0'; },10);
-        setTimeout(()=>p.remove(),800);
-      }
-    };
-  });
-
-  // تایمر
-  const targetDate = new Date(2025,11,20,18,0,0).getTime();
-  function updateCountdown(){
-    const now=new Date().getTime();
-    const distance=targetDate-now;
-    if(distance<0){
-      ['days','hours','minutes','seconds'].forEach(id=>document.getElementById(id).textContent=0);
-      clearInterval(timerInterval);
-      return;
+// افکت کلیک پروژه‌ها
+document.querySelectorAll('.project-card').forEach(c=>{
+  c.onclick=()=>{
+    for(let j=0;j<10;j++){
+      const p=document.createElement('div');
+      p.style.position='absolute'; p.style.width='5px'; p.style.height='5px';
+      p.style.background='#00ffff';
+      const r=c.getBoundingClientRect();
+      p.style.top=r.top+r.height/2+window.scrollY+'px';
+      p.style.left=r.left+r.width/2+window.scrollX+'px';
+      p.style.transition='0.8s ease';
+      document.body.appendChild(p);
+      const ang=Math.random()*2*Math.PI, dist=50+Math.random()*50;
+      setTimeout(()=>{ p.style.top=parseFloat(p.style.top)+Math.sin(ang)*dist+'px'; p.style.left=parseFloat(p.style.left)+Math.cos(ang)*dist+'px'; p.style.opacity='0'; },10);
+      setTimeout(()=>p.remove(),800);
     }
-    document.getElementById("days").textContent=Math.floor(distance/(1000*60*60*24));
-    document.getElementById("hours").textContent=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-    document.getElementById("minutes").textContent=Math.floor((distance%(1000*60*60))/(1000*60));
-    document.getElementById("seconds").textContent=Math.floor((distance%(1000*60))/1000);
+  };
+});
+
+// تایمر
+const targetDate=new Date(2025,11,20,18,0,0).getTime();
+function updateCountdown(){
+  const now=new Date().getTime();
+  const distance=targetDate-now;
+  if(distance<0){
+    ['days','hours','minutes','seconds'].forEach(id=>document.getElementById(id).textContent=0);
+    clearInterval(timerInterval);
+    return;
   }
-  const timerInterval=setInterval(updateCountdown,1000);
-  updateCountdown();
+  document.getElementById("days").textContent=Math.floor(distance/(1000*60*60*24));
+  document.getElementById("hours").textContent=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+  document.getElementById("minutes").textContent=Math.floor((distance%(1000*60*60))/(1000*60));
+  document.getElementById("seconds").textContent=Math.floor((distance%(1000*60))/1000);
+}
+const timerInterval=setInterval(updateCountdown,1000);
+updateCountdown();
 
-  // FAQ toggle
-  document.querySelectorAll('.faq-item').forEach(item=>{
-    item.addEventListener('click',()=>{
-      const ans=item.querySelector('.answer');
-      ans.style.display=(ans.style.display==='block')?'none':'block';
-    });
+// FAQ toggle
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.addEventListener('click',()=>{
+    const ans=item.querySelector('.answer');
+    ans.style.display=(ans.style.display==='block')?'none':'block';
   });
+});
 </script>
-/* مثال از کد شما برای عنوان اصلی */
-h1 {
-  /* خود رنگ آبی نئونی (به صورت گرادیانت) */
-  background: linear-gradient(90deg, #00ffff, #ff00cc, #ff9900);
-  -webkit-background-clip: text; 
-  -webkit-text-fill-color: transparent;
-  
-  /* **این خط افکت نئونی را ایجاد می‌کند:** */
-  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5); 
-}
 
-/* مثال برای کارت‌های پروژه */
-.project-card:hover {
-  /* سایه نئونی چندگانه با رنگ‌های مختلف */
-  box-shadow: 0 0 30px #ff00cc, 0 0 10px #00ffff; 
-}
 </body>
 </html>
