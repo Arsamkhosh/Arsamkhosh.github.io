@@ -290,5 +290,21 @@ footer a:hover{ text-decoration:underline; }
     });
   });
 </script>
+/* مثال از کد شما برای عنوان اصلی */
+h1 {
+  /* خود رنگ آبی نئونی (به صورت گرادیانت) */
+  background: linear-gradient(90deg, #00ffff, #ff00cc, #ff9900);
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent;
+  
+  /* **این خط افکت نئونی را ایجاد می‌کند:** */
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5); 
+}
+
+/* مثال برای کارت‌های پروژه */
+.project-card:hover {
+  /* سایه نئونی چندگانه با رنگ‌های مختلف */
+  box-shadow: 0 0 30px #ff00cc, 0 0 10px #00ffff; 
+}
 </body>
 </html>
