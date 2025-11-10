@@ -144,7 +144,7 @@ footer a:hover{ text-decoration:underline; }
 </section>
 
 <section id="countdown">
-  <h2>زمان باقی مانده تا پروژه</h2>
+  <h2>زمان باقی مانده تا پروژه بعدی</h2>
   <div class="countdown-container">
     <div class="countdown-box">
       <span id="days">0</span>
