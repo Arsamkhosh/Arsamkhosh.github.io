@@ -2,6 +2,7 @@
 <html lang="fa">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>پروژه‌های من</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -12,9 +13,8 @@ body {
   color:#fff;
   text-align:center;
   overflow-x:hidden;
-  transition:all 0.5s;
 }
-header, section, footer { padding: 40px 5%; transition: all 0.5s; }
+header, section, footer { padding: 40px 5%; }
 
 /* عنوان اصلی نئونی */
 h1 {
@@ -52,23 +52,16 @@ h2 { color:#00ffff; margin-bottom:20px; font-size:1.8em; }
 .project-tech { font-size:0.8em; color:#ff9900; font-weight:bold; }
 
 /* درباره من */
-.about-card { max-width:600px; margin:20px auto; background: rgba(255,255,255,0.08); padding:30px; border-radius:20px; box-shadow:0 0 20px rgba(255,255,255,0.1); display:flex; align-items:center; direction:rtl; text-align:right; transition: background 0.5s, box-shadow 0.5s;}
+.about-card { max-width:600px; margin:20px auto; background: rgba(255,255,255,0.08); padding:30px; border-radius:20px; box-shadow:0 0 20px rgba(255,255,255,0.1); display:flex; align-items:center; direction:rtl; text-align:right;}
 .profile-pic { width:100px;height:100px; border-radius:50%; background:#00ffff; margin-left:20px; border:4px solid #ff00cc; overflow:hidden; box-shadow:0 0 15px #00ffff; flex-shrink:0;}
 .about-text p { font-size:1.1em; line-height:1.8; }
 
 /* فرم تماس */
-form { max-width:500px; margin:40px auto; background: rgba(255,255,255,0.08); padding:25px; border-radius:15px; box-shadow:0 0 25px rgba(0,255,255,0.2); direction:rtl; text-align:right; transition: background 0.5s, box-shadow 0.5s;}
-input,textarea{ width:100%; padding:12px; border-radius:10px; border:1px solid rgba(0,255,255,0.3); background-color: rgba(255,255,255,0.1); color:#fff; margin-bottom:15px; transition:background-color 0.5s,color 0.5s,border 0.5s;}
+form { max-width:500px; margin:40px auto; background: rgba(255,255,255,0.08); padding:25px; border-radius:15px; box-shadow:0 0 25px rgba(0,255,255,0.2); direction:rtl; text-align:right;}
+input,textarea{ width:100%; padding:12px; border-radius:10px; border:1px solid rgba(0,255,255,0.3); background-color: rgba(255,255,255,0.1); color:#fff; margin-bottom:15px;}
 ::placeholder{ color:#aaa; opacity:1; }
 button[type="submit"] { background: linear-gradient(135deg,#00ffff,#ff00cc); color:#000; font-weight:bold; padding:10px 20px; border:none; border-radius:12px; cursor:pointer; transition:0.3s;}
 button[type="submit"]:hover{ transform:scale(1.05); }
-
-/* تایمر */
-#countdown { text-align:center; margin:50px 0; }
-.countdown-container { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; }
-.countdown-box { background: rgba(0,255,255,0.1); border:2px solid #00ffff; border-radius:10px; width:80px; height:80px; display:flex; flex-direction:column; justify-content:center; align-items:center; font-family:'Vazirmatn',sans-serif; font-weight:bold; color:#00ffff; box-shadow:0 0 10px rgba(0,0,0,0.3); transition: all 0.3s;}
-.countdown-box div{ font-size:0.7em; margin-top:3px; color:#fff;}
-.countdown-box:hover{ transform:scale(1.1); box-shadow:0 0 15px #00ffff,0 0 25px #ff00cc; }
 
 /* FAQ */
 .faq { max-width:800px; margin:50px auto; text-align:right; direction:rtl; }
@@ -83,6 +76,7 @@ button[type="submit"]:hover{ transform:scale(1.05); }
 /* دنباله موس */
 .mouse-trail { position: fixed; border-radius:50%; pointer-events:none; z-index:9999; transition: transform 0.1s linear, opacity 0.3s; }
 
+/* ریسپانسیو */
 @media(max-width:650px){
   .projects { flex-direction:column; align-items:center; }
   .project-card { width:90%; }
@@ -143,28 +137,6 @@ footer a:hover{ text-decoration:underline; }
   </div>
 </section>
 
-<section id="countdown">
-  <h2>زمان باقی مانده تا پروژه</h2>
-  <div class="countdown-container">
-    <div class="countdown-box">
-      <span id="days">0</span>
-      <div>روز</div>
-    </div>
-    <div class="countdown-box">
-      <span id="hours">0</span>
-      <div>ساعت</div>
-    </div>
-    <div class="countdown-box">
-      <span id="minutes">0</span>
-      <div>دقیقه</div>
-    </div>
-    <div class="countdown-box">
-      <span id="seconds">0</span>
-      <div>ثانیه</div>
-    </div>
-  </div>
-</section>
-
 <section class="faq">
   <h2>پرسش و پاسخ پر تکرار</h2>
   <div class="faq-item"><div class="question">این سایت با چه زبانی ساخته شده؟</div><div class="answer">این سایت با HTML، CSS و JavaScript ساخته شده است.</div></div>
@@ -176,7 +148,7 @@ footer a:hover{ text-decoration:underline; }
 
 <section id="contact-section">
   <h2>ارتباط با من</h2>
-  <form action="https://formspree.io/f/mnngzdlw" method="POST" onsubmit="validateForm(this); return false;">
+  <form action="https://formspree.io/f/mnngzdlw" method="POST" onsubmit="return validateForm(this);">
     <input type="hidden" name="website">
     <label for="name">نام:</label>
     <input type="text" id="name" name="name" required placeholder="نام شما">
@@ -207,7 +179,7 @@ for(let i=0;i<60;i++){
   document.body.appendChild(s);
 }
 
-// دنباله موس رنگی و روان
+// دنباله موس
 const trailCount=20, colors=['#00ffff','#ff00cc','#ff9900','#00ff00','#ffffff'];
 const trails=[];
 for(let i=0;i<trailCount;i++){
@@ -226,23 +198,49 @@ function animateTrail(){
   trails.forEach((t,i)=>{
     t.x+=(mouseX-t.x)*0.2;
     t.y+=(mouseY-t.y)*0.2;
-    t.el.style.transform=translate(${t.x-t.el.offsetWidth/2}px,${t.y-t.el.offsetHeight/2}px);
+    t.el.style.transform = `translate(${t.x - t.el.offsetWidth/2}px, ${t.y - t.el.offsetHeight/2}px)`;
     t.el.style.opacity=(1-i/trailCount)*0.8;
   });
   requestAnimationFrame(animateTrail);
 }
 animateTrail();
 
+// FAQ toggle
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.addEventListener('click',()=>{
+    const ans = item.querySelector('.answer');
+    const isVisible = window.getComputedStyle(ans).display === 'block';
+    ans.style.display = isVisible ? 'none' : 'block';
+  });
+});
+
 // فرم تماس
 function validateForm(f){
-  const formMessage=document.getElementById('formMessage');
-  if(f.website.value.trim()!==''){ formMessage.textContent='❌ اسپم شناسایی شد'; return false; }
-  formMessage.textContent='در حال ارسال... ⏳';
-  fetch(f.action,{method:f.method,body:new FormData(f),headers:{'Accept':'application/json'}})
-  .then(response=>{
-    if(response.ok){ f.reset(); formMessage.textContent='✅ پیام با موفقیت ارسال شد!'; formMessage.style.color='#00ffff'; }
-    else{ formMessage.textContent='❌ خطا در ارسال پیام.'; formMessage.style.color='#ff00cc'; }
-  }).catch(err=>{ formMessage.textContent='❌ مشکلی رخ داد.'; formMessage.style.color='#ff00cc'; });
+  const formMessage = document.getElementById('formMessage');
+  formMessage.style.color = '#fff';
+  if(f.website.value.trim() !== '') {
+    formMessage.textContent = '❌ اسپم شناسایی شد';
+    formMessage.style.color = '#ff0000';
+    return false;
+  }
+  formMessage.textContent = 'در حال ارسال... ⏳';
+  fetch(f.action,{
+    method: f.method,
+    body: new FormData(f),
+    headers: { 'Accept': 'application/json' }
+  }).then(response=>{
+    if(response.ok){
+      f.reset();
+      formMessage.textContent='✅ پیام با موفقیت ارسال شد!';
+      formMessage.style.color='#00ffff';
+    } else {
+      formMessage.textContent='❌ خطا در ارسال پیام.';
+      formMessage.style.color='#ff00cc';
+    }
+  }).catch(err=>{
+    formMessage.textContent='❌ مشکلی رخ داد.';
+    formMessage.style.color='#ff00cc';
+  });
   return false;
 }
 
@@ -264,33 +262,6 @@ document.querySelectorAll('.project-card').forEach(c=>{
     }
   };
 });
-
-// تایمر
-const targetDate=new Date(2025,11,20,18,0,0).getTime();
-function updateCountdown(){
-  const now=new Date().getTime();
-  const distance=targetDate-now;
-  if(distance<0){
-    ['days','hours','minutes','seconds'].forEach(id=>document.getElementById(id).textContent=0);
-    clearInterval(timerInterval);
-    return;
-  }
-  document.getElementById("days").textContent=Math.floor(distance/(1000*60*60*24));
-  document.getElementById("hours").textContent=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-  document.getElementById("minutes").textContent=Math.floor((distance%(1000*60*60))/(1000*60));
-  document.getElementById("seconds").textContent=Math.floor((distance%(1000*60))/1000);
-}
-const timerInterval=setInterval(updateCountdown,1000);
-updateCountdown();
-
-// FAQ toggle
-document.querySelectorAll('.faq-item').forEach(item=>{
-  item.addEventListener('click',()=>{
-    const ans=item.querySelector('.answer');
-    ans.style.display=(ans.style.display==='block')?'none':'block';
-  });
-});
 </script>
-
 </body>
 </html>
