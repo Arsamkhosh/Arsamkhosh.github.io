@@ -81,7 +81,15 @@ button[type="submit"]:hover{ transform:scale(1.05); }
 @keyframes twinkle {0%,100%{opacity:0.2;}50%{opacity:1;}}
 
 /* دنباله موس */
-.mouse-trail { position: fixed; border-radius:50%; pointer-events:none; z-index:9999; transition: transform 0.1s linear, opacity 0.3s; }
+.mouse-trail { 
+  position: fixed; 
+  border-radius:50%; 
+  pointer-events:none; 
+  z-index:9999; 
+  filter: blur(6px) brightness(1.8);
+  mix-blend-mode: screen;
+  transition: transform 0.1s linear, opacity 0.3s; 
+}
 
 @media(max-width:650px){
   .projects { flex-direction:column; align-items:center; }
@@ -207,7 +215,7 @@ for(let i=0;i<60;i++){
   document.body.appendChild(s);
 }
 
-// دنباله موس رنگی و روان
+// دنباله موس رنگی و نئونی
 const trailCount=20, colors=['#00ffff','#ff00cc','#ff9900','#00ff00','#ffffff'];
 const trails=[];
 for(let i=0;i<trailCount;i++){
