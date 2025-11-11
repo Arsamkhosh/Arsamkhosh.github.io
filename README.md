@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="fa">
 <head>
 <meta charset="UTF-8">
@@ -14,16 +15,7 @@ body {
   overflow-x:hidden;
 }
 header, section, footer { padding: 40px 5%; }
-
-/* عنوان اصلی نئونی */
-h1 {
-  font-size:2.8em;
-  background: linear-gradient(90deg,#00ffff,#ff00cc,#ff9900);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  margin-bottom:10px;
-  text-shadow:0 0 10px rgba(0,255,255,0.5);
-}
+h1 { font-size:2.8em; background: linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px; text-shadow:0 0 10px rgba(0,255,255,0.5);}
 h2 { color:#00ffff; margin-bottom:20px; font-size:1.8em; }
 
 /* پروژه‌ها */
@@ -147,14 +139,24 @@ footer a:hover{ text-decoration:underline; }
 
 <section id="contact-section">
   <h2>ارتباط با من</h2>
-  <form action="https://formspree.io/f/mnngzdlw" method="POST" onsubmit="return validateForm(this);">
+  <form id="contactForm" action="https://formspree.io/f/mnngzdlw" method="POST">
     <input type="hidden" name="website">
+
     <label for="name">نام:</label>
     <input type="text" id="name" name="name" required placeholder="نام شما">
+
     <label for="email">ایمیل:</label>
     <input type="email" id="email" name="email" required placeholder="example@example.com">
+
     <label for="message">پیام:</label>
     <textarea id="message" name="message" rows="5" required placeholder="متن پیام..."></textarea>
+
+    <!-- گزینه خبرنامه -->
+    <label style="display:flex; align-items:center; gap:8px;">
+      <input type="checkbox" name="subscribe" id="subscribeCheckbox">
+      تو خبرها مطلع می‌کنمت
+    </label>
+
     <button type="submit">ارسال پیام</button>
     <p id="formMessage" style="direction: rtl; text-align: right; margin-top: 15px; font-weight: bold;"></p>
   </form>
@@ -214,22 +216,24 @@ document.querySelectorAll('.faq-item').forEach(item=>{
 });
 
 // فرم تماس
-function validateForm(f){
+const contactForm = document.getElementById('contactForm');
+contactForm.addEventListener('submit', function(e){
+  e.preventDefault();
   const formMessage = document.getElementById('formMessage');
-  formMessage.style.color = '#fff';
-  if(f.website.value.trim() !== '') {
-    formMessage.textContent = '❌ اسپم شناسایی شد';
-    formMessage.style.color = '#ff0000';
-    return false;
-  }
+
+  const formData = new FormData(contactForm);
+  formData.set('subscribe', document.getElementById('subscribeCheckbox').checked ? 'بله' : 'خیر');
+
   formMessage.textContent = 'در حال ارسال... ⏳';
-  fetch(f.action,{
-    method: f.method,
-    body: new FormData(f),
+  formMessage.style.color = '#fff';
+
+  fetch(contactForm.action,{
+    method: contactForm.method,
+    body: formData,
     headers: { 'Accept': 'application/json' }
   }).then(response=>{
     if(response.ok){
-      f.reset();
+      contactForm.reset();
       formMessage.textContent='✅ پیام با موفقیت ارسال شد!';
       formMessage.style.color='#00ffff';
     } else {
@@ -240,8 +244,7 @@ function validateForm(f){
     formMessage.textContent='❌ مشکلی رخ داد.';
     formMessage.style.color='#ff00cc';
   });
-  return false;
-}
+});
 
 // افکت کلیک پروژه‌ها
 document.querySelectorAll('.project-card').forEach(c=>{
@@ -262,5 +265,6 @@ document.querySelectorAll('.project-card').forEach(c=>{
   };
 });
 </script>
+
 </body>
 </html>
