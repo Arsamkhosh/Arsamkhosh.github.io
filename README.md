@@ -25,13 +25,18 @@ h2 { color:#00ffff; margin-bottom:20px; font-size:1.8em; }
   background:rgba(255,255,255,0.08);
   padding:25px;
   width:300px;
-  min-height:200px;
+  min-height:250px;
   border-radius:15px;
   border-left:5px solid #00ffff;
   box-shadow:0 4px 20px rgba(0,255,255,0.1);
-  text-align:right;
+  text-align:center;
   cursor:pointer;
   transition: transform 0.3s, box-shadow 0.3s, background 0.5s, border-left 0.3s;
+}
+.project-card img {
+  width:100%;
+  border-radius:15px;
+  margin-bottom:15px;
 }
 .project-card:hover {
   transform:translateY(-5px);
@@ -138,16 +143,19 @@ footer a:hover{ text-decoration:underline; }
   <h2>پروژه‌ها</h2>
   <div class="projects">
     <div class="project-card">
+      <img src="images/project1.png" alt="پروژه 1">
       <div class="project-title">سرور ماینکرفت 🎮</div>
-      <div class="project-desc">سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده </div>
+      <div class="project-desc">سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده</div>
       <div class="project-tech">Java / Spigot / Minecraft</div>
     </div>
     <div class="project-card">
+      <img src="images/project2.png" alt="پروژه 2">
       <div class="project-title">سایت شخصی 🌐</div>
       <div class="project-desc">من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم</div>
       <div class="project-tech">HTML / CSS / JavaScript</div>
     </div>
     <div class="project-card">
+      <img src="images/project3.png" alt="پروژه 3">
       <div class="project-title">ادیت ویدیو 🎬</div>
       <div class="project-desc">به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم</div>
       <div class="project-tech">Capcut / Filmora / Shotcut</div>
