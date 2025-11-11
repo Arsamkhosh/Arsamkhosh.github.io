@@ -143,19 +143,19 @@ footer a:hover{ text-decoration:underline; }
   <h2>پروژه‌ها</h2>
   <div class="projects">
     <div class="project-card">
-      <img src="images/project1.png" alt="پروژه 1">
+      <img src="minecraft.png" alt="پروژه 1">
       <div class="project-title">سرور ماینکرفت 🎮</div>
       <div class="project-desc">سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده</div>
       <div class="project-tech">Java / Spigot / Minecraft</div>
     </div>
     <div class="project-card">
-      <img src="images/project2.png" alt="پروژه 2">
+      <img src="site.png" alt="پروژه 2">
       <div class="project-title">سایت شخصی 🌐</div>
       <div class="project-desc">من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم</div>
       <div class="project-tech">HTML / CSS / JavaScript</div>
     </div>
     <div class="project-card">
-      <img src="images/project3.png" alt="پروژه 3">
+      <img src="edite.png" alt="پروژه 3">
       <div class="project-title">ادیت ویدیو 🎬</div>
       <div class="project-desc">به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم</div>
       <div class="project-tech">Capcut / Filmora / Shotcut</div>
