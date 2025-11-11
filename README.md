@@ -43,7 +43,24 @@ h2 { color:#00ffff; margin-bottom:20px; font-size:1.8em; }
 .project-tech { font-size:0.8em; color:#ff9900; font-weight:bold; }
 
 /* درباره من */
-.about-card { max-width:600px; margin:20px auto; background: rgba(255,255,255,0.08); padding:30px; border-radius:20px; box-shadow:0 0 20px rgba(255,255,255,0.1); display:flex; align-items:center; direction:rtl; text-align:right;}
+.about-card { 
+  max-width:600px; 
+  margin:20px auto; 
+  background: rgba(255,255,255,0.08); 
+  padding:30px; 
+  border-radius:20px; 
+  box-shadow:0 0 20px rgba(255,255,255,0.1); 
+  display:flex; 
+  align-items:center; 
+  direction:rtl; 
+  text-align:right;
+  transition: all 0.3s ease;
+}
+.about-card:hover {
+  box-shadow:0 0 20px #00ffff, 0 0 40px #ff00cc, 0 0 60px #ff9900;
+  transform: translateY(-5px);
+  border-left:5px solid #00ffff;
+}
 .profile-pic { width:100px;height:100px; border-radius:50%; background:#00ffff; margin-left:20px; border:4px solid #ff00cc; overflow:hidden; box-shadow:0 0 15px #00ffff; flex-shrink:0;}
 .about-text p { font-size:1.1em; line-height:1.8; }
 
@@ -53,6 +70,16 @@ input,textarea{ width:100%; padding:12px; border-radius:10px; border:1px solid r
 ::placeholder{ color:#aaa; opacity:1; }
 button[type="submit"] { background: linear-gradient(135deg,#00ffff,#ff00cc); color:#000; font-weight:bold; padding:10px 20px; border:none; border-radius:12px; cursor:pointer; transition:0.3s;}
 button[type="submit"]:hover{ transform:scale(1.05); }
+
+/* خبرنامه مرتب */
+.newsletter {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:15px;
+}
+.newsletter input[type="checkbox"] { width:18px; height:18px; cursor:pointer; }
+.newsletter label { cursor:pointer; font-size:0.95em; color:#ccc; }
 
 /* FAQ */
 .faq { max-width:800px; margin:50px auto; text-align:right; direction:rtl; }
@@ -151,11 +178,11 @@ footer a:hover{ text-decoration:underline; }
     <label for="message">پیام:</label>
     <textarea id="message" name="message" rows="5" required placeholder="متن پیام..."></textarea>
 
-    <!-- گزینه خبرنامه -->
-    <label style="display:flex; align-items:center; gap:8px;">
+    <!-- گزینه خبرنامه مرتب -->
+    <div class="newsletter">
       <input type="checkbox" name="subscribe" id="subscribeCheckbox">
-      تو خبرها مطلع می‌کنمت
-    </label>
+      <label for="subscribeCheckbox">تو خبرها مطلع می‌کنمت</label>
+    </div>
 
     <button type="submit">ارسال پیام</button>
     <p id="formMessage" style="direction: rtl; text-align: right; margin-top: 15px; font-weight: bold;"></p>
@@ -217,10 +244,10 @@ document.querySelectorAll('.faq-item').forEach(item=>{
 
 // فرم تماس
 const contactForm = document.getElementById('contactForm');
+const formMessage = document.getElementById('formMessage');
+
 contactForm.addEventListener('submit', function(e){
   e.preventDefault();
-  const formMessage = document.getElementById('formMessage');
-
   const formData = new FormData(contactForm);
   formData.set('subscribe', document.getElementById('subscribeCheckbox').checked ? 'بله' : 'خیر');
 
