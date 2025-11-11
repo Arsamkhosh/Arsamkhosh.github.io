@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<img src="آدرس-عکس" alt="توضیح کوتاه" />
 <html lang="fa">
 <head>
 <meta charset="UTF-8">
