@@ -16,14 +16,9 @@ body {
   overflow-x:hidden;
   transition: background 0.5s, color 0.5s;
 }
-body.light {
-  background: #f0f0f0;
-  color: #111;
-}
 header, section, footer { padding: 40px 5%; opacity:0; transform:translateY(50px); transition:all 0.8s ease; }
 h1 { font-size:2.8em; background: linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px; text-shadow:0 0 10px rgba(0,255,255,0.5);}
 h2 { color:#00ffff; margin-bottom:20px; font-size:1.8em; }
-body.light h2 { color:#00aaff; }
 
 /* نوار بالا */
 nav {
@@ -50,21 +45,6 @@ nav a {
 nav a:hover {
   color: #ff00cc;
   text-shadow: 0 0 10px #ff00cc;
-}
-
-/* دکمه تم */
-#theme-toggle {
-  position: fixed;
-  top: 15px;
-  right: 20px;
-  padding: 8px 15px;
-  background: linear-gradient(135deg,#00ffff,#ff00cc);
-  color:#000;
-  border:none;
-  border-radius:12px;
-  cursor:pointer;
-  z-index:1100;
-  font-weight:bold;
 }
 
 /* پروژه‌ها */
@@ -224,9 +204,6 @@ footer a:hover{ text-decoration:underline; }
   <div id="loading-bar"><div id="loading-fill"></div></div>
 </div>
 
-<!-- دکمه تغییر تم -->
-<button id="theme-toggle">تم روز/شب</button>
-
 <!-- نوار بالا -->
 <nav>
   <a href="#about-me">درباره من</a>
@@ -260,7 +237,7 @@ footer a:hover{ text-decoration:underline; }
       <img src="minecraft.png" alt="پروژه 1">
       <div class="project-title">سرور ماینکرفت 🎮</div>
       <div class="project-desc">سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده</div>
-      <div class="project-tech">Java / Spigot / Minecraft</div>
+      <div class="project-tech">Spigot/Bukkit / Minecraft</div>
       <button class="like-btn">❤️ 0</button>
       <div class="tooltip">این پروژه مربوط به سرور ماینکرفت است</div>
     </div>
@@ -338,57 +315,18 @@ footer a:hover{ text-decoration:underline; }
 </footer>
 
 <script>
-// لودینگ
-const loadingText = document.getElementById('loading-text');
-const loadingFill = document.getElementById('loading-fill');
-const loadingScreen = document.getElementById('loading-screen');
-const message = "Loading Arsam_khosh web ...";
-let i=0;
-function typeText(){ if(i<message.length){ loadingText.textContent += message[i]; i++; setTimeout(typeText,100); } }
-typeText();
-let progress=0;
-const interval=setInterval(()=>{
-  progress+=3;
-  loadingFill.style.width=progress+"%";
-  if(progress>=100){
-    clearInterval(interval);
-    setTimeout(()=>{
-      loadingScreen.style.opacity='0';
-      loadingScreen.style.transition='1s';
-      setTimeout(()=>loadingScreen.remove(),1000);
-      document.querySelectorAll('header, section, footer').forEach((el,idx)=>{
-        setTimeout(()=>{ el.style.opacity='1'; el.style.transform='translateY(0)'; },idx*150);
-      });
-    },800);
-  }
-},100);
+// شمارنده بازدید
+fetch('https://api.countapi.xyz/hit/arsam-site/visits')
+.then(res=>res.json())
+.then(data=>{
+  document.getElementById('visitor-count').textContent = `تعداد بازدید: ${data.value}`;
+});
 
-// ستاره‌ها
-for(let i=0;i<60;i++){
-  const s=document.createElement('div');
-  s.classList.add('star');
-  s.style.top=Math.random()*window.innerHeight+'px';
-  s.style.left=Math.random()*window.innerWidth+'px';
-  s.style.width=Math.random()*2+1+'px';
-  s.style.height=s.style.width;
-  s.style.animationDuration=2+Math.random()*3+'s';
-  document.body.appendChild(s);
-}
-// شهاب‌ها
-setInterval(()=>{
-  const meteor = document.createElement('div');
-  meteor.classList.add('meteor');
-  meteor.style.top = Math.random()*window.innerHeight*0.5+'px';
-  meteor.style.left = '-10px';
-  document.body.appendChild(meteor);
-  meteor.style.transition = 'all 2s linear';
-  setTimeout(()=>{
-    meteor.style.top = (parseFloat(meteor.style.top)+100+Math.random()*100)+'px';
-    meteor.style.left = window.innerWidth+'px';
-    meteor.style.opacity = 0;
-  },10);
-  setTimeout(()=>meteor.remove(),2000);
-},2000);
+// تم روز/شب
+const themeBtn = document.getElementById('theme-toggle');
+themeBtn.addEventListener('click', ()=>{
+  document.body.classList.toggle('light');
+});
 
 // FAQ toggle
 document.querySelectorAll('.faq-item').forEach(item=>{
@@ -477,20 +415,6 @@ contactForm.addEventListener('submit', function(e){
     formMessage.style.color='#ff00cc';
   });
 });
-
-// شمارنده بازدید
-fetch('https://api.countapi.xyz/hit/arsam-site/visits')
-.then(res=>res.json())
-.then(data=>{
-  document.getElementById('visitor-count').textContent = `تعداد بازدید: ${data.value}`;
-});
-
-// تم روز/شب
-const themeBtn = document.getElementById('theme-toggle');
-themeBtn.addEventListener('click', ()=>{
-  document.body.classList.toggle('light');
-});
 </script>
-
 </body>
 </html>
