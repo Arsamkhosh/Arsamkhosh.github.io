@@ -397,6 +397,78 @@ fetch('https://api.countapi.xyz/hit/arsam-site/visits')
   text-align: center;
 }
 </style>
+<style>
+#loading-screen {
+  position:fixed;
+  top:0; left:0; right:0; bottom:0;
+  background:#0f0f0f;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+  color:#00ffff;
+  font-size:1.5em;
+  font-family: monospace;
+}
+#loading-text {
+  margin-bottom:20px;
+  color:#00ffff;
+  text-shadow:0 0 10px #00ffff;
+}
+#loading-bar {
+  width:300px;
+  height:10px;
+  background:#222;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 0 10px #00ffff;
+}
+#loading-fill {
+  width:0%;
+  height:100%;
+  background:linear-gradient(90deg,#00ffff,#ff00cc,#ff9900);
+  transition:width 0.1s linear;
+}
+</style>
+
+<div id="loading-screen">
+  <div id="loading-text"></div>
+  <div id="loading-bar"><div id="loading-fill"></div></div>
+</div>
+
+<script>
+// متن لودینگ جدید
+const loadingText = document.getElementById('loading-text');
+const loadingFill = document.getElementById('loading-fill');
+const loadingScreen = document.getElementById('loading-screen');
+const message = "Loading Arsam_khosh web"; // ← اینجا تغییر دادیم
+let i = 0;
+
+function typeText(){
+  if(i < message.length){
+    loadingText.textContent += message[i];
+    i++;
+    setTimeout(typeText, 100);
+  }
+}
+typeText();
+
+// انیمیشن پر شدن نوار
+let progress = 0;
+const interval = setInterval(()=>{
+  progress += 3;
+  loadingFill.style.width = progress + "%";
+  if(progress >= 100){
+    clearInterval(interval);
+    setTimeout(()=>{
+      loadingScreen.style.opacity = '0';
+      loadingScreen.style.transition = '1s';
+      setTimeout(()=>loadingScreen.remove(),1000);
+    },800);
+  }
+},100);
+</script>
 
 </body>
 </html>
