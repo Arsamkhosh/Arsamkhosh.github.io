@@ -32,9 +32,11 @@ nav {
   padding: 15px;
   z-index: 1000;
   border-bottom: 1px solid #00ffff44;
-  transition: top 0.4s ease, box-shadow 0.4s ease, border-bottom 0.4s ease;
+  transition: top 0.6s ease, opacity 0.6s ease, box-shadow 0.6s ease, border-bottom 0.6s ease;
+  opacity: 0.7;
 }
-nav.visible { top:0; }
+nav:hover { opacity: 1; }
+nav.visible { top:0; opacity: 1; }
 nav a {
   color: #00ffff;
   text-decoration: none;
@@ -45,6 +47,24 @@ nav a:hover {
   color: #ff00cc;
   text-shadow: 0 0 10px #ff00cc;
 }
+
+/* دکمه برگشت به بالا */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg,#00ffff,#ff00cc);
+  color: #000;
+  padding: 12px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: none;
+  z-index: 1000;
+  font-weight: bold;
+  box-shadow: 0 0 15px #00ffff;
+  transition: transform 0.3s ease;
+}
+#backToTop:hover { transform: scale(1.1); }
 
 /* پروژه‌ها */
 .projects { display:flex; justify-content:center; flex-wrap:wrap; gap:30px; margin-top:20px; }
@@ -167,6 +187,9 @@ footer a:hover{ text-decoration:underline; }
   <a href="#contact-section">ارتباط</a>
 </nav>
 
+<!-- دکمه برگشت به بالا -->
+<div id="backToTop">بالا</div>
+
 <header>
   <h1>خوش آمدید</h1>
   <p>!خوش آمدید به سایت من، در ادامه پروژه‌ها را می‌بینید</p>
@@ -287,9 +310,15 @@ document.querySelectorAll('.faq-item').forEach(item=>{
 
 // nav show/hide on scroll
 const nav = document.querySelector('nav');
+const backToTop = document.getElementById('backToTop');
 window.addEventListener('scroll', ()=>{
-  if(window.scrollY > 50){ nav.classList.add('visible'); } 
-  else { nav.classList.remove('visible'); }
+  if(window.scrollY > 100){ 
+    nav.classList.add('visible'); 
+    backToTop.style.display='block';
+  } else { 
+    nav.classList.remove('visible'); 
+    backToTop.style.display='none';
+  }
 });
 
 // تایپ درباره من
@@ -318,23 +347,6 @@ document.querySelectorAll('.project-card').forEach(c=>{
   c.addEventListener('click', ()=>{
     clickSound.currentTime = 0;
     clickSound.play();
-    for(let j=0;j<10;j++){
-      const p=document.createElement('div');
-      p.style.position='absolute'; p.style.width='5px'; p.style.height='5px';
-      p.style.background='#00ffff';
-      const r=c.getBoundingClientRect();
-      p.style.top=r.top+r.height/2+window.scrollY+'px';
-      p.style.left=r.left+r.width/2+window.scrollX+'px';
-      p.style.transition='0.8s ease';
-      document.body.appendChild(p);
-      const ang=Math.random()*2*Math.PI, dist=50+Math.random()*50;
-      setTimeout(()=>{ 
-        p.style.top=parseFloat(p.style.top)+Math.sin(ang)*dist+'px'; 
-        p.style.left=parseFloat(p.style.left)+Math.cos(ang)*dist+'px'; 
-        p.style.opacity='0'; 
-      },10);
-      setTimeout(()=>p.remove(),800);
-    }
   });
 });
 
@@ -370,6 +382,11 @@ fetch('https://api.countapi.xyz/hit/arsam-site/visits')
 .then(res=>res.json())
 .then(data=>{
   document.getElementById('visitor-count').textContent = `تعداد بازدید: ${data.value}`;
+});
+
+// دکمه برگشت به بالا
+backToTop.addEventListener('click', ()=>{
+  window.scrollTo({ top:0, behavior:'smooth' });
 });
 </script>
 
