@@ -18,7 +18,7 @@ body {
 }
 header, section, footer { padding: 40px 5%; opacity:0; transform:translateY(50px); transition:all 0.8s ease; }
 h1 { font-size:2.8em; background: linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px; text-shadow:0 0 10px rgba(0,255,255,0.5);}
-h2 { color:#00ffff; margin-bottom:20px; font-size:1.8em; text-align:center; }
+h2 { color:#00ffff; margin-bottom:20px; font-size:1.8em; }
 
 /* نوار بالا */
 nav {
@@ -155,11 +155,6 @@ button[type="submit"]:hover{ transform:scale(1.05); }
 @keyframes twinkle {0%,100%{opacity:0.2;}50%{opacity:1;}}
 .meteor { position: fixed; width:2px; height:2px; background:#ff00cc; border-radius:50%; pointer-events:none; z-index:0; opacity:0; }
 
-/* گالری */
-.gallery { max-width:900px; margin:50px auto; display:flex; flex-wrap:wrap; justify-content:center; gap:20px; }
-.gallery img { width:200px; height:150px; object-fit:cover; border-radius:12px; cursor:pointer; transition:0.3s; }
-.gallery img:hover { transform:scale(1.05); box-shadow:0 0 15px #00ffff,0 0 25px #ff00cc; }
-
 /* لودینگ */
 #loading-screen {
   position:fixed;
@@ -198,7 +193,6 @@ footer a:hover{ text-decoration:underline; }
   .about-card { flex-direction:column; text-align:center; }
   .profile-pic { margin-left:0;margin-bottom:20px; }
   .about-text { text-align:center; }
-  .gallery img { width:90%; height:auto; }
 }
 </style>
 </head>
@@ -206,7 +200,7 @@ footer a:hover{ text-decoration:underline; }
 
 <!-- لودینگ -->
 <div id="loading-screen">
-  <div id="loading-text">در حال بارگذاری...</div>
+  <div id="loading-text">Loading Arsam_khosh web</div>
   <div id="loading-bar"><div id="loading-fill"></div></div>
 </div>
 
@@ -216,13 +210,12 @@ footer a:hover{ text-decoration:underline; }
   <a href="#projects-section">پروژه‌ها</a>
   <a href="#skills-section">مهارت‌ها</a>
   <a href="#blog-section">اخبار</a>
-  <a href="#gallery-section">گالری</a>
   <a href="#contact-section">ارتباط</a>
 </nav>
 
 <header>
   <h1>خوش آمدید</h1>
-  <p>!خوش آمدید به سایت من، در ادامه پروژه‌ها و گالری تصاویر را می‌بینید</p>
+  <p>!خوش آمدید به سایت من، در ادامه پروژه‌ها را می‌بینید</p>
 </header>
 
 <section id="about-me">
@@ -273,6 +266,7 @@ footer a:hover{ text-decoration:underline; }
     <div class="skill-name">سرور ماینکرفت</div>
     <div class="skill-bar"><div class="skill-fill" data-value="95%"></div></div>
   </div>
+ 
   <div class="skill">
     <div class="skill-name">ادیت ویدیو</div>
     <div class="skill-bar"><div class="skill-fill" data-value="80%"></div></div>
@@ -288,14 +282,6 @@ footer a:hover{ text-decoration:underline; }
   <div class="blog-item">🚀 پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!</div>
   <div class="blog-item">🌐 پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.</div>
   <div class="blog-item">🚀ایونت جدید در سرور </div>
-</section>
-
-<section id="gallery-section" class="gallery">
-  <h2>گالری تصاویر</h2>
-  <img src="gallery1.png" alt="گالری 1">
-  <img src="gallery2.png" alt="گالری 2">
-  <img src="gallery3.png" alt="گالری 3">
-  <img src="gallery4.png" alt="گالری 4">
 </section>
 
 <section class="faq">
@@ -424,47 +410,24 @@ contactForm.addEventListener('submit', function(e){
   });
 });
 
-// ستاره‌ها و شهاب
-const starsCount = 100;
-for(let i=0;i<starsCount;i++){
-  const star = document.createElement('div');
-  star.classList.add('star');
-  star.style.top = Math.random()*100+'%';
-  star.style.left = Math.random()*100+'%';
-  document.body.appendChild(star);
-}
-
-const meteorsCount = 5;
-for(let i=0;i<meteorsCount;i++){
-  const meteor = document.createElement('div');
-  meteor.classList.add('meteor');
-  document.body.appendChild(meteor);
-}
-
-function animateMeteors(){
-  document.querySelectorAll('.meteor').forEach(m=>{
-    m.style.top = Math.random()*window.innerHeight+'px';
-    m.style.left = Math.random()*window.innerWidth+'px';
-    m.style.opacity = 1;
-    setTimeout(()=>{ m.style.opacity=0; }, 1000+Math.random()*2000);
-  });
-}
-setInterval(animateMeteors,3000);
-
 // لودینگ
-let load = 0;
-const loadingFill = document.getElementById('loading-fill');
-const loadingScreen = document.getElementById('loading-screen');
-const loadingInterval = setInterval(()=>{
-  load+=1;
-  loadingFill.style.width = load+'%';
-  if(load>=100){
-    clearInterval(loadingInterval);
-    loadingScreen.style.display='none';
-    document.querySelectorAll('header,section,footer').forEach(el=>el.style.opacity=1);
-  }
-},20);
+window.addEventListener('load', ()=>{
+  const loadingScreen = document.getElementById('loading-screen');
+  const loadingFill = document.getElementById('loading-fill');
+  let width = 0;
+  const interval = setInterval(()=>{
+    width += 1;
+    loadingFill.style.width = width + '%';
+    if(width >= 100){
+      clearInterval(interval);
+      loadingScreen.style.display = 'none';
+      document.querySelectorAll('header, section, footer').forEach(el=>{
+        el.style.opacity = 1;
+        el.style.transform = 'translateY(0)';
+      });
+    }
+  }, 20);
+});
 </script>
-
 </body>
 </html>
