@@ -150,10 +150,14 @@ button[type="submit"]:hover{ transform:scale(1.05); }
 .faq-item:hover { box-shadow:0 0 15px #00ffff,0 0 25px #ff00cc; }
 .faq-item .answer { display:none; margin-top:10px; color:#ccc; font-size:0.9em; }
 
-/* ستاره‌ها و شهاب */
-.star { position: fixed; width:2px; height:2px; background:#fff; border-radius:50%; pointer-events:none; z-index:0; animation:twinkle 3s infinite;}
-@keyframes twinkle {0%,100%{opacity:0.2;}50%{opacity:1;}}
-.meteor { position: fixed; width:2px; height:2px; background:#ff00cc; border-radius:50%; pointer-events:none; z-index:0; opacity:0; }
+/* گالری */
+#gallery-section { max-width:1000px; margin:50px auto; text-align:center; }
+#gallery-section h2 { margin-bottom:30px; color:#00ffff; }
+.gallery { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
+.gallery-item { position:relative; overflow:hidden; border-radius:15px; flex:1 1 250px; max-width:300px; box-shadow:0 4px 15px rgba(0,255,255,0.2); transition: transform 0.3s, box-shadow 0.3s; }
+.gallery-item:hover { transform:translateY(-5px); box-shadow:0 6px 25px rgba(0,255,255,0.4),0 0 10px #ff00cc; }
+.gallery-item img { width:100%; height:200px; object-fit:cover; display:block; transition: transform 0.3s; }
+.gallery-item:hover img { transform:scale(1.1); }
 
 /* لودینگ */
 #loading-screen {
@@ -169,7 +173,7 @@ button[type="submit"]:hover{ transform:scale(1.05); }
   font-size:1.5em;
   font-family: monospace;
 }
-#loading-text { margin-bottom:20px; color:#00ffff; text-shadow:0 0 10px #00ffff; }
+#loading-text { margin-bottom:20px; color:#00ffff; text-shadow:0 0 10px #00ffff; font-weight:bold;}
 #loading-bar { width:300px; height:10px; background:#222; border-radius:10px; overflow:hidden; box-shadow:0 0 10px #00ffff; }
 #loading-fill { width:0%; height:100%; background:linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); transition:width 0.1s linear; }
 
@@ -193,6 +197,7 @@ footer a:hover{ text-decoration:underline; }
   .about-card { flex-direction:column; text-align:center; }
   .profile-pic { margin-left:0;margin-bottom:20px; }
   .about-text { text-align:center; }
+  .gallery-item { max-width:90%; height:auto; }
 }
 </style>
 </head>
@@ -210,6 +215,7 @@ footer a:hover{ text-decoration:underline; }
   <a href="#projects-section">پروژه‌ها</a>
   <a href="#skills-section">مهارت‌ها</a>
   <a href="#blog-section">اخبار</a>
+  <a href="#gallery-section">گالری</a>
   <a href="#contact-section">ارتباط</a>
 </nav>
 
@@ -266,7 +272,6 @@ footer a:hover{ text-decoration:underline; }
     <div class="skill-name">سرور ماینکرفت</div>
     <div class="skill-bar"><div class="skill-fill" data-value="95%"></div></div>
   </div>
- 
   <div class="skill">
     <div class="skill-name">ادیت ویدیو</div>
     <div class="skill-bar"><div class="skill-fill" data-value="80%"></div></div>
@@ -281,7 +286,16 @@ footer a:hover{ text-decoration:underline; }
   <h2>اخبار و بروزرسانی‌ها</h2>
   <div class="blog-item">🚀 پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!</div>
   <div class="blog-item">🌐 پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.</div>
-  <div class="blog-item">🚀ایونت جدید در سرور </div>
+  <div class="blog-item">🚀 ایونت جدید در سرور</div>
+</section>
+
+<section id="gallery-section">
+  <h2>گالری</h2>
+  <div class="gallery">
+    <div class="gallery-item"><img src="gallery/image1.jpg" alt="تصویر 1"></div>
+    <div class="gallery-item"><img src="gallery/image2.jpg" alt="تصویر 2"></div>
+    <div class="gallery-item"><img src="gallery/image3.jpg" alt="تصویر 3"></div>
+  </div>
 </section>
 
 <section class="faq">
@@ -304,130 +318,60 @@ footer a:hover{ text-decoration:underline; }
     <label for="message">پیام:</label>
     <textarea id="message" name="message" rows="5" required placeholder="متن پیام..."></textarea>
     <button type="submit">ارسال پیام</button>
-    <p id="formMessage" style="direction: rtl; text-align: right; margin-top: 15px; font-weight: bold;"></p>
+    <p id="formMessage"></p>
   </form>
 </section>
 
 <footer>
-  © 2025 تمامی حقوق محفوظ است
-  <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank">اینستاگرام من</a>
-  <div id="visitor-count"></div>
+  <p>© 2025 Arsam_khosh</p>
+  <a href="#">اینستاگرام من</a>
 </footer>
 
 <script>
-// شمارنده بازدید
-fetch('https://api.countapi.xyz/hit/arsam-site/visits')
-.then(res=>res.json())
-.then(data=>{
-  document.getElementById('visitor-count').textContent = `تعداد بازدید: ${data.value}`;
-});
+// لودینگ
+let loading = 0;
+const loadingFill = document.getElementById('loading-fill');
+const loadingScreen = document.getElementById('loading-screen');
+const interval = setInterval(()=>{
+  loading += 1;
+  loadingFill.style.width = loading + '%';
+  if(loading>=100){
+    clearInterval(interval);
+    loadingScreen.style.display='none';
+    document.querySelectorAll('header,section,footer').forEach(el=>{el.style.opacity=1; el.style.transform='translateY(0)';});
+  }
+},20);
+
+// نوار بالا
+const nav = document.querySelector('nav');
+window.addEventListener('scroll',()=>{ if(window.scrollY>50){nav.classList.add('visible');} else{nav.classList.remove('visible');} });
 
 // FAQ toggle
 document.querySelectorAll('.faq-item').forEach(item=>{
-  item.addEventListener('click',()=>{
+  item.addEventListener('click', ()=>{
     const ans = item.querySelector('.answer');
-    ans.style.display = ans.style.display==='block'?'none':'block';
+    ans.style.display = ans.style.display==='block' ? 'none' : 'block';
   });
 });
 
-// nav show/hide on scroll
-const nav = document.querySelector('nav');
-window.addEventListener('scroll', ()=>{
-  if(window.scrollY > 50){ nav.classList.add('visible'); } 
-  else { nav.classList.remove('visible'); }
-});
-
-// تایپ درباره من
-const aboutText = document.getElementById('about-text-content');
-const fullText = aboutText.textContent;
-aboutText.textContent = '';
-let typed = false;
-function typeAboutMe() {
-  const rect = aboutText.getBoundingClientRect();
-  if(!typed && rect.top < window.innerHeight - 100) {
-    typed = true;
-    let i = 0;
-    const typingInterval = setInterval(()=>{
-      aboutText.textContent += fullText[i];
-      i++;
-      if(i >= fullText.length) clearInterval(typingInterval);
-    }, 50);
-  }
-}
-window.addEventListener('scroll', typeAboutMe);
-window.addEventListener('load', typeAboutMe);
-
-// لایک پروژه‌ها
+// like button
 document.querySelectorAll('.like-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    let count = parseInt(btn.textContent.replace(/\D/g,''))||0;
-    if(btn.classList.contains('liked')){
-      count--;
-      btn.classList.remove('liked');
-    } else {
-      count++;
-      btn.classList.add('liked');
-    }
-    btn.textContent = `❤️ ${count}`;
+  btn.addEventListener('click', ()=>{
+    if(btn.classList.contains('liked')){ btn.classList.remove('liked'); btn.textContent='❤️ 0'; }
+    else { btn.classList.add('liked'); btn.textContent='❤️ 1'; }
   });
 });
 
-// انیمیشن مهارت‌ها
-function animateSkills(){
-  document.querySelectorAll('.skill-fill').forEach(bar=>{
-    bar.style.width = bar.dataset.value;
-  });
-}
+// مهارت‌ها
 window.addEventListener('scroll', ()=>{
-  const skills = document.getElementById('skills-section');
-  if(skills.getBoundingClientRect().top < window.innerHeight - 100){
-    animateSkills();
-  }
-});
-
-// فرم تماس
-const contactForm = document.getElementById('contactForm');
-const formMessage = document.getElementById('formMessage');
-contactForm.addEventListener('submit', function(e){
-  e.preventDefault();
-  const formData = new FormData(contactForm);
-  fetch(contactForm.action,{
-    method: contactForm.method,
-    body: formData,
-    headers: { 'Accept': 'application/json' }
-  }).then(response=>{
-    if(response.ok){
-      contactForm.reset();
-      formMessage.textContent='✅ پیام با موفقیت ارسال شد!';
-      formMessage.style.color='#00ffff';
-    } else {
-      formMessage.textContent='❌ خطا در ارسال پیام.';
-      formMessage.style.color='#ff00cc';
+  document.querySelectorAll('.skill-fill').forEach(bar=>{
+    const rect = bar.getBoundingClientRect();
+    if(rect.top < window.innerHeight){
+      bar.style.width = bar.dataset.value;
     }
-  }).catch(err=>{
-    formMessage.textContent='❌ مشکلی رخ داد.';
-    formMessage.style.color='#ff00cc';
   });
-});
-
-// لودینگ
-window.addEventListener('load', ()=>{
-  const loadingScreen = document.getElementById('loading-screen');
-  const loadingFill = document.getElementById('loading-fill');
-  let width = 0;
-  const interval = setInterval(()=>{
-    width += 1;
-    loadingFill.style.width = width + '%';
-    if(width >= 100){
-      clearInterval(interval);
-      loadingScreen.style.display = 'none';
-      document.querySelectorAll('header, section, footer').forEach(el=>{
-        el.style.opacity = 1;
-        el.style.transform = 'translateY(0)';
-      });
-    }
-  }, 20);
 });
 </script>
+
 </body>
 </html>
