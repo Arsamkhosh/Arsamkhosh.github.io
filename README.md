@@ -1,4 +1,4 @@
-
+<!doctype html>
 <html lang="fa">
 <head>
 <meta charset="utf-8" />
@@ -143,7 +143,37 @@ html,body{height:100%;margin:0;background:linear-gradient(180deg,#071021 0%, #08
 </div>
 
 <script>
-// JS سیستم clicker، کارت، صرافی و تبدیل کوین به ریال
+const state={coins:0,cps:0,autos:0,prestige:0,prestigeMult:1,simpleUpgrades:[{id:'clickBoost',name:'Click Boost',desc:'هر کلیک +1',cost:15,level:0,effect:1}],advanced:{shop:[],myCards:[],collectRate:0,xp:0}};
+const RARITIES=[{name:'Common',mult:1},{name:'Rare',mult:2.5},{name:'Epic',mult:6},{name:'Legend',mult:15}];
+const names=['Hamster Miner','Trader Ham','Vault Keeper','Speedy Ham','Lucky Ham','Guard Ham'];
+function seedShop(){state.advanced.shop=[];for(let i=0;i<8;i++){const rarity=RARITIES[Math.floor(Math.random()*RARITIES.length)];const base=Math.floor((i+1)*10*rarity.mult);state.advanced.shop.push({id:'card_'+Date.now()+Math.random().toString(36).slice(2,7),name:names[Math.floor(Math.random()*names.length)],rarity:rarity.name,base:base,level:1,power:Math.round((5+Math.random()*10)*rarity.mult)})}}
+function save(){if(!document.getElementById('saveToggle').checked)return;localStorage.setItem('arsam_coin_state',JSON.stringify(state))}
+function load(){const s=localStorage.getItem('arsam_coin_state');if(s){try{Object.assign(state,JSON.parse(s))}catch(e){console.warn('load fail',e)}}}
+function $(id){return document.getElementById(id)}
+function render(){
+  $('coins').textContent=Math.floor(state.coins);
+  $('coins2').textContent=Math.floor(state.coins);
+  $('cps').textContent=Math.floor(state.cps)+' /s';
+  $('prestigeMult').textContent=state.prestigeMult;
+  $('autoCost').textContent='قیمت: '+Math.floor(10*Math.pow(1.7,state.autos));
+  renderSimpleUpgrades();
+  renderShop();
+  renderMyCards();
+  $('collectRate').textContent=state.advanced.collectRate;
+  $('xp').textContent=state.advanced.xp;
+}
+$('clickBtn').addEventListener('click',()=>{let power=1;state.simpleUpgrades.forEach(u=>{power+=u.level*u.effect});state.coins+=power*state.prestigeMult;state.advanced.xp+=1;render()});
+$('buyAuto').addEventListener('click',()=>{const cost=Math.floor(10*Math.pow(1.7,state.autos));if(state.coins>=cost){state.coins-=cost;state.autos++;state.cps+=1*state.prestigeMult;state.advanced.xp+=2;render()}});
+function renderSimpleUpgrades(){const c=$('simpleUpgrades');c.innerHTML='';state.simpleUpgrades.forEach(u=>{const d=document.createElement('div');d.className='upgrade';d.innerHTML=`<div><div class="name">${u.name} <span class="small">(${u.level})</span></div><div class="small">${u.desc}</div></div>`;const r=document.createElement('div');r.className='row';const cost=Math.floor(u.cost*Math.pow(1.6,u.level));const label=document.createElement('div');label.className='small';label.textContent='قیمت: '+cost;const btn=document.createElement('button');btn.className='button';btn.textContent='خرید';btn.onclick=()=>{if(state.coins>=cost){state.coins-=cost;u.level++;state.cps+=(u.effect*u.level);state.advanced.xp+=3;render()}};r.appendChild(label);r.appendChild(btn);d.appendChild(r);c.appendChild(d)})}
+$('prestige').addEventListener('click',()=>{if(!confirm('Prestige کنید؟'))return;state.prestige++;state.prestigeMult=1+state.prestige*0.25;state.coins=0;state.cps=0;state.autos=0;state.simpleUpgrades.forEach(u=>u.level=0);state.advanced={shop:[],myCards:[],collectRate:0,xp:0};seedShop();render();save()});
+function tick(){if(state.autos>0)state.coins+=state.autos*state.prestigeMult;let collect=0;state.advanced.myCards.forEach(c=>collect+=c.power*c.level);state.coins+=collect;state.advanced.collectRate=Math.floor(collect);state.cps=Math.floor(state.autos*state.prestigeMult+collect);render()}
+setInterval(tick,1000);setInterval(save,5000);
+function renderShop(){const shop=$('shopList');shop.innerHTML='';const q=$('searchCard').value.toLowerCase();state.advanced.shop.forEach(card=>{if(q&&!card.name.toLowerCase().includes(q))return;const d=document.createElement('div');d.className='card';d.innerHTML=`<div class="name">${card.name}</div><div class="meta">${card.rarity} • Power ${card.power}</div>`;const f=document.createElement('div');f.style.marginTop='8px';f.className='row';const cost=Math.floor(card.base*Math.pow(1.25,card.level-1));const b=document.createElement('button');b.className='button';b.textContent='خرید';b.onclick=()=>{if(state.coins>=cost){state.coins-=cost;state.advanced.myCards.push(Object.assign({},card));state.advanced.shop=state.advanced.shop.filter(c=>c.id!==card.id);state.advanced.xp+=5;render()}};const cl=document.createElement('div');cl.className='small';cl.textContent='قیمت: '+cost;f.appendChild(cl);f.appendChild(b);d.appendChild(f);shop.appendChild(d)})}
+$('refreshShop').addEventListener('click',()=>{seedShop();render()});
+$('searchCard').addEventListener('input',renderShop);
+function renderMyCards(){const list=$('myCards');list.innerHTML='';state.advanced.myCards.forEach((card,idx)=>{const d=document.createElement('div');d.className='card';d.innerHTML=`<div class="name">${card.name} <span class="small">${card.rarity}</span></div><div class="meta">Lvl ${card.level} • Power ${card.power}</div>`;list.appendChild(d)})}
+$('toRial').addEventListener('click',()=>{const r=state.coins/1000;$('converted').textContent=r.toFixed(2)+' ریال'})
+load();seedShop();render();
 </script>
 </body>
 </html>
