@@ -46,7 +46,7 @@ html,body{height:100%;margin:0;background:linear-gradient(180deg,#071021 0%, #08
   <div class="header">
     <div class="brand">
       <div class="logo">Arsam Coin • Prototype</div>
-      <div class="small">نسخهٔ آموزشی — آرسام گنگ</div>
+      <div class="small">نسخهٔ آموزشی</div>
     </div>
     <div class="modes">
       <div class="button mode-btn active" data-mode="simple">Simple Clicker</div>
@@ -116,7 +116,6 @@ html,body{height:100%;margin:0;background:linear-gradient(180deg,#071021 0%, #08
           <div class="small">تبدیل Arsam Coin</div>
           <div class="row">
             <button class="button" id="toRial">تبدیل به ریال</button>
-            <button class="button" id="toDollar">تبدیل به دلار فرضی</button>
             <div class="small" id="converted">---</div>
           </div>
         </div>
@@ -127,7 +126,7 @@ html,body{height:100%;margin:0;background:linear-gradient(180deg,#071021 0%, #08
     <div class="panel">
       <div class="small">راهنما</div>
       <div style="margin-top:8px;color:var(--muted);line-height:1.6">
-        این پروتوتایپ شامل سیستم کلیک، کارت‌ها، صرافی و تبدیل کوین به ریال/ارزهای دیگر است. همه چیز ذخیره می‌شود و می‌توان گسترش داد.
+        این پروتوتایپ شامل سیستم کلیک، کارت‌ها، صرافی و تبدیل کوین به ریال است. همه چیز ذخیره می‌شود و می‌توان گسترش داد.
       </div>
 
       <hr style="margin:12px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)" />
@@ -138,15 +137,13 @@ html,body{height:100%;margin:0;background:linear-gradient(180deg,#071021 0%, #08
         <label class="row"><input type="checkbox" id="soundToggle" /> <div style="margin-right:8px">صدای کلیک</div></label>
       </div>
 
-      <div class="footer">نسخهٔ آموزشی — قابل توسعه. هر سوال یا فیچر خواستی بگو برات اضافه کنم.</div>
+      <div class="footer">نسخهٔ آموزشی — قابل توسعه.</div>
     </div>
   </div>
 </div>
 
 <script>
-// اینجا کد JS کامل سیستم clicker، کارت، صرافی و تبدیل کوین به ریال/دلار نوشته شده
-// state، click، auto hamsters، shop، cards، tick، render، save/load و تبدیل ارز
-// نرخ: 100 Arsam Coin = 0.1 ریال، دلار فرضی نیز مشابه
+// JS سیستم clicker، کارت، صرافی و تبدیل کوین به ریال
 </script>
 </body>
 </html>
