@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arsam's World</title>
+<title>پروژه‌های من</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
 <style>
+/* پایه */
 body {
   margin:0;
   font-family:'Vazirmatn',sans-serif;
@@ -14,7 +15,7 @@ body {
   text-align:center;
   overflow-x:hidden;
 }
-header, section, footer { padding:40px 5%; opacity:0; transform:translateY(50px); transition:all 0.8s ease; }
+header, section, footer { padding: 40px 5%; opacity:0; transform:translateY(50px); transition:all 0.8s ease; }
 h1 { font-size:2.8em; background: linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px; text-shadow:0 0 10px rgba(0,255,255,0.5);}
 h2 { color:#00ffff; margin-bottom:20px; font-size:1.8em; }
 
@@ -34,24 +35,17 @@ nav {
   transition: top 0.4s ease, box-shadow 0.4s ease, border-bottom 0.4s ease;
 }
 nav.visible { top:0; }
-nav a { color:#00ffff; text-decoration:none; font-weight:bold; transition:0.3s; }
-nav a:hover { color:#ff00cc; text-shadow:0 0 10px #ff00cc; }
+nav a {
+  color: #00ffff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+nav a:hover { color: #ff00cc; text-shadow: 0 0 10px #ff00cc; }
 
 /* پروژه‌ها */
 .projects { display:flex; justify-content:center; flex-wrap:wrap; gap:30px; margin-top:20px; }
-.project-card {
-  position:relative;
-  background:rgba(255,255,255,0.08);
-  padding:25px;
-  width:300px;
-  min-height:250px;
-  border-radius:15px;
-  border-left:5px solid #00ffff;
-  box-shadow:0 4px 20px rgba(0,255,255,0.1);
-  text-align:center;
-  cursor:pointer;
-  transition: transform 0.3s, box-shadow 0.3s, background 0.5s, border-left 0.3s;
-}
+.project-card { position:relative; background:rgba(255,255,255,0.08); padding:25px; width:300px; min-height:250px; border-radius:15px; border-left:5px solid #00ffff; box-shadow:0 4px 20px rgba(0,255,255,0.1); text-align:center; cursor:pointer; transition: transform 0.3s, box-shadow 0.3s, background 0.5s, border-left 0.3s; }
 .project-card img { width:100%; border-radius:15px; margin-bottom:15px; }
 .project-card:hover { transform:translateY(-5px); box-shadow:0 0 30px #ff00cc,0 0 10px #00ffff; border-left:5px solid #ff00cc; }
 .project-title { font-size:1.4em; font-weight:bold; margin-bottom:10px; color:#00ffff; }
@@ -65,7 +59,7 @@ nav a:hover { color:#ff00cc; text-shadow:0 0 10px #ff00cc; }
 .about-text p { font-size:1.1em; line-height:1.8; }
 
 /* فرم تماس */
-form { max-width:500px; margin:40px auto; background: rgba(0,0,0,0.7); padding:25px; border-radius:15px; box-shadow:0 0 25px rgba(0,255,255,0.2); direction:rtl; text-align:right;}
+form { max-width:500px; margin:40px auto; background: rgba(255,255,255,0.08); padding:25px; border-radius:15px; box-shadow:0 0 25px rgba(0,255,255,0.2); direction:rtl; text-align:right;}
 input,textarea{ width:100%; padding:12px; border-radius:10px; border:1px solid rgba(0,255,255,0.3); background-color: rgba(255,255,255,0.1); color:#fff; margin-bottom:15px;}
 ::placeholder{ color:#aaa; opacity:1; }
 button[type="submit"] { background: linear-gradient(135deg,#00ffff,#ff00cc); color:#000; font-weight:bold; padding:10px 20px; border:none; border-radius:12px; cursor:pointer; transition:0.3s;}
@@ -78,40 +72,27 @@ button[type="submit"]:hover{ transform:scale(1.05); }
 .faq-item:hover { box-shadow:0 0 15px #00ffff,0 0 25px #ff00cc; }
 .faq-item .answer { display:none; margin-top:10px; color:#ccc; font-size:0.9em; }
 
+/* ماینر */
+#miner-section { margin:50px 0; }
+#miner-circle { width:100px; height:100px; background:#ff00cc; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-weight:bold; color:#fff; cursor:pointer; transition:0.3s; user-select:none;}
+#miner-circle:hover { transform:scale(1.1); box-shadow:0 0 20px #00ffff; }
+
 /* ستاره‌ها */
 .star { position: fixed; width:2px; height:2px; background:#fff; border-radius:50%; pointer-events:none; z-index:0; animation:twinkle 3s infinite;}
 @keyframes twinkle {0%,100%{opacity:0.2;}50%{opacity:1;}}
 
 /* لودینگ */
-#loading-screen {
-  position:fixed;
-  top:0; left:0; right:0; bottom:0;
-  background:#0f0f0f;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  z-index:2000;
-  color:#00ffff;
-  font-size:1.5em;
-  font-family: monospace;
-}
+#loading-screen { position:fixed; top:0; left:0; right:0; bottom:0; background:#0f0f0f; display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:2000; color:#00ffff; font-size:1.5em; font-family: monospace; }
 #loading-text { margin-bottom:20px; color:#00ffff; text-shadow:0 0 10px #00ffff; }
 #loading-bar { width:300px; height:10px; background:#222; border-radius:10px; overflow:hidden; box-shadow:0 0 10px #00ffff; }
 #loading-fill { width:0%; height:100%; background:linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); transition:width 0.1s linear; }
-
-/* ماینر */
-#miner-section { margin:50px 0; }
-#miner-circle {
-  width:150px; height:150px; background:#00ffff; border-radius:50%; margin:20px auto; display:flex; align-items:center; justify-content:center; cursor:pointer; font-weight:bold; color:#000; font-size:1.2em; box-shadow:0 0 15px #00ffff; transition:0.3s;
-}
-#miner-circle:hover { transform:scale(1.1); box-shadow:0 0 30px #ff00cc,0 0 15px #00ffff; }
 
 /* فوتر */
 footer{ margin-top:50px; color:#ccc; display:flex; justify-content:center; flex-direction:column; align-items:center; gap:10px; }
 footer a{ color:#00ffff; text-decoration:none;}
 footer a:hover{ text-decoration:underline; }
 
+/* ریسپانسیو */
 @media(max-width:650px){
   .projects { flex-direction:column; align-items:center; }
   .project-card { width:90%; }
@@ -147,7 +128,9 @@ footer a:hover{ text-decoration:underline; }
   <div class="about-card">
     <div class="profile-pic"></div>
     <div class="about-text">
-      <p id="about-text-content">سلام! من <strong>آرسام خوش‌اخلاق</strong> هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و منطق در برنامه‌نویسی هستم و همچنین به ماینکرفت و سرورهای بازی علاقه دارم 🌐✨</p>
+      <p id="about-text-content">
+        سلام! من <strong>آرسام خوش‌اخلاق</strong> هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و منطق در برنامه‌نویسی هستم و همچنین به ماینکرفت و سرورهای بازی علاقه دارم 🌐✨
+      </p>
     </div>
   </div>
 </section>
@@ -176,11 +159,21 @@ footer a:hover{ text-decoration:underline; }
   </div>
 </section>
 
+<section class="faq">
+  <h2>پرسش و پاسخ پر تکرار</h2>
+  <div class="faq-item"><div class="question">این سایت با چه زبانی ساخته شده؟</div><div class="answer">این سایت با HTML، CSS و JavaScript ساخته شده است.</div></div>
+  <div class="faq-item"><div class="question">آموزش به صورت رایگان میدی؟</div><div class="answer">آموزش میدم ولی رایگان نه</div></div>
+  <div class="faq-item"><div class="question">میشه بیام توی سرورتون برای کمک؟</div><div class="answer">بله حتما با استفاده از فرم تماس و اینستاگرام به من بگو</div></div>
+  <div class="faq-item"><div class="question">سفارش سایت و سرور میگیری؟</div><div class="answer">بله سایت و سرور ماینکرفت براتون می‌سازم ولی در ازای مبلغی</div></div>
+  <div class="faq-item"><div class="question">چطور می‌توانم با شما در ارتباط باشم؟</div><div class="answer">به راحتی می‌توانید از فرم تماس یا لینک اینستاگرام با من در ارتباط باشید</div></div>
+</section>
+
 <section id="miner-section">
-  <h2>ماینر اورانیوم</h2>
-  <div id="miner-circle">کلیک کن</div>
-  <p>اورانیوم: <span id="uranium-count">0</span> | دلار: $<span id="dollar-count">0</span></p>
-  <button id="sell-uranium">فروش اورانیوم</button>
+  <h2>ماینر Arsam Coin</h2>
+  <div id="miner-circle">Mine</div>
+  <p id="coin-count">Arsam Coin: 0</p>
+  <button id="sell-coins" style="margin-top:10px; padding:10px 20px; border:none; border-radius:10px; background:#00ffff; color:#000; font-weight:bold; cursor:pointer;">فروش و تبدیل به دلار</button>
+  <p id="dollar-count">دلار: $0</p>
 </section>
 
 <section id="contact-section">
@@ -190,6 +183,8 @@ footer a:hover{ text-decoration:underline; }
     <input type="text" id="name" name="name" required placeholder="نام شما">
     <label for="email">ایمیل:</label>
     <input type="email" id="email" name="email" required placeholder="example@example.com">
+    <label for="phone">شماره تلفن:</label>
+    <input type="tel" id="phone" name="phone" placeholder="0912xxxxxxx">
     <label for="message">پیام:</label>
     <textarea id="message" name="message" rows="5" required placeholder="متن پیام..."></textarea>
     <button type="submit">ارسال پیام</button>
@@ -249,7 +244,7 @@ document.querySelectorAll('.faq-item').forEach(item=>{
   });
 });
 
-// nav show/hide
+// nav show/hide on scroll
 const nav = document.querySelector('nav');
 window.addEventListener('scroll', ()=>{
   if(window.scrollY > 50){ nav.classList.add('visible'); } 
@@ -285,12 +280,13 @@ document.querySelectorAll('.project-card').forEach(c=>{
   });
 });
 
-// فرم تماس
+// صدای ارسال فرم
 const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
+const sendSound = new Audio('send.mp3');
 contactForm.addEventListener('submit', function(e){
   e.preventDefault();
-  const sendSound = new Audio('send.mp3'); sendSound.play();
+  sendSound.play();
   const formData = new FormData(contactForm);
   fetch(contactForm.action,{
     method: contactForm.method,
@@ -318,20 +314,29 @@ fetch('https://api.countapi.xyz/hit/arsam-site/visits')
   document.getElementById('visitor-count').textContent = `تعداد بازدید: ${data.value}`;
 });
 
-// ماینر
-let uranium = 0;
+// ماینر Arsam Coin
+let coins = 0;
 let dollars = 0;
-const uraniumDisplay = document.getElementById('uranium-count');
-const dollarDisplay = document.getElementById('dollar-count');
-document.getElementById('miner-circle').addEventListener('click', ()=>{
-  uranium++;
-  uraniumDisplay.textContent = uranium;
+const miner = document.getElementById('miner-circle');
+const coinCount = document.getElementById('coin-count');
+const dollarCount = document.getElementById('dollar-count');
+const sellBtn = document.getElementById('sell-coins');
+
+miner.addEventListener('click', ()=>{
+  coins++;
+  coinCount.textContent = `Arsam Coin: ${coins}`;
 });
-document.getElementById('sell-uranium').addEventListener('click', ()=>{
-  dollars += uranium * 2; // هر اورانیوم 2 دلار
-  uranium = 0;
-  uraniumDisplay.textContent = uranium;
-  dollarDisplay.textContent = dollars;
+
+sellBtn.addEventListener('click', ()=>{
+  if(coins>0){
+    dollars += coins * 0.5; // هر کوین 0.5 دلار
+    coins=0;
+    coinCount.textContent = `Arsam Coin: ${coins}`;
+    dollarCount.textContent = `دلار: $${dollars.toFixed(2)}`;
+    alert(`تمام کوین‌ها فروخته شد و به دلار تبدیل شدند!`);
+  } else {
+    alert("هیچ کوینی برای فروش وجود ندارد.");
+  }
 });
 </script>
 
