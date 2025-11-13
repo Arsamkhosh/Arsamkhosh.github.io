@@ -22,7 +22,7 @@ h2 { color:#00ffff; margin-bottom:20px; font-size:1.8em; }
 /* نوار بالا */
 nav {
   position: fixed;
-  top: -70px; /* اول مخفی */
+  top: -70px;
   left: 0; right: 0;
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(10px);
@@ -34,15 +34,17 @@ nav {
   border-bottom: 1px solid #00ffff44;
   transition: top 0.4s ease, box-shadow 0.4s ease, border-bottom 0.4s ease;
 }
-nav.visible { top: 10px; } /* بعد از اسکرول کمی پایین‌تر بیاد */
-.nav-links a {
+nav.visible { top:0; }
+nav a {
   color: #00ffff;
   text-decoration: none;
   font-weight: bold;
-  margin:0 15px;
   transition: 0.3s;
 }
-.nav-links a:hover { color: #ff00cc; text-shadow:0 0 10px #ff00cc; }
+nav a:hover {
+  color: #ff00cc;
+  text-shadow: 0 0 10px #ff00cc;
+}
 
 /* پروژه‌ها */
 .projects { display:flex; justify-content:center; flex-wrap:wrap; gap:30px; margin-top:20px; }
@@ -147,7 +149,6 @@ footer a:hover{ text-decoration:underline; }
   .about-card { flex-direction:column; text-align:center; }
   .profile-pic { margin-left:0;margin-bottom:20px; }
   .about-text { text-align:center; }
-  nav { flex-direction:column; gap:10px; }
 }
 </style>
 </head>
@@ -161,11 +162,9 @@ footer a:hover{ text-decoration:underline; }
 
 <!-- نوار بالا -->
 <nav>
-  <div class="nav-links">
-    <a href="#about-me">درباره من</a>
-    <a href="#projects-section">پروژه‌ها</a>
-    <a href="#contact-section">ارتباط</a>
-  </div>
+  <a href="#about-me">درباره من</a>
+  <a href="#projects-section">پروژه‌ها</a>
+  <a href="#contact-section">ارتباط</a>
 </nav>
 
 <header>
@@ -189,19 +188,19 @@ footer a:hover{ text-decoration:underline; }
   <h2>پروژه‌ها</h2>
   <div class="projects">
     <div class="project-card">
-      <img src="minecraft.png" alt="minecraft.png">
+      <img src="images/minecraft.png" alt="پروژه 1">
       <div class="project-title">سرور ماینکرفت 🎮</div>
       <div class="project-desc">سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده</div>
       <div class="project-tech">Java / Spigot / Minecraft</div>
     </div>
     <div class="project-card">
-      <img src="site.png" alt="site.png">
+      <img src="images/site.png" alt="پروژه 2">
       <div class="project-title">سایت شخصی 🌐</div>
       <div class="project-desc">من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم</div>
       <div class="project-tech">HTML / CSS / JavaScript</div>
     </div>
     <div class="project-card">
-      <img src="edite.png" alt="edite.png">
+      <img src="images/edite.png" alt="پروژه 3">
       <div class="project-title">ادیت ویدیو 🎬</div>
       <div class="project-desc">به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم</div>
       <div class="project-tech">Capcut / Filmora / Shotcut</div>
@@ -220,7 +219,7 @@ footer a:hover{ text-decoration:underline; }
 
 <section id="contact-section">
   <h2>ارتباط با من</h2>
-  <form id="contactForm" action="YOUR_FORMSPREE_ENDPOINT" method="POST">
+  <form id="contactForm" action="https://formspree.io/f/mnngzdlw" method="POST">
     <label for="name">نام:</label>
     <input type="text" id="name" name="name" required placeholder="نام شما">
     <label for="email">ایمیل:</label>
@@ -319,10 +318,27 @@ document.querySelectorAll('.project-card').forEach(c=>{
   c.addEventListener('click', ()=>{
     clickSound.currentTime = 0;
     clickSound.play();
+    for(let j=0;j<10;j++){
+      const p=document.createElement('div');
+      p.style.position='absolute'; p.style.width='5px'; p.style.height='5px';
+      p.style.background='#00ffff';
+      const r=c.getBoundingClientRect();
+      p.style.top=r.top+r.height/2+window.scrollY+'px';
+      p.style.left=r.left+r.width/2+window.scrollX+'px';
+      p.style.transition='0.8s ease';
+      document.body.appendChild(p);
+      const ang=Math.random()*2*Math.PI, dist=50+Math.random()*50;
+      setTimeout(()=>{ 
+        p.style.top=parseFloat(p.style.top)+Math.sin(ang)*dist+'px'; 
+        p.style.left=parseFloat(p.style.left)+Math.cos(ang)*dist+'px'; 
+        p.style.opacity='0'; 
+      },10);
+      setTimeout(()=>p.remove(),800);
+    }
   });
 });
 
-// صدای ارسال فرم تماس
+// صدای ارسال فرم
 const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
 const sendSound = new Audio('send.mp3');
