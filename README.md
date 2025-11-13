@@ -17,8 +17,8 @@ body {
   transition: background 0.5s, color 0.5s;
 }
 header, section, footer { padding: 40px 5%; opacity:0; transform:translateY(50px); transition:all 0.8s ease; }
-h1 { font-size:2.8em; background: linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px; text-shadow:0 0 10px rgba(0,255,255,0.5);}
-h2 { color:#00ffff; margin-bottom:20px; font-size:1.8em; }
+h1 { font-size:2.8em; background: linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px; text-shadow:0 0 10px rgba(0,255,255,0.5); text-align:center; }
+h2 { color:#00ffff; margin-bottom:20px; font-size:1.8em; text-align:center; }
 
 /* نوار بالا */
 nav {
@@ -266,7 +266,6 @@ footer a:hover{ text-decoration:underline; }
     <div class="skill-name">سرور ماینکرفت</div>
     <div class="skill-bar"><div class="skill-fill" data-value="95%"></div></div>
   </div>
- 
   <div class="skill">
     <div class="skill-name">ادیت ویدیو</div>
     <div class="skill-bar"><div class="skill-fill" data-value="80%"></div></div>
@@ -281,7 +280,7 @@ footer a:hover{ text-decoration:underline; }
   <h2>اخبار و بروزرسانی‌ها</h2>
   <div class="blog-item">🚀 پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!</div>
   <div class="blog-item">🌐 پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.</div>
-   <div class="blog-item">🚀ایونت جدید در سرور </div>
+  <div class="blog-item">🚀ایونت جدید در سرور </div>
 </section>
 
 <section class="faq">
@@ -320,12 +319,6 @@ fetch('https://api.countapi.xyz/hit/arsam-site/visits')
 .then(res=>res.json())
 .then(data=>{
   document.getElementById('visitor-count').textContent = `تعداد بازدید: ${data.value}`;
-});
-
-// تم روز/شب
-const themeBtn = document.getElementById('theme-toggle');
-themeBtn.addEventListener('click', ()=>{
-  document.body.classList.toggle('light');
 });
 
 // FAQ toggle
