@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="fa">
 <head>
 <meta charset="UTF-8">
@@ -16,7 +17,7 @@ body {
 }
 header, section, footer { padding: 40px 5%; opacity:0; transform:translateY(50px); transition:all 0.8s ease; }
 h1 { font-size:2.8em; background: linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px; text-shadow:0 0 10px rgba(0,255,255,0.5);}
-h2 { color:#00ffff; margin-bottom:20px; font-size:1.8em; }
+h2 { color:#00ffff; margin-bottom:20px; font-size:1.8em; text-align:center; }
 
 /* نوار بالا */
 nav {
@@ -34,16 +35,8 @@ nav {
   transition: top 0.4s ease, box-shadow 0.4s ease, border-bottom 0.4s ease;
 }
 nav.visible { top:0; }
-nav a {
-  color: #00ffff;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
-}
-nav a:hover {
-  color: #ff00cc;
-  text-shadow: 0 0 10px #ff00cc;
-}
+nav a { color: #00ffff; text-decoration: none; font-weight: bold; transition: 0.3s; }
+nav a:hover { color: #ff00cc; text-shadow: 0 0 10px #ff00cc; }
 
 /* پروژه‌ها */
 .projects { display:flex; justify-content:center; flex-wrap:wrap; gap:30px; margin-top:20px; }
@@ -61,34 +54,14 @@ nav a:hover {
   transition: transform 0.3s, box-shadow 0.3s, background 0.5s, border-left 0.3s;
 }
 .project-card img { width:100%; border-radius:15px; margin-bottom:15px; }
-.project-card:hover {
-  transform:translateY(-5px);
-  box-shadow:0 0 30px #ff00cc,0 0 10px #00ffff;
-  border-left:5px solid #ff00cc;
-}
+.project-card:hover { transform:translateY(-5px); box-shadow:0 0 30px #ff00cc,0 0 10px #00ffff; border-left:5px solid #ff00cc; }
 .project-title { font-size:1.4em; font-weight:bold; margin-bottom:10px; color:#00ffff; }
 .project-desc { color:#ccc; margin-bottom:10px; font-size:0.9em; }
 .project-tech { font-size:0.8em; color:#ff9900; font-weight:bold; }
 
 /* درباره من */
-.about-card { 
-  max-width:600px; 
-  margin:20px auto; 
-  background: rgba(255,255,255,0.08); 
-  padding:30px; 
-  border-radius:20px; 
-  box-shadow:0 0 20px rgba(255,255,255,0.1); 
-  display:flex; 
-  align-items:center; 
-  direction:rtl; 
-  text-align:right;
-  transition: all 0.3s ease;
-}
-.about-card:hover {
-  box-shadow:0 0 20px #00ffff, 0 0 40px #ff00cc, 0 0 60px #ff9900;
-  transform: translateY(-5px);
-  border-left:5px solid #00ffff;
-}
+.about-card { max-width:600px; margin:20px auto; background: rgba(255,255,255,0.08); padding:30px; border-radius:20px; box-shadow:0 0 20px rgba(255,255,255,0.1); display:flex; align-items:center; direction:rtl; text-align:right; transition: all 0.3s ease; }
+.about-card:hover { box-shadow:0 0 20px #00ffff, 0 0 40px #ff00cc, 0 0 60px #ff9900; transform: translateY(-5px); border-left:5px solid #00ffff; }
 .profile-pic { width:100px;height:100px; border-radius:50%; background:#00ffff; margin-left:20px; border:4px solid #ff00cc; overflow:hidden; box-shadow:0 0 15px #00ffff; flex-shrink:0;}
 .about-text p { font-size:1.1em; line-height:1.8; }
 
@@ -110,60 +83,18 @@ button[type="submit"]:hover{ transform:scale(1.05); }
 @keyframes twinkle {0%,100%{opacity:0.2;}50%{opacity:1;}}
 
 /* لودینگ */
-#loading-screen {
-  position:fixed;
-  top:0; left:0; right:0; bottom:0;
-  background:#0f0f0f;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  z-index:2000;
-  color:#00ffff;
-  font-size:1.5em;
-}
-#loading-text {
-  font-family:monospace;
-  margin-bottom:20px;
-  color:#00ffff;
-  text-shadow:0 0 10px #00ffff;
-}
-#loading-bar {
-  width:300px;
-  height:10px;
-  background:#222;
-  border-radius:10px;
-  overflow:hidden;
-  box-shadow:0 0 10px #00ffff;
-}
-#loading-fill {
-  width:0%;
-  height:100%;
-  background:linear-gradient(90deg,#00ffff,#ff00cc,#ff9900);
-  transition:width 0.1s linear;
-}
+#loading-screen { position:fixed; top:0; left:0; right:0; bottom:0; background:#0f0f0f; display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:2000; color:#00ffff; font-size:1.5em; font-family: monospace;}
+#loading-text { margin-bottom:20px; color:#00ffff; text-shadow:0 0 10px #00ffff;}
+#loading-bar { width:300px; height:10px; background:#222; border-radius:10px; overflow:hidden; box-shadow:0 0 10px #00ffff;}
+#loading-fill { width:0%; height:100%; background:linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); transition:width 0.1s linear;}
 
 /* فوتر */
-footer{ 
-  margin-top:50px; 
-  color:#ccc; 
-  display:flex; 
-  justify-content:center; 
-  flex-direction:column; 
-  align-items:center; 
-  gap:10px; 
-}
+footer{ margin-top:50px; color:#ccc; display:flex; justify-content:center; flex-direction:column; align-items:center; gap:10px;}
 footer a{ color:#00ffff; text-decoration:none;}
 footer a:hover{ text-decoration:underline; }
 
 /* ریسپانسیو */
-@media(max-width:650px){
-  .projects { flex-direction:column; align-items:center; }
-  .project-card { width:90%; }
-  .about-card { flex-direction:column; text-align:center; }
-  .profile-pic { margin-left:0;margin-bottom:20px; }
-  .about-text { text-align:center; }
-}
+@media(max-width:650px){ .projects { flex-direction:column; align-items:center; } .project-card { width:90%; } .about-card { flex-direction:column; text-align:center; } .profile-pic { margin-left:0;margin-bottom:20px; } .about-text { text-align:center; } }
 </style>
 </head>
 <body>
@@ -191,9 +122,7 @@ footer a:hover{ text-decoration:underline; }
   <div class="about-card">
     <div class="profile-pic"></div>
     <div class="about-text">
-      <p id="about-text-content">
-        سلام! من <strong>آرسام خوش‌اخلاق</strong> هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و منطق در برنامه‌نویسی هستم و همچنین به ماینکرفت و سرورهای بازی علاقه دارم 🌐✨
-      </p>
+      <p id="about-text-content">سلام! من <strong>آرسام خوش‌اخلاق</strong> هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و منطق در برنامه‌نویسی هستم و همچنین به ماینکرفت و سرورهای بازی علاقه دارم 🌐✨</p>
     </div>
   </div>
 </section>
@@ -213,12 +142,6 @@ footer a:hover{ text-decoration:underline; }
       <div class="project-desc">من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم</div>
       <div class="project-tech">HTML / CSS / JavaScript</div>
     </div>
-    <div class="project-card">
-      <img src="edite.png" alt="پروژه 3">
-      <div class="project-title">ادیت ویدیو 🎬</div>
-      <div class="project-desc">به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم</div>
-      <div class="project-tech">Capcut / Filmora / Shotcut</div>
-    </div>
   </div>
 </section>
 
@@ -228,7 +151,6 @@ footer a:hover{ text-decoration:underline; }
   <div class="faq-item"><div class="question">آموزش به صورت رایگان میدی؟</div><div class="answer">آموزش میدم ولی رایگان نه</div></div>
   <div class="faq-item"><div class="question">میشه بیام توی سرورتون برای کمک؟</div><div class="answer">بله حتما با استفاده از فرم تماس و اینستاگرام به من بگو</div></div>
   <div class="faq-item"><div class="question">سفارش سایت و سرور میگیری؟</div><div class="answer">بله سایت و سرور ماینکرفت براتون می‌سازم ولی در ازای مبلغی</div></div>
-  <div class="faq-item"><div class="question">چطور می‌توانم با شما در ارتباط باشم؟</div><div class="answer">به راحتی می‌توانید از فرم تماس یا لینک اینستاگرام با من در ارتباط باشید</div></div>
 </section>
 
 <section id="contact-section">
@@ -258,216 +180,37 @@ footer a:hover{ text-decoration:underline; }
 const loadingText = document.getElementById('loading-text');
 const loadingFill = document.getElementById('loading-fill');
 const loadingScreen = document.getElementById('loading-screen');
-const message = "Loading Arsam's World...";
+const message = "Loading Arsam_khosh web";
 let i=0;
-function typeText(){
-  if(i<message.length){
-    loadingText.textContent += message[i];
-    i++;
-    setTimeout(typeText,100);
-  }
-}
+function typeText(){ if(i<message.length){ loadingText.textContent+=message[i]; i++; setTimeout(typeText,100); }}
 typeText();
 let progress=0;
-const interval=setInterval(()=>{
-  progress+=3;
-  loadingFill.style.width=progress+"%";
-  if(progress>=100){
-    clearInterval(interval);
-    setTimeout(()=>{
-      loadingScreen.style.opacity='0';
-      loadingScreen.style.transition='1s';
-      setTimeout(()=>loadingScreen.remove(),1000);
-      document.querySelectorAll('header, section, footer').forEach((el,idx)=>{
-        setTimeout(()=>{ el.style.opacity='1'; el.style.transform='translateY(0)'; },idx*150);
-      });
-    },800);
-  }
-},100);
+const interval=setInterval(()=>{ progress+=3; loadingFill.style.width=progress+"%"; if(progress>=100){ clearInterval(interval); setTimeout(()=>{ loadingScreen.style.opacity='0'; loadingScreen.style.transition='1s'; setTimeout(()=>loadingScreen.remove(),1000); document.querySelectorAll('header, section, footer').forEach((el,idx)=>{ setTimeout(()=>{ el.style.opacity='1'; el.style.transform='translateY(0)'; },idx*150); }); },800); } },100);
 
 // ستاره‌ها
-for(let i=0;i<60;i++){
-  const s=document.createElement('div');
-  s.classList.add('star');
-  s.style.top=Math.random()*window.innerHeight+'px';
-  s.style.left=Math.random()*window.innerWidth+'px';
-  s.style.width=Math.random()*2+1+'px';
-  s.style.height=s.style.width;
-  s.style.animationDuration=2+Math.random()*3+'s';
-  document.body.appendChild(s);
-}
+for(let i=0;i<60;i++){ const s=document.createElement('div'); s.classList.add('star'); s.style.top=Math.random()*window.innerHeight+'px'; s.style.left=Math.random()*window.innerWidth+'px'; s.style.width=Math.random()*2+1+'px'; s.style.height=s.style.width; s.style.animationDuration=2+Math.random()*3+'s'; document.body.appendChild(s); }
 
 // FAQ toggle
-document.querySelectorAll('.faq-item').forEach(item=>{
-  item.addEventListener('click',()=>{
-    const ans = item.querySelector('.answer');
-    ans.style.display = ans.style.display==='block'?'none':'block';
-  });
-});
+document.querySelectorAll('.faq-item').forEach(item=>{ item.addEventListener('click',()=>{ const ans = item.querySelector('.answer'); ans.style.display = ans.style.display==='block'?'none':'block'; }); });
 
 // nav show/hide on scroll
 const nav = document.querySelector('nav');
-window.addEventListener('scroll', ()=>{
-  if(window.scrollY > 50){ nav.classList.add('visible'); } 
-  else { nav.classList.remove('visible'); }
-});
-
-// افکت تایپ درباره من
-const aboutText = document.getElementById('about-text-content');
-const fullText = aboutText.textContent;
-aboutText.textContent = '';
-let typed = false;
-function typeAboutMe() {
-  const rect = aboutText.getBoundingClientRect();
-  if(!typed && rect.top < window.innerHeight - 100) {
-    typed = true;
-    let i = 0;
-    const typingInterval = setInterval(()=>{
-      aboutText.textContent += fullText[i];
-      i++;
-      if(i >= fullText.length) clearInterval(typingInterval);
-    }, 50);
-  }
-}
-window.addEventListener('scroll', typeAboutMe);
-window.addEventListener('load', typeAboutMe);
+window.addEventListener('scroll', ()=>{ if(window.scrollY > 50){ nav.classList.add('visible'); } else { nav.classList.remove('visible'); } });
 
 // صدای کلیک پروژه‌ها
 const clickSound = new Audio('click.mp3');
-document.querySelectorAll('.project-card').forEach(c=>{
-  c.addEventListener('click', ()=>{
-    clickSound.currentTime = 0;
-    clickSound.play();
-    for(let j=0;j<10;j++){
-      const p=document.createElement('div');
-      p.style.position='absolute'; p.style.width='5px'; p.style.height='5px';
-      p.style.background='#00ffff';
-      const r=c.getBoundingClientRect();
-      p.style.top=r.top+r.height/2+window.scrollY+'px';
-      p.style.left=r.left+r.width/2+window.scrollX+'px';
-      p.style.transition='0.8s ease';
-      document.body.appendChild(p);
-      const ang=Math.random()*2*Math.PI, dist=50+Math.random()*50;
-      setTimeout(()=>{ 
-        p.style.top=parseFloat(p.style.top)+Math.sin(ang)*dist+'px'; 
-        p.style.left=parseFloat(p.style.left)+Math.cos(ang)*dist+'px'; 
-        p.style.opacity='0'; 
-      },10);
-      setTimeout(()=>p.remove(),800);
-    }
-  });
-});
+document.querySelectorAll('.project-card').forEach(c=>{ c.addEventListener('click', ()=>{ clickSound.currentTime = 0; clickSound.play(); for(let j=0;j<10;j++){ const p=document.createElement('div'); p.style.position='absolute'; p.style.width='5px'; p.style.height='5px'; p.style.background='#00ffff'; const r=c.getBoundingClientRect(); p.style.top=r.top+r.height/2+window.scrollY+'px'; p.style.left=r.left+r.width/2+window.scrollX+'px'; p.style.transition='0.8s ease'; document.body.appendChild(p); const ang=Math.random()*2*Math.PI, dist=50+Math.random()*50; setTimeout(()=>{ p.style.top=parseFloat(p.style.top)+Math.sin(ang)*dist+'px'; p.style.left=parseFloat(p.style.left)+Math.cos(ang)*dist+'px'; p.style.opacity='0'; },10); setTimeout(()=>p.remove(),800); } }); });
 
 // صدای ارسال فرم
 const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
 const sendSound = new Audio('send.mp3');
-contactForm.addEventListener('submit', function(e){
-  e.preventDefault();
-  sendSound.play();
-  const formData = new FormData(contactForm);
-  fetch(contactForm.action,{
-    method: contactForm.method,
-    body: formData,
-    headers: { 'Accept': 'application/json' }
-  }).then(response=>{
-    if(response.ok){
-      contactForm.reset();
-      formMessage.textContent='✅ پیام با موفقیت ارسال شد!';
-      formMessage.style.color='#00ffff';
-    } else {
-      formMessage.textContent='❌ خطا در ارسال پیام.';
-      formMessage.style.color='#ff00cc';
-    }
-  }).catch(err=>{
-    formMessage.textContent='❌ مشکلی رخ داد.';
-    formMessage.style.color='#ff00cc';
-  });
-});
+contactForm.addEventListener('submit', function(e){ e.preventDefault(); sendSound.play(); const formData = new FormData(contactForm); fetch(contactForm.action,{ method: contactForm.method, body: formData, headers: { 'Accept': 'application/json' } }).then(response=>{ if(response.ok){ contactForm.reset(); formMessage.textContent='✅ پیام با موفقیت ارسال شد!'; formMessage.style.color='#00ffff'; } else { formMessage.textContent='❌ خطا در ارسال پیام.'; formMessage.style.color='#ff00cc'; } }).catch(err=>{ formMessage.textContent='❌ مشکلی رخ داد.'; formMessage.style.color='#ff00cc'; }); });
 
-// شمارنده بازدید با CountAPI
+// شمارنده بازدید
 fetch('https://api.countapi.xyz/hit/arsam-site/visits')
 .then(res=>res.json())
-.then(data=>{
-  document.getElementById('visitor-count').textContent = `تعداد بازدید: ${data.value}`;
-});
-</script>
-<style>
-.faq h2 {
-  text-align: center;
-}
-</style>
-<style>
-#loading-screen {
-  position:fixed;
-  top:0; left:0; right:0; bottom:0;
-  background:#0f0f0f;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  z-index:2000;
-  color:#00ffff;
-  font-size:1.5em;
-  font-family: monospace;
-}
-#loading-text {
-  margin-bottom:20px;
-  color:#00ffff;
-  text-shadow:0 0 10px #00ffff;
-}
-#loading-bar {
-  width:300px;
-  height:10px;
-  background:#222;
-  border-radius:10px;
-  overflow:hidden;
-  box-shadow:0 0 10px #00ffff;
-}
-#loading-fill {
-  width:0%;
-  height:100%;
-  background:linear-gradient(90deg,#00ffff,#ff00cc,#ff9900);
-  transition:width 0.1s linear;
-}
-</style>
-
-<div id="loading-screen">
-  <div id="loading-text"></div>
-  <div id="loading-bar"><div id="loading-fill"></div></div>
-</div>
-
-<script>
-// متن لودینگ جدید
-const loadingText = document.getElementById('loading-text');
-const loadingFill = document.getElementById('loading-fill');
-const loadingScreen = document.getElementById('loading-screen');
-const message = "Loading Arsam_khosh web"; // ← اینجا تغییر دادیم
-let i = 0;
-
-function typeText(){
-  if(i < message.length){
-    loadingText.textContent += message[i];
-    i++;
-    setTimeout(typeText, 100);
-  }
-}
-typeText();
-
-// انیمیشن پر شدن نوار
-let progress = 0;
-const interval = setInterval(()=>{
-  progress += 3;
-  loadingFill.style.width = progress + "%";
-  if(progress >= 100){
-    clearInterval(interval);
-    setTimeout(()=>{
-      loadingScreen.style.opacity = '0';
-      loadingScreen.style.transition = '1s';
-      setTimeout(()=>loadingScreen.remove(),1000);
-    },800);
-  }
-},100);
+.then(data=>{ document.getElementById('visitor-count').textContent = `تعداد بازدید: ${data.value}`; });
 </script>
 
 </body>
