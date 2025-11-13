@@ -41,26 +41,61 @@ nav a {
   font-weight: bold;
   transition: 0.3s;
 }
-nav a:hover { color: #ff00cc; text-shadow: 0 0 10px #ff00cc; }
+nav a:hover {
+  color: #ff00cc;
+  text-shadow: 0 0 10px #ff00cc;
+}
 
 /* پروژه‌ها */
 .projects { display:flex; justify-content:center; flex-wrap:wrap; gap:30px; margin-top:20px; }
-.project-card { position:relative; background:rgba(255,255,255,0.08); padding:25px; width:300px; min-height:250px; border-radius:15px; border-left:5px solid #00ffff; box-shadow:0 4px 20px rgba(0,255,255,0.1); text-align:center; cursor:pointer; transition: transform 0.3s, box-shadow 0.3s, background 0.5s, border-left 0.3s; }
+.project-card {
+  position:relative;
+  background:rgba(255,255,255,0.08);
+  padding:25px;
+  width:300px;
+  min-height:250px;
+  border-radius:15px;
+  border-left:5px solid #00ffff;
+  box-shadow:0 4px 20px rgba(0,255,255,0.1);
+  text-align:center;
+  cursor:pointer;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.5s, border-left 0.3s;
+}
 .project-card img { width:100%; border-radius:15px; margin-bottom:15px; }
-.project-card:hover { transform:translateY(-5px); box-shadow:0 0 30px #ff00cc,0 0 10px #00ffff; border-left:5px solid #ff00cc; }
+.project-card:hover {
+  transform:translateY(-5px);
+  box-shadow:0 0 30px #ff00cc,0 0 10px #00ffff;
+  border-left:5px solid #ff00cc;
+}
 .project-title { font-size:1.4em; font-weight:bold; margin-bottom:10px; color:#00ffff; }
 .project-desc { color:#ccc; margin-bottom:10px; font-size:0.9em; }
 .project-tech { font-size:0.8em; color:#ff9900; font-weight:bold; }
 
 /* درباره من */
-.about-card { max-width:600px; margin:20px auto; background: rgba(255,255,255,0.08); padding:30px; border-radius:20px; box-shadow:0 0 20px rgba(255,255,255,0.1); display:flex; align-items:center; direction:rtl; text-align:right; transition: all 0.3s ease; }
-.about-card:hover { box-shadow:0 0 20px #00ffff, 0 0 40px #ff00cc, 0 0 60px #ff9900; transform: translateY(-5px); border-left:5px solid #00ffff; }
+.about-card { 
+  max-width:600px; 
+  margin:20px auto; 
+  background: rgba(255,255,255,0.08); 
+  padding:30px; 
+  border-radius:20px; 
+  box-shadow:0 0 20px rgba(255,255,255,0.1); 
+  display:flex; 
+  align-items:center; 
+  direction:rtl; 
+  text-align:right;
+  transition: all 0.3s ease;
+}
+.about-card:hover {
+  box-shadow:0 0 20px #00ffff, 0 0 40px #ff00cc, 0 0 60px #ff9900;
+  transform: translateY(-5px);
+  border-left:5px solid #00ffff;
+}
 .profile-pic { width:100px;height:100px; border-radius:50%; background:#00ffff; margin-left:20px; border:4px solid #ff00cc; overflow:hidden; box-shadow:0 0 15px #00ffff; flex-shrink:0;}
 .about-text p { font-size:1.1em; line-height:1.8; }
 
 /* فرم تماس */
-form { max-width:500px; margin:40px auto; background: rgba(255,255,255,0.08); padding:25px; border-radius:15px; box-shadow:0 0 25px rgba(0,255,255,0.2); direction:rtl; text-align:right;}
-input,textarea{ width:100%; padding:12px; border-radius:10px; border:1px solid rgba(0,255,255,0.3); background-color: rgba(255,255,255,0.1); color:#fff; margin-bottom:15px;}
+form { max-width:500px; margin:40px auto; background: rgba(0,0,0,0.85); padding:25px; border-radius:15px; box-shadow:0 0 25px rgba(0,255,255,0.2); direction:rtl; text-align:right;}
+input,textarea{ width:100%; padding:12px; border-radius:10px; border:1px solid rgba(0,255,255,0.3); background-color: rgba(0,0,0,0.5); color:#fff; margin-bottom:15px;}
 ::placeholder{ color:#aaa; opacity:1; }
 button[type="submit"] { background: linear-gradient(135deg,#00ffff,#ff00cc); color:#000; font-weight:bold; padding:10px 20px; border:none; border-radius:12px; cursor:pointer; transition:0.3s;}
 button[type="submit"]:hover{ transform:scale(1.05); }
@@ -72,23 +107,44 @@ button[type="submit"]:hover{ transform:scale(1.05); }
 .faq-item:hover { box-shadow:0 0 15px #00ffff,0 0 25px #ff00cc; }
 .faq-item .answer { display:none; margin-top:10px; color:#ccc; font-size:0.9em; }
 
-/* ماینر */
-#miner-section { margin:50px 0; }
-#miner-circle { width:100px; height:100px; background:#ff00cc; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-weight:bold; color:#fff; cursor:pointer; transition:0.3s; user-select:none;}
-#miner-circle:hover { transform:scale(1.1); box-shadow:0 0 20px #00ffff; }
-
 /* ستاره‌ها */
 .star { position: fixed; width:2px; height:2px; background:#fff; border-radius:50%; pointer-events:none; z-index:0; animation:twinkle 3s infinite;}
 @keyframes twinkle {0%,100%{opacity:0.2;}50%{opacity:1;}}
 
 /* لودینگ */
-#loading-screen { position:fixed; top:0; left:0; right:0; bottom:0; background:#0f0f0f; display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:2000; color:#00ffff; font-size:1.5em; font-family: monospace; }
+#loading-screen {
+  position:fixed;
+  top:0; left:0; right:0; bottom:0;
+  background:#0f0f0f;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+  color:#00ffff;
+  font-size:1.5em;
+  font-family: monospace;
+}
 #loading-text { margin-bottom:20px; color:#00ffff; text-shadow:0 0 10px #00ffff; }
 #loading-bar { width:300px; height:10px; background:#222; border-radius:10px; overflow:hidden; box-shadow:0 0 10px #00ffff; }
 #loading-fill { width:0%; height:100%; background:linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); transition:width 0.1s linear; }
 
+/* ماینر */
+#miner-section { margin:50px auto; max-width:400px; text-align:center; }
+#miner-circle { width:120px; height:120px; border-radius:50%; background: linear-gradient(135deg,#00ffff,#ff00cc,#ff9900); margin:0 auto 20px auto; display:flex; align-items:center; justify-content:center; cursor:pointer; font-weight:bold; color:#000; font-size:1em; box-shadow:0 0 20px #00ffff,0 0 40px #ff00cc; }
+#sell-coins { padding:10px 20px; border:none; border-radius:10px; background:#ff9900; font-weight:bold; cursor:pointer; transition:0.3s; }
+#sell-coins:hover { transform:scale(1.05); }
+
 /* فوتر */
-footer{ margin-top:50px; color:#ccc; display:flex; justify-content:center; flex-direction:column; align-items:center; gap:10px; }
+footer{ 
+  margin-top:50px; 
+  color:#ccc; 
+  display:flex; 
+  justify-content:center; 
+  flex-direction:column; 
+  align-items:center; 
+  gap:10px; 
+}
 footer a{ color:#00ffff; text-decoration:none;}
 footer a:hover{ text-decoration:underline; }
 
@@ -114,8 +170,8 @@ footer a:hover{ text-decoration:underline; }
 <nav>
   <a href="#about-me">درباره من</a>
   <a href="#projects-section">پروژه‌ها</a>
-  <a href="#miner-section">ماینر</a>
   <a href="#contact-section">ارتباط</a>
+  <a href="#miner-section">ماینر</a>
 </nav>
 
 <header>
@@ -168,14 +224,6 @@ footer a:hover{ text-decoration:underline; }
   <div class="faq-item"><div class="question">چطور می‌توانم با شما در ارتباط باشم؟</div><div class="answer">به راحتی می‌توانید از فرم تماس یا لینک اینستاگرام با من در ارتباط باشید</div></div>
 </section>
 
-<section id="miner-section">
-  <h2>ماینر Arsam Coin</h2>
-  <div id="miner-circle">Mine</div>
-  <p id="coin-count">Arsam Coin: 0</p>
-  <button id="sell-coins" style="margin-top:10px; padding:10px 20px; border:none; border-radius:10px; background:#00ffff; color:#000; font-weight:bold; cursor:pointer;">فروش و تبدیل به دلار</button>
-  <p id="dollar-count">دلار: $0</p>
-</section>
-
 <section id="contact-section">
   <h2>ارتباط با من</h2>
   <form id="contactForm" action="https://formspree.io/f/mnngzdlw" method="POST">
@@ -190,6 +238,14 @@ footer a:hover{ text-decoration:underline; }
     <button type="submit">ارسال پیام</button>
     <p id="formMessage" style="direction: rtl; text-align: right; margin-top: 15px; font-weight: bold;"></p>
   </form>
+</section>
+
+<section id="miner-section">
+  <h2>ماینر Arsam Coin</h2>
+  <div id="miner-circle">کلیک کن!</div>
+  <p id="coin-count">Arsam Coin: 0</p>
+  <p id="dollar-count">دلار: $0</p>
+  <button id="sell-coins">فروش کوین‌ها</button>
 </section>
 
 <footer>
@@ -314,25 +370,32 @@ fetch('https://api.countapi.xyz/hit/arsam-site/visits')
   document.getElementById('visitor-count').textContent = `تعداد بازدید: ${data.value}`;
 });
 
-// ماینر Arsam Coin
-let coins = 0;
-let dollars = 0;
+// ماینر Arsam Coin با localStorage
+let coins = parseInt(localStorage.getItem('arsamCoins')) || 0;
+let dollars = parseFloat(localStorage.getItem('arsamDollars')) || 0;
+
 const miner = document.getElementById('miner-circle');
 const coinCount = document.getElementById('coin-count');
 const dollarCount = document.getElementById('dollar-count');
 const sellBtn = document.getElementById('sell-coins');
 
+coinCount.textContent = `Arsam Coin: ${coins}`;
+dollarCount.textContent = `دلار: $${dollars.toFixed(2)}`;
+
 miner.addEventListener('click', ()=>{
   coins++;
   coinCount.textContent = `Arsam Coin: ${coins}`;
+  localStorage.setItem('arsamCoins', coins);
 });
 
 sellBtn.addEventListener('click', ()=>{
   if(coins>0){
-    dollars += coins * 0.5; // هر کوین 0.5 دلار
+    dollars += coins * 0.5;
     coins=0;
     coinCount.textContent = `Arsam Coin: ${coins}`;
     dollarCount.textContent = `دلار: $${dollars.toFixed(2)}`;
+    localStorage.setItem('arsamCoins', coins);
+    localStorage.setItem('arsamDollars', dollars);
     alert(`تمام کوین‌ها فروخته شد و به دلار تبدیل شدند!`);
   } else {
     alert("هیچ کوینی برای فروش وجود ندارد.");
