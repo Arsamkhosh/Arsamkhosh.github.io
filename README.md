@@ -14,10 +14,16 @@ body {
   color:#fff;
   text-align:center;
   overflow-x:hidden;
+  transition: background 0.5s, color 0.5s;
+}
+body.light {
+  background: #f0f0f0;
+  color: #111;
 }
 header, section, footer { padding: 40px 5%; opacity:0; transform:translateY(50px); transition:all 0.8s ease; }
 h1 { font-size:2.8em; background: linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px; text-shadow:0 0 10px rgba(0,255,255,0.5);}
 h2 { color:#00ffff; margin-bottom:20px; font-size:1.8em; }
+body.light h2 { color:#00aaff; }
 
 /* نوار بالا */
 nav {
@@ -28,11 +34,11 @@ nav {
   backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 20px;
   padding: 15px;
   z-index: 1000;
   border-bottom: 1px solid #00ffff44;
-  transition: top 0.4s ease, box-shadow 0.4s ease, border-bottom 0.4s ease;
+  transition: top 0.4s ease, box-shadow 0.4s ease, border-bottom 0.4s ease, background 0.5s;
 }
 nav.visible { top:0; }
 nav a {
@@ -44,6 +50,21 @@ nav a {
 nav a:hover {
   color: #ff00cc;
   text-shadow: 0 0 10px #ff00cc;
+}
+
+/* دکمه تم */
+#theme-toggle {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  padding: 8px 15px;
+  background: linear-gradient(135deg,#00ffff,#ff00cc);
+  color:#000;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  z-index:1100;
+  font-weight:bold;
 }
 
 /* پروژه‌ها */
@@ -70,6 +91,36 @@ nav a:hover {
 .project-title { font-size:1.4em; font-weight:bold; margin-bottom:10px; color:#00ffff; }
 .project-desc { color:#ccc; margin-bottom:10px; font-size:0.9em; }
 .project-tech { font-size:0.8em; color:#ff9900; font-weight:bold; }
+.like-btn {
+  display:inline-block;
+  padding:5px 10px;
+  margin-top:10px;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+  font-weight:bold;
+  background:#00ffff;
+  color:#000;
+  transition:0.3s;
+}
+.like-btn.liked { background:#ff00cc; color:#fff; }
+
+/* tooltip */
+.project-card .tooltip {
+  position:absolute;
+  bottom:100%;
+  left:50%;
+  transform:translateX(-50%);
+  background:#111;
+  color:#fff;
+  padding:6px 10px;
+  border-radius:6px;
+  font-size:0.8em;
+  display:none;
+  white-space:nowrap;
+  pointer-events:none;
+}
+.project-card:hover .tooltip { display:block; }
 
 /* درباره من */
 .about-card { 
@@ -93,6 +144,17 @@ nav a:hover {
 .profile-pic { width:100px;height:100px; border-radius:50%; background:#00ffff; margin-left:20px; border:4px solid #ff00cc; overflow:hidden; box-shadow:0 0 15px #00ffff; flex-shrink:0; animation: float 3s ease-in-out infinite alternate;}
 @keyframes float {0%{transform:translateY(0);}100%{transform:translateY(-10px);} }
 .about-text p { font-size:1.1em; line-height:1.8; }
+
+/* مهارت‌ها */
+.skills { max-width:600px; margin:30px auto; text-align:right; direction:rtl; }
+.skill { margin-bottom:15px; }
+.skill-name { font-weight:bold; margin-bottom:5px; }
+.skill-bar { width:100%; height:15px; background:#222; border-radius:10px; overflow:hidden; }
+.skill-fill { width:0%; height:100%; background:linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); border-radius:10px; transition: width 1s; }
+
+/* بلاگ کوتاه */
+.blog { max-width:700px; margin:50px auto; text-align:right; direction:rtl; }
+.blog-item { background: rgba(255,255,255,0.08); padding:15px; border-radius:10px; margin-bottom:10px; text-align:right; }
 
 /* فرم تماس */
 form { max-width:500px; margin:40px auto; background: rgba(255,255,255,0.08); padding:25px; border-radius:15px; box-shadow:0 0 25px rgba(0,255,255,0.2); direction:rtl; text-align:right;}
@@ -162,10 +224,15 @@ footer a:hover{ text-decoration:underline; }
   <div id="loading-bar"><div id="loading-fill"></div></div>
 </div>
 
+<!-- دکمه تغییر تم -->
+<button id="theme-toggle">تم روز/شب</button>
+
 <!-- نوار بالا -->
 <nav>
   <a href="#about-me">درباره من</a>
   <a href="#projects-section">پروژه‌ها</a>
+  <a href="#skills-section">مهارت‌ها</a>
+  <a href="#blog-section">اخبار</a>
   <a href="#contact-section">ارتباط</a>
 </nav>
 
@@ -194,20 +261,56 @@ footer a:hover{ text-decoration:underline; }
       <div class="project-title">سرور ماینکرفت 🎮</div>
       <div class="project-desc">سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده</div>
       <div class="project-tech">Java / Spigot / Minecraft</div>
+      <button class="like-btn">❤️ 0</button>
+      <div class="tooltip">این پروژه مربوط به سرور ماینکرفت است</div>
     </div>
     <div class="project-card">
       <img src="site.png" alt="پروژه 2">
       <div class="project-title">سایت شخصی 🌐</div>
       <div class="project-desc">من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم</div>
       <div class="project-tech">HTML / CSS / JavaScript</div>
+      <button class="like-btn">❤️ 0</button>
+      <div class="tooltip">این پروژه سایت شخصی من است</div>
     </div>
     <div class="project-card">
       <img src="edite.png" alt="پروژه 3">
       <div class="project-title">ادیت ویدیو 🎬</div>
       <div class="project-desc">به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم</div>
       <div class="project-tech">Capcut / Filmora / Shotcut</div>
+      <button class="like-btn">❤️ 0</button>
+      <div class="tooltip">این پروژه مربوط به ادیت ویدیو است</div>
     </div>
   </div>
+</section>
+
+<section id="skills-section" class="skills">
+  <h2>مهارت‌ها</h2>
+  <div class="skill">
+    <div class="skill-name">HTML</div>
+    <div class="skill-bar"><div class="skill-fill" data-value="95%"></div></div>
+  </div>
+  <div class="skill">
+    <div class="skill-name">CSS</div>
+    <div class="skill-bar"><div class="skill-fill" data-value="90%"></div></div>
+  </div>
+  <div class="skill">
+    <div class="skill-name">JavaScript</div>
+    <div class="skill-bar"><div class="skill-fill" data-value="85%"></div></div>
+  </div>
+  <div class="skill">
+    <div class="skill-name">Java / Spigot</div>
+    <div class="skill-bar"><div class="skill-fill" data-value="80%"></div></div>
+  </div>
+  <div class="skill">
+    <div class="skill-name">ادیت ویدیو</div>
+    <div class="skill-bar"><div class="skill-fill" data-value="70%"></div></div>
+  </div>
+</section>
+
+<section id="blog-section" class="blog">
+  <h2>اخبار و بروزرسانی‌ها</h2>
+  <div class="blog-item">🚀 پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!</div>
+  <div class="blog-item">🌐 پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.</div>
 </section>
 
 <section class="faq">
@@ -216,7 +319,6 @@ footer a:hover{ text-decoration:underline; }
   <div class="faq-item"><div class="question">آموزش به صورت رایگان میدی؟</div><div class="answer">آموزش میدم ولی رایگان نه</div></div>
   <div class="faq-item"><div class="question">میشه بیام توی سرورتون برای کمک؟</div><div class="answer">بله حتما با استفاده از فرم تماس و اینستاگرام به من بگو</div></div>
   <div class="faq-item"><div class="question">سفارش سایت و سرور میگیری؟</div><div class="answer">بله سایت و سرور ماینکرفت براتون می‌سازم ولی در ازای مبلغی</div></div>
-  <div class="faq-item"><div class="question">چطور می‌توانم با شما در ارتباط باشم؟</div><div class="answer">به راحتی می‌توانید از فرم تماس یا لینک اینستاگرام با من در ارتباط باشید</div></div>
 </section>
 
 <section id="contact-section">
@@ -246,7 +348,7 @@ footer a:hover{ text-decoration:underline; }
 const loadingText = document.getElementById('loading-text');
 const loadingFill = document.getElementById('loading-fill');
 const loadingScreen = document.getElementById('loading-screen');
-const message = "Loading Arsam_khosh web";
+const message = "Loading Arsam_khosh web ...";
 let i=0;
 function typeText(){ if(i<message.length){ loadingText.textContent += message[i]; i++; setTimeout(typeText,100); } }
 typeText();
@@ -309,14 +411,6 @@ window.addEventListener('scroll', ()=>{
   else { nav.classList.remove('visible'); }
 });
 
-// smooth scroll
-document.querySelectorAll('nav a').forEach(link=>{
-  link.addEventListener('click', e=>{
-    e.preventDefault();
-    document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior:'smooth' });
-  });
-});
-
 // تایپ درباره من
 const aboutText = document.getElementById('about-text-content');
 const fullText = aboutText.textContent;
@@ -337,39 +431,39 @@ function typeAboutMe() {
 window.addEventListener('scroll', typeAboutMe);
 window.addEventListener('load', typeAboutMe);
 
-// صدای کلیک پروژه‌ها
-const clickSound = new Audio('click.mp3');
-document.querySelectorAll('.project-card').forEach(c=>{
-  c.addEventListener('click', ()=>{
-    clickSound.currentTime = 0;
-    clickSound.play();
-    for(let j=0;j<10;j++){
-      const p=document.createElement('div');
-      p.style.position='absolute'; p.style.width='5px'; p.style.height='5px';
-      p.style.background='#00ffff';
-      const r=c.getBoundingClientRect();
-      p.style.top=r.top+r.height/2+window.scrollY+'px';
-      p.style.left=r.left+r.width/2+window.scrollX+'px';
-      p.style.transition = '0.8s ease';
-      document.body.appendChild(p);
-      const ang=Math.random()*2*Math.PI, dist=50+Math.random()*50;
-      setTimeout(()=>{ 
-        p.style.top=parseFloat(p.style.top)+Math.sin(ang)*dist+'px'; 
-        p.style.left=parseFloat(p.style.left)+Math.cos(ang)*dist+'px'; 
-        p.style.opacity='0'; 
-      },10);
-      setTimeout(()=>p.remove(),800);
+// لایک پروژه‌ها
+document.querySelectorAll('.like-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    let count = parseInt(btn.textContent.replace(/\D/g,''))||0;
+    if(btn.classList.contains('liked')){
+      count--;
+      btn.classList.remove('liked');
+    } else {
+      count++;
+      btn.classList.add('liked');
     }
+    btn.textContent = `❤️ ${count}`;
   });
 });
 
-// صدای ارسال فرم
+// انیمیشن مهارت‌ها
+function animateSkills(){
+  document.querySelectorAll('.skill-fill').forEach(bar=>{
+    bar.style.width = bar.dataset.value;
+  });
+}
+window.addEventListener('scroll', ()=>{
+  const skills = document.getElementById('skills-section');
+  if(skills.getBoundingClientRect().top < window.innerHeight - 100){
+    animateSkills();
+  }
+});
+
+// فرم تماس
 const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
-const sendSound = new Audio('send.mp3');
 contactForm.addEventListener('submit', function(e){
   e.preventDefault();
-  sendSound.play();
   const formData = new FormData(contactForm);
   fetch(contactForm.action,{
     method: contactForm.method,
@@ -395,6 +489,12 @@ fetch('https://api.countapi.xyz/hit/arsam-site/visits')
 .then(res=>res.json())
 .then(data=>{
   document.getElementById('visitor-count').textContent = `تعداد بازدید: ${data.value}`;
+});
+
+// تم روز/شب
+const themeBtn = document.getElementById('theme-toggle');
+themeBtn.addEventListener('click', ()=>{
+  document.body.classList.toggle('light');
 });
 </script>
 
