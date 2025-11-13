@@ -286,24 +286,17 @@ footer a:hover{ text-decoration:underline; }
 <section id="skills-section" class="skills">
   <h2>مهارت‌ها</h2>
   <div class="skill">
-    <div class="skill-name">HTML</div>
+    <div class="skill-name">سرور ماینکرفت</div>
     <div class="skill-bar"><div class="skill-fill" data-value="95%"></div></div>
   </div>
+ 
   <div class="skill">
-    <div class="skill-name">CSS</div>
-    <div class="skill-bar"><div class="skill-fill" data-value="90%"></div></div>
-  </div>
-  <div class="skill">
-    <div class="skill-name">JavaScript</div>
-    <div class="skill-bar"><div class="skill-fill" data-value="85%"></div></div>
-  </div>
-  <div class="skill">
-    <div class="skill-name">Java / Spigot</div>
+    <div class="skill-name">ادیت ویدیو</div>
     <div class="skill-bar"><div class="skill-fill" data-value="80%"></div></div>
   </div>
   <div class="skill">
-    <div class="skill-name">ادیت ویدیو</div>
-    <div class="skill-bar"><div class="skill-fill" data-value="70%"></div></div>
+    <div class="skill-name">برنامه نویسی</div>
+    <div class="skill-bar"><div class="skill-fill" data-value="60%"></div></div>
   </div>
 </section>
 
@@ -311,6 +304,7 @@ footer a:hover{ text-decoration:underline; }
   <h2>اخبار و بروزرسانی‌ها</h2>
   <div class="blog-item">🚀 پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!</div>
   <div class="blog-item">🌐 پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.</div>
+   <div class="blog-item">🚀ایونت جدید در سرور </div>
 </section>
 
 <section class="faq">
