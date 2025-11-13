@@ -6,94 +6,33 @@
 <title>پروژه‌های من</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
 <style>
-/* پایه */
-body {
-  margin:0;
-  font-family:'Vazirmatn',sans-serif;
-  background:linear-gradient(135deg,#0f0f0f,#1a1a1a);
-  color:#fff;
-  text-align:center;
-  overflow-x:hidden;
-}
-header, section, footer { padding: 40px 5%; opacity:0; transform:translateY(50px); transition:all 0.8s ease; }
+body { margin:0; font-family:'Vazirmatn',sans-serif; background:linear-gradient(135deg,#0f0f0f,#1a1a1a); color:#fff; text-align:center; overflow-x:hidden; }
+header, section, footer { padding:40px 5%; opacity:0; transform:translateY(50px); transition:all 0.8s ease; }
 h1 { font-size:2.8em; background: linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px; text-shadow:0 0 10px rgba(0,255,255,0.5);}
 h2 { color:#00ffff; margin-bottom:20px; font-size:1.8em; }
 
 /* نوار بالا */
-nav {
-  position: fixed;
-  top: -70px;
-  left: 0; right: 0;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(10px);
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  padding: 15px;
-  z-index: 1000;
-  border-bottom: 1px solid #00ffff44;
-  transition: top 0.4s ease, box-shadow 0.4s ease, border-bottom 0.4s ease;
-}
+nav { position: fixed; top:-70px; left:0; right:0; background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); display:flex; justify-content:center; gap:30px; padding:15px; z-index:1000; border-bottom:1px solid #00ffff44; transition: top 0.4s ease, box-shadow 0.4s ease, border-bottom 0.4s ease; }
 nav.visible { top:0; }
-nav a {
-  color: #00ffff;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
-}
-nav a:hover {
-  color: #ff00cc;
-  text-shadow: 0 0 10px #ff00cc;
-}
+nav a { color:#00ffff; text-decoration:none; font-weight:bold; transition:0.3s; }
+nav a:hover { color:#ff00cc; text-shadow:0 0 10px #ff00cc; }
 
 /* پروژه‌ها */
 .projects { display:flex; justify-content:center; flex-wrap:wrap; gap:30px; margin-top:20px; }
-.project-card {
-  position:relative;
-  background:rgba(255,255,255,0.08);
-  padding:25px;
-  width:300px;
-  min-height:250px;
-  border-radius:15px;
-  border-left:5px solid #00ffff;
-  box-shadow:0 4px 20px rgba(0,255,255,0.1);
-  text-align:center;
-  cursor:pointer;
-  transition: transform 0.3s, box-shadow 0.3s, background 0.5s, border-left 0.3s;
-}
+.project-card { position:relative; background:rgba(255,255,255,0.08); padding:25px; width:300px; min-height:250px; border-radius:15px; border-left:5px solid #00ffff; box-shadow:0 4px 20px rgba(0,255,255,0.1); text-align:center; cursor:pointer; transition: transform 0.3s, box-shadow 0.3s, background 0.5s, border-left 0.3s; }
 .project-card img { width:100%; border-radius:15px; margin-bottom:15px; }
-.project-card:hover {
-  transform:translateY(-5px);
-  box-shadow:0 0 30px #ff00cc,0 0 10px #00ffff;
-  border-left:5px solid #ff00cc;
-}
+.project-card:hover { transform:translateY(-5px); box-shadow:0 0 30px #ff00cc,0 0 10px #00ffff; border-left:5px solid #ff00cc; }
 .project-title { font-size:1.4em; font-weight:bold; margin-bottom:10px; color:#00ffff; }
 .project-desc { color:#ccc; margin-bottom:10px; font-size:0.9em; }
 .project-tech { font-size:0.8em; color:#ff9900; font-weight:bold; }
 
 /* درباره من */
-.about-card { 
-  max-width:600px; 
-  margin:20px auto; 
-  background: rgba(255,255,255,0.08); 
-  padding:30px; 
-  border-radius:20px; 
-  box-shadow:0 0 20px rgba(255,255,255,0.1); 
-  display:flex; 
-  align-items:center; 
-  direction:rtl; 
-  text-align:right;
-  transition: all 0.3s ease;
-}
-.about-card:hover {
-  box-shadow:0 0 20px #00ffff, 0 0 40px #ff00cc, 0 0 60px #ff9900;
-  transform: translateY(-5px);
-  border-left:5px solid #00ffff;
-}
+.about-card { max-width:600px; margin:20px auto; background: rgba(255,255,255,0.08); padding:30px; border-radius:20px; box-shadow:0 0 20px rgba(255,255,255,0.1); display:flex; align-items:center; direction:rtl; text-align:right; transition: all 0.3s ease; }
+.about-card:hover { box-shadow:0 0 20px #00ffff, 0 0 40px #ff00cc, 0 0 60px #ff9900; transform: translateY(-5px); border-left:5px solid #00ffff; }
 .profile-pic { width:100px;height:100px; border-radius:50%; background:#00ffff; margin-left:20px; border:4px solid #ff00cc; overflow:hidden; box-shadow:0 0 15px #00ffff; flex-shrink:0;}
 .about-text p { font-size:1.1em; line-height:1.8; }
 
-/* فرم تماس */
+/* فرم تماس و ثبت نام */
 form { max-width:500px; margin:40px auto; background: rgba(255,255,255,0.08); padding:25px; border-radius:15px; box-shadow:0 0 25px rgba(0,255,255,0.2); direction:rtl; text-align:right;}
 input,textarea{ width:100%; padding:12px; border-radius:10px; border:1px solid rgba(0,255,255,0.3); background-color: rgba(255,255,255,0.1); color:#fff; margin-bottom:15px;}
 ::placeholder{ color:#aaa; opacity:1; }
@@ -112,33 +51,13 @@ button[type="submit"]:hover{ transform:scale(1.05); }
 @keyframes twinkle {0%,100%{opacity:0.2;}50%{opacity:1;}}
 
 /* لودینگ */
-#loading-screen {
-  position:fixed;
-  top:0; left:0; right:0; bottom:0;
-  background:#0f0f0f;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  z-index:2000;
-  color:#00ffff;
-  font-size:1.5em;
-  font-family: monospace;
-}
+#loading-screen { position:fixed; top:0; left:0; right:0; bottom:0; background:#0f0f0f; display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:2000; color:#00ffff; font-size:1.5em; font-family: monospace;}
 #loading-text { margin-bottom:20px; color:#00ffff; text-shadow:0 0 10px #00ffff; }
 #loading-bar { width:300px; height:10px; background:#222; border-radius:10px; overflow:hidden; box-shadow:0 0 10px #00ffff; }
 #loading-fill { width:0%; height:100%; background:linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); transition:width 0.1s linear; }
 
 /* فوتر */
-footer{ 
-  margin-top:50px; 
-  color:#ccc; 
-  display:flex; 
-  justify-content:center; 
-  flex-direction:column; 
-  align-items:center; 
-  gap:10px; 
-}
+footer{ margin-top:50px; color:#ccc; display:flex; justify-content:center; flex-direction:column; align-items:center; gap:10px; }
 footer a{ color:#00ffff; text-decoration:none;}
 footer a:hover{ text-decoration:underline; }
 
@@ -165,6 +84,7 @@ footer a:hover{ text-decoration:underline; }
   <a href="#about-me">درباره من</a>
   <a href="#projects-section">پروژه‌ها</a>
   <a href="#contact-section">ارتباط</a>
+  <a href="#signup-section">ورود/ثبت نام</a>
 </nav>
 
 <header>
@@ -230,6 +150,31 @@ footer a:hover{ text-decoration:underline; }
     <textarea id="message" name="message" rows="5" required placeholder="متن پیام..."></textarea>
     <button type="submit">ارسال پیام</button>
     <p id="formMessage" style="direction: rtl; text-align: right; margin-top: 15px; font-weight: bold;"></p>
+  </form>
+</section>
+
+<section id="signup-section">
+  <h2>ثبت نام / ورود</h2>
+  <form id="loginForm">
+    <label for="fullname">نام:</label>
+    <input type="text" id="fullname" placeholder="نام خود را وارد کنید" required>
+
+    <label for="family">نام خانوادگی:</label>
+    <input type="text" id="family" placeholder="نام خانوادگی" required>
+
+    <label for="emailSignup">ایمیل:</label>
+    <input type="email" id="emailSignup" placeholder="example@example.com" required>
+
+    <label for="phoneSignup">شماره تلفن:</label>
+    <input type="tel" id="phoneSignup" placeholder="0912xxxxxxx">
+
+    <div style="text-align:right; margin-bottom:15px;">
+      <input type="checkbox" id="gdpr" required>
+      <label for="gdpr">من قوانین اتحادیه اروپا (GDPR) را قبول دارم</label>
+    </div>
+
+    <button type="submit">ثبت نام</button>
+    <p id="loginMessage" style="margin-top:10px; font-weight:bold;"></p>
   </form>
 </section>
 
@@ -365,90 +310,58 @@ contactForm.addEventListener('submit', function(e){
   });
 });
 
+// فرم ثبت نام
+const loginForm = document.getElementById('loginForm');
+const loginMessage = document.getElementById('loginMessage');
+
+loginForm.addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const fullName = document.getElementById('fullname').value;
+  const familyName = document.getElementById('family').value;
+  const email = document.getElementById('emailSignup').value;
+  const phone = document.getElementById('phoneSignup').value;
+  const gdprChecked = document.getElementById('gdpr').checked;
+
+  if(!gdprChecked){
+    loginMessage.textContent = '❌ لطفاً قوانین اتحادیه اروپا را قبول کنید.';
+    loginMessage.style.color = '#ff0000';
+    return;
+  }
+
+  // ذخیره در localStorage
+  localStorage.setItem('fullName', fullName);
+  localStorage.setItem('familyName', familyName);
+  localStorage.setItem('email', email);
+  localStorage.setItem('phone', phone);
+
+  loginMessage.textContent = '✅ ثبت نام با موفقیت انجام شد!';
+  loginMessage.style.color = '#00ffcc';
+
+  // ارسال ایمیل با Formspree
+  const fsForm = new FormData();
+  fsForm.append('name', fullName + ' ' + familyName);
+  fsForm.append('email', email);
+  fsForm.append('phone', phone);
+  fsForm.append('message', 'کاربر جدید ثبت‌نام کرد و قوانین GDPR را قبول کرده.');
+
+  fetch('https://formspree.io/f/mnngzdlw', {
+    method: 'POST',
+    body: fsForm,
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(res => {
+    if(res.ok) console.log('ایمیل ثبت‌نام ارسال شد');
+    else console.warn('ارسال ایمیل موفق نبود');
+  })
+  .catch(err => console.error('خطا در ارسال ایمیل:', err));
+});
+
 // شمارنده بازدید
 fetch('https://api.countapi.xyz/hit/arsam-site/visits')
 .then(res=>res.json())
 .then(data=>{
   document.getElementById('visitor-count').textContent = `تعداد بازدید: ${data.value}`;
-});
-</script>
-<!-- دکمه ورود -->
-<button id="loginBtn" style="position:fixed; top:15px; left:15px; z-index:1001; padding:8px 12px; border:none; border-radius:6px; background:#00ffff; color:#000; cursor:pointer; font-weight:bold; box-shadow:0 0 10px #00ffff;">ورود</button>
-
-<!-- مودال فرم ورود زیبا -->
-<div id="loginModal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.85); z-index:1002; display:flex; align-items:center; justify-content:center; animation:fadeIn 0.4s;">
-  <div style="background:linear-gradient(135deg,#0f0f0f,#1a1a1a); padding:30px; border-radius:15px; max-width:400px; width:90%; color:#fff; text-align:right; position:relative; box-shadow:0 0 20px #00ffff,0 0 40px #ff00cc;">
-    <h3 style="text-align:center; margin-bottom:20px; background:linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">فرم ورود</h3>
-    <label>نام:</label>
-    <input type="text" id="firstName" placeholder="نام" style="width:100%; margin:5px 0 10px 0; padding:10px; border-radius:8px; border:none; background:rgba(255,255,255,0.1); color:#fff;">
-    <label>نام خانوادگی:</label>
-    <input type="text" id="lastName" placeholder="نام خانوادگی" style="width:100%; margin:5px 0 10px 0; padding:10px; border-radius:8px; border:none; background:rgba(255,255,255,0.1); color:#fff;">
-    <label>شماره تلفن:</label>
-    <input type="tel" id="phone" placeholder="0912xxxxxxx" style="width:100%; margin:5px 0 10px 0; padding:10px; border-radius:8px; border:none; background:rgba(255,255,255,0.1); color:#fff;">
-    <label>ایمیل:</label>
-    <input type="email" id="email" placeholder="example@example.com" style="width:100%; margin:5px 0 10px 0; padding:10px; border-radius:8px; border:none; background:rgba(255,255,255,0.1); color:#fff;">
-    <button id="submitLogin" style="background:linear-gradient(135deg,#00ffff,#ff00cc); color:#000; padding:12px 20px; border:none; border-radius:8px; cursor:pointer; font-weight:bold; width:100%; margin-top:10px; transition:0.3s;">ثبت</button>
-    <span id="closeModal" style="position:absolute; top:10px; right:15px; cursor:pointer; font-size:24px; color:#ff00cc;">×</span>
-  </div>
-</div>
-
-<style>
-@keyframes fadeIn { from {opacity:0;} to{opacity:1;} }
-@media(max-width:500px){
-  #loginModal div { padding:20px; }
-  #loginModal input { padding:8px; }
-}
-</style>
-
-<script>
-// نمایش/پنهان مودال
-const loginBtn = document.getElementById('loginBtn');
-const loginModal = document.getElementById('loginModal');
-const closeModal = document.getElementById('closeModal');
-const submitLogin = document.getElementById('submitLogin');
-
-loginBtn.addEventListener('click', ()=>{ loginModal.style.display='flex'; });
-closeModal.addEventListener('click', ()=>{ loginModal.style.display='none'; });
-window.addEventListener('click', e=>{ if(e.target===loginModal) loginModal.style.display='none'; });
-
-// اگر قبلاً کاربر ثبت شده باشد
-if(localStorage.getItem('userName')){
-  loginBtn.textContent = `سلام، ${localStorage.getItem('userName')}!`;
-}
-
-// ثبت فرم
-submitLogin.addEventListener('click', ()=>{
-  const f = document.getElementById('firstName').value.trim();
-  const l = document.getElementById('lastName').value.trim();
-  const p = document.getElementById('phone').value.trim();
-  const e = document.getElementById('email').value.trim();
-  
-  if(f && l && p && e){
-    const fullName = f + ' ' + l;
-    localStorage.setItem('userName', fullName);
-    localStorage.setItem('userPhone', p);
-    localStorage.setItem('userEmail', e);
-    loginBtn.textContent = `سلام، ${fullName}!`;
-    loginModal.style.display='none';
-    
-    // افکت ستاره‌ها هنگام ورود موفق
-    for(let i=0;i<20;i++){
-      const s=document.createElement('div');
-      s.classList.add('star');
-      s.style.top=Math.random()*window.innerHeight+'px';
-      s.style.left=Math.random()*window.innerWidth+'px';
-      s.style.width='3px';
-      s.style.height='3px';
-      s.style.background='#ff00cc';
-      s.style.animationDuration='1s';
-      document.body.appendChild(s);
-      setTimeout(()=>s.remove(),1200);
-    }
-    
-    alert('🎉 ورود موفقیت‌آمیز بود!');
-  } else {
-    alert('لطفاً همه فیلدها را پر کنید!');
-  }
 });
 </script>
 
