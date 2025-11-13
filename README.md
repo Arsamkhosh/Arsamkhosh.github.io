@@ -332,11 +332,39 @@ function typeAboutMe() {
 window.addEventListener('scroll', typeAboutMe);
 window.addEventListener('load', typeAboutMe);
 
-// فرم تماس
+// صدای کلیک پروژه‌ها
+const clickSound = new Audio('click.mp3');
+document.querySelectorAll('.project-card').forEach(c=>{
+  c.addEventListener('click', ()=>{
+    clickSound.currentTime = 0;
+    clickSound.play();
+    for(let j=0;j<10;j++){
+      const p=document.createElement('div');
+      p.style.position='absolute'; p.style.width='5px'; p.style.height='5px';
+      p.style.background='#00ffff';
+      const r=c.getBoundingClientRect();
+      p.style.top=r.top+r.height/2+window.scrollY+'px';
+      p.style.left=r.left+r.width/2+window.scrollX+'px';
+      p.style.transition='0.8s ease';
+      document.body.appendChild(p);
+      const ang=Math.random()*2*Math.PI, dist=50+Math.random()*50;
+      setTimeout(()=>{ 
+        p.style.top=parseFloat(p.style.top)+Math.sin(ang)*dist+'px'; 
+        p.style.left=parseFloat(p.style.left)+Math.cos(ang)*dist+'px'; 
+        p.style.opacity='0'; 
+      },10);
+      setTimeout(()=>p.remove(),800);
+    }
+  });
+});
+
+// صدای ارسال فرم
 const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
+const sendSound = new Audio('send.mp3');
 contactForm.addEventListener('submit', function(e){
   e.preventDefault();
+  sendSound.play();
   const formData = new FormData(contactForm);
   fetch(contactForm.action,{
     method: contactForm.method,
@@ -357,12 +385,13 @@ contactForm.addEventListener('submit', function(e){
   });
 });
 
-// شمارنده بازدید واقعی
+// شمارنده بازدید با CountAPI
 fetch('https://api.countapi.xyz/hit/arsam-site/visits')
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById('visitor-count').textContent = `تعداد بازدید سایت: ${data.value}`;
-  });
+.then(res=>res.json())
+.then(data=>{
+  document.getElementById('visitor-count').textContent = `تعداد بازدید: ${data.value}`;
+});
 </script>
+
 </body>
 </html>
