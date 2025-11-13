@@ -392,6 +392,11 @@ fetch('https://api.countapi.xyz/hit/arsam-site/visits')
   document.getElementById('visitor-count').textContent = `تعداد بازدید: ${data.value}`;
 });
 </script>
+<style>
+.faq h2 {
+  text-align: center;
+}
+</style>
 
 </body>
 </html>
