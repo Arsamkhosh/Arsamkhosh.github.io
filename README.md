@@ -359,9 +359,9 @@ footer a:hover{ text-decoration:underline; }
 <section id="gallery-section">
   <h2>گالری</h2>
   <div class="gallery">
-    <div class="gallery-item"><img src="jade_chaloos.png" alt="تصویر 1"><div class="tooltip">تصویر کوه جاده چالوس</div></div>
-    <div class="gallery-item"><img src="damavand_kohe.png" alt="تصویر 2"><div class="tooltip">تصویر کوه دماوند</div></div>
-    <div class="gallery-item"><img src="azadi_tehran.png" alt="تصویر 3"><div class="tooltip">تصویر برج آزادی تهران</div></div>
+    <div class="gallery-item"><img src="jade_chaloos.png" alt="تصویر 1"><div class="tooltip">ایران/استان مازنداران/جاده زیبای چالوس</div></div>
+    <div class="gallery-item"><img src="damavand_kohe.png" alt="تصویر 2"><div class="tooltip">ایران/استان تهران/کوه زیبای دماوند</div></div>
+    <div class="gallery-item"><img src="azadi_tehran.png" alt="تصویر 3"><div class="tooltip">ایران/تهران/برج زیبای آزادی</div></div>
   </div>
 </section>
 
