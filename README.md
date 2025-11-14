@@ -15,155 +15,175 @@ body {
   text-align:center;
   overflow-x:hidden;
   transition: background 0.5s, color 0.5s;
-  position: relative;
+}
+body.dark-mode {
+  background: linear-gradient(135deg,#fdf6e3,#fff9e6);
+  color:#111;
 }
 header, section, footer { padding: 40px 5%; opacity:0; transform:translateY(50px); transition:all 0.8s ease; }
 h1 { font-size:2.8em; background: linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px; text-shadow:0 0 10px rgba(0,255,255,0.5);}
 h2 { color:#00ffff; margin-bottom:20px; font-size:1.8em; }
+
 /* نوار بالا */
 nav {
-position: fixed;
-top: -70px;
-left: 0; right: 0;
-background: rgba(0,0,0,0.6);
-backdrop-filter: blur(10px);
-display: flex;
-justify-content: center;
-gap: 20px;
-padding: 15px;
-z-index: 1000;
-border-bottom: 1px solid #00ffff44;
-transition: top 0.4s ease, box-shadow 0.4s ease, border-bottom 0.4s ease, background 0.5s;
+  position: fixed;
+  top: -70px;
+  left: 0; right: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px;
+  z-index: 1000;
+  border-bottom: 1px solid #00ffff44;
+  transition: top 0.4s ease, box-shadow 0.4s ease, border-bottom 0.4s ease, background 0.5s;
 }
 nav.visible { top:0; }
 nav a {
-color: #00ffff;
-text-decoration: none;
-font-weight: bold;
-transition: 0.3s;
+  color: #00ffff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
 }
 nav a:hover {
-color: #ff00cc;
-text-shadow: 0 0 10px #ff00cc;
+  color: #ff00cc;
+  text-shadow: 0 0 10px #ff00cc;
 }
+
 /* دکمه تم */
-.theme-toggle {
-position: fixed;
-top: 15px;
-left: 15px;
-background: linear-gradient(135deg,#00ffff,#ffcc00);
-border:none;
-border-radius:50px;
-padding:10px 20px;
-font-weight:bold;
-cursor:pointer;
-display:flex;
-align-items:center;
-gap:10px;
-box-shadow:0 0 10px #00ffff;
-z-index:1100;
-transition:0.3s;
+.theme-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: linear-gradient(135deg,#00ffff,#ff00cc);
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  box-shadow: 0 5px 15px rgba(0,255,255,0.4);
+  transition: all 0.3s ease;
+  z-index: 1000;
 }
-.theme-toggle:hover {
-transform: scale(1.1);
-box-shadow:0 0 20px #ff00cc,0 0 10px #00ffff;
+.theme-btn:hover {
+  transform: scale(1.1) rotate(15deg);
+  box-shadow: 0 10px 25px rgba(255,0,204,0.6);
 }
+.theme-btn .icon {
+  transition: transform 0.5s ease;
+}
+body.dark-mode .theme-btn .icon {
+  transform: rotate(180deg);
+}
+
 /* پروژه‌ها */
 .projects { display:flex; justify-content:center; flex-wrap:wrap; gap:30px; margin-top:20px; }
 .project-card {
-position:relative;
-background:rgba(255,255,255,0.08);
-padding:25px;
-width:300px;
-min-height:250px;
-border-radius:15px;
-border-left:5px solid #00ffff;
-box-shadow:0 4px 20px rgba(0,255,255,0.1);
-text-align:center;
-cursor:pointer;
-transition: transform 0.3s, box-shadow 0.3s, background 0.5s, border-left 0.3s;
+  position:relative;
+  background:rgba(255,255,255,0.08);
+  padding:25px;
+  width:300px;
+  min-height:250px;
+  border-radius:15px;
+  border-left:5px solid #00ffff;
+  box-shadow:0 4px 20px rgba(0,255,255,0.1);
+  text-align:center;
+  cursor:pointer;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.5s, border-left 0.3s;
 }
 .project-card img { width:100%; border-radius:15px; margin-bottom:15px; }
 .project-card:hover {
-transform:translateY(-10px) rotate(-1deg);
-box-shadow:0 0 30px #ff00cc,0 0 10px #00ffff;
-border-left:5px solid #ff00cc;
+  transform:translateY(-10px) rotate(-1deg);
+  box-shadow:0 0 30px #ff00cc,0 0 10px #00ffff;
+  border-left:5px solid #ff00cc;
 }
 .project-title { font-size:1.4em; font-weight:bold; margin-bottom:10px; color:#00ffff; }
 .project-desc { color:#ccc; margin-bottom:10px; font-size:0.9em; }
 .project-tech { font-size:0.8em; color:#ff9900; font-weight:bold; }
 .like-btn {
-display:inline-block;
-padding:5px 10px;
-margin-top:10px;
-border-radius:10px;
-border:none;
-cursor:pointer;
-font-weight:bold;
-background:#00ffff;
-color:#000;
-transition:0.3s;
+  display:inline-block;
+  padding:5px 10px;
+  margin-top:10px;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+  font-weight:bold;
+  background:#00ffff;
+  color:#000;
+  transition:0.3s;
 }
 .like-btn.liked { background:#ff00cc; color:#fff; }
+
 /* tooltip */
 .project-card .tooltip {
-position:absolute;
-bottom:100%;
-left:50%;
-transform:translateX(-50%);
-background:#111;
-color:#fff;
-padding:6px 10px;
-border-radius:6px;
-font-size:0.8em;
-display:none;
-white-space:nowrap;
-pointer-events:none;
+  position:absolute;
+  bottom:100%;
+  left:50%;
+  transform:translateX(-50%);
+  background:#111;
+  color:#fff;
+  padding:6px 10px;
+  border-radius:6px;
+  font-size:0.8em;
+  display:none;
+  white-space:nowrap;
+  pointer-events:none;
 }
 .project-card:hover .tooltip { display:block; }
+
 /* درباره من */
-.about-card {
-max-width:600px;
-margin:20px auto;
-background: rgba(255,255,255,0.08);
-padding:30px;
-border-radius:20px;
-box-shadow:0 0 20px rgba(255,255,255,0.1);
-display:flex;
-align-items:center;
-direction:rtl;
-text-align:right;
-transition: all 0.3s ease;
+.about-card { 
+  max-width:600px; 
+  margin:20px auto; 
+  background: rgba(255,255,255,0.08); 
+  padding:30px; 
+  border-radius:20px; 
+  box-shadow:0 0 20px rgba(255,255,255,0.1); 
+  display:flex; 
+  align-items:center; 
+  direction:rtl; 
+  text-align:right;
+  transition: all 0.3s ease;
 }
 .about-card:hover {
-box-shadow:0 0 20px #00ffff, 0 0 40px #ff00cc, 0 0 60px #ff9900;
-transform: translateY(-5px);
-border-left:5px solid #00ffff;
+  box-shadow:0 0 20px #00ffff, 0 0 40px #ff00cc, 0 0 60px #ff9900;
+  transform: translateY(-5px);
+  border-left:5px solid #00ffff;
 }
 .profile-pic { width:100px;height:100px; border-radius:50%; background:#00ffff; margin-left:20px; border:4px solid #ff00cc; overflow:hidden; box-shadow:0 0 15px #00ffff; flex-shrink:0; animation: float 3s ease-in-out infinite alternate;}
 @keyframes float {0%{transform:translateY(0);}100%{transform:translateY(-10px);} }
 .about-text p { font-size:1.1em; line-height:1.8; }
+
 /* مهارت‌ها */
 .skills { max-width:600px; margin:30px auto; text-align:right; direction:rtl; }
 .skill { margin-bottom:15px; }
 .skill-name { font-weight:bold; margin-bottom:5px; }
 .skill-bar { width:100%; height:15px; background:#222; border-radius:10px; overflow:hidden; }
 .skill-fill { width:0%; height:100%; background:linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); border-radius:10px; transition: width 1s; }
+
 /* بلاگ کوتاه */
 .blog { max-width:700px; margin:50px auto; text-align:right; direction:rtl; }
 .blog-item { background: rgba(255,255,255,0.08); padding:15px; border-radius:10px; margin-bottom:10px; text-align:right; }
+
 /* فرم تماس */
 form { max-width:500px; margin:40px auto; background: rgba(255,255,255,0.08); padding:25px; border-radius:15px; box-shadow:0 0 25px rgba(0,255,255,0.2); direction:rtl; text-align:right;}
 input,textarea{ width:100%; padding:12px; border-radius:10px; border:1px solid rgba(0,255,255,0.3); background-color: rgba(255,255,255,0.1); color:#fff; margin-bottom:15px;}
 ::placeholder{ color:#aaa; opacity:1; }
 button[type="submit"] { background: linear-gradient(135deg,#00ffff,#ff00cc); color:#000; font-weight:bold; padding:10px 20px; border:none; border-radius:12px; cursor:pointer; transition:0.3s;}
 button[type="submit"]:hover{ transform:scale(1.05); }
+
 /* FAQ */
 .faq { max-width:800px; margin:50px auto; text-align:right; direction:rtl; }
 .faq h2 { text-align: center; }
 .faq-item { background: rgba(255,255,255,0.08); padding:15px; border-radius:10px; margin-bottom:10px; cursor:pointer; border:2px solid #00ffff; transition:0.3s; }
 .faq-item:hover { box-shadow:0 0 15px #00ffff,0 0 25px #ff00cc; }
 .faq-item .answer { display:none; margin-top:10px; color:#ccc; font-size:0.9em; }
+
 /* گالری */
 #gallery-section { max-width:1000px; margin:50px auto; text-align:center; }
 #gallery-section h2 { margin-bottom:30px; color:#00ffff; }
@@ -172,54 +192,62 @@ button[type="submit"]:hover{ transform:scale(1.05); }
 .gallery-item:hover { transform:translateY(-5px); box-shadow:0 6px 25px rgba(0,255,255,0.4),0 0 10px #ff00cc; }
 .gallery-item img { width:100%; height:200px; object-fit:cover; display:block; transition: transform 0.3s; }
 .gallery-item:hover img { transform:scale(1.1); }
+
 /* لودینگ */
 #loading-screen {
-position:fixed;
-top:0; left:0; right:0; bottom:0;
-background:#0f0f0f;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-z-index:2000;
-color:#00ffff;
-font-size:1.5em;
-font-family: monospace;
+  position:fixed;
+  top:0; left:0; right:0; bottom:0;
+  background:#0f0f0f;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+  color:#00ffff;
+  font-size:1.5em;
+  font-family: monospace;
 }
 #loading-text { margin-bottom:20px; color:#00ffff; text-shadow:0 0 10px #00ffff; font-weight:bold;}
 #loading-bar { width:300px; height:10px; background:#222; border-radius:10px; overflow:hidden; box-shadow:0 0 10px #00ffff; }
-#loading-fill { width:0%; height:100%; background:linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); transition:width 0.1s linear; }
+#loading-fill { width:0%; height:100%; background:linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); transition: width 0.05s linear; }
+
 /* فوتر */
-footer{
-margin-top:50px;
-color:#ccc;
-display:flex;
-justify-content:center;
-flex-direction:column;
-align-items:center;
-gap:10px;
+footer{ 
+  margin-top:50px; 
+  color:#ccc; 
+  display:flex; 
+  justify-content:center; 
+  flex-direction:column; 
+  align-items:center; 
+  gap:10px; 
 }
 footer a{ color:#00ffff; text-decoration:none;}
 footer a:hover{ text-decoration:underline; }
+
 /* ریسپانسیو */
 @media(max-width:650px){
-.projects { flex-direction:column; align-items:center; }
-.project-card { width:90%; }
-.about-card { flex-direction:column; text-align:center; }
-.profile-pic { margin-left:0;margin-bottom:20px; }
-.about-text { text-align:center; }
-.gallery-item { max-width:90%; height:auto; }
+  .projects { flex-direction:column; align-items:center; }
+  .project-card { width:90%; }
+  .about-card { flex-direction:column; text-align:center; }
+  .profile-pic { margin-left:0;margin-bottom:20px; }
+  .about-text { text-align:center; }
+  .gallery-item { max-width:90%; height:auto; }
 }
 </style>
 </head>
 <body>
-<!-- دکمه تم -->
-<button class="theme-toggle"><span id="theme-icon">🌙</span> تم</button>
+
 <!-- لودینگ -->
 <div id="loading-screen">
   <div id="loading-text">Loading Arsam_khosh web</div>
   <div id="loading-bar"><div id="loading-fill"></div></div>
 </div>
+
+<!-- دکمه تم -->
+<button class="theme-btn" id="themeToggle">
+  <span class="icon">🌙</span>
+</button>
+
 <!-- نوار بالا -->
 <nav>
   <a href="#about-me">درباره من</a>
@@ -229,10 +257,12 @@ footer a:hover{ text-decoration:underline; }
   <a href="#gallery-section">گالری</a>
   <a href="#contact-section">ارتباط</a>
 </nav>
+
 <header>
   <h1>خوش آمدید</h1>
   <p>!خوش آمدید به سایت من، در ادامه پروژه‌ها را می‌بینید</p>
 </header>
+
 <section id="about-me">
   <h2>درباره من</h2>
   <div class="about-card">
@@ -244,6 +274,7 @@ footer a:hover{ text-decoration:underline; }
     </div>
   </div>
 </section>
+
 <section id="projects-section">
   <h2>پروژه‌ها</h2>
   <div class="projects">
@@ -273,6 +304,7 @@ footer a:hover{ text-decoration:underline; }
     </div>
   </div>
 </section>
+
 <section id="skills-section" class="skills">
   <h2>مهارت‌ها</h2>
   <div class="skill">
@@ -288,12 +320,14 @@ footer a:hover{ text-decoration:underline; }
     <div class="skill-bar"><div class="skill-fill" data-value="60%"></div></div>
   </div>
 </section>
+
 <section id="blog-section" class="blog">
   <h2>اخبار و بروزرسانی‌ها</h2>
   <div class="blog-item">🚀 پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!</div>
   <div class="blog-item">🌐 پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.</div>
   <div class="blog-item">🚀 ایونت جدید در سرور</div>
 </section>
+
 <section id="gallery-section">
   <h2>گالری</h2>
   <div class="gallery">
@@ -302,6 +336,7 @@ footer a:hover{ text-decoration:underline; }
     <div class="gallery-item"><img src="gallery/image3.jpg" alt="تصویر 3"></div>
   </div>
 </section>
+
 <section class="faq">
   <h2>پرسش و پاسخ پر تکرار</h2>
   <div class="faq-item"><div class="question">این سایت با چه زبانی ساخته شده؟</div><div class="answer">این سایت با HTML، CSS و JavaScript ساخته شده است.</div></div>
@@ -309,6 +344,7 @@ footer a:hover{ text-decoration:underline; }
   <div class="faq-item"><div class="question">میشه بیام توی سرورتون برای کمک؟</div><div class="answer">بله حتما با استفاده از فرم تماس و اینستاگرام به من بگو</div></div>
   <div class="faq-item"><div class="question">سفارش سایت و سرور میگیری؟</div><div class="answer">بله سایت و سرور ماینکرفت براتون می‌سازم ولی در ازای مبلغی</div></div>
 </section>
+
 <section id="contact-section">
   <h2>ارتباط با من</h2>
   <form id="contactForm" action="https://formspree.io/f/mnngzdlw" method="POST">
@@ -324,25 +360,29 @@ footer a:hover{ text-decoration:underline; }
     <p id="formMessage"></p>
   </form>
 </section>
+
 <footer>
   <p>© 2025 Arsam_khosh</p>
-  <a href="https://www.instagram.com/arsam.khosh.akhlagh.2012/" target="_blank">اینستاگرام من</a>
+  <a href="https://www.instagram.com/arsam.khosh.akhlagh.2012" target="_blank">اینستاگرام من</a>
 </footer>
+
 <script>
-// لودینگ 7 ثانیه
+// لودینگ 4 ثانیه
 let loading = 0;
 const loadingFill = document.getElementById('loading-fill');
 const loadingScreen = document.getElementById('loading-screen');
-const duration = 7000; // 7 ثانیه
-const steps = 100;
-const intervalTime = duration / steps;
+const totalTime = 4000; // 4 ثانیه
+const intervalTime = totalTime / 100;
 const interval = setInterval(()=>{
   loading += 1;
   loadingFill.style.width = loading + '%';
   if(loading>=100){
     clearInterval(interval);
     loadingScreen.style.display='none';
-    document.querySelectorAll('header,section,footer').forEach(el=>{el.style.opacity=1; el.style.transform='translateY(0)';});
+    document.querySelectorAll('header,section,footer').forEach(el=>{
+      el.style.opacity=1; 
+      el.style.transform='translateY(0)';
+    });
   }
 }, intervalTime);
 
@@ -376,22 +416,18 @@ window.addEventListener('scroll', ()=>{
   });
 });
 
-// دکمه تم
-const themeToggle = document.querySelector('.theme-toggle');
-let dark = true;
-themeToggle.addEventListener('click', ()=>{
-  if(dark){
-    document.body.style.background = 'linear-gradient(135deg,#fff1e0,#fffae0)';
-    document.body.style.color = '#000';
-    themeToggle.querySelector('#theme-icon').textContent = '☀️';
-    dark = false;
+// سوییچ تم شب/روز
+const themeBtn = document.getElementById('themeToggle');
+themeBtn.addEventListener('click', ()=>{
+  document.body.classList.toggle('dark-mode');
+  const icon = themeBtn.querySelector('.icon');
+  if(document.body.classList.contains('dark-mode')){
+    icon.textContent = '☀️'; // حالت روز
   } else {
-    document.body.style.background = 'linear-gradient(135deg,#0f0f0f,#1a1a1a)';
-    document.body.style.color = '#fff';
-    themeToggle.querySelector('#theme-icon').textContent = '🌙';
-    dark = true;
+    icon.textContent = '🌙'; // حالت شب
   }
 });
 </script>
+
 </body>
 </html>
