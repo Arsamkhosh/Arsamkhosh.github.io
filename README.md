@@ -357,7 +357,7 @@ footer a:hover{ text-decoration:underline; }
 </section>
 
 <footer>
-  <p>© 2025 Arsam_khosh</p>
+  <p>© 2025 تمامی حقوق محفوظ است</p>
   <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank">اینستاگرام من</a>
 </footer>
 
