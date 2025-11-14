@@ -312,8 +312,11 @@ footer a:hover{ text-decoration:underline; }
   <h2>گالری</h2>
   <div class="gallery">
     <div class="gallery-item"><img src="jade_chaloos.png" alt="تصویر 1"></div>
+     <div class="tooltip">ایران/استان مازندران/جاده زیبای چالوس</div>
     <div class="gallery-item"><img src="damavand_kohe.png" alt="تصویر 2"></div>
+     <div class="tooltip">ایران استان تهران/کوه زیبای دماوند</div>
     <div class="gallery-item"><img src="azadi_tehran.png" alt="تصویر 3"></div>
+     <div class="tooltip">ایران/تهران/برج زیبای آزادی</div>
   </div>
 </section>
 
