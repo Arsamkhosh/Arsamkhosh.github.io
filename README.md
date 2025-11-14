@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
 <style>
 /* پایه */
+html { scroll-behavior: smooth; }
 body {
   margin:0;
   font-family:'Vazirmatn',sans-serif;
@@ -47,26 +48,6 @@ nav a:hover {
   text-shadow: 0 0 10px #ff00cc;
 }
 
-/* دکمه تم */
-#theme-toggle {
-  position: fixed;
-  top: 15px;
-  left: 15px;
-  background: linear-gradient(135deg,#00ffff,#ff00cc);
-  border:none;
-  border-radius:50px;
-  width:50px;
-  height:50px;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:24px;
-  box-shadow:0 0 10px #00ffff,0 0 15px #ff00cc;
-  transition: all 0.3s ease;
-}
-#theme-toggle:hover { transform: scale(1.1) rotate(10deg); box-shadow:0 0 15px #00ffff,0 0 20px #ff00cc; }
-
 /* پروژه‌ها */
 .projects { display:flex; justify-content:center; flex-wrap:wrap; gap:30px; margin-top:20px; }
 .project-card {
@@ -82,12 +63,13 @@ nav a:hover {
   cursor:pointer;
   transition: transform 0.3s, box-shadow 0.3s, background 0.5s, border-left 0.3s;
 }
-.project-card img { width:100%; border-radius:15px; margin-bottom:15px; }
+.project-card img { width:100%; border-radius:15px; margin-bottom:15px; transition: transform 0.3s; }
 .project-card:hover {
   transform:translateY(-10px) rotate(-1deg);
   box-shadow:0 0 30px #ff00cc,0 0 10px #00ffff;
   border-left:5px solid #ff00cc;
 }
+.project-card:hover img { transform: scale(1.05); }
 .project-title { font-size:1.4em; font-weight:bold; margin-bottom:10px; color:#00ffff; }
 .project-desc { color:#ccc; margin-bottom:10px; font-size:0.9em; }
 .project-tech { font-size:0.8em; color:#ff9900; font-weight:bold; }
@@ -176,8 +158,8 @@ button[type="submit"]:hover{ transform:scale(1.05); }
 .gallery { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
 .gallery-item { position:relative; overflow:hidden; border-radius:15px; flex:1 1 250px; max-width:300px; box-shadow:0 4px 15px rgba(0,255,255,0.2); transition: transform 0.3s, box-shadow 0.3s; }
 .gallery-item:hover { transform:translateY(-5px); box-shadow:0 6px 25px rgba(0,255,255,0.4),0 0 10px #ff00cc; }
-.gallery-item img { width:100%; height:200px; object-fit:cover; display:block; transition: transform 0.3s; }
-.gallery-item:hover img { transform:scale(1.1); }
+.gallery-item img { width:100%; height:200px; object-fit:cover; display:block; transition: transform 0.5s, filter 0.5s; }
+.gallery-item img:hover { transform: scale(1.1) translateY(-5px); filter: brightness(1.1); }
 
 /* لودینگ */
 #loading-screen {
@@ -196,7 +178,6 @@ button[type="submit"]:hover{ transform:scale(1.05); }
   font-weight:bold;
   font-family: monospace;
   font-size:1.5em;
-  color:#00ffff;
   text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00cc, 0 0 15px #ff9900;
   animation: bounceGlow 1s infinite alternate, colorShift 2s infinite linear;
 }
@@ -205,8 +186,15 @@ button[type="submit"]:hover{ transform:scale(1.05); }
   50% { transform: translateY(-8px); text-shadow: 0 0 10px #00ffff, 0 0 15px #ff00cc, 0 0 20px #ff9900; }
   100% { transform: translateY(0px); text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00cc, 0 0 15px #ff9900; }
 }
+@keyframes colorShift {
+  0%{color:#00ffff;}
+  25%{color:#ff00cc;}
+  50%{color:#ff9900;}
+  75%{color:#00ffcc;}
+  100%{color:#00ffff;}
+}
 #loading-bar { width:300px; height:10px; background:#222; border-radius:10px; overflow:hidden; box-shadow:0 0 10px #00ffff; }
-#loading-fill { width:0%; height:100%; background:linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); transition:width 0.04s linear; }
+#loading-fill { width:0%; height:100%; background:linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); transition:width 0.1s linear; }
 
 /* فوتر */
 footer{ 
@@ -233,9 +221,6 @@ footer a:hover{ text-decoration:underline; }
 </style>
 </head>
 <body>
-
-<!-- دکمه تم -->
-<button id="theme-toggle">🌙</button>
 
 <!-- لودینگ -->
 <div id="loading-screen">
@@ -374,7 +359,7 @@ const interval = setInterval(()=>{
     loadingScreen.style.display='none';
     document.querySelectorAll('header,section,footer').forEach(el=>{el.style.opacity=1; el.style.transform='translateY(0)';});
   }
-}, 40); // 40ms × 100 = 4000ms = 4 ثانیه
+}, 40);
 
 // نوار بالا
 const nav = document.querySelector('nav');
@@ -404,19 +389,6 @@ window.addEventListener('scroll', ()=>{
       bar.style.width = bar.dataset.value;
     }
   });
-});
-
-// دکمه تم
-const themeBtn = document.getElementById('theme-toggle');
-themeBtn.addEventListener('click', ()=>{
-  document.body.classList.toggle('dark-mode');
-  if(document.body.classList.contains('dark-mode')){
-    document.body.style.background='linear-gradient(135deg,#1a1a1a,#0f0f0f)';
-    themeBtn.textContent='☀️';
-  } else {
-    document.body.style.background='linear-gradient(135deg,#0f0f0f,#1a1a1a)';
-    themeBtn.textContent='🌙';
-  }
 });
 </script>
 
