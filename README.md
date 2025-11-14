@@ -10,26 +10,14 @@
 body {
   margin:0;
   font-family:'Vazirmatn',sans-serif;
-  background: linear-gradient(135deg,#0f0f0f,#1a1a1a);
+  background:linear-gradient(135deg,#0f0f0f,#1a1a1a);
   color:#fff;
   text-align:center;
   overflow-x:hidden;
   transition: background 0.5s, color 0.5s;
 }
-header, section, footer { 
-  padding: 40px 5%; 
-  opacity:0; 
-  transform:translateY(50px); 
-  transition:all 0.8s ease; 
-}
-header h1 { 
-  font-size:2.8em; 
-  background: linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); 
-  -webkit-background-clip:text; 
-  -webkit-text-fill-color:transparent; 
-  margin-bottom:10px; 
-  text-shadow:0 0 10px rgba(0,255,255,0.5);
-}
+header, section, footer { padding: 40px 5%; opacity:0; transform:translateY(50px); transition:all 0.8s ease; }
+h1 { font-size:2.8em; background: linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px; text-shadow:0 0 10px rgba(0,255,255,0.5);}
 h2 { color:#00ffff; margin-bottom:20px; font-size:1.8em; }
 
 /* نوار بالا */
@@ -60,27 +48,24 @@ nav a:hover {
 }
 
 /* دکمه تم */
-.theme-btn {
+#theme-toggle {
   position: fixed;
-  top: 20px;
-  left: 20px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  background: linear-gradient(135deg,#ffdd00,#ff6600);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 15px #ffdd00, 0 0 30px #ff6600;
-  transition: 0.5s;
-  z-index: 1001;
-  font-size: 24px;
+  top: 15px;
+  left: 15px;
+  background: linear-gradient(135deg,#00ffff,#ff00cc);
+  border:none;
+  border-radius:50px;
+  width:50px;
+  height:50px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  box-shadow:0 0 10px #00ffff,0 0 15px #ff00cc;
+  transition: all 0.3s ease;
 }
-.theme-btn:hover {
-  transform: scale(1.1);
-}
+#theme-toggle:hover { transform: scale(1.1) rotate(10deg); box-shadow:0 0 15px #00ffff,0 0 20px #ff00cc; }
 
 /* پروژه‌ها */
 .projects { display:flex; justify-content:center; flex-wrap:wrap; gap:30px; margin-top:20px; }
@@ -205,12 +190,23 @@ button[type="submit"]:hover{ transform:scale(1.05); }
   justify-content:center;
   z-index:2000;
   color:#00ffff;
-  font-size:1.5em;
-  font-family: monospace;
 }
-#loading-text { margin-bottom:20px; color:#00ffff; text-shadow:0 0 10px #00ffff; font-weight:bold;}
+#loading-text {
+  margin-bottom:20px; 
+  font-weight:bold;
+  font-family: monospace;
+  font-size:1.5em;
+  color:#00ffff;
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00cc, 0 0 15px #ff9900;
+  animation: bounceGlow 1s infinite alternate, colorShift 2s infinite linear;
+}
+@keyframes bounceGlow {
+  0% { transform: translateY(0px); text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00cc, 0 0 15px #ff9900; }
+  50% { transform: translateY(-8px); text-shadow: 0 0 10px #00ffff, 0 0 15px #ff00cc, 0 0 20px #ff9900; }
+  100% { transform: translateY(0px); text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00cc, 0 0 15px #ff9900; }
+}
 #loading-bar { width:300px; height:10px; background:#222; border-radius:10px; overflow:hidden; box-shadow:0 0 10px #00ffff; }
-#loading-fill { width:0%; height:100%; background:linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); transition:width 0.05s linear; }
+#loading-fill { width:0%; height:100%; background:linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); transition:width 0.04s linear; }
 
 /* فوتر */
 footer{ 
@@ -225,9 +221,6 @@ footer{
 footer a{ color:#00ffff; text-decoration:none;}
 footer a:hover{ text-decoration:underline; }
 
-/* انیمیشن Scroll */
-.show { opacity:1 !important; transform:translateY(0) !important; transition: all 0.8s ease; }
-
 /* ریسپانسیو */
 @media(max-width:650px){
   .projects { flex-direction:column; align-items:center; }
@@ -241,14 +234,14 @@ footer a:hover{ text-decoration:underline; }
 </head>
 <body>
 
+<!-- دکمه تم -->
+<button id="theme-toggle">🌙</button>
+
 <!-- لودینگ -->
 <div id="loading-screen">
   <div id="loading-text">Loading Arsam_khosh web</div>
   <div id="loading-bar"><div id="loading-fill"></div></div>
 </div>
-
-<!-- دکمه تم -->
-<button class="theme-btn" id="themeBtn">🌙</button>
 
 <!-- نوار بالا -->
 <nav>
@@ -369,7 +362,7 @@ footer a:hover{ text-decoration:underline; }
 </footer>
 
 <script>
-// لودینگ 4 ثانیه‌ای
+// لودینگ 4 ثانیه
 let loading = 0;
 const loadingFill = document.getElementById('loading-fill');
 const loadingScreen = document.getElementById('loading-screen');
@@ -379,9 +372,9 @@ const interval = setInterval(()=>{
   if(loading>=100){
     clearInterval(interval);
     loadingScreen.style.display='none';
-    document.querySelectorAll('header,section,footer').forEach(el=>{el.classList.add('show');});
+    document.querySelectorAll('header,section,footer').forEach(el=>{el.style.opacity=1; el.style.transform='translateY(0)';});
   }
-},40); // 4 ثانیه کل
+}, 40); // 40ms × 100 = 4000ms = 4 ثانیه
 
 // نوار بالا
 const nav = document.querySelector('nav');
@@ -411,29 +404,18 @@ window.addEventListener('scroll', ()=>{
       bar.style.width = bar.dataset.value;
     }
   });
-
-  // Scroll reveal
-  document.querySelectorAll('header,section,footer').forEach(el=>{
-    const rect = el.getBoundingClientRect();
-    if(rect.top < window.innerHeight - 100){
-      el.classList.add('show');
-    }
-  });
 });
 
-// تم ماه/خورشید
-const themeBtn = document.getElementById('themeBtn');
-let darkMode = true;
+// دکمه تم
+const themeBtn = document.getElementById('theme-toggle');
 themeBtn.addEventListener('click', ()=>{
-  darkMode = !darkMode;
-  if(darkMode){
-    document.body.style.background = 'linear-gradient(135deg,#0f0f0f,#1a1a1a)';
-    document.body.style.color = '#fff';
-    themeBtn.textContent = '🌙';
-  } else{
-    document.body.style.background = 'linear-gradient(135deg,#fffbf0,#ffe0b3)';
-    document.body.style.color = '#000';
-    themeBtn.textContent = '☀️';
+  document.body.classList.toggle('dark-mode');
+  if(document.body.classList.contains('dark-mode')){
+    document.body.style.background='linear-gradient(135deg,#1a1a1a,#0f0f0f)';
+    themeBtn.textContent='☀️';
+  } else {
+    document.body.style.background='linear-gradient(135deg,#0f0f0f,#1a1a1a)';
+    themeBtn.textContent='🌙';
   }
 });
 </script>
