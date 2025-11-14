@@ -10,18 +10,26 @@
 body {
   margin:0;
   font-family:'Vazirmatn',sans-serif;
-  background:linear-gradient(135deg,#0f0f0f,#1a1a1a);
+  background: linear-gradient(135deg,#0f0f0f,#1a1a1a);
   color:#fff;
   text-align:center;
   overflow-x:hidden;
   transition: background 0.5s, color 0.5s;
 }
-body.dark-mode {
-  background: linear-gradient(135deg,#fdf6e3,#fff9e6);
-  color:#111;
+header, section, footer { 
+  padding: 40px 5%; 
+  opacity:0; 
+  transform:translateY(50px); 
+  transition:all 0.8s ease; 
 }
-header, section, footer { padding: 40px 5%; opacity:0; transform:translateY(50px); transition:all 0.8s ease; }
-h1 { font-size:2.8em; background: linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px; text-shadow:0 0 10px rgba(0,255,255,0.5);}
+header h1 { 
+  font-size:2.8em; 
+  background: linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); 
+  -webkit-background-clip:text; 
+  -webkit-text-fill-color:transparent; 
+  margin-bottom:10px; 
+  text-shadow:0 0 10px rgba(0,255,255,0.5);
+}
 h2 { color:#00ffff; margin-bottom:20px; font-size:1.8em; }
 
 /* نوار بالا */
@@ -56,29 +64,22 @@ nav a:hover {
   position: fixed;
   top: 20px;
   left: 20px;
-  background: linear-gradient(135deg,#00ffff,#ff00cc);
-  border: none;
-  border-radius: 50%;
   width: 60px;
   height: 60px;
+  border-radius: 50%;
+  border: none;
   cursor: pointer;
+  background: linear-gradient(135deg,#ffdd00,#ff6600);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5em;
-  box-shadow: 0 5px 15px rgba(0,255,255,0.4);
-  transition: all 0.3s ease;
-  z-index: 1000;
+  box-shadow: 0 0 15px #ffdd00, 0 0 30px #ff6600;
+  transition: 0.5s;
+  z-index: 1001;
+  font-size: 24px;
 }
 .theme-btn:hover {
-  transform: scale(1.1) rotate(15deg);
-  box-shadow: 0 10px 25px rgba(255,0,204,0.6);
-}
-.theme-btn .icon {
-  transition: transform 0.5s ease;
-}
-body.dark-mode .theme-btn .icon {
-  transform: rotate(180deg);
+  transform: scale(1.1);
 }
 
 /* پروژه‌ها */
@@ -209,7 +210,7 @@ button[type="submit"]:hover{ transform:scale(1.05); }
 }
 #loading-text { margin-bottom:20px; color:#00ffff; text-shadow:0 0 10px #00ffff; font-weight:bold;}
 #loading-bar { width:300px; height:10px; background:#222; border-radius:10px; overflow:hidden; box-shadow:0 0 10px #00ffff; }
-#loading-fill { width:0%; height:100%; background:linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); transition: width 0.05s linear; }
+#loading-fill { width:0%; height:100%; background:linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); transition:width 0.05s linear; }
 
 /* فوتر */
 footer{ 
@@ -223,6 +224,9 @@ footer{
 }
 footer a{ color:#00ffff; text-decoration:none;}
 footer a:hover{ text-decoration:underline; }
+
+/* انیمیشن Scroll */
+.show { opacity:1 !important; transform:translateY(0) !important; transition: all 0.8s ease; }
 
 /* ریسپانسیو */
 @media(max-width:650px){
@@ -244,9 +248,7 @@ footer a:hover{ text-decoration:underline; }
 </div>
 
 <!-- دکمه تم -->
-<button class="theme-btn" id="themeToggle">
-  <span class="icon">🌙</span>
-</button>
+<button class="theme-btn" id="themeBtn">🌙</button>
 
 <!-- نوار بالا -->
 <nav>
@@ -363,28 +365,23 @@ footer a:hover{ text-decoration:underline; }
 
 <footer>
   <p>© 2025 Arsam_khosh</p>
-  <a href="https://www.instagram.com/arsam.khosh.akhlagh.2012" target="_blank">اینستاگرام من</a>
+  <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank">اینستاگرام من</a>
 </footer>
 
 <script>
-// لودینگ 4 ثانیه
+// لودینگ 4 ثانیه‌ای
 let loading = 0;
 const loadingFill = document.getElementById('loading-fill');
 const loadingScreen = document.getElementById('loading-screen');
-const totalTime = 4000; // 4 ثانیه
-const intervalTime = totalTime / 100;
 const interval = setInterval(()=>{
   loading += 1;
   loadingFill.style.width = loading + '%';
   if(loading>=100){
     clearInterval(interval);
     loadingScreen.style.display='none';
-    document.querySelectorAll('header,section,footer').forEach(el=>{
-      el.style.opacity=1; 
-      el.style.transform='translateY(0)';
-    });
+    document.querySelectorAll('header,section,footer').forEach(el=>{el.classList.add('show');});
   }
-}, intervalTime);
+},40); // 4 ثانیه کل
 
 // نوار بالا
 const nav = document.querySelector('nav');
@@ -414,17 +411,29 @@ window.addEventListener('scroll', ()=>{
       bar.style.width = bar.dataset.value;
     }
   });
+
+  // Scroll reveal
+  document.querySelectorAll('header,section,footer').forEach(el=>{
+    const rect = el.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 100){
+      el.classList.add('show');
+    }
+  });
 });
 
-// سوییچ تم شب/روز
-const themeBtn = document.getElementById('themeToggle');
+// تم ماه/خورشید
+const themeBtn = document.getElementById('themeBtn');
+let darkMode = true;
 themeBtn.addEventListener('click', ()=>{
-  document.body.classList.toggle('dark-mode');
-  const icon = themeBtn.querySelector('.icon');
-  if(document.body.classList.contains('dark-mode')){
-    icon.textContent = '☀️'; // حالت روز
-  } else {
-    icon.textContent = '🌙'; // حالت شب
+  darkMode = !darkMode;
+  if(darkMode){
+    document.body.style.background = 'linear-gradient(135deg,#0f0f0f,#1a1a1a)';
+    document.body.style.color = '#fff';
+    themeBtn.textContent = '🌙';
+  } else{
+    document.body.style.background = 'linear-gradient(135deg,#fffbf0,#ffe0b3)';
+    document.body.style.color = '#000';
+    themeBtn.textContent = '☀️';
   }
 });
 </script>
