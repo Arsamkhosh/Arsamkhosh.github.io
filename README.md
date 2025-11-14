@@ -239,7 +239,7 @@ footer a:hover{ text-decoration:underline; }
 
 <!-- لودینگ -->
 <div id="loading-screen">
-  <div id="loading-text">Loading Arsam_khosh web</div>
+  <div id="loading-text">Loading Arsam_khosh web...</div>
   <div id="loading-bar"><div id="loading-fill"></div></div>
 </div>
 
@@ -326,9 +326,9 @@ footer a:hover{ text-decoration:underline; }
 <section id="gallery-section">
   <h2>گالری</h2>
   <div class="gallery">
-    <div class="gallery-item"><img src="gallery/image1.jpg" alt="تصویر 1"></div>
-    <div class="gallery-item"><img src="gallery/image2.jpg" alt="تصویر 2"></div>
-    <div class="gallery-item"><img src="gallery/image3.jpg" alt="تصویر 3"></div>
+    <div class="gallery-item"><img src="jade_chloos.jpg" alt="تصویر 1"></div>
+    <div class="gallery-item"><img src="damavand_kohe.jpg" alt="تصویر 2"></div>
+    <div class="gallery-item"><img src="azadi_tehran.jpg" alt="تصویر 3"></div>
   </div>
 </section>
 
