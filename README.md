@@ -87,22 +87,28 @@ nav a:hover {
 }
 .like-btn.liked { background:#ff00cc; color:#fff; }
 
-/* tooltip */
+/* tooltip پروژه */
 .project-card .tooltip {
   position:absolute;
   bottom:100%;
   left:50%;
-  transform:translateX(-50%);
+  transform:translateX(-50%) translateY(0);
   background:#111;
   color:#fff;
   padding:6px 10px;
   border-radius:6px;
   font-size:0.8em;
   display:none;
+  opacity:0;
   white-space:nowrap;
   pointer-events:none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
-.project-card:hover .tooltip { display:block; }
+.project-card:hover .tooltip {
+  display:block;
+  opacity:1;
+  transform:translateX(-50%) translateY(-5px);
+}
 
 /* درباره من */
 .about-card { 
@@ -156,10 +162,52 @@ button[type="submit"]:hover{ transform:scale(1.05); }
 #gallery-section { max-width:1000px; margin:50px auto; text-align:center; }
 #gallery-section h2 { margin-bottom:30px; color:#00ffff; }
 .gallery { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
-.gallery-item { position:relative; overflow:hidden; border-radius:15px; flex:1 1 250px; max-width:300px; box-shadow:0 4px 15px rgba(0,255,255,0.2); transition: transform 0.3s, box-shadow 0.3s; }
-.gallery-item:hover { transform:translateY(-5px); box-shadow:0 6px 25px rgba(0,255,255,0.4),0 0 10px #ff00cc; }
-.gallery-item img { width:100%; height:200px; object-fit:cover; display:block; transition: transform 0.5s, filter 0.5s; }
-.gallery-item img:hover { transform: scale(1.1) translateY(-5px); filter: brightness(1.1); }
+.gallery-item {
+  position:relative;
+  overflow:hidden;
+  border-radius:15px;
+  flex:1 1 250px;
+  max-width:300px;
+  box-shadow:0 4px 15px rgba(0,255,255,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.gallery-item:hover { 
+  transform:translateY(-5px); 
+  box-shadow:0 6px 25px rgba(0,255,255,0.4),0 0 10px #ff00cc; 
+}
+.gallery-item img {
+  width:100%; 
+  height:200px; 
+  object-fit:cover; 
+  display:block; 
+  transition: transform 0.5s, filter 0.5s;
+}
+.gallery-item img:hover {
+  transform: scale(1.1) translateY(-5px);
+  filter: brightness(1.1);
+}
+/* tooltip گالری */
+.gallery-item .tooltip {
+  position:absolute;
+  bottom:10px;
+  left:50%;
+  transform:translateX(-50%) translateY(0);
+  background: rgba(0,0,0,0.8);
+  color:#fff;
+  padding:6px 10px;
+  border-radius:6px;
+  font-size:0.8em;
+  display:none;
+  opacity:0;
+  white-space:nowrap;
+  pointer-events:none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.gallery-item:hover .tooltip {
+  display:block;
+  opacity:1;
+  transform:translateX(-50%) translateY(-5px);
+}
 
 /* لودینگ */
 #loading-screen {
@@ -311,9 +359,9 @@ footer a:hover{ text-decoration:underline; }
 <section id="gallery-section">
   <h2>گالری</h2>
   <div class="gallery">
-    <div class="gallery-item"><img src="jade_chaloos.png" alt="تصویر 1"></div>
-    <div class="gallery-item"><img src="damavand_kohe.png" alt="تصویر 2"></div>
-    <div class="gallery-item"><img src="azadi_tehran.png" alt="تصویر 3"></div>
+    <div class="gallery-item"><img src="jade_chaloos.png" alt="تصویر 1"><div class="tooltip">تصویر کوه جاده چالوس</div></div>
+    <div class="gallery-item"><img src="damavand_kohe.png" alt="تصویر 2"><div class="tooltip">تصویر کوه دماوند</div></div>
+    <div class="gallery-item"><img src="azadi_tehran.png" alt="تصویر 3"><div class="tooltip">تصویر برج آزادی تهران</div></div>
   </div>
 </section>
 
