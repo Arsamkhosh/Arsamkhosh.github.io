@@ -326,9 +326,9 @@ footer a:hover{ text-decoration:underline; }
 <section id="gallery-section">
   <h2>گالری</h2>
   <div class="gallery">
-    <div class="gallery-item"><img src="jade_chloos.jpg" alt="تصویر 1"></div>
-    <div class="gallery-item"><img src="damavand_kohe.jpg" alt="تصویر 2"></div>
-    <div class="gallery-item"><img src="azadi_tehran.jpg" alt="تصویر 3"></div>
+    <div class="gallery-item"><img src="jade_chloos.png" alt="تصویر 1"></div>
+    <div class="gallery-item"><img src="damavand_kohe.png" alt="تصویر 2"></div>
+    <div class="gallery-item"><img src="azadi_tehran.png" alt="تصویر 3"></div>
   </div>
 </section>
 
