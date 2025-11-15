@@ -308,7 +308,7 @@ footer a:hover{ text-decoration:underline; }
   <div class="projects">
     <div class="project-card">
       <img src="minecraft.png" alt="پروژه 1">
-      <div class="project-title">سرور ماینکرفت 🎮</div>
+      <div class="project-title">🎮سرور ماینکرفت </div>
       <div class="project-desc">سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده</div>
       <div class="project-tech">Spigot/Bukkit / Minecraft</div>
       <button class="like-btn">❤️ 0</button>
@@ -316,7 +316,7 @@ footer a:hover{ text-decoration:underline; }
     </div>
     <div class="project-card">
       <img src="site.png" alt="پروژه 2">
-      <div class="project-title">سایت شخصی 🌐</div>
+      <div class="project-title">🌐سایت شخصی </div>
       <div class="project-desc">من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم</div>
       <div class="project-tech">HTML / CSS / JavaScript</div>
       <button class="like-btn">❤️ 0</button>
@@ -324,7 +324,7 @@ footer a:hover{ text-decoration:underline; }
     </div>
     <div class="project-card">
       <img src="edite.png" alt="پروژه 3">
-      <div class="project-title">ادیت ویدیو 🎬</div>
+      <div class="project-title">🎬ادیت ویدیو </div>
       <div class="project-desc">به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم</div>
       <div class="project-tech">Capcut / Filmora / Shotcut</div>
       <button class="like-btn">❤️ 0</button>
@@ -352,7 +352,7 @@ footer a:hover{ text-decoration:underline; }
 <section id="blog-section" class="blog">
   <h2>اخبار و بروزرسانی‌ها</h2>
   <div class="blog-item">🚀 پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!</div>
-  <div class="blog-item">🌐 پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.</div>
+  <div class="blog-item">🌐 پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.🌐</div>
   <div class="blog-item">🚀 ایونت جدید در سرور</div>
 </section>
 
@@ -390,7 +390,8 @@ footer a:hover{ text-decoration:underline; }
 </section>
 
 <footer>
-  <p>© 2025 تمامی حقوق محفوظ است</p>
+  <p>© 2025 تمامی حقوق محفوظ است</p> 
+    <p> Arsam_khosh </p>
   <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank">اینستاگرام من</a>
 </footer>
 
