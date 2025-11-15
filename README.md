@@ -285,11 +285,6 @@ footer a:hover{ text-decoration:underline; }
   <a href="#contact-section">ارتباط</a>
 </nav>
 
-<header>
-  <h1>خوش آمدید</h1>
-  <p>!خوش آمدید به سایت من، در ادامه پروژه‌ها را می‌بینید</p>
-</header>
-
 <section id="about-me">
   <h2>درباره من</h2>
   <div class="about-card">
