@@ -1,101 +1,441 @@
-<!doctype html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>کیفیت هوا - نئون</title>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet" />
-  <style>
-    :root{
-      --bg:#0b0f1a; --bg2:#0e1422;
-      --neon:#00ffd5; --neon2:#8a2be2;
-      --text:#e6f7ff; --muted:#9db4c0;
-      --good:#00d47b; --mod:#ffd166;
-      --unh:#f8961e; --bad:#ef476f; --vbad:#8a2be2;
-    }
-    body{
-      margin:0; font-family:"Vazirmatn",system-ui;
-      background:linear-gradient(180deg,var(--bg),var(--bg2));
-      color:var(--text);
-    }
-    .container{max-width:1000px;margin:0 auto;padding:20px}
-    h1{text-align:center;text-shadow:0 0 8px var(--neon2)}
-    .toolbar{display:flex;gap:10px;justify-content:center;margin:20px 0}
-    .input,.btn{padding:10px 14px;border-radius:10px;border:1px solid #18233f;background:#0c1324;color:var(--text)}
-    .btn{cursor:pointer}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
-    .card{background:#111;border-radius:12px;padding:16px;box-shadow:0 0 12px rgba(0,255,213,0.2)}
-    .card h3{margin:0 0 10px}
-    .value{font-size:2rem;font-weight:800}
-    /* هشدار */
-    .alert{margin:20px auto;padding:14px;border-radius:12px;text-align:center;font-weight:700;font-size:1.1rem;color:#fff;background:#111;box-shadow:0 0 12px rgba(0,255,213,0.4)}
-    .alert.good{background:var(--good)}
-    .alert.moderate{background:var(--mod);color:#111}
-    .alert.unhealthy{background:var(--unh)}
-    .alert.bad{background:var(--bad)}
-    .alert.vbad{background:var(--vbad);animation:blink 1s infinite alternate}
-    @keyframes blink{from{box-shadow:0 0 20px var(--vbad)}to{box-shadow:0 0 40px var(--vbad)}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پروژه‌های من</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* پایه */
+html { scroll-behavior: smooth; }
+body {
+  margin:0;
+  font-family:'Vazirmatn',sans-serif;
+  background:linear-gradient(135deg,#0f0f0f,#1a1a1a);
+  color:#fff;
+  text-align:center;
+  overflow-x:hidden;
+  transition: background 0.5s, color 0.5s;
+}
+header, section, footer { padding: 40px 5%; opacity:0; transform:translateY(50px); transition:all 0.8s ease; }
+h1 { font-size:2.8em; background: linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px; text-shadow:0 0 10px rgba(0,255,255,0.5);}
+h2 { color:#00ffff; margin-bottom:20px; font-size:1.8em; }
+
+/* نوار بالا */
+nav {
+  position: fixed;
+  top: -70px;
+  left: 0; right: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px;
+  z-index: 1000;
+  border-bottom: 1px solid #00ffff44;
+  transition: top 0.4s ease, box-shadow 0.4s ease, border-bottom 0.4s ease, background 0.5s;
+}
+nav.visible { top:0; }
+nav a {
+  color: #00ffff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+nav a:hover {
+  color: #ff00cc;
+  text-shadow: 0 0 10px #ff00cc;
+}
+
+/* پروژه‌ها */
+.projects { display:flex; justify-content:center; flex-wrap:wrap; gap:30px; margin-top:20px; }
+.project-card {
+  position:relative;
+  background:rgba(255,255,255,0.08);
+  padding:25px;
+  width:300px;
+  min-height:250px;
+  border-radius:15px;
+  border-left:5px solid #00ffff;
+  box-shadow:0 4px 20px rgba(0,255,255,0.1);
+  text-align:center;
+  cursor:pointer;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.5s, border-left 0.3s;
+}
+.project-card img { width:100%; border-radius:15px; margin-bottom:15px; transition: transform 0.3s; }
+.project-card:hover {
+  transform:translateY(-10px) rotate(-1deg);
+  box-shadow:0 0 30px #ff00cc,0 0 10px #00ffff;
+  border-left:5px solid #ff00cc;
+}
+.project-card:hover img { transform: scale(1.05); }
+.project-title { font-size:1.4em; font-weight:bold; margin-bottom:10px; color:#00ffff; }
+.project-desc { color:#ccc; margin-bottom:10px; font-size:0.9em; }
+.project-tech { font-size:0.8em; color:#ff9900; font-weight:bold; }
+.like-btn {
+  display:inline-block;
+  padding:5px 10px;
+  margin-top:10px;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+  font-weight:bold;
+  background:#00ffff;
+  color:#000;
+  transition:0.3s;
+}
+.like-btn.liked { background:#ff00cc; color:#fff; }
+
+/* tooltip پروژه */
+.project-card .tooltip {
+  position:absolute;
+  bottom:100%;
+  left:50%;
+  transform:translateX(-50%) translateY(0);
+  background:#111;
+  color:#fff;
+  padding:6px 10px;
+  border-radius:6px;
+  font-size:0.8em;
+  display:none;
+  opacity:0;
+  white-space:nowrap;
+  pointer-events:none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.project-card:hover .tooltip {
+  display:block;
+  opacity:1;
+  transform:translateX(-50%) translateY(-5px);
+}
+
+/* درباره من */
+.about-card { 
+  max-width:600px; 
+  margin:20px auto; 
+  background: rgba(255,255,255,0.08); 
+  padding:30px; 
+  border-radius:20px; 
+  box-shadow:0 0 20px rgba(255,255,255,0.1); 
+  display:flex; 
+  align-items:center; 
+  direction:rtl; 
+  text-align:right;
+  transition: all 0.3s ease;
+}
+.about-card:hover {
+  box-shadow:0 0 20px #00ffff, 0 0 40px #ff00cc, 0 0 60px #ff9900;
+  transform: translateY(-5px);
+  border-left:5px solid #00ffff;
+}
+.profile-pic { width:100px;height:100px; border-radius:50%; background:#00ffff; margin-left:20px; border:4px solid #ff00cc; overflow:hidden; box-shadow:0 0 15px #00ffff; flex-shrink:0; animation: float 3s ease-in-out infinite alternate;}
+@keyframes float {0%{transform:translateY(0);}100%{transform:translateY(-10px);} }
+.about-text p { font-size:1.1em; line-height:1.8; }
+
+/* مهارت‌ها */
+.skills { max-width:600px; margin:30px auto; text-align:right; direction:rtl; }
+.skill { margin-bottom:15px; }
+.skill-name { font-weight:bold; margin-bottom:5px; }
+.skill-bar { width:100%; height:15px; background:#222; border-radius:10px; overflow:hidden; }
+.skill-fill { width:0%; height:100%; background:linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); border-radius:10px; transition: width 1s; }
+
+/* بلاگ کوتاه */
+.blog { max-width:700px; margin:50px auto; text-align:right; direction:rtl; }
+.blog-item { background: rgba(255,255,255,0.08); padding:15px; border-radius:10px; margin-bottom:10px; text-align:right; }
+
+/* فرم تماس */
+form { max-width:500px; margin:40px auto; background: rgba(255,255,255,0.08); padding:25px; border-radius:15px; box-shadow:0 0 25px rgba(0,255,255,0.2); direction:rtl; text-align:right;}
+input,textarea{ width:100%; padding:12px; border-radius:10px; border:1px solid rgba(0,255,255,0.3); background-color: rgba(255,255,255,0.1); color:#fff; margin-bottom:15px;}
+::placeholder{ color:#aaa; opacity:1; }
+button[type="submit"] { background: linear-gradient(135deg,#00ffff,#ff00cc); color:#000; font-weight:bold; padding:10px 20px; border:none; border-radius:12px; cursor:pointer; transition:0.3s;}
+button[type="submit"]:hover{ transform:scale(1.05); }
+
+/* FAQ */
+.faq { max-width:800px; margin:50px auto; text-align:right; direction:rtl; }
+.faq h2 { text-align: center; }
+.faq-item { background: rgba(255,255,255,0.08); padding:15px; border-radius:10px; margin-bottom:10px; cursor:pointer; border:2px solid #00ffff; transition:0.3s; }
+.faq-item:hover { box-shadow:0 0 15px #00ffff,0 0 25px #ff00cc; }
+.faq-item .answer { display:none; margin-top:10px; color:#ccc; font-size:0.9em; }
+
+/* گالری */
+#gallery-section { max-width:1000px; margin:50px auto; text-align:center; }
+#gallery-section h2 { margin-bottom:30px; color:#00ffff; }
+.gallery { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
+.gallery-item {
+  position:relative;
+  overflow:hidden;
+  border-radius:15px;
+  flex:1 1 250px;
+  max-width:300px;
+  box-shadow:0 4px 15px rgba(0,255,255,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.gallery-item:hover { 
+  transform:translateY(-5px); 
+  box-shadow:0 6px 25px rgba(0,255,255,0.4),0 0 10px #ff00cc; 
+}
+.gallery-item img {
+  width:100%; 
+  height:200px; 
+  object-fit:cover; 
+  display:block; 
+  transition: transform 0.5s, filter 0.5s;
+}
+.gallery-item img:hover {
+  transform: scale(1.1) translateY(-5px);
+  filter: brightness(1.1);
+}
+/* tooltip گالری */
+.gallery-item .tooltip {
+  position:absolute;
+  bottom:10px;
+  left:50%;
+  transform:translateX(-50%) translateY(0);
+  background: rgba(0,0,0,0.8);
+  color:#fff;
+  padding:6px 10px;
+  border-radius:6px;
+  font-size:0.8em;
+  display:none;
+  opacity:0;
+  white-space:nowrap;
+  pointer-events:none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.gallery-item:hover .tooltip {
+  display:block;
+  opacity:1;
+  transform:translateX(-50%) translateY(-5px);
+}
+
+/* لودینگ */
+#loading-screen {
+  position:fixed;
+  top:0; left:0; right:0; bottom:0;
+  background:#0f0f0f;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+  color:#00ffff;
+}
+#loading-text {
+  margin-bottom:20px; 
+  font-weight:bold;
+  font-family: monospace;
+  font-size:1.5em;
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00cc, 0 0 15px #ff9900;
+  animation: bounceGlow 1s infinite alternate, colorShift 2s infinite linear;
+}
+@keyframes bounceGlow {
+  0% { transform: translateY(0px); text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00cc, 0 0 15px #ff9900; }
+  50% { transform: translateY(-8px); text-shadow: 0 0 10px #00ffff, 0 0 15px #ff00cc, 0 0 20px #ff9900; }
+  100% { transform: translateY(0px); text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00cc, 0 0 15px #ff9900; }
+}
+@keyframes colorShift {
+  0%{color:#00ffff;}
+  25%{color:#ff00cc;}
+  50%{color:#ff9900;}
+  75%{color:#00ffcc;}
+  100%{color:#00ffff;}
+}
+#loading-bar { width:300px; height:10px; background:#222; border-radius:10px; overflow:hidden; box-shadow:0 0 10px #00ffff; }
+#loading-fill { width:0%; height:100%; background:linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); transition:width 0.1s linear; }
+
+/* فوتر */
+footer{ 
+  margin-top:50px; 
+  color:#ccc; 
+  display:flex; 
+  justify-content:center; 
+  flex-direction:column; 
+  align-items:center; 
+  gap:10px; 
+}
+footer a{ color:#00ffff; text-decoration:none;}
+footer a:hover{ text-decoration:underline; }
+
+/* ریسپانسیو */
+@media(max-width:650px){
+  .projects { flex-direction:column; align-items:center; }
+  .project-card { width:90%; }
+  .about-card { flex-direction:column; text-align:center; }
+  .profile-pic { margin-left:0;margin-bottom:20px; }
+  .about-text { text-align:center; }
+  .gallery-item { max-width:90%; height:auto; }
+}
+</style>
 </head>
 <body>
-  <main class="container">
-    <h1>کیفیت هوا — طراحی نئون</h1>
-    <div class="toolbar">
-      <input id="city" class="input" placeholder="نام شهر (مثلاً Tehran)" />
-      <button id="load" class="btn">نمایش</button>
-      <button id="refresh" class="btn">به‌روزرسانی</button>
+
+<!-- لودینگ -->
+<div id="loading-screen">
+  <div id="loading-text">Loading Arsam_khosh web...</div>
+  <div id="loading-bar"><div id="loading-fill"></div></div>
+</div>
+
+<!-- نوار بالا -->
+<nav>
+  <a href="#about-me">درباره من</a>
+  <a href="#projects-section">پروژه‌ها</a>
+  <a href="#skills-section">مهارت‌ها</a>
+  <a href="#blog-section">اخبار</a>
+  <a href="#gallery-section">گالری</a>
+  <a href="#contact-section">ارتباط</a>
+</nav>
+
+<section id="about-me">
+  <h2>درباره من</h2>
+  <div class="about-card">
+    <div class="profile-pic"></div>
+    <div class="about-text">
+      <p id="about-text-content">
+        سلام! من <strong>آرسام خوش‌اخلاق</strong> هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و وب و برنامه نویسی هستم و همچنین به ماینکرفت و سابر بازی ها علاقه دارم 🌐✨
+      </p>
     </div>
+  </div>
+</section>
 
-    <div id="alert-box" class="alert">وضعیت هشدار: —</div>
+<section id="projects-section">
+  <h2>پروژه‌ها</h2>
+  <div class="projects">
+    <div class="project-card">
+      <img src="minecraft.png" alt="پروژه 1">
+      <div class="project-title">🎮سرور ماینکرفت </div>
+      <div class="project-desc">سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده</div>
+      <div class="project-tech">Spigot/Bukkit / Minecraft</div>
+      <button class="like-btn">❤ 0</button>
+      <div class="tooltip">این پروژه مربوط به سرور ماینکرفت است</div>
+    </div>
+    <div class="project-card">
+      <img src="site.png" alt="پروژه 2">
+      <div class="project-title">🌐سایت شخصی </div>
+      <div class="project-desc">من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم</div>
+      <div class="project-tech">HTML / CSS / JavaScript</div>
+      <button class="like-btn">❤ 0</button>
+      <div class="tooltip">این پروژه سایت شخصی من است</div>
+    </div>
+    <div class="project-card">
+      <img src="edite.png" alt="پروژه 3">
+      <div class="project-title">🎬ادیت ویدیو </div>
+      <div class="project-desc">به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم</div>
+      <div class="project-tech">Capcut / Filmora / Shotcut</div>
+      <button class="like-btn">❤ 0</button>
+      <div class="tooltip">این پروژه مربوط به ادیت ویدیو است</div>
+    </div>
+  </div>
+</section>
 
-    <section id="cards" class="grid">
-      <div class="card"><h3>AQI</h3><div class="value" id="val-aqi">—</div></div>
-      <div class="card"><h3>PM2.5</h3><div class="value" id="val-pm25">—</div></div>
-      <div class="card"><h3>PM10</h3><div class="value" id="val-pm10">—</div></div>
-      <div class="card"><h3>O₃</h3><div class="value" id="val-o3">—</div></div>
-      <div class="card"><h3>NO₂</h3><div class="value" id="val-no2">—</div></div>
-    </section>
-  </main>
+<section id="skills-section" class="skills">
+  <h2>مهارت‌ها</h2>
+  <div class="skill">
+    <div class="skill-name">سرور ماینکرفت</div>
+    <div class="skill-bar"><div class="skill-fill" data-value="95%"></div></div>
+  </div>
+  <div class="skill">
+    <div class="skill-name">ادیت ویدیو</div>
+    <div class="skill-bar"><div class="skill-fill" data-value="80%"></div></div>
+  </div>
+  <div class="skill">
+    <div class="skill-name">برنامه نویسی</div>
+    <div class="skill-bar"><div class="skill-fill" data-value="60%"></div></div>
+  </div>
+</section>
 
-  <script>
-    const WAQI_TOKEN = "YOUR_WAQI_TOKEN"; // توکن خودت رو اینجا بذار
-    let lastCity = "Tehran";
+<section id="blog-section" class="blog">
+  <h2>اخبار و بروزرسانی‌ها</h2>
+  <div class="blog-item"> پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!🚀</div>
+  <div class="blog-item"> پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.🌐</div>
+  <div class="blog-item"> ایونت جدید در سرور🚀</div>
+</section>
 
-    function updateAlert(aqi){
-      const alertBox = document.getElementById('alert-box');
-      alertBox.className="alert";
-      if (aqi<=50){alertBox.classList.add('good');alertBox.textContent="وضعیت هشدار: پاک";}
-      else if (aqi<=100){alertBox.classList.add('moderate');alertBox.textContent="وضعیت هشدار: قابل قبول";}
-      else if (aqi<=150){alertBox.classList.add('unhealthy');alertBox.textContent="وضعیت هشدار: ناسالم برای گروه‌های حساس";}
-      else if (aqi<=200){alertBox.classList.add('bad');alertBox.textContent="وضعیت هشدار: ناسالم";}
-      else if (aqi<=300){alertBox.classList.add('vbad');alertBox.textContent="وضعیت هشدار: بسیار ناسالم";}
-      else {alertBox.classList.add('vbad');alertBox.textContent="وضعیت هشدار: خطرناک";}
+<section id="gallery-section">
+  <h2>گالری</h2>
+  <div class="gallery">
+    <div class="gallery-item"><img src="jade_chaloos.png" alt="تصویر 1"><div class="tooltip">ایران/استان مازنداران/جاده زیبای چالوس</div></div>
+    <div class="gallery-item"><img src="damavand_kohe.png" alt="تصویر 2"><div class="tooltip">ایران/استان تهران/کوه زیبای دماوند</div></div>
+    <div class="gallery-item"><img src="azadi_tehran.png" alt="تصویر 3"><div class="tooltip">ایران/تهران/برج زیبای آزادی</div></div>
+     <div class="gallery-item"><img src="shiraz.png" alt="تصویر 4"><div class="tooltip">ایران/استان فارس/شیراز/آرامگاه حافظ</div></div>
+        <div class="gallery-item"><img src="esfahan.png" alt="تصویر 5"><div class="tooltip">ایران/اصفهان/سی و سه پل</div></div>
+  </div>
+</section>
+
+<section class="faq">
+  <h2>پرسش و پاسخ پر تکرار</h2>
+  <div class="faq-item"><div class="question">این سایت با چه زبانی ساخته شده؟</div><div class="answer">این سایت با HTML، CSS و JavaScript ساخته شده است.</div></div>
+  <div class="faq-item"><div class="question">آموزش به صورت رایگان میدی؟</div><div class="answer">آموزش میدم ولی رایگان نه</div></div>
+  <div class="faq-item"><div class="question">میشه بیام توی سرورتون برای کمک؟</div><div class="answer">بله حتما با استفاده از فرم تماس و اینستاگرام به من بگو</div></div>
+  <div class="faq-item"><div class="question">سفارش سایت و سرور میگیری؟</div><div class="answer">بله سایت و سرور ماینکرفت براتون می‌سازم ولی در ازای مبلغی</div></div>
+</section>
+
+<section id="contact-section">
+  <h2>ارتباط با من</h2>
+  <form id="contactForm" action="https://formspree.io/f/mnngzdlw" method="POST">
+    <label for="name">نام:</label>
+    <input type="text" id="name" name="name" required placeholder="نام شما">
+    <label for="email">ایمیل:</label>
+    <input type="email" id="email" name="email" required placeholder="example@example.com">
+    <label for="phone">شماره تلفن:</label>
+    <input type="tel" id="phone" name="phone" placeholder="0912xxxxxxx">
+    <label for="message">پیام:</label>
+    <textarea id="message" name="message" rows="5" required placeholder="متن پیام..."></textarea>
+    <button type="submit">ارسال پیام</button>
+    <p id="formMessage"></p>
+  </form>
+</section>
+
+<footer>
+  <p>© 2025 تمامی حقوق محفوظ است</p> 
+    <p> Arsam_khosh </p>
+  <a href="https://instagram.com/arsam.khosh.akhlagh.2012" target="_blank">اینستاگرام من</a>
+</footer>
+
+<script>
+// لودینگ 4 ثانیه
+let loading = 0;
+const loadingFill = document.getElementById('loading-fill');
+const loadingScreen = document.getElementById('loading-screen');
+const interval = setInterval(()=>{
+  loading += 1;
+  loadingFill.style.width = loading + '%';
+  if(loading>=100){
+    clearInterval(interval);
+    loadingScreen.style.display='none';
+    document.querySelectorAll('header,section,footer').forEach(el=>{el.style.opacity=1; el.style.transform='translateY(0)';});
+  }
+}, 40);
+
+// نوار بالا
+const nav = document.querySelector('nav');
+window.addEventListener('scroll',()=>{ if(window.scrollY>50){nav.classList.add('visible');} else{nav.classList.remove('visible');} });
+
+// FAQ toggle
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.addEventListener('click', ()=>{
+    const ans = item.querySelector('.answer');
+    ans.style.display = ans.style.display==='block' ? 'none' : 'block';
+  });
+});
+
+// like button
+document.querySelectorAll('.like-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    if(btn.classList.contains('liked')){ btn.classList.remove('liked'); btn.textContent='❤ 0'; }
+    else { btn.classList.add('liked'); btn.textContent='❤ 1'; }
+  });
+});
+
+// مهارت‌ها
+window.addEventListener('scroll', ()=>{
+  document.querySelectorAll('.skill-fill').forEach(bar=>{
+    const rect = bar.getBoundingClientRect();
+    if(rect.top < window.innerHeight){
+      bar.style.width = bar.dataset.value;
     }
+  });
+});
+</script>
 
-    async function fetchCityAQI(city){
-      try{
-        const url=`https://api.waqi.info/feed/${encodeURIComponent(city)}/?token=${WAQI_TOKEN}`;
-        const res=await fetch(url); const data=await res.json();
-        if(data.status!=="ok") throw new Error("داده یافت نشد");
-        const aqi=data.data.aqi??'—';
-        const iaqi=data.data.iaqi||{};
-        document.getElementById('val-aqi').textContent=aqi;
-        document.getElementById('val-pm25').textContent=iaqi.pm25?.v??'—';
-        document.getElementById('val-pm10').textContent=iaqi.pm10?.v??'—';
-        document.getElementById('val-o3').textContent=iaqi.o3?.v??'—';
-        document.getElementById('val-no2').textContent=iaqi.no2?.v??'—';
-        if(typeof aqi==="number") updateAlert(aqi);
-      }catch(err){console.error(err)}
-    }
-
-    document.getElementById('load').addEventListener('click',()=>{
-      const city=document.getElementById('city').value.trim()||lastCity;
-      lastCity=city; fetchCityAQI(city);
-    });
-    document.getElementById('refresh').addEventListener('click',()=>fetchCityAQI(lastCity));
-
-    fetchCityAQI(lastCity);
-    setInterval(()=>fetchCityAQI(lastCity),5*60*1000);
-  </script>
 </body>
 </html>
