@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="fa">
 <head>
 <meta charset="UTF-8">
@@ -244,39 +243,6 @@ button[type="submit"]:hover{ transform:scale(1.05); }
 #loading-bar { width:300px; height:10px; background:#222; border-radius:10px; overflow:hidden; box-shadow:0 0 10px #00ffff; }
 #loading-fill { width:0%; height:100%; background:linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); transition:width 0.1s linear; }
 
-/* تایمر سرور */
-#server-timer { margin:50px 0; }
-#server-timer h2 { color:#ff00cc; margin-bottom:15px; }
-.countdown-box {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-.time-box {
-  background: rgba(255,255,255,0.08);
-  padding: 20px 25px;
-  border-radius: 15px;
-  min-width: 80px;
-  text-align: center;
-  color: #00ffff;
-  font-weight: bold;
-  font-size: 1.5em;
-  border-left:5px solid #00ffff;
-  box-shadow: 0 0 10px #00ffff, 0 0 20px #ff00cc, 0 0 30px #ff9900;
-  transition: all 0.3s ease;
-}
-.time-box span:last-child {
-  display: block;
-  font-size: 0.6em;
-  color: #ccc;
-  margin-top: 5px;
-}
-.time-box:hover {
-  box-shadow: 0 0 20px #00ffff, 0 0 40px #ff00cc, 0 0 60px #ff9900;
-  transform: translateY(-5px);
-}
-
 /* فوتر */
 footer{ 
   margin-top:50px; 
@@ -298,7 +264,6 @@ footer a:hover{ text-decoration:underline; }
   .profile-pic { margin-left:0;margin-bottom:20px; }
   .about-text { text-align:center; }
   .gallery-item { max-width:90%; height:auto; }
-  .countdown-box { flex-direction: column; gap:15px; }
 }
 </style>
 </head>
@@ -326,7 +291,7 @@ footer a:hover{ text-decoration:underline; }
     <div class="profile-pic"></div>
     <div class="about-text">
       <p id="about-text-content">
-        سلام! من <strong>آرسام خوش‌اخلاق</strong> هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و وب و برنامه نویسی هستم و همچنین به ماینکرفت و سابر بازی ها علاقه دارم 🌐✨
+        سلام! من <strong>آرسام گنگ</strong> هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و وب و برنامه نویسی هستم و همچنین به ماینکرفت و سابر بازی ها علاقه دارم 🌐✨
       </p>
     </div>
   </div>
@@ -365,113 +330,111 @@ footer a:hover{ text-decoration:underline; }
 <section id="skills-section" class="skills">
   <h2>مهارت‌ها</h2>
   <div class="skill">
-    <div class="skill-name">HTML & CSS</div>
-    <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+    <div class="skill-name">سرور ماینکرفت</div>
+    <div class="skill-bar"><div class="skill-fill" data-value="95%"></div></div>
   </div>
   <div class="skill">
-    <div class="skill-name">JavaScript</div>
-    <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+    <div class="skill-name">ادیت ویدیو</div>
+    <div class="skill-bar"><div class="skill-fill" data-value="80%"></div></div>
   </div>
   <div class="skill">
-    <div class="skill-name">Minecraft Server</div>
-    <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+    <div class="skill-name">برنامه نویسی</div>
+    <div class="skill-bar"><div class="skill-fill" data-value="60%"></div></div>
   </div>
 </section>
 
 <section id="blog-section" class="blog">
-  <h2>اخبار و بلاگ</h2>
-  <div class="blog-item">🎮 سرور ماینکرفت بزودی آنلاین می‌شود!</div>
-  <div class="blog-item">🌐 سایت شخصی آپدیت شد و پروژه‌های جدید اضافه شد</div>
+  <h2>اخبار و بروزرسانی‌ها</h2>
+  <div class="blog-item"> پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!🚀</div>
+  <div class="blog-item"> پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.🌐</div>
+  <div class="blog-item"> ایونت جدید در سرور🚀</div>
 </section>
 
 <section id="gallery-section">
-  <h2>گالری عکس‌ها</h2>
+  <h2>گالری</h2>
   <div class="gallery">
-    <div class="gallery-item"><img src="image1.jpg" alt=""><div class="tooltip">تصویر پروژه 1</div></div>
-    <div class="gallery-item"><img src="image2.jpg" alt=""><div class="tooltip">تصویر پروژه 2</div></div>
-    <div class="gallery-item"><img src="image3.jpg" alt=""><div class="tooltip">تصویر پروژه 3</div></div>
+    <div class="gallery-item"><img src="jade_chaloos.png" alt="تصویر 1"><div class="tooltip">ایران/استان مازنداران/جاده زیبای چالوس</div></div>
+    <div class="gallery-item"><img src="damavand_kohe.png" alt="تصویر 2"><div class="tooltip">ایران/استان تهران/کوه زیبای دماوند</div></div>
+    <div class="gallery-item"><img src="azadi_tehran.png" alt="تصویر 3"><div class="tooltip">ایران/تهران/برج زیبای آزادی</div></div>
+    <div class="gallery-item"><img src="shiraz.png" alt="تصویر 4"><div class="tooltip">ایران/استان فارس/شیراز/آرامگاه حافظ</div></div>
+    <div class="gallery-item"><img src="esfahan.png" alt="تصویر 5"><div class="tooltip">ایران/اصفهان/سی و سه پل</div></div>
   </div>
 </section>
 
-<section id="server-timer">
-  <h2>شروع سرور ماینکرفت</h2>
-  <div id="countdown" class="countdown-box">
-    <div class="time-box"><span id="days">0</span><span>روز</span></div>
-    <div class="time-box"><span id="hours">0</span><span>ساعت</span></div>
-    <div class="time-box"><span id="minutes">0</span><span>دقیقه</span></div>
-    <div class="time-box"><span id="seconds">0</span><span>ثانیه</span></div>
-  </div>
+<section class="faq">
+  <h2>پرسش و پاسخ پر تکرار</h2>
+  <div class="faq-item"><div class="question">این سایت با چه زبانی ساخته شده؟</div><div class="answer">این سایت با HTML، CSS و JavaScript ساخته شده است.</div></div>
+  <div class="faq-item"><div class="question">آموزش به صورت رایگان میدی؟</div><div class="answer">آموزش میدم ولی رایگان نه</div></div>
+  <div class="faq-item"><div class="question">میشه بیام توی سرورتون برای کمک؟</div><div class="answer">بله حتما با استفاده از فرم تماس و اینستاگرام به من بگو</div></div>
+  <div class="faq-item"><div class="question">سفارش سایت و سرور میگیری؟</div><div class="answer">بله سایت و سرور ماینکرفت براتون می‌سازم ولی در ازای مبلغی</div></div>
 </section>
 
 <section id="contact-section">
   <h2>ارتباط با من</h2>
-  <form>
-    <input type="text" placeholder="نام شما" required>
-    <input type="email" placeholder="ایمیل" required>
-    <textarea placeholder="پیام شما" rows="5" required></textarea>
-    <button type="submit">ارسال</button>
+  <form id="contactForm" action="https://formspree.io/f/mnngzdlw" method="POST">
+    <label for="name">نام:</label>
+    <input type="text" id="name" name="name" required placeholder="نام شما">
+    <label for="email">ایمیل:</label>
+    <input type="email" id="email" name="email" required placeholder="example@example.com">
+    <label for="phone">شماره تلفن:</label>
+    <input type="tel" id="phone" name="phone" placeholder="0912xxxxxxx">
+    <label for="message">پیام:</label>
+    <textarea id="message" name="message" rows="5" required placeholder="متن پیام..."></textarea>
+    <button type="submit">ارسال پیام</button>
+    <p id="formMessage"></p>
   </form>
 </section>
 
 <footer>
-  <div>© 2025 Arsam GanG</div>
-  <div><a href="https://instagram.com/arsam_khosh" target="_blank">اینستاگرام</a> | <a href="https://t.me/arsam_khosh" target="_blank">تلگرام</a></div>
+  <p>© 2025 تمامی حقوق محفوظ است</p> 
+  <p> Arsam_gang </p>
+  <a href="https://instagram.com/arsam.khosh" target="_blank">اینستاگرام من</a>
 </footer>
 
 <script>
 // لودینگ
-let load=0;
+let loading = 0;
 const loadingFill = document.getElementById('loading-fill');
 const loadingScreen = document.getElementById('loading-screen');
-const loadInterval = setInterval(()=>{
-  load += Math.random()*5;
-  if(load>100) load=100;
-  loadingFill.style.width = load + '%';
-  if(load>=100){
-    clearInterval(loadInterval);
+const interval = setInterval(()=>{
+  loading += 1;
+  loadingFill.style.width = loading + '%';
+  if(loading>=100){
+    clearInterval(interval);
     loadingScreen.style.display='none';
-    document.querySelectorAll('header, section, footer').forEach(e=>{e.style.opacity='1';e.style.transform='translateY(0)';});
+    document.querySelectorAll('header,section,footer').forEach(el=>{el.style.opacity=1; el.style.transform='translateY(0)';});
   }
-},50);
+}, 40);
 
 // نوار بالا
-let prevScroll = window.scrollY;
 const nav = document.querySelector('nav');
-window.addEventListener('scroll',()=>{
-  if(window.scrollY>100) nav.classList.add('visible');
-  else nav.classList.remove('visible');
-});
+window.addEventListener('scroll',()=>{ if(window.scrollY>50){nav.classList.add('visible');} else{nav.classList.remove('visible');} });
 
-// FAQ
+// FAQ toggle
 document.querySelectorAll('.faq-item').forEach(item=>{
-  item.addEventListener('click',()=>{ 
-    const answer=item.querySelector('.answer');
-    if(answer.style.display==='block'){ answer.style.display='none'; }
-    else{ answer.style.display='block'; }
+  item.addEventListener('click', ()=>{
+    const ans = item.querySelector('.answer');
+    ans.style.display = ans.style.display==='block' ? 'none' : 'block';
   });
 });
 
-// تایمر سرور
-const serverDate = new Date("2025-12-20T18:00:00").getTime();
-function updateCountdown(){
-  const now = new Date().getTime();
-  const diff = serverDate - now;
-  if(diff <= 0){
-    document.getElementById('countdown').innerHTML = "<div class='time-box'>سرور اکنون آنلاین است!</div>";
-    clearInterval(timerInterval);
-    return;
-  }
-  const days = Math.floor(diff / (1000*60*60*24));
-  const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-  const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
-  const seconds = Math.floor((diff % (1000*60)) / 1000);
-  document.getElementById('days').textContent = days;
-  document.getElementById('hours').textContent = hours;
-  document.getElementById('minutes').textContent = minutes;
-  document.getElementById('seconds').textContent = seconds;
-}
-const timerInterval = setInterval(updateCountdown,1000);
-updateCountdown();
+// like button
+document.querySelectorAll('.like-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    if(btn.classList.contains('liked')){ btn.classList.remove('liked'); btn.textContent='❤ 0'; }
+    else { btn.classList.add('liked'); btn.textContent='❤ 1'; }
+  });
+});
+
+// مهارت‌ها
+window.addEventListener('scroll', ()=>{
+  document.querySelectorAll('.skill-fill').forEach(bar=>{
+    const rect = bar.getBoundingClientRect();
+    if(rect.top < window.innerHeight){
+      bar.style.width = bar.dataset.value;
+    }
+  });
+});
 </script>
 
 </body>
