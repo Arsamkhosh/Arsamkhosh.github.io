@@ -291,7 +291,7 @@ footer a:hover{ text-decoration:underline; }
     <div class="profile-pic"></div>
     <div class="about-text">
       <p id="about-text-content">
-        سلام! من <strong>آرسام گنگ</strong> هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و وب و برنامه نویسی هستم و همچنین به ماینکرفت و سابر بازی ها علاقه دارم 🌐✨
+        سلام! من <strong>آرسام خوش‌اخلاق</strong> هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و وب و برنامه نویسی هستم و همچنین به ماینکرفت و سابر بازی ها علاقه دارم 🌐✨
       </p>
     </div>
   </div>
@@ -356,8 +356,8 @@ footer a:hover{ text-decoration:underline; }
     <div class="gallery-item"><img src="jade_chaloos.png" alt="تصویر 1"><div class="tooltip">ایران/استان مازنداران/جاده زیبای چالوس</div></div>
     <div class="gallery-item"><img src="damavand_kohe.png" alt="تصویر 2"><div class="tooltip">ایران/استان تهران/کوه زیبای دماوند</div></div>
     <div class="gallery-item"><img src="azadi_tehran.png" alt="تصویر 3"><div class="tooltip">ایران/تهران/برج زیبای آزادی</div></div>
-    <div class="gallery-item"><img src="shiraz.png" alt="تصویر 4"><div class="tooltip">ایران/استان فارس/شیراز/آرامگاه حافظ</div></div>
-    <div class="gallery-item"><img src="esfahan.png" alt="تصویر 5"><div class="tooltip">ایران/اصفهان/سی و سه پل</div></div>
+     <div class="gallery-item"><img src="shiraz.png" alt="تصویر 4"><div class="tooltip">ایران/استان فارس/شیراز/آرامگاه حافظ</div></div>
+        <div class="gallery-item"><img src="esfahan.png" alt="تصویر 5"><div class="tooltip">ایران/اصفهان/سی و سه پل</div></div>
   </div>
 </section>
 
@@ -387,12 +387,12 @@ footer a:hover{ text-decoration:underline; }
 
 <footer>
   <p>© 2025 تمامی حقوق محفوظ است</p> 
-  <p> Arsam_gang </p>
+    <p> Arsam_khosh </p>
   <a href="https://instagram.com/arsam.khosh" target="_blank">اینستاگرام من</a>
 </footer>
 
 <script>
-// لودینگ
+// لودینگ 4 ثانیه
 let loading = 0;
 const loadingFill = document.getElementById('loading-fill');
 const loadingScreen = document.getElementById('loading-screen');
