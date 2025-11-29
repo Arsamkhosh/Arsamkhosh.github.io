@@ -462,7 +462,7 @@ function updateCountdown(){
   const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
   const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
   const seconds = Math.floor((diff % (1000*60)) / 1000);
-  countdownEl.textContent = ` روز ${days} روزشش ${hours} دقیقه ${minutes} ثانیه ${seconds} `;
+  countdownEl.textContent = `  ${days} روز ${hours} ساعت ${minutes} دقیقه ${seconds} ثانیه `;
 }
 const timerInterval = setInterval(updateCountdown, 1000);
 updateCountdown();
