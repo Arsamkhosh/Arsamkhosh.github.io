@@ -448,7 +448,7 @@ window.addEventListener('scroll', ()=>{
 });
 
 // تایمر معکوس سرور
-const serverDate = new Date("2025-12-10T18:00:00").getTime(); // تاریخ شروع سرور
+const serverDate = new Date("2025-12-20T18:00:00").getTime(); // تاریخ شروع سرور
 const countdownEl = document.getElementById('countdown');
 function updateCountdown(){
   const now = new Date().getTime();
