@@ -383,19 +383,19 @@ footer a:hover{ text-decoration:underline; }
 <section class="faq">
   <h2 data-fa="پرسش و پاسخ پر تکرار" data-en="Frequently Asked Questions">پرسش و پاسخ پر تکرار</h2>
   <div class="faq-item">
-    <div class="question" data-fa="این سایت با چه زبانی ساخته شده؟" data-en="What language is this site built with?">این سایت با چه زبانی ساخته شده؟</div>
+    <div class="question" data-fa="این سایت با چه زبانی ساخته شده؟" data-en="?What language is this site built with">این سایت با چه زبانی ساخته شده؟</div>
     <div class="answer" data-fa="این سایت با HTML، CSS و JavaScript ساخته شده است." data-en="This site is built with HTML, CSS, and JavaScript.">این سایت با HTML، CSS و JavaScript ساخته شده است.</div>
   </div>
   <div class="faq-item">
-    <div class="question" data-fa="آموزش به صورت رایگان میدی؟" data-en="Do you teach for free?">آموزش به صورت رایگان میدی؟</div>
+    <div class="question" data-fa="آموزش به صورت رایگان میدی؟" data-en="?Do you teach for free">آموزش به صورت رایگان میدی؟</div>
     <div class="answer" data-fa="آموزش میدم ولی رایگان نه" data-en="I teach but not for free.">آموزش میدم ولی رایگان نه</div>
   </div>
   <div class="faq-item">
-    <div class="question" data-fa="میشه بیام توی سرورتون برای کمک؟" data-en="Can I join your server to help?">میشه بیام توی سرورتون برای کمک؟</div>
+    <div class="question" data-fa="میشه بیام توی سرورتون برای کمک؟" data-en="?Can I join your server to help">میشه بیام توی سرورتون برای کمک؟</div>
     <div class="answer" data-fa="بله حتما با استفاده از فرم تماس و اینستاگرام به من بگو" data-en="Yes, contact me via form or Instagram.">بله حتما با استفاده از فرم تماس و اینستاگرام به من بگو</div>
   </div>
   <div class="faq-item">
-    <div class="question" data-fa="سفارش سایت و سرور میگیری؟" data-en="Do you take website and server orders?">سفارش سایت و سرور میگیری؟</div>
+    <div class="question" data-fa="سفارش سایت و سرور میگیری؟" data-en="?Do you take website and server orders">سفارش سایت و سرور میگیری؟</div>
     <div class="answer" data-fa="بله سایت و سرور ماینکرفت براتون می‌سازم ولی در ازای مبلغی" data-en="Yes, I create websites and Minecraft servers for a fee.">بله سایت و سرور ماینکرفت براتون می‌سازم ولی در ازای مبلغی</div>
   </div>
 </section>
