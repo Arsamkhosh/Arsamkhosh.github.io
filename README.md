@@ -423,9 +423,10 @@ footer a:hover{ text-decoration:underline; }
 
 
 <footer>
-  <p>© 2025 تمامی حقوق محفوظ است</p>
+  <p data-fa="© 2025 تمامی حقوق محفوظ است" data-en="© 2025 All rights reserved">© 2025 تمامی حقوق محفوظ است</p>
   <p>Arsam_khosh</p>
-  <a href="https://instagram.com/arsam.khosh" target="_blank">اینستاگرام من</a>
+  <a href="https://instagram.com/arsam.khosh" target="_blank" data-fa="اینستاگرام من" data-en="My Instagram">اینستاگرام من</a>
+
 </footer>
 
 <script>
