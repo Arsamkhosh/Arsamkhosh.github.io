@@ -455,16 +455,17 @@ window.addEventListener('scroll', ()=>{
   });
 });
 
-// Translate
+// Translate کامل
 document.getElementById('translate-btn').addEventListener('click', ()=>{
-  const elements = document.querySelectorAll('h2, h1, p, .project-desc, .project-title, .faq-item .question, .faq-item .answer, button, label, ::placeholder');
-  elements.forEach(el=>{
+  // المان‌هایی که متن دارند
+  const textElements = document.querySelectorAll('h1, h2, p, .project-desc, .project-title, .faq-item .question, .faq-item .answer, button, label');
+  
+  textElements.forEach(el=>{
     if(el.dataset.en){
-      el.textContent = el.dataset.en;
+      el.textContent = el.dataset.en; // استفاده از ترجمه قبلی اگر موجوده
     } else {
-      el.dataset.en = el.textContent;
-      // اینجا میتونید متن انگلیسی دستی اضافه کنید یا با API ترجمه کنید
-      // برای نمونه خودم یه ترجمه ساده میذارم
+      el.dataset.en = el.textContent; // ذخیره متن فعلی
+      // ترجمه نمونه
       switch(el.textContent){
         case 'درباره من': el.textContent='About Me'; break;
         case 'پروژه‌ها': el.textContent='Projects'; break;
@@ -476,7 +477,50 @@ document.getElementById('translate-btn').addEventListener('click', ()=>{
       }
     }
   });
+
+  // tooltip پروژه‌ها
+  document.querySelectorAll('.project-card .tooltip').forEach(tt=>{
+    if(tt.dataset.en){ tt.textContent = tt.dataset.en; }
+    else { 
+      tt.dataset.en = tt.textContent;
+      switch(tt.textContent){
+        case 'این پروژه مربوط به سرور ماینکرفت است': tt.textContent='This project is about the Minecraft server'; break;
+        case 'این پروژه سایت شخصی من است': tt.textContent='This project is my personal website'; break;
+        case 'این پروژه مربوط به ادیت ویدیو است': tt.textContent='This project is about video editing'; break;
+      }
+    }
+  });
+
+  // tooltip گالری
+  document.querySelectorAll('.gallery-item .tooltip').forEach(tt=>{
+    if(tt.dataset.en){ tt.textContent = tt.dataset.en; }
+    else { 
+      tt.dataset.en = tt.textContent;
+      switch(tt.textContent){
+        case 'ایران/استان مازنداران/جاده زیبای چالوس': tt.textContent='Iran / Mazandaran / Beautiful Chalous Road'; break;
+        case 'ایران/استان تهران/کوه زیبای دماوند': tt.textContent='Iran / Tehran / Beautiful Damavand Mountain'; break;
+        case 'ایران/تهران/برج زیبای آزادی': tt.textContent='Iran / Tehran / Azadi Tower'; break;
+        case 'ایران/استان فارس/شیراز/آرامگاه حافظ': tt.textContent='Iran / Fars / Shiraz / Hafez Tomb'; break;
+        case 'ایران/اصفهان/سی و سه پل': tt.textContent='Iran / Isfahan / Si-o-se-pol Bridge'; break;
+      }
+    }
+  });
+
+  // placeholder ها
+  document.querySelectorAll('input, textarea').forEach(el=>{
+    if(el.dataset.enPlaceholder){ el.placeholder = el.dataset.enPlaceholder; }
+    else { 
+      el.dataset.enPlaceholder = el.placeholder;
+      switch(el.placeholder){
+        case 'نام شما': el.placeholder='Your Name'; break;
+        case 'example@example.com': el.placeholder='example@example.com'; break;
+        case '0912xxxxxxx': el.placeholder='Phone Number'; break;
+        case 'متن پیام...': el.placeholder='Message...'; break;
+      }
+    }
+  });
 });
+
 </script>
 
 </body>
