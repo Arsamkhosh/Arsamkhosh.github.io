@@ -283,7 +283,6 @@ footer a:hover{ text-decoration:underline; }
 </head>
 <body>
 
-<!-- دکمه تغییر زبان -->
 <div id="lang-toggle">English</div>
 
 <!-- لودینگ -->
@@ -292,61 +291,7 @@ footer a:hover{ text-decoration:underline; }
   <div id="loading-bar"><div id="loading-fill"></div></div>
 </div>
 
-<!-- نوار بالا -->
-<nav>
-  <a href="#about-me" data-text-fa="درباره من" data-text-en="About Me">درباره من</a>
-  <a href="#projects-section" data-text-fa="پروژه‌ها" data-text-en="Projects">پروژه‌ها</a>
-  <a href="#skills-section" data-text-fa="مهارت‌ها" data-text-en="Skills">مهارت‌ها</a>
-  <a href="#blog-section" data-text-fa="اخبار" data-text-en="Blog">اخبار</a>
-  <a href="#gallery-section" data-text-fa="گالری" data-text-en="Gallery">گالری</a>
-  <a href="#contact-section" data-text-fa="ارتباط" data-text-en="Contact">ارتباط</a>
-</nav>
-
-<section id="about-me">
-  <h2 data-text-fa="درباره من" data-text-en="About Me">درباره من</h2>
-  <div class="about-card">
-    <div class="profile-pic"></div>
-    <div class="about-text">
-      <p id="about-text-content" data-text-fa="سلام! من آرسام خوش‌اخلاق هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و وب و برنامه نویسی هستم و همچنین به ماینکرفت و سابر بازی ها علاقه دارم 🌐✨"
-      data-text-en="Hi! I am Arsam Khoshakhlaq. Web developer & tech enthusiast. I love creativity in design, web, programming, and also Minecraft & gaming 🌐✨">سلام! من <strong>آرسام خوش‌اخلاق</strong> هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و وب و برنامه نویسی هستم و همچنین به ماینکرفت و سابر بازی ها علاقه دارم 🌐✨</p>
-    </div>
-  </div>
-</section>
-
-<section id="projects-section">
-  <h2 data-text-fa="پروژه‌ها" data-text-en="Projects">پروژه‌ها</h2>
-  <div class="projects">
-    <div class="project-card">
-      <img src="minecraft.png" alt="Project 1">
-      <div class="project-title" data-text-fa="🎮سرور ماینکرفت" data-text-en="🎮Minecraft Server">🎮سرور ماینکرفت</div>
-      <div class="project-desc" data-text-fa="سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده"
-      data-text-en="I have a dedicated Minecraft server with custom plugins. For collaboration, contact via Instagram or Contact section.">سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده</div>
-      <div class="project-tech">Spigot/Bukkit / Minecraft</div>
-      <button class="like-btn">❤ 0</button>
-      <div class="tooltip" data-text-fa="این پروژه مربوط به سرور ماینکرفت است" data-text-en="This project is about Minecraft server">این پروژه مربوط به سرور ماینکرفت است</div>
-    </div>
-    <div class="project-card">
-      <img src="site.png" alt="Project 2">
-      <div class="project-title" data-text-fa="🌐سایت شخصی" data-text-en="🌐Personal Website">🌐سایت شخصی</div>
-      <div class="project-desc" data-text-fa="من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم"
-      data-text-en="I enjoy web design and created this site with my friend.">من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم</div>
-      <div class="project-tech">HTML / CSS / JavaScript</div>
-      <button class="like-btn">❤ 0</button>
-      <div class="tooltip" data-text-fa="این پروژه سایت شخصی من است" data-text-en="This project is my personal website">این پروژه سایت شخصی من است</div>
-    </div>
-    <div class="project-card">
-      <img src="edite.png" alt="Project 3">
-      <div class="project-title" data-text-fa="🎬ادیت ویدیو" data-text-en="🎬Video Editing">🎬ادیت ویدیو</div>
-      <div class="project-desc" data-text-fa="به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم"
-      data-text-en="I love video editing and share my work on YouTube.">به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم</div>
-      <div class="project-tech">Capcut / Filmora / Shotcut</div>
-      <button class="like-btn">❤ 0</button>
-      <div class="tooltip" data-text-fa="این پروژه مربوط به ادیت ویدیو است" data-text-en="This project is about video editing">این پروژه مربوط به ادیت ویدیو است</div>
-    </div>
-  </div>
-</section>
-
-<!-- مهارت‌ها، بلاگ، گالری، FAQ و فرم هم مشابه این روش با data-text-fa/data-text-en -->
+<!-- بقیه بخش‌ها (About, Projects, Skills, Blog, Gallery, FAQ, Contact) طبق همان ساختار دو زبانه -->
 
 <footer>
   <p>© 2025 تمامی حقوق محفوظ است</p> 
