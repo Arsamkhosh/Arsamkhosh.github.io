@@ -2,10 +2,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Projects / پروژه‌های من</title>
+<title>پروژه‌های من</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
 <style>
-/* پایه و عمومی */
+/* پایه */
 html { scroll-behavior: smooth; }
 body {
   margin:0;
@@ -46,20 +46,6 @@ nav a:hover {
   color: #ff00cc;
   text-shadow: 0 0 10px #ff00cc;
 }
-#lang-toggle {
-  position: fixed;
-  top: 10px;
-  right: 15px;
-  padding:5px 10px;
-  border-radius:10px;
-  background:#00ffff;
-  color:#000;
-  cursor:pointer;
-  font-weight:bold;
-  z-index:1001;
-  transition:0.3s;
-}
-#lang-toggle:hover{ background:#ff00cc; color:#fff; }
 
 /* پروژه‌ها */
 .projects { display:flex; justify-content:center; flex-wrap:wrap; gap:30px; margin-top:20px; }
@@ -222,6 +208,23 @@ button[type="submit"]:hover{ transform:scale(1.05); }
   transform:translateX(-50%) translateY(-5px);
 }
 
+/* Translate Button */
+#translate-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #00ffff;
+  color: #000;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 1001;
+  transition: 0.3s;
+}
+#translate-btn:hover { background: #ff00cc; color:#fff; }
+
 /* لودینگ */
 #loading-screen {
   position:fixed;
@@ -283,19 +286,127 @@ footer a:hover{ text-decoration:underline; }
 </head>
 <body>
 
-<div id="lang-toggle">English</div>
-
 <!-- لودینگ -->
 <div id="loading-screen">
   <div id="loading-text">Loading Arsam_khosh web...</div>
   <div id="loading-bar"><div id="loading-fill"></div></div>
 </div>
 
-<!-- بقیه بخش‌ها (About, Projects, Skills, Blog, Gallery, FAQ, Contact) طبق همان ساختار دو زبانه -->
+<!-- نوار بالا -->
+<nav>
+  <a href="#about-me">درباره من</a>
+  <a href="#projects-section">پروژه‌ها</a>
+  <a href="#skills-section">مهارت‌ها</a>
+  <a href="#blog-section">اخبار</a>
+  <a href="#gallery-section">گالری</a>
+  <a href="#contact-section">ارتباط</a>
+</nav>
+
+<section id="about-me">
+  <h2>درباره من</h2>
+  <div class="about-card">
+    <div class="profile-pic"></div>
+    <div class="about-text">
+      <p id="about-text-content">
+        سلام! من <strong>آرسام خوش‌اخلاق</strong> هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و وب و برنامه نویسی هستم و همچنین به ماینکرفت و سابر بازی ها علاقه دارم 🌐✨
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="projects-section">
+  <h2>پروژه‌ها</h2>
+  <div class="projects">
+    <div class="project-card">
+      <img src="minecraft.png" alt="پروژه 1">
+      <div class="project-title">🎮سرور ماینکرفت </div>
+      <div class="project-desc">سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده</div>
+      <div class="project-tech">Spigot/Bukkit / Minecraft</div>
+      <button class="like-btn">❤ 0</button>
+      <div class="tooltip">این پروژه مربوط به سرور ماینکرفت است</div>
+    </div>
+    <div class="project-card">
+      <img src="site.png" alt="پروژه 2">
+      <div class="project-title">🌐سایت شخصی </div>
+      <div class="project-desc">من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم</div>
+      <div class="project-tech">HTML / CSS / JavaScript</div>
+      <button class="like-btn">❤ 0</button>
+      <div class="tooltip">این پروژه سایت شخصی من است</div>
+    </div>
+    <div class="project-card">
+      <img src="edite.png" alt="پروژه 3">
+      <div class="project-title">🎬ادیت ویدیو </div>
+      <div class="project-desc">به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم</div>
+      <div class="project-tech">Capcut / Filmora / Shotcut</div>
+      <button class="like-btn">❤ 0</button>
+      <div class="tooltip">این پروژه مربوط به ادیت ویدیو است</div>
+    </div>
+  </div>
+</section>
+
+<section id="skills-section" class="skills">
+  <h2>مهارت‌ها</h2>
+  <div class="skill">
+    <div class="skill-name">سرور ماینکرفت</div>
+    <div class="skill-bar"><div class="skill-fill" data-value="95%"></div></div>
+  </div>
+  <div class="skill">
+    <div class="skill-name">ادیت ویدیو</div>
+    <div class="skill-bar"><div class="skill-fill" data-value="80%"></div></div>
+  </div>
+  <div class="skill">
+    <div class="skill-name">برنامه نویسی</div>
+    <div class="skill-bar"><div class="skill-fill" data-value="60%"></div></div>
+  </div>
+</section>
+
+<section id="blog-section" class="blog">
+  <h2>اخبار و بروزرسانی‌ها</h2>
+  <div class="blog-item"> پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!🚀</div>
+  <div class="blog-item"> پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.🌐</div>
+  <div class="blog-item"> ایونت جدید در سرور🚀</div>
+</section>
+
+<section id="gallery-section">
+  <h2>گالری</h2>
+  <div class="gallery">
+    <div class="gallery-item"><img src="jade_chaloos.png" alt="تصویر 1"><div class="tooltip">ایران/استان مازنداران/جاده زیبای چالوس</div></div>
+    <div class="gallery-item"><img src="damavand_kohe.png" alt="تصویر 2"><div class="tooltip">ایران/استان تهران/کوه زیبای دماوند</div></div>
+    <div class="gallery-item"><img src="azadi_tehran.png" alt="تصویر 3"><div class="tooltip">ایران/تهران/برج زیبای آزادی</div></div>
+     <div class="gallery-item"><img src="shiraz.png" alt="تصویر 4"><div class="tooltip">ایران/استان فارس/شیراز/آرامگاه حافظ</div></div>
+        <div class="gallery-item"><img src="esfahan.png" alt="تصویر 5"><div class="tooltip">ایران/اصفهان/سی و سه پل</div></div>
+  </div>
+</section>
+
+<section class="faq">
+  <h2>پرسش و پاسخ پر تکرار</h2>
+  <div class="faq-item"><div class="question">این سایت با چه زبانی ساخته شده؟</div><div class="answer">این سایت با HTML، CSS و JavaScript ساخته شده است.</div></div>
+  <div class="faq-item"><div class="question">آموزش به صورت رایگان میدی؟</div><div class="answer">آموزش میدم ولی رایگان نه</div></div>
+  <div class="faq-item"><div class="question">میشه بیام توی سرورتون برای کمک؟</div><div class="answer">بله حتما با استفاده از فرم تماس و اینستاگرام به من بگو</div></div>
+  <div class="faq-item"><div class="question">سفارش سایت و سرور میگیری؟</div><div class="answer">بله سایت و سرور ماینکرفت براتون می‌سازم ولی در ازای مبلغی</div></div>
+</section>
+
+<section id="contact-section">
+  <h2>ارتباط با من</h2>
+  <form id="contactForm" action="https://formspree.io/f/mnngzdlw" method="POST">
+    <label for="name">نام:</label>
+    <input type="text" id="name" name="name" required placeholder="نام شما">
+    <label for="email">ایمیل:</label>
+    <input type="email" id="email" name="email" required placeholder="example@example.com">
+    <label for="phone">شماره تلفن:</label>
+    <input type="tel" id="phone" name="phone" placeholder="0912xxxxxxx">
+    <label for="message">پیام:</label>
+    <textarea id="message" name="message" rows="5" required placeholder="متن پیام..."></textarea>
+    <button type="submit">ارسال پیام</button>
+    <p id="formMessage"></p>
+  </form>
+</section>
+
+<button id="translate-btn">Translate</button>
 
 <footer>
   <p>© 2025 تمامی حقوق محفوظ است</p> 
-  <p>Arsam_khosh</p>
+    <p> Arsam_khosh </p>
   <a href="https://instagram.com/arsam.khosh" target="_blank">اینستاگرام من</a>
 </footer>
 
@@ -314,7 +425,7 @@ const interval = setInterval(()=>{
   }
 }, 40);
 
-// navbar
+// نوار بالا
 const nav = document.querySelector('nav');
 window.addEventListener('scroll',()=>{ if(window.scrollY>50){nav.classList.add('visible');} else{nav.classList.remove('visible');} });
 
@@ -344,14 +455,26 @@ window.addEventListener('scroll', ()=>{
   });
 });
 
-// تغییر زبان
-let lang = 'fa';
-const toggleBtn = document.getElementById('lang-toggle');
-toggleBtn.addEventListener('click', ()=>{
-  lang = lang==='fa'?'en':'fa';
-  toggleBtn.textContent = lang==='fa'?'English':'فارسی';
-  document.querySelectorAll('[data-text-fa]').forEach(el=>{
-    el.textContent = lang==='fa'?el.dataset.textFa:el.dataset.textEn;
+// Translate
+document.getElementById('translate-btn').addEventListener('click', ()=>{
+  const elements = document.querySelectorAll('h2, h1, p, .project-desc, .project-title, .faq-item .question, .faq-item .answer, button, label, ::placeholder');
+  elements.forEach(el=>{
+    if(el.dataset.en){
+      el.textContent = el.dataset.en;
+    } else {
+      el.dataset.en = el.textContent;
+      // اینجا میتونید متن انگلیسی دستی اضافه کنید یا با API ترجمه کنید
+      // برای نمونه خودم یه ترجمه ساده میذارم
+      switch(el.textContent){
+        case 'درباره من': el.textContent='About Me'; break;
+        case 'پروژه‌ها': el.textContent='Projects'; break;
+        case 'مهارت‌ها': el.textContent='Skills'; break;
+        case 'اخبار': el.textContent='Blog'; break;
+        case 'گالری': el.textContent='Gallery'; break;
+        case 'ارتباط': el.textContent='Contact'; break;
+        case 'ارسال پیام': el.textContent='Send Message'; break;
+      }
+    }
   });
 });
 </script>
