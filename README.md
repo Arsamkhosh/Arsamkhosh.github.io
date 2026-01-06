@@ -419,7 +419,7 @@ footer a:hover{ text-decoration:underline; }
   </form>
 </section>
 
-<button id="translate-btn" data-fa="ترجمه به انگلیسی" data-en="Translate to Persian">Translate</button>
+<button id="translate-btn" data-fa="English" data-en="فارسی">Translate</button>
 
 
 <footer>
