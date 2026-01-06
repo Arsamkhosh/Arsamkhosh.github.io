@@ -364,7 +364,7 @@ footer a:hover{ text-decoration:underline; }
 
 <section id="blog-section" class="blog">
   <h2 data-fa="اخبار و بروزرسانی‌ها" data-en="Blog & Updates">اخبار و بروزرسانی‌ها</h2>
-  <div class="blog-item" data-fa="پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!🚀" data-en="Weekly post: New Minecraft server plugin is ready! 🚀">پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!🚀</div>
+  <div class="blog-item" data-fa="پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!🚀" data-en="🚀Weekly post: New Minecraft server plugin is ready! 🚀">پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!🚀</div>
   <div class="blog-item" data-fa="پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.🌐" data-en="My personal website updated and blog section added. 🌐">پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.🌐</div>
   <div class="blog-item" data-fa="ایونت جدید در سرور🚀" data-en="New event on the server 🚀">ایونت جدید در سرور🚀</div>
 </section>
