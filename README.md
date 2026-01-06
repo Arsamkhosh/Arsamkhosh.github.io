@@ -419,7 +419,7 @@ footer a:hover{ text-decoration:underline; }
   </form>
 </section>
 
-<button id="translate-btn" data-fa="ترجمه" data-en="Translate">Translate</button>
+<button id="translate-btn" data-fa="🇺🇸" data-en="🇮🇷">Translate</button>
 
 <footer>
   <p>© 2025 تمامی حقوق محفوظ است</p>
