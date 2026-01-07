@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="fa">
 <head>
 <meta charset="UTF-8">
@@ -277,21 +278,21 @@ footer a:hover{ text-decoration:underline; }
 
 <!-- نوار بالا -->
 <nav>
-  <a href="#about-me">درباره من</a>
-  <a href="#projects-section">پروژه‌ها</a>
-  <a href="#skills-section">مهارت‌ها</a>
-  <a href="#blog-section">اخبار</a>
-  <a href="#gallery-section">گالری</a>
-  <a href="#contact-section">ارتباط</a>
+  <a href="#about-me" data-fa="درباره من" data-en="About Me">درباره من</a>
+  <a href="#projects-section" data-fa="پروژه‌ها" data-en="Projects">پروژه‌ها</a>
+  <a href="#skills-section" data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</a>
+  <a href="#blog-section" data-fa="اخبار" data-en="Blog">اخبار</a>
+  <a href="#gallery-section" data-fa="گالری" data-en="Gallery">گالری</a>
+  <a href="#contact-section" data-fa="ارتباط" data-en="Contact">ارتباط</a>
   <button id="lang-toggle" style="margin-left:20px; padding:5px 10px; border-radius:8px; border:none; cursor:pointer; background:#ff00cc; color:#fff;">EN</button>
 </nav>
 
 <section id="about-me">
-  <h2>درباره من</h2>
+  <h2 data-fa="درباره من" data-en="About Me">درباره من</h2>
   <div class="about-card">
     <div class="profile-pic"></div>
     <div class="about-text">
-      <p id="about-text-content">
+      <p id="about-text-content" data-fa="سلام! من <strong>آرسام خوش‌اخلاق</strong> هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و وب و برنامه نویسی هستم و همچنین به ماینکرفت و سابر بازی ها علاقه دارم 🌐✨" data-en="Hello! I'm <strong>Arsam Khosh</strong>, a web developer and tech enthusiast. I love creativity in web design and programming, and also enjoy Minecraft and other games 🌐✨">
         سلام! من <strong>آرسام خوش‌اخلاق</strong> هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و وب و برنامه نویسی هستم و همچنین به ماینکرفت و سابر بازی ها علاقه دارم 🌐✨
       </p>
     </div>
@@ -299,217 +300,161 @@ footer a:hover{ text-decoration:underline; }
 </section>
 
 <section id="projects-section">
-  <h2>پروژه‌ها</h2>
+  <h2 data-fa="پروژه‌ها" data-en="Projects">پروژه‌ها</h2>
   <div class="projects">
     <div class="project-card">
       <img src="minecraft.png" alt="پروژه 1">
-      <div class="project-title">🎮سرور ماینکرفت </div>
-      <div class="project-desc">سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده</div>
-      <div class="project-tech">Spigot/Bukkit / Minecraft</div>
+      <div class="project-title" data-fa="🎮سرور ماینکرفت " data-en="🎮Minecraft Server">🎮سرور ماینکرفت </div>
+      <div class="project-desc" data-fa="سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده" data-en="I have a dedicated Minecraft server with custom plugins. Contact me via Instagram or the Contact section to collaborate.">
+        سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده
+      </div>
+      <div class="project-tech" data-fa="Spigot/Bukkit / Minecraft" data-en="Spigot/Bukkit / Minecraft">Spigot/Bukkit / Minecraft</div>
       <button class="like-btn">❤ 0</button>
-      <div class="tooltip">این پروژه مربوط به سرور ماینکرفت است</div>
+      <div class="tooltip" data-fa="این پروژه مربوط به سرور ماینکرفت است" data-en="This project is about the Minecraft server">این پروژه مربوط به سرور ماینکرفت است</div>
     </div>
+
     <div class="project-card">
       <img src="site.png" alt="پروژه 2">
-      <div class="project-title">🌐سایت شخصی </div>
-      <div class="project-desc">من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم</div>
-      <div class="project-tech">HTML / CSS / JavaScript</div>
+      <div class="project-title" data-fa="🌐سایت شخصی " data-en="🌐Personal Website">🌐سایت شخصی </div>
+      <div class="project-desc" data-fa="من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم" data-en="I enjoy web design and built this website myself with a friend.">
+        من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم
+      </div>
+      <div class="project-tech" data-fa="HTML / CSS / JavaScript" data-en="HTML / CSS / JavaScript">HTML / CSS / JavaScript</div>
       <button class="like-btn">❤ 0</button>
-      <div class="tooltip">این پروژه سایت شخصی من است</div>
+      <div class="tooltip" data-fa="این پروژه سایت شخصی من است" data-en="This project is my personal website">این پروژه سایت شخصی من است</div>
     </div>
+
     <div class="project-card">
       <img src="edite.png" alt="پروژه 3">
-      <div class="project-title">🎬ادیت ویدیو </div>
-      <div class="project-desc">به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم</div>
-      <div class="project-tech">Capcut / Filmora / Shotcut</div>
+      <div class="project-title" data-fa="🎬ادیت ویدیو " data-en="🎬Video Editing">🎬ادیت ویدیو </div>
+      <div class="project-desc" data-fa="به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم" data-en="I love video editing and share my work on YouTube.">
+        به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم
+      </div>
+      <div class="project-tech" data-fa="Capcut / Filmora / Shotcut" data-en="Capcut / Filmora / Shotcut">Capcut / Filmora / Shotcut</div>
       <button class="like-btn">❤ 0</button>
-      <div class="tooltip">این پروژه مربوط به ادیت ویدیو است</div>
+      <div class="tooltip" data-fa="این پروژه مربوط به ادیت ویدیو است" data-en="This project is about video editing">این پروژه مربوط به ادیت ویدیو است</div>
     </div>
-  </div>
-</section>
-
-<section id="skills-section" class="skills">
-  <h2>مهارت‌ها</h2>
-  <div class="skill">
-    <div class="skill-name">سرور ماینکرفت</div>
-    <div class="skill-bar"><div class="skill-fill" data-value="95%"></div></div>
-  </div>
-  <div class="skill">
-    <div class="skill-name">ادیت ویدیو</div>
-    <div class="skill-bar"><div class="skill-fill" data-value="80%"></div></div>
-  </div>
-  <div class="skill">
-    <div class="skill-name">برنامه نویسی</div>
-    <div class="skill-bar"><div class="skill-fill" data-value="60%"></div></div>
   </div>
 </section>
 
 <section id="blog-section" class="blog">
-  <h2>اخبار و بروزرسانی‌ها</h2>
-  <div class="blog-item"> پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!🚀</div>
-  <div class="blog-item"> پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.🌐</div>
-  <div class="blog-item"> ایونت جدید در سرور🚀</div>
-</section>
-
-<section id="gallery-section">
-  <h2>گالری</h2>
-  <div class="gallery">
-    <div class="gallery-item"><img src="jade_chaloos.png" alt="تصویر 1"><div class="tooltip">ایران/استان مازنداران/جاده زیبای چالوس</div></div>
-    <div class="gallery-item"><img src="damavand_kohe.png" alt="تصویر 2"><div class="tooltip">ایران/استان تهران/کوه زیبای دماوند</div></div>
-    <div class="gallery-item"><img src="azadi_tehran.png" alt="تصویر 3"><div class="tooltip">ایران/تهران/برج زیبای آزادی</div></div>
-     <div class="gallery-item"><img src="shiraz.png" alt="تصویر 4"><div class="tooltip">ایران/استان فارس/شیراز/آرامگاه حافظ</div></div>
-        <div class="gallery-item"><img src="esfahan.png" alt="تصویر 5"><div class="tooltip">ایران/اصفهان/سی و سه پل</div></div>
+  <h2 data-fa="اخبار" data-en="Blog">اخبار</h2>
+  <div class="blog-item" data-fa="پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!🚀" data-en="Weekly Post: New Minecraft server plugin is ready!🚀">
+    پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!🚀
+  </div>
+  <div class="blog-item" data-fa="پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.🌐" data-en="My personal website project updated with a new blog section.🌐">
+    پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.🌐
+  </div>
+  <div class="blog-item" data-fa="ایونت جدید در سرور🚀" data-en="New event on the server🚀">
+    ایونت جدید در سرور🚀
   </div>
 </section>
 
 <section class="faq">
-  <h2>پرسش و پاسخ پر تکرار</h2>
-  <div class="faq-item"><div class="question">این سایت با چه زبانی ساخته شده؟</div><div class="answer">این سایت با HTML، CSS و JavaScript ساخته شده است.</div></div>
-  <div class="faq-item"><div class="question">آموزش به صورت رایگان میدی؟</div><div class="answer">آموزش میدم ولی رایگان نه</div></div>
-  <div class="faq-item"><div class="question">میشه بیام توی سرورتون برای کمک؟</div><div class="answer">بله حتما با استفاده از فرم تماس و اینستاگرام به من بگو</div></div>
-  <div class="faq-item"><div class="question">سفارش سایت و سرور میگیری؟</div><div class="answer">بله سایت و سرور ماینکرفت براتون می‌سازم ولی در ازای مبلغی</div></div>
+  <h2 data-fa="پرسش و پاسخ پر تکرار" data-en="Frequently Asked Questions">پرسش و پاسخ پر تکرار</h2>
+  <div class="faq-item">
+    <div class="question" data-fa="این سایت با چه زبانی ساخته شده؟" data-en="What languages is this site built with?">این سایت با چه زبانی ساخته شده؟</div>
+    <div class="answer" data-fa="این سایت با HTML، CSS و JavaScript ساخته شده است." data-en="This site is built with HTML, CSS, and JavaScript.">این سایت با HTML، CSS و JavaScript ساخته شده است.</div>
+  </div>
+  <div class="faq-item">
+    <div class="question" data-fa="آموزش به صورت رایگان میدی؟" data-en="Do you give free tutorials?">آموزش به صورت رایگان میدی؟</div>
+    <div class="answer" data-fa="آموزش میدم ولی رایگان نه" data-en="I provide tutorials, but not for free.">آموزش میدم ولی رایگان نه</div>
+  </div>
+  <div class="faq-item">
+    <div class="question" data-fa="میشه بیام توی سرورتون برای کمک؟" data-en="Can I join your server to help?">میشه بیام توی سرورتون برای کمک؟</div>
+    <div class="answer" data-fa="بله حتما با استفاده از فرم تماس و اینستاگرام به من بگو" data-en="Yes, definitely! Let me know via the contact form or Instagram.">بله حتما با استفاده از فرم تماس و اینستاگرام به من بگو</div>
+  </div>
+  <div class="faq-item">
+    <div class="question" data-fa="سفارش سایت و سرور میگیری؟" data-en="Do you take website/server orders?">سفارش سایت و سرور میگیری؟</div>
+    <div class="answer" data-fa="بله سایت و سرور ماینکرفت براتون می‌سازم ولی در ازای مبلغی" data-en="Yes, I can make websites and Minecraft servers for you for a fee.">بله سایت و سرور ماینکرفت براتون می‌سازم ولی در ازای مبلغی</div>
+  </div>
+</section>
+<section id="gallery-section">
+  <h2 data-fa="گالری" data-en="Gallery">گالری</h2>
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="jade_chaloos.png" alt="تصویر 1">
+      <div class="tooltip" data-fa="ایران/استان مازنداران/جاده زیبای چالوس" data-en="Iran/Mazandaran Province/Beautiful Chaloos Road">
+        ایران/استان مازنداران/جاده زیبای چالوس
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="damavand_kohe.png" alt="تصویر 2">
+      <div class="tooltip" data-fa="ایران/استان تهران/کوه زیبای دماوند" data-en="Iran/Tehran Province/Beautiful Damavand Mountain">
+        ایران/استان تهران/کوه زیبای دماوند
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="azadi_tehran.png" alt="تصویر 3">
+      <div class="tooltip" data-fa="ایران/تهران/برج زیبای آزادی" data-en="Iran/Tehran/Beautiful Azadi Tower">
+        ایران/تهران/برج زیبای آزادی
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="shiraz.png" alt="تصویر 4">
+      <div class="tooltip" data-fa="ایران/استان فارس/شیراز/آرامگاه حافظ" data-en="Iran/Fars Province/Shiraz/Hafez Tomb">
+        ایران/استان فارس/شیراز/آرامگاه حافظ
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="esfahan.png" alt="تصویر 5">
+      <div class="tooltip" data-fa="ایران/اصفهان/سی و سه پل" data-en="Iran/Isfahan/Si-o-se-pol Bridge">
+        ایران/اصفهان/سی و سه پل
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="contact-section">
-  <h2>ارتباط با من</h2>
+  <h2 data-fa="ارتباط" data-en="Contact">ارتباط</h2>
   <form id="contactForm" action="https://formspree.io/f/mnngzdlw" method="POST">
-    <label for="name">نام:</label>
-    <input type="text" id="name" name="name" required placeholder="نام شما">
-    <label for="email">ایمیل:</label>
-    <input type="email" id="email" name="email" required placeholder="example@example.com">
-    <label for="phone">شماره تلفن:</label>
-    <input type="tel" id="phone" name="phone" placeholder="0912xxxxxxx">
-    <label for="message">پیام:</label>
-    <textarea id="message" name="message" rows="5" required placeholder="متن پیام..."></textarea>
-    <button type="submit">ارسال پیام</button>
+    <label for="name" data-fa="نام" data-en="Name">نام</label>
+    <input type="text" id="name" name="name" required placeholder="نام شما" data-fa-placeholder="نام شما" data-en-placeholder="Your Name">
+    
+    <label for="email" data-fa="ایمیل" data-en="Email">ایمیل</label>
+    <input type="email" id="email" name="email" required placeholder="example@example.com" data-fa-placeholder="example@example.com" data-en-placeholder="example@example.com">
+    
+    <label for="phone" data-fa="شماره تلفن" data-en="Phone">شماره تلفن</label>
+    <input type="tel" id="phone" name="phone" placeholder="0912xxxxxxx" data-fa-placeholder="0912xxxxxxx" data-en-placeholder="0912xxxxxxx">
+    
+    <label for="message" data-fa="پیام" data-en="Message">پیام</label>
+    <textarea id="message" name="message" rows="5" required placeholder="متن پیام..." data-fa-placeholder="متن پیام..." data-en-placeholder="Your Message..."></textarea>
+    
+    <button type="submit" data-fa="ارسال پیام" data-en="Send Message">ارسال پیام</button>
     <p id="formMessage"></p>
   </form>
 </section>
 
 <footer>
-  <p>© 2025 تمامی حقوق محفوظ است</p> 
-    <p> Arsam_khosh </p>
-  <a href="https://instagram.com/arsam.khosh" target="_blank">اینستاگرام من</a>
+  <p data-fa="© 2025 تمامی حقوق محفوظ است" data-en="© 2025 All Rights Reserved">© 2025 تمامی حقوق محفوظ است</p> 
+  <p>Arsam_khosh</p>
+  <a href="https://instagram.com/arsam.khosh" target="_blank" data-fa="اینستاگرام من" data-en="My Instagram">اینستاگرام من</a>
 </footer>
 
 <script>
-// لودینگ 4 ثانیه
-let loading = 0;
-const loadingFill = document.getElementById('loading-fill');
-const loadingScreen = document.getElementById('loading-screen');
-const interval = setInterval(()=>{
-  loading += 1;
-  loadingFill.style.width = loading + '%';
-  if(loading>=100){
-    clearInterval(interval);
-    loadingScreen.style.display='none';
-    document.querySelectorAll('header,section,footer').forEach(el=>{el.style.opacity=1; el.style.transform='translateY(0)';});
-  }
-}, 40);
-
-// نوار بالا
-const nav = document.querySelector('nav');
-window.addEventListener('scroll',()=>{ if(window.scrollY>50){nav.classList.add('visible');} else{nav.classList.remove('visible');} });
-
-// FAQ toggle
-document.querySelectorAll('.faq-item').forEach(item=>{
-  item.addEventListener('click', ()=>{
-    const ans = item.querySelector('.answer');
-    ans.style.display = ans.style.display==='block' ? 'none' : 'block';
-  });
-});
-
-// like button
-document.querySelectorAll('.like-btn').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    if(btn.classList.contains('liked')){ btn.classList.remove('liked'); btn.textContent='❤ 0'; }
-    else { btn.classList.add('liked'); btn.textContent='❤ 1'; }
-  });
-});
-
-// مهارت‌ها
-window.addEventListener('scroll', ()=>{
-  document.querySelectorAll('.skill-fill').forEach(bar=>{
-    const rect = bar.getBoundingClientRect();
-    if(rect.top < window.innerHeight){
-      bar.style.width = bar.dataset.value;
-    }
-  });
-});
-  // ترجمه فارسی/انگلیسی
+// ترجمه کامل FA/EN
 const langToggle = document.getElementById('lang-toggle');
 let isEnglish = false;
-
-const translations = {
-  "درباره من": "About Me",
-  "پروژه‌ها": "Projects",
-  "مهارت‌ها": "Skills",
-  "اخبار": "Blog",
-  "گالری": "Gallery",
-  "ارتباط": "Contact",
-  "سلام! من <strong>آرسام خوش‌اخلاق</strong> هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و وب و برنامه نویسی هستم و همچنین به ماینکرفت و سابر بازی ها علاقه دارم 🌐✨":
-  "Hello! I'm <strong>Arsam Khosh</strong>, a web developer and tech enthusiast. I love creativity in web design and programming, and also enjoy Minecraft and other games 🌐✨",
-  
-  "🎮سرور ماینکرفت ": "🎮Minecraft Server",
-  "سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده":
-  "I have a dedicated Minecraft server with custom plugins. Contact me via Instagram or the Contact section to collaborate.",
-  "Spigot/Bukkit / Minecraft": "Spigot/Bukkit / Minecraft",
-
-  "🌐سایت شخصی ": "🌐Personal Website",
-  "من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم":
-  "I enjoy web design and built this website myself with a friend.",
-  "HTML / CSS / JavaScript": "HTML / CSS / JavaScript",
-
-  "🎬ادیت ویدیو ": "🎬Video Editing",
-  "به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم":
-  "I love video editing and share my work on YouTube.",
-  "Capcut / Filmora / Shotcut": "Capcut / Filmora / Shotcut",
-
-  "سرور ماینکرفت": "Minecraft Server",
-  "ادیت ویدیو": "Video Editing",
-  "برنامه نویسی": "Programming",
-
-  "پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!🚀": "Weekly Post: New Minecraft server plugin is ready!🚀",
-  "پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.🌐": "My personal website project updated with a new blog section.🌐",
-  "ایونت جدید در سرور🚀": "New event on the server🚀",
-
-  "ایران/استان مازنداران/جاده زیبای چالوس": "Iran/Mazandaran Province/Beautiful Chaloos Road",
-  "ایران/استان تهران/کوه زیبای دماوند": "Iran/Tehran Province/Beautiful Damavand Mountain",
-  "ایران/تهران/برج زیبای آزادی": "Iran/Tehran/Beautiful Azadi Tower",
-  "ایران/استان فارس/شیراز/آرامگاه حافظ": "Iran/Fars Province/Shiraz/Hafez Tomb",
-  "ایران/اصفهان/سی و سه پل": "Iran/Isfahan/Si-o-se-pol Bridge",
-
-  "این سایت با چه زبانی ساخته شده؟": "What languages is this site built with?",
-  "این سایت با HTML، CSS و JavaScript ساخته شده است.": "This site is built with HTML, CSS, and JavaScript.",
-  "آموزش به صورت رایگان میدی؟": "Do you give free tutorials?",
-  "آموزش میدم ولی رایگان نه": "I provide tutorials, but not for free.",
-  "میشه بیام توی سرورتون برای کمک؟": "Can I join your server to help?",
-  "بله حتما با استفاده از فرم تماس و اینستاگرام به من بگو": "Yes, definitely! Let me know via the contact form or Instagram.",
-  "سفارش سایت و سرور میگیری؟": "Do you take website/server orders?",
-  "بله سایت و سرور ماینکرفت براتون می‌سازم ولی در ازای مبلغی": "Yes, I can make websites and Minecraft servers for you for a fee.",
-
-  "نام": "Name",
-  "ایمیل": "Email",
-  "شماره تلفن": "Phone",
-  "پیام": "Message",
-  "نام شما": "Your Name",
-  "متن پیام...": "Your Message...",
-  "ارسال پیام": "Send Message",
-  "© 2025 تمامی حقوق محفوظ است": "© 2025 All Rights Reserved",
-  "اینستاگرام من": "My Instagram"
-};
 
 langToggle.addEventListener('click', ()=>{
   isEnglish = !isEnglish;
   langToggle.textContent = isEnglish ? "FA" : "EN";
 
-  document.querySelectorAll('nav a, h2, p, .project-title, .project-desc, .project-tech, .skill-name, .blog-item, .tooltip, .question, .answer, label, button[type="submit"], footer a, footer p, #about-text-content').forEach(el=>{
-    const text = el.innerHTML.trim();
-    if(translations[text]) el.innerHTML = isEnglish ? translations[text] : Object.keys(translations).find(k => translations[k]===text) || text;
+  document.querySelectorAll('[data-fa]').forEach(el=>{
+    if(isEnglish){
+      el.innerHTML = el.dataset.en;
+    } else {
+      el.innerHTML = el.dataset.fa;
+    }
+  });
+
+  document.querySelectorAll('[data-fa-placeholder]').forEach(el=>{
+    if(isEnglish){
+      el.placeholder = el.dataset.enPlaceholder;
+    } else {
+      el.placeholder = el.dataset.faPlaceholder;
+    }
   });
 });
-
 </script>
 
-</body>
-</html>
