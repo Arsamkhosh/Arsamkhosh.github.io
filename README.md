@@ -293,6 +293,81 @@ footer a:hover{ text-decoration:underline; }
   <div id="loading-bar"><div id="loading-fill"></div></div>
 </div>
 
+<style>
+/* لودینگ راست به چپ */
+#loading-screen {
+  position: fixed;
+  top:0; left:0; right:0; bottom:0;
+  background:#0f0f0f;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+  color:#00ffff;
+}
+
+#loading-text {
+  margin-bottom:20px; 
+  font-weight:bold;
+  font-family: monospace;
+  font-size:1.5em;
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00cc, 0 0 15px #ff9900;
+  animation: bounceGlow 1s infinite alternate, colorShift 2s infinite linear;
+}
+
+@keyframes bounceGlow {
+  0% { transform: translateY(0px); text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00cc, 0 0 15px #ff9900; }
+  50% { transform: translateY(-8px); text-shadow: 0 0 10px #00ffff, 0 0 15px #ff00cc, 0 0 20px #ff9900; }
+  100% { transform: translateY(0px); text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00cc, 0 0 15px #ff9900; }
+}
+@keyframes colorShift {
+  0%{color:#00ffff;}
+  25%{color:#ff00cc;}
+  50%{color:#ff9900;}
+  75%{color:#00ffcc;}
+  100%{color:#00ffff;}
+}
+
+#loading-bar {
+  width: 300px; 
+  height: 10px; 
+  background: #222; 
+  border-radius: 10px; 
+  overflow: hidden; 
+  box-shadow: 0 0 10px #00ffff; 
+  direction: rtl; /* مهم برای راست به چپ */
+}
+
+#loading-fill {
+  width:0%; 
+  height:100%; 
+  background: linear-gradient(90deg,#00ffff,#ff00cc,#ff9900);
+  transition: width 0.1s linear;
+  float: right; /* مهم برای راست به چپ */
+}
+</style>
+
+<script>
+// ---------- Loading راست به چپ ----------
+let loading = 0;
+const loadingFill = document.getElementById('loading-fill');
+const loadingScreen = document.getElementById('loading-screen');
+const loadingInterval = setInterval(() => {
+  loading++;
+  loadingFill.style.width = loading + '%';
+  if (loading >= 100) {
+    clearInterval(loadingInterval);
+    loadingScreen.style.display = 'none';
+    document.querySelectorAll('section, footer').forEach(el => {
+      el.style.opacity = 1;
+      el.style.transform = 'translateY(0)';
+    });
+  }
+}, 30);
+</script>
+
+
 <!-- نوار بالا -->
 <nav>
   <a href="#about-me" data-fa="درباره من" data-en="About Me">درباره من</a>
