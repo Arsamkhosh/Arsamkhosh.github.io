@@ -1,4 +1,4 @@
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -489,6 +489,14 @@ window.addEventListener('scroll', ()=>{
 let isEnglish = false;
 document.getElementById('translate-btn').addEventListener('click', ()=>{
   isEnglish = !isEnglish;
+    if (isEnglish) {
+    document.documentElement.lang = "en";
+    document.documentElement.dir = "ltr";
+  } else {
+    document.documentElement.lang = "fa";
+    document.documentElement.dir = "rtl";
+  }
+
 
   // المان‌هایی که متن دارند
   const textElements = document.querySelectorAll('[data-fa],[data-en]');
