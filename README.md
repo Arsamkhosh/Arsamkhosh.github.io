@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -302,43 +303,65 @@ footer a:hover{ text-decoration:underline; }
   <a href="#contact-section" data-fa="ارتباط" data-en="Contact">ارتباط</a>
 </nav>
 
+<!-- نوار بالا -->
+<nav>
+  <a href="#about-me" data-fa="درباره من" data-en="About Me">درباره من</a>
+  <a href="#projects-section" data-fa="پروژه‌ها" data-en="Projects">پروژه‌ها</a>
+  <a href="#skills-section" data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</a>
+  <a href="#blog-section" data-fa="اخبار" data-en="Blog">اخبار</a>
+  <a href="#gallery-section" data-fa="گالری" data-en="Gallery">گالری</a>
+  <a href="#contact-section" data-fa="ارتباط" data-en="Contact">ارتباط</a>
+</nav>
+
+<!-- بخش درباره من -->
 <section id="about-me">
   <h2 data-fa="درباره من" data-en="About Me">درباره من</h2>
   <div class="about-card">
-    <div class="profile-pic"></div>
+    <div class="profile-pic">
+      <img src="profile.png" alt="Arsam Profile" style="width:100%;height:100%;border-radius:50%;">
+    </div>
     <div class="about-text">
-      <p id="about-text-content" data-fa="سلام! من آرسام خوش‌اخلاق هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و وب و برنامه نویسی هستم و همچنین به ماینکرفت و سابر بازی ها علاقه دارم 🌐✨" 
-      data-en="Hello! I am Arsam Khoshakhlagh. Web developer and tech enthusiast. I love creativity in design and web programming. Also, I enjoy Minecraft and other games 🌐✨">
+      <p id="about-text-content" 
+         data-fa="سلام! من آرسام خوش‌اخلاق هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و وب و برنامه نویسی هستم و همچنین به ماینکرفت و سایر بازی ها علاقه دارم 🌐✨" 
+         data-en="Hello! I am Arsam Khoshakhlagh. Web developer and tech enthusiast. I love creativity in design and web programming. Also, I enjoy Minecraft and other games 🌐✨">
         سلام! من آرسام خوش‌اخلاق هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و وب و برنامه نویسی هستم و همچنین به ماینکرفت و سایر بازی ها علاقه دارم 🌐✨
       </p>
     </div>
   </div>
 </section>
 
+<!-- بخش پروژه‌ها -->
 <section id="projects-section">
   <h2 data-fa="پروژه‌ها" data-en="Projects">پروژه‌ها</h2>
   <div class="projects">
     <div class="project-card">
       <img src="minecraft.png" alt="پروژه 1">
       <div class="project-title" data-fa="🎮سرور ماینکرفت" data-en="🎮Minecraft Server">🎮سرور ماینکرفت </div>
-      <div class="project-desc" data-fa="سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده" data-en="I have a dedicated Minecraft server with special plugins. Contact me via Instagram or the contact section for collaboration.">سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده</div>
+      <div class="project-desc" data-fa="سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده" data-en="I have a dedicated Minecraft server with special plugins. Contact me via Instagram or the contact section for collaboration.">
+        سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده
+      </div>
       <div class="project-tech">Spigot/Bukkit / Minecraft</div>
       <button class="like-btn">❤ 0</button>
       <div class="tooltip" data-fa="این پروژه مربوط به سرور ماینکرفت است" data-en="This project is about the Minecraft server">این پروژه مربوط به سرور ماینکرفت است</div>
     </div>
+
     <div class="project-card">
       <img src="site.png" alt="پروژه 2">
       <div class="project-title" data-fa="🌐سایت شخصی" data-en="🌐Personal Website">🌐سایت شخصی </div>
-      <div class="project-desc" data-fa="من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم" data-en="I love web design and built this website with my friend's help.">من به
-طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم</div>
+      <div class="project-desc" data-fa="من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم" data-en="I love web design and built this website with my friend's help.">
+        من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم
+      </div>
       <div class="project-tech">HTML / CSS / JavaScript</div>
       <button class="like-btn">❤ 0</button>
       <div class="tooltip" data-fa="این پروژه سایت شخصی من است" data-en="This project is my personal website">این پروژه سایت شخصی من است</div>
     </div>
+
     <div class="project-card">
       <img src="edite.png" alt="پروژه 3">
       <div class="project-title" data-fa="🎬ادیت ویدیو" data-en="🎬Video Editing">🎬ادیت ویدیو </div>
-      <div class="project-desc" data-fa="به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم" data-en="I am interested in video editing and share my works on YouTube.">به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم</div>
+      <div class="project-desc" data-fa="به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم" data-en="I am interested in video editing and share my works on YouTube.">
+        به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم
+      </div>
       <div class="project-tech">Capcut / Filmora / Shotcut</div>
       <button class="like-btn">❤ 0</button>
       <div class="tooltip" data-fa="این پروژه مربوط به ادیت ویدیو است" data-en="This project is about video editing">این پروژه مربوط به ادیت ویدیو است</div>
@@ -346,6 +369,7 @@ footer a:hover{ text-decoration:underline; }
   </div>
 </section>
 
+<!-- بخش مهارت‌ها -->
 <section id="skills-section" class="skills">
   <h2 data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</h2>
   <div class="skill">
@@ -362,6 +386,7 @@ footer a:hover{ text-decoration:underline; }
   </div>
 </section>
 
+<!-- بخش بلاگ -->
 <section id="blog-section" class="blog">
   <h2 data-fa="اخبار و بروزرسانی‌ها" data-en="Blog & Updates">اخبار و بروزرسانی‌ها</h2>
   <div class="blog-item" data-fa="پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!🚀" data-en="🚀Weekly post: New Minecraft server plugin is ready! ">پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!🚀</div>
@@ -369,6 +394,7 @@ footer a:hover{ text-decoration:underline; }
   <div class="blog-item" data-fa="ایونت جدید در سرور🚀" data-en="New event on the server 🚀">ایونت جدید در سرور🚀</div>
 </section>
 
+<!-- بخش گالری -->
 <section id="gallery-section">
   <h2 data-fa="گالری" data-en="Gallery">گالری</h2>
   <div class="gallery">
@@ -380,6 +406,7 @@ footer a:hover{ text-decoration:underline; }
   </div>
 </section>
 
+<!-- بخش FAQ -->
 <section class="faq">
   <h2 data-fa="پرسش و پاسخ پر تکرار" data-en="Frequently Asked Questions">پرسش و پاسخ پر تکرار</h2>
   <div class="faq-item">
@@ -399,6 +426,8 @@ footer a:hover{ text-decoration:underline; }
     <div class="answer" data-fa="بله سایت و سرور ماینکرفت براتون می‌سازم ولی در ازای مبلغی" data-en="Yes, I create websites and Minecraft servers for a fee.">بله سایت و سرور ماینکرفت براتون می‌سازم ولی در ازای مبلغی</div>
   </div>
 </section>
+
+<!-- بخش تماس -->
 <section id="contact-section">
   <h2 data-fa="ارتباط با من" data-en="Contact Me">ارتباط با من</h2>
   <form id="contactForm" action="https://formspree.io/f/mnngzdlw" method="POST">
@@ -419,101 +448,90 @@ footer a:hover{ text-decoration:underline; }
   </form>
 </section>
 
-<button id="translate-btn" data-fa="English" data-en="فارسی">Translate</button>
 
+<button id="translate-btn" data-fa="English" data-en="فارسی">English</button>
 
 <footer>
   <p data-fa="© 2025 تمامی حقوق محفوظ است" data-en="© 2025 All rights reserved">© 2025 تمامی حقوق محفوظ است</p>
   <p>Arsam_khosh</p>
   <a href="https://instagram.com/arsam.khosh" target="_blank" data-fa="اینستاگرام من" data-en="My Instagram">اینستاگرام من</a>
-
 </footer>
 
 <script>
-// لودینگ
+// ---------- Loading ----------
 let loading = 0;
 const loadingFill = document.getElementById('loading-fill');
 const loadingScreen = document.getElementById('loading-screen');
-const interval = setInterval(()=>{
-  loading += 1;
+const loadingInterval = setInterval(() => {
+  loading++;
   loadingFill.style.width = loading + '%';
-  if(loading>=100){
-    clearInterval(interval);
-    loadingScreen.style.display='none';
-    document.querySelectorAll('header,section,footer').forEach(el=>{
-      el.style.opacity=1; 
-      el.style.transform='translateY(0)';
+  if (loading >= 100) {
+    clearInterval(loadingInterval);
+    loadingScreen.style.display = 'none';
+    document.querySelectorAll('section, footer').forEach(el => {
+      el.style.opacity = 1;
+      el.style.transform = 'translateY(0)';
     });
   }
-}, 40);
+}, 30);
 
-// نوار بالا
+// ---------- Navbar ----------
 const nav = document.querySelector('nav');
-window.addEventListener('scroll',()=>{ 
-  if(window.scrollY>50){nav.classList.add('visible');} 
-  else{nav.classList.remove('visible');} 
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('visible', window.scrollY > 50);
 });
 
-// FAQ toggle
-document.querySelectorAll('.faq-item').forEach(item=>{
-  item.addEventListener('click', ()=>{
-    const ans = item.querySelector('.answer');
-    ans.style.display = ans.style.display==='block' ? 'none' : 'block';
+// ---------- FAQ ----------
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const answer = item.querySelector('.answer');
+    answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
   });
 });
 
-// like button
-document.querySelectorAll('.like-btn').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    if(btn.classList.contains('liked')){ 
-      btn.classList.remove('liked'); 
-      btn.textContent='❤ 0'; 
-    } else { 
-      btn.classList.add('liked'); 
-      btn.textContent='❤ 1'; 
-    }
+// ---------- Like Button ----------
+document.querySelectorAll('.like-btn').forEach(btn => {
+  let liked = false;
+  btn.addEventListener('click', () => {
+    liked = !liked;
+    btn.classList.toggle('liked', liked);
+    btn.textContent = liked ? '❤ 1' : '❤ 0';
   });
 });
 
-// مهارت‌ها
-window.addEventListener('scroll', ()=>{
-  document.querySelectorAll('.skill-fill').forEach(bar=>{
+// ---------- Skills ----------
+let skillsDone = false;
+window.addEventListener('scroll', () => {
+  if (skillsDone) return;
+  document.querySelectorAll('.skill-fill').forEach(bar => {
     const rect = bar.getBoundingClientRect();
-    if(rect.top < window.innerHeight){
+    if (rect.top < window.innerHeight - 50) {
       bar.style.width = bar.dataset.value;
+      skillsDone = true;
     }
   });
 });
 
-// Translate کامل
+// ---------- Translate ----------
 let isEnglish = false;
-document.getElementById('translate-btn').addEventListener('click', ()=>{
+document.getElementById('translate-btn').addEventListener('click', () => {
   isEnglish = !isEnglish;
-    if (isEnglish) {
-    document.documentElement.lang = "en";
-    document.documentElement.dir = "ltr";
-  } else {
-    document.documentElement.lang = "fa";
-    document.documentElement.dir = "rtl";
-  }
+  document.documentElement.lang = isEnglish ? "en" : "fa";
+  document.documentElement.dir = isEnglish ? "ltr" : "rtl";
 
-
-  // المان‌هایی که متن دارند
-  const textElements = document.querySelectorAll('[data-fa],[data-en]');
-  textElements.forEach(el=>{
+  document.querySelectorAll('[data-fa],[data-en]').forEach(el => {
     if(isEnglish) el.textContent = el.dataset.en || el.textContent;
     else el.textContent = el.dataset.fa || el.textContent;
   });
 
-  // placeholder ها
-  const placeholders = document.querySelectorAll('input, textarea');
-  placeholders.forEach(el=>{
-    if(isEnglish) el.placeholder = el.dataset.enPlaceholder || el.placeholder;
-    else el.placeholder = el.dataset.faPlaceholder || el.placeholder;
+  document.querySelectorAll('input, textarea').forEach(el => {
+    if(isEnglish) el.placeholder = el.dataset.en || el.placeholder;
+    else el.placeholder = el.dataset.fa || el.placeholder;
   });
 
-  // تغییر متن دکمه
-  const btn = document.getElementById('translate-btn');
-  btn.textContent = isEnglish ? btn.dataset.en : btn.dataset.fa;
+  document.getElementById('translate-btn').textContent = isEnglish ? 'فارسی' : 'English';
 });
 </script>
+
+</body>
+</html>
