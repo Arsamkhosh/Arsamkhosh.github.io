@@ -283,6 +283,7 @@ footer a:hover{ text-decoration:underline; }
   <a href="#blog-section">اخبار</a>
   <a href="#gallery-section">گالری</a>
   <a href="#contact-section">ارتباط</a>
+  <button id="lang-toggle" style="margin-left:20px; padding:5px 10px; border-radius:8px; border:none; cursor:pointer; background:#ff00cc; color:#fff;">EN</button>
 </nav>
 
 <section id="about-me">
