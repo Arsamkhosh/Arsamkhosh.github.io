@@ -436,6 +436,79 @@ window.addEventListener('scroll', ()=>{
     }
   });
 });
+  // ترجمه فارسی/انگلیسی
+const langToggle = document.getElementById('lang-toggle');
+let isEnglish = false;
+
+const translations = {
+  "درباره من": "About Me",
+  "پروژه‌ها": "Projects",
+  "مهارت‌ها": "Skills",
+  "اخبار": "Blog",
+  "گالری": "Gallery",
+  "ارتباط": "Contact",
+  "سلام! من <strong>آرسام خوش‌اخلاق</strong> هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و وب و برنامه نویسی هستم و همچنین به ماینکرفت و سابر بازی ها علاقه دارم 🌐✨":
+  "Hello! I'm <strong>Arsam Khosh</strong>, a web developer and tech enthusiast. I love creativity in web design and programming, and also enjoy Minecraft and other games 🌐✨",
+  
+  "🎮سرور ماینکرفت ": "🎮Minecraft Server",
+  "سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده":
+  "I have a dedicated Minecraft server with custom plugins. Contact me via Instagram or the Contact section to collaborate.",
+  "Spigot/Bukkit / Minecraft": "Spigot/Bukkit / Minecraft",
+
+  "🌐سایت شخصی ": "🌐Personal Website",
+  "من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم":
+  "I enjoy web design and built this website myself with a friend.",
+  "HTML / CSS / JavaScript": "HTML / CSS / JavaScript",
+
+  "🎬ادیت ویدیو ": "🎬Video Editing",
+  "به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم":
+  "I love video editing and share my work on YouTube.",
+  "Capcut / Filmora / Shotcut": "Capcut / Filmora / Shotcut",
+
+  "سرور ماینکرفت": "Minecraft Server",
+  "ادیت ویدیو": "Video Editing",
+  "برنامه نویسی": "Programming",
+
+  "پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!🚀": "Weekly Post: New Minecraft server plugin is ready!🚀",
+  "پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.🌐": "My personal website project updated with a new blog section.🌐",
+  "ایونت جدید در سرور🚀": "New event on the server🚀",
+
+  "ایران/استان مازنداران/جاده زیبای چالوس": "Iran/Mazandaran Province/Beautiful Chaloos Road",
+  "ایران/استان تهران/کوه زیبای دماوند": "Iran/Tehran Province/Beautiful Damavand Mountain",
+  "ایران/تهران/برج زیبای آزادی": "Iran/Tehran/Beautiful Azadi Tower",
+  "ایران/استان فارس/شیراز/آرامگاه حافظ": "Iran/Fars Province/Shiraz/Hafez Tomb",
+  "ایران/اصفهان/سی و سه پل": "Iran/Isfahan/Si-o-se-pol Bridge",
+
+  "این سایت با چه زبانی ساخته شده؟": "What languages is this site built with?",
+  "این سایت با HTML، CSS و JavaScript ساخته شده است.": "This site is built with HTML, CSS, and JavaScript.",
+  "آموزش به صورت رایگان میدی؟": "Do you give free tutorials?",
+  "آموزش میدم ولی رایگان نه": "I provide tutorials, but not for free.",
+  "میشه بیام توی سرورتون برای کمک؟": "Can I join your server to help?",
+  "بله حتما با استفاده از فرم تماس و اینستاگرام به من بگو": "Yes, definitely! Let me know via the contact form or Instagram.",
+  "سفارش سایت و سرور میگیری؟": "Do you take website/server orders?",
+  "بله سایت و سرور ماینکرفت براتون می‌سازم ولی در ازای مبلغی": "Yes, I can make websites and Minecraft servers for you for a fee.",
+
+  "نام": "Name",
+  "ایمیل": "Email",
+  "شماره تلفن": "Phone",
+  "پیام": "Message",
+  "نام شما": "Your Name",
+  "متن پیام...": "Your Message...",
+  "ارسال پیام": "Send Message",
+  "© 2025 تمامی حقوق محفوظ است": "© 2025 All Rights Reserved",
+  "اینستاگرام من": "My Instagram"
+};
+
+langToggle.addEventListener('click', ()=>{
+  isEnglish = !isEnglish;
+  langToggle.textContent = isEnglish ? "FA" : "EN";
+
+  document.querySelectorAll('nav a, h2, p, .project-title, .project-desc, .project-tech, .skill-name, .blog-item, .tooltip, .question, .answer, label, button[type="submit"], footer a, footer p, #about-text-content').forEach(el=>{
+    const text = el.innerHTML.trim();
+    if(translations[text]) el.innerHTML = isEnglish ? translations[text] : Object.keys(translations).find(k => translations[k]===text) || text;
+  });
+});
+
 </script>
 
 </body>
