@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -209,23 +208,6 @@ button[type="submit"]:hover{ transform:scale(1.05); }
   transform:translateX(-50%) translateY(-5px);
 }
 
-/* Translate Button */
-#translate-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #00ffff;
-  color: #000;
-  border: none;
-  padding: 12px 18px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: bold;
-  z-index: 1001;
-  transition: 0.3s;
-}
-#translate-btn:hover { background: #ff00cc; color:#fff; }
-
 /* لودینگ */
 #loading-screen {
   position:fixed;
@@ -293,318 +275,165 @@ footer a:hover{ text-decoration:underline; }
   <div id="loading-bar"><div id="loading-fill"></div></div>
 </div>
 
-<style>
-/* لودینگ راست به چپ */
-#loading-screen {
-  position: fixed;
-  top:0; left:0; right:0; bottom:0;
-  background:#0f0f0f;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  z-index:2000;
-  color:#00ffff;
-}
-
-#loading-text {
-  margin-bottom:20px; 
-  font-weight:bold;
-  font-family: monospace;
-  font-size:1.5em;
-  text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00cc, 0 0 15px #ff9900;
-  animation: bounceGlow 1s infinite alternate, colorShift 2s infinite linear;
-}
-
-@keyframes bounceGlow {
-  0% { transform: translateY(0px); text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00cc, 0 0 15px #ff9900; }
-  50% { transform: translateY(-8px); text-shadow: 0 0 10px #00ffff, 0 0 15px #ff00cc, 0 0 20px #ff9900; }
-  100% { transform: translateY(0px); text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00cc, 0 0 15px #ff9900; }
-}
-@keyframes colorShift {
-  0%{color:#00ffff;}
-  25%{color:#ff00cc;}
-  50%{color:#ff9900;}
-  75%{color:#00ffcc;}
-  100%{color:#00ffff;}
-}
-
-#loading-bar {
-  width: 300px; 
-  height: 10px; 
-  background: #222; 
-  border-radius: 10px; 
-  overflow: hidden; 
-  box-shadow: 0 0 10px #00ffff; 
-  direction: rtl; /* مهم برای راست به چپ */
-}
-
-#loading-fill {
-  width:0%; 
-  height:100%; 
-  background: linear-gradient(90deg,#00ffff,#ff00cc,#ff9900);
-  transition: width 0.1s linear;
-  float: right; /* مهم برای راست به چپ */
-}
-</style>
-
-<script>
-// ---------- Loading راست به چپ ----------
-let loading = 0;
-const loadingFill = document.getElementById('loading-fill');
-const loadingScreen = document.getElementById('loading-screen');
-const loadingInterval = setInterval(() => {
-  loading++;
-  loadingFill.style.width = loading + '%';
-  if (loading >= 100) {
-    clearInterval(loadingInterval);
-    loadingScreen.style.display = 'none';
-    document.querySelectorAll('section, footer').forEach(el => {
-      el.style.opacity = 1;
-      el.style.transform = 'translateY(0)';
-    });
-  }
-}, 30);
-</script>
-
-
 <!-- نوار بالا -->
 <nav>
-  <a href="#about-me" data-fa="درباره من" data-en="About Me">درباره من</a>
-  <a href="#projects-section" data-fa="پروژه‌ها" data-en="Projects">پروژه‌ها</a>
-  <a href="#skills-section" data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</a>
-  <a href="#blog-section" data-fa="اخبار" data-en="Blog">اخبار</a>
-  <a href="#gallery-section" data-fa="گالری" data-en="Gallery">گالری</a>
-  <a href="#contact-section" data-fa="ارتباط" data-en="Contact">ارتباط</a>
+  <a href="#about-me">درباره من</a>
+  <a href="#projects-section">پروژه‌ها</a>
+  <a href="#skills-section">مهارت‌ها</a>
+  <a href="#blog-section">اخبار</a>
+  <a href="#gallery-section">گالری</a>
+  <a href="#contact-section">ارتباط</a>
 </nav>
 
-<!-- نوار بالا -->
-<nav>
-  <a href="#about-me" data-fa="درباره من" data-en="About Me">درباره من</a>
-  <a href="#projects-section" data-fa="پروژه‌ها" data-en="Projects">پروژه‌ها</a>
-  <a href="#skills-section" data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</a>
-  <a href="#blog-section" data-fa="اخبار" data-en="Blog">اخبار</a>
-  <a href="#gallery-section" data-fa="گالری" data-en="Gallery">گالری</a>
-  <a href="#contact-section" data-fa="ارتباط" data-en="Contact">ارتباط</a>
-</nav>
-
-<!-- بخش درباره من -->
 <section id="about-me">
-  <h2 data-fa="درباره من" data-en="About Me">درباره من</h2>
+  <h2>درباره من</h2>
   <div class="about-card">
-    <div class="profile-pic">
-      <img src="profile.png" alt="Arsam Profile" style="width:100%;height:100%;border-radius:50%;">
-    </div>
+    <div class="profile-pic"></div>
     <div class="about-text">
-      <p id="about-text-content" 
-         data-fa="سلام! من آرسام خوش‌اخلاق هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و وب و برنامه نویسی هستم و همچنین به ماینکرفت و سایر بازی ها علاقه دارم 🌐✨" 
-         data-en="Hello! I am Arsam Khoshakhlagh. Web developer and tech enthusiast. I love creativity in design and web programming. Also, I enjoy Minecraft and other games 🌐✨">
-        سلام! من آرسام خوش‌اخلاق هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و وب و برنامه نویسی هستم و همچنین به ماینکرفت و سایر بازی ها علاقه دارم 🌐✨
+      <p id="about-text-content">
+        سلام! من <strong>آرسام خوش‌اخلاق</strong> هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و وب و برنامه نویسی هستم و همچنین به ماینکرفت و سابر بازی ها علاقه دارم 🌐✨
       </p>
     </div>
   </div>
 </section>
 
-<!-- بخش پروژه‌ها -->
 <section id="projects-section">
-  <h2 data-fa="پروژه‌ها" data-en="Projects">پروژه‌ها</h2>
+  <h2>پروژه‌ها</h2>
   <div class="projects">
     <div class="project-card">
       <img src="minecraft.png" alt="پروژه 1">
-      <div class="project-title" data-fa="🎮سرور ماینکرفت" data-en="🎮Minecraft Server">🎮سرور ماینکرفت </div>
-      <div class="project-desc" data-fa="سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده" data-en="I have a dedicated Minecraft server with special plugins. Contact me via Instagram or the contact section for collaboration.">
-        سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده
-      </div>
+      <div class="project-title">🎮سرور ماینکرفت </div>
+      <div class="project-desc">سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده</div>
       <div class="project-tech">Spigot/Bukkit / Minecraft</div>
       <button class="like-btn">❤ 0</button>
-      <div class="tooltip" data-fa="این پروژه مربوط به سرور ماینکرفت است" data-en="This project is about the Minecraft server">این پروژه مربوط به سرور ماینکرفت است</div>
+      <div class="tooltip">این پروژه مربوط به سرور ماینکرفت است</div>
     </div>
-
     <div class="project-card">
       <img src="site.png" alt="پروژه 2">
-      <div class="project-title" data-fa="🌐سایت شخصی" data-en="🌐Personal Website">🌐سایت شخصی </div>
-      <div class="project-desc" data-fa="من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم" data-en="I love web design and built this website with my friend's help.">
-        من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم
-      </div>
+      <div class="project-title">🌐سایت شخصی </div>
+      <div class="project-desc">من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم</div>
       <div class="project-tech">HTML / CSS / JavaScript</div>
       <button class="like-btn">❤ 0</button>
-      <div class="tooltip" data-fa="این پروژه سایت شخصی من است" data-en="This project is my personal website">این پروژه سایت شخصی من است</div>
+      <div class="tooltip">این پروژه سایت شخصی من است</div>
     </div>
-
     <div class="project-card">
       <img src="edite.png" alt="پروژه 3">
-      <div class="project-title" data-fa="🎬ادیت ویدیو" data-en="🎬Video Editing">🎬ادیت ویدیو </div>
-      <div class="project-desc" data-fa="به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم" data-en="I am interested in video editing and share my works on YouTube.">
-        به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم
-      </div>
+      <div class="project-title">🎬ادیت ویدیو </div>
+      <div class="project-desc">به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم</div>
       <div class="project-tech">Capcut / Filmora / Shotcut</div>
       <button class="like-btn">❤ 0</button>
-      <div class="tooltip" data-fa="این پروژه مربوط به ادیت ویدیو است" data-en="This project is about video editing">این پروژه مربوط به ادیت ویدیو است</div>
+      <div class="tooltip">این پروژه مربوط به ادیت ویدیو است</div>
     </div>
   </div>
 </section>
 
-<!-- بخش مهارت‌ها -->
 <section id="skills-section" class="skills">
-  <h2 data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</h2>
+  <h2>مهارت‌ها</h2>
   <div class="skill">
-    <div class="skill-name" data-fa="سرور ماینکرفت" data-en="Minecraft Server">سرور ماینکرفت</div>
+    <div class="skill-name">سرور ماینکرفت</div>
     <div class="skill-bar"><div class="skill-fill" data-value="95%"></div></div>
   </div>
   <div class="skill">
-    <div class="skill-name" data-fa="ادیت ویدیو" data-en="Video Editing">ادیت ویدیو</div>
+    <div class="skill-name">ادیت ویدیو</div>
     <div class="skill-bar"><div class="skill-fill" data-value="80%"></div></div>
   </div>
   <div class="skill">
-    <div class="skill-name" data-fa="برنامه نویسی" data-en="Programming">برنامه نویسی</div>
+    <div class="skill-name">برنامه نویسی</div>
     <div class="skill-bar"><div class="skill-fill" data-value="60%"></div></div>
   </div>
 </section>
 
-<!-- بخش بلاگ -->
 <section id="blog-section" class="blog">
-  <h2 data-fa="اخبار و بروزرسانی‌ها" data-en="Blog & Updates">اخبار و بروزرسانی‌ها</h2>
-  <div class="blog-item" data-fa="پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!🚀" data-en="🚀Weekly post: New Minecraft server plugin is ready! ">پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!🚀</div>
-  <div class="blog-item" data-fa="پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.🌐" data-en="My personal website updated and blog section added. 🌐">پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.🌐</div>
-  <div class="blog-item" data-fa="ایونت جدید در سرور🚀" data-en="New event on the server 🚀">ایونت جدید در سرور🚀</div>
+  <h2>اخبار و بروزرسانی‌ها</h2>
+  <div class="blog-item"> پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!🚀</div>
+  <div class="blog-item"> پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.🌐</div>
+  <div class="blog-item"> ایونت جدید در سرور🚀</div>
 </section>
 
-<!-- بخش گالری -->
 <section id="gallery-section">
-  <h2 data-fa="گالری" data-en="Gallery">گالری</h2>
+  <h2>گالری</h2>
   <div class="gallery">
-    <div class="gallery-item"><img src="jade_chaloos.png" alt="تصویر 1"><div class="tooltip" data-fa="ایران/استان مازنداران/جاده زیبای چالوس" data-en="Iran / Mazandaran / Beautiful Chalous Road">ایران/استان مازنداران/جاده زیبای چالوس</div></div>
-    <div class="gallery-item"><img src="damavand_kohe.png" alt="تصویر 2"><div class="tooltip" data-fa="ایران/استان تهران/کوه زیبای دماوند" data-en="Iran / Tehran / Beautiful Damavand Mountain">ایران/استان تهران/کوه زیبای دماوند</div></div>
-    <div class="gallery-item"><img src="azadi_tehran.png" alt="تصویر 3"><div class="tooltip" data-fa="ایران/تهران/برج زیبای آزادی" data-en="Iran / Tehran / Azadi Tower">ایران/تهران/برج زیبای آزادی</div></div>
-    <div class="gallery-item"><img src="shiraz.png" alt="تصویر 4"><div class="tooltip" data-fa="ایران/استان فارس/شیراز/آرامگاه حافظ" data-en="Iran / Fars / Shiraz / Hafez Tomb">ایران/استان فارس/شیراز/آرامگاه حافظ</div></div>
-    <div class="gallery-item"><img src="esfahan.png" alt="تصویر 5"><div class="tooltip" data-fa="ایران/اصفهان/سی و سه پل" data-en="Iran / Isfahan / Si-o-se-pol Bridge">ایران/اصفهان/سی و سه پل</div></div>
+    <div class="gallery-item"><img src="jade_chaloos.png" alt="تصویر 1"><div class="tooltip">ایران/استان مازنداران/جاده زیبای چالوس</div></div>
+    <div class="gallery-item"><img src="damavand_kohe.png" alt="تصویر 2"><div class="tooltip">ایران/استان تهران/کوه زیبای دماوند</div></div>
+    <div class="gallery-item"><img src="azadi_tehran.png" alt="تصویر 3"><div class="tooltip">ایران/تهران/برج زیبای آزادی</div></div>
+     <div class="gallery-item"><img src="shiraz.png" alt="تصویر 4"><div class="tooltip">ایران/استان فارس/شیراز/آرامگاه حافظ</div></div>
+        <div class="gallery-item"><img src="esfahan.png" alt="تصویر 5"><div class="tooltip">ایران/اصفهان/سی و سه پل</div></div>
   </div>
 </section>
 
-<!-- بخش FAQ -->
 <section class="faq">
-  <h2 data-fa="پرسش و پاسخ پر تکرار" data-en="Frequently Asked Questions">پرسش و پاسخ پر تکرار</h2>
-  <div class="faq-item">
-    <div class="question" data-fa="این سایت با چه زبانی ساخته شده؟" data-en="?What language is this site built with">این سایت با چه زبانی ساخته شده؟</div>
-    <div class="answer" data-fa="این سایت با HTML، CSS و JavaScript ساخته شده است." data-en="This site is built with HTML, CSS, and JavaScript.">این سایت با HTML، CSS و JavaScript ساخته شده است.</div>
-  </div>
-  <div class="faq-item">
-    <div class="question" data-fa="آموزش به صورت رایگان میدی؟" data-en="?Do you teach for free">آموزش به صورت رایگان میدی؟</div>
-    <div class="answer" data-fa="آموزش میدم ولی رایگان نه" data-en="I teach but not for free.">آموزش میدم ولی رایگان نه</div>
-  </div>
-  <div class="faq-item">
-    <div class="question" data-fa="میشه بیام توی سرورتون برای کمک؟" data-en="?Can I join your server to help">میشه بیام توی سرورتون برای کمک؟</div>
-    <div class="answer" data-fa="بله حتما با استفاده از فرم تماس و اینستاگرام به من بگو" data-en="Yes, contact me via form or Instagram.">بله حتما با استفاده از فرم تماس و اینستاگرام به من بگو</div>
-  </div>
-  <div class="faq-item">
-    <div class="question" data-fa="سفارش سایت و سرور میگیری؟" data-en="?Do you take website and server orders">سفارش سایت و سرور میگیری؟</div>
-    <div class="answer" data-fa="بله سایت و سرور ماینکرفت براتون می‌سازم ولی در ازای مبلغی" data-en="Yes, I create websites and Minecraft servers for a fee.">بله سایت و سرور ماینکرفت براتون می‌سازم ولی در ازای مبلغی</div>
-  </div>
+  <h2>پرسش و پاسخ پر تکرار</h2>
+  <div class="faq-item"><div class="question">این سایت با چه زبانی ساخته شده؟</div><div class="answer">این سایت با HTML، CSS و JavaScript ساخته شده است.</div></div>
+  <div class="faq-item"><div class="question">آموزش به صورت رایگان میدی؟</div><div class="answer">آموزش میدم ولی رایگان نه</div></div>
+  <div class="faq-item"><div class="question">میشه بیام توی سرورتون برای کمک؟</div><div class="answer">بله حتما با استفاده از فرم تماس و اینستاگرام به من بگو</div></div>
+  <div class="faq-item"><div class="question">سفارش سایت و سرور میگیری؟</div><div class="answer">بله سایت و سرور ماینکرفت براتون می‌سازم ولی در ازای مبلغی</div></div>
 </section>
 
-<!-- بخش تماس -->
 <section id="contact-section">
-  <h2 data-fa="ارتباط با من" data-en="Contact Me">ارتباط با من</h2>
+  <h2>ارتباط با من</h2>
   <form id="contactForm" action="https://formspree.io/f/mnngzdlw" method="POST">
-    <label for="name" data-fa="نام:" data-en="Name:">نام:</label>
-    <input type="text" id="name" name="name" required placeholder="نام شما" data-fa-placeholder="نام شما" data-en-placeholder="Your Name">
-
-    <label for="email" data-fa="ایمیل:" data-en="Email:">ایمیل:</label>
-    <input type="email" id="email" name="email" required placeholder="example@example.com" data-fa-placeholder="example@example.com" data-en-placeholder="example@example.com">
-
-    <label for="phone" data-fa="شماره تلفن:" data-en="Phone:">شماره تلفن:</label>
-    <input type="tel" id="phone" name="phone" placeholder="0912xxxxxxx" data-fa-placeholder="0912xxxxxxx" data-en-placeholder="Phone Number">
-
-    <label for="message" data-fa="پیام:" data-en="Message:">پیام:</label>
-    <textarea id="message" name="message" rows="5" required placeholder="متن پیام..." data-fa-placeholder="متن پیام..." data-en-placeholder="Message..."></textarea>
-
-    <button type="submit" data-fa="ارسال پیام" data-en="Send Message">ارسال پیام</button>
+    <label for="name">نام:</label>
+    <input type="text" id="name" name="name" required placeholder="نام شما">
+    <label for="email">ایمیل:</label>
+    <input type="email" id="email" name="email" required placeholder="example@example.com">
+    <label for="phone">شماره تلفن:</label>
+    <input type="tel" id="phone" name="phone" placeholder="0912xxxxxxx">
+    <label for="message">پیام:</label>
+    <textarea id="message" name="message" rows="5" required placeholder="متن پیام..."></textarea>
+    <button type="submit">ارسال پیام</button>
     <p id="formMessage"></p>
   </form>
 </section>
 
-
-<button id="translate-btn" data-fa="English" data-en="فارسی">English</button>
-
 <footer>
-  <p data-fa="© 2025 تمامی حقوق محفوظ است" data-en="© 2025 All rights reserved">© 2025 تمامی حقوق محفوظ است</p>
-  <p>Arsam_khosh</p>
-  <a href="https://instagram.com/arsam.khosh" target="_blank" data-fa="اینستاگرام من" data-en="My Instagram">اینستاگرام من</a>
+  <p>© 2025 تمامی حقوق محفوظ است</p> 
+    <p> Arsam_khosh </p>
+  <a href="https://instagram.com/arsam.khosh" target="_blank">اینستاگرام من</a>
 </footer>
 
 <script>
-// ---------- Loading ----------
+// لودینگ 4 ثانیه
 let loading = 0;
 const loadingFill = document.getElementById('loading-fill');
 const loadingScreen = document.getElementById('loading-screen');
-const loadingInterval = setInterval(() => {
-  loading++;
+const interval = setInterval(()=>{
+  loading += 1;
   loadingFill.style.width = loading + '%';
-  if (loading >= 100) {
-    clearInterval(loadingInterval);
-    loadingScreen.style.display = 'none';
-    document.querySelectorAll('section, footer').forEach(el => {
-      el.style.opacity = 1;
-      el.style.transform = 'translateY(0)';
-    });
+  if(loading>=100){
+    clearInterval(interval);
+    loadingScreen.style.display='none';
+    document.querySelectorAll('header,section,footer').forEach(el=>{el.style.opacity=1; el.style.transform='translateY(0)';});
   }
-}, 30);
+}, 40);
 
-// ---------- Navbar ----------
+// نوار بالا
 const nav = document.querySelector('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('visible', window.scrollY > 50);
-});
+window.addEventListener('scroll',()=>{ if(window.scrollY>50){nav.classList.add('visible');} else{nav.classList.remove('visible');} });
 
-// ---------- FAQ ----------
-document.querySelectorAll('.faq-item').forEach(item => {
-  item.addEventListener('click', () => {
-    const answer = item.querySelector('.answer');
-    answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+// FAQ toggle
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.addEventListener('click', ()=>{
+    const ans = item.querySelector('.answer');
+    ans.style.display = ans.style.display==='block' ? 'none' : 'block';
   });
 });
 
-// ---------- Like Button ----------
-document.querySelectorAll('.like-btn').forEach(btn => {
-  let liked = false;
-  btn.addEventListener('click', () => {
-    liked = !liked;
-    btn.classList.toggle('liked', liked);
-    btn.textContent = liked ? '❤ 1' : '❤ 0';
+// like button
+document.querySelectorAll('.like-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    if(btn.classList.contains('liked')){ btn.classList.remove('liked'); btn.textContent='❤ 0'; }
+    else { btn.classList.add('liked'); btn.textContent='❤ 1'; }
   });
 });
 
-// ---------- Skills ----------
-let skillsDone = false;
-window.addEventListener('scroll', () => {
-  if (skillsDone) return;
-  document.querySelectorAll('.skill-fill').forEach(bar => {
+// مهارت‌ها
+window.addEventListener('scroll', ()=>{
+  document.querySelectorAll('.skill-fill').forEach(bar=>{
     const rect = bar.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 50) {
+    if(rect.top < window.innerHeight){
       bar.style.width = bar.dataset.value;
-      skillsDone = true;
     }
   });
-});
-
-// ---------- Translate ----------
-let isEnglish = false;
-document.getElementById('translate-btn').addEventListener('click', () => {
-  isEnglish = !isEnglish;
-  document.documentElement.lang = isEnglish ? "en" : "fa";
-  document.documentElement.dir = isEnglish ? "ltr" : "rtl";
-
-  document.querySelectorAll('[data-fa],[data-en]').forEach(el => {
-    if(isEnglish) el.textContent = el.dataset.en || el.textContent;
-    else el.textContent = el.dataset.fa || el.textContent;
-  });
-
-  document.querySelectorAll('input, textarea').forEach(el => {
-    if(isEnglish) el.placeholder = el.dataset.en || el.placeholder;
-    else el.placeholder = el.dataset.fa || el.placeholder;
-  });
-
-  document.getElementById('translate-btn').textContent = isEnglish ? 'فارسی' : 'English';
 });
 </script>
 
