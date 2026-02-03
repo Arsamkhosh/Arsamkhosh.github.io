@@ -300,7 +300,7 @@ langToggle.addEventListener('click', ()=>{
   <h2 data-fa="ارتباط" data-en="Contact">ارتباط با من</h2>
   <form id="contactForm" action="https://formspree.io/f/mnngzdlw" method="POST">
     <label for="name" data-fa="نام" data-en="Name">نام:</label>
-    <input type="text" id="name" name="name" required placeholder="نام شما" data-fa-placeholder="نام شما" data-en-placeholder="Your Name">
+    <input type="text" id="name" name="name" required placeholder="your name" data-fa-placeholder="نام شما" data-en-placeholder="Your Name">
     
     <label for="email" data-fa="ایمیل" data-en="Email">ایمیل:</label>
     <input type="email" id="email" name="email" required placeholder="example@example.com" data-fa-placeholder="example@example.com" data-en-placeholder="example@example.com">
@@ -309,7 +309,7 @@ langToggle.addEventListener('click', ()=>{
     <input type="tel" id="phone" name="phone" placeholder="0912xxxxxxx" data-fa-placeholder="0912xxxxxxx" data-en-placeholder="0912xxxxxxx">
     
     <label for="message" data-fa="پیام" data-en="Message">پیام:</label>
-    <textarea id="message" name="message" rows="5" required placeholder="متن پیام..." data-fa-placeholder="متن پیام..." data-en-placeholder="Your Message..."></textarea>
+    <textarea id="message" name="message" rows="5" required placeholder="Message text" data-fa-placeholder="متن پیام" data-en-placeholder="Your Message..."></textarea>
     
     <button type="submit" data-fa="ارسال پیام" data-en="Send Message">ارسال پیام</button>
     <p id="formMessage"></p>
@@ -321,7 +321,7 @@ langToggle.addEventListener('click', ()=>{
   <p>Arsam_khosh</p>
   <a href="https://instagram.com/arsam.khosh" target="_blank" data-fa="اینستاگرام من" data-en="My Instagram">اینستاگرام من</a>
 </footer>
-
+  
 <script>
 // ترجمه کامل فارسی/انگلیسی
 const langToggle = document.getElementById('lang-toggle');
