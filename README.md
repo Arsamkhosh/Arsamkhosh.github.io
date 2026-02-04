@@ -303,13 +303,13 @@ langToggle.addEventListener('click', ()=>{
 
     <label for="name" data-fa="نام" data-en="Name">نام</label>
     <input type="text" id="name" name="name" required
-      placeholder="نام شما"
+      placeholder="your name"
       data-fa-placeholder="نام شما"
       data-en-placeholder="Your name">
 
     <label for="email" data-fa="ایمیل" data-en="Email">ایمیل</label>
     <input type="email" id="email" name="email" required
-      placeholder="example@example.com"
+      placeholder="arsam.co@example.com"
       data-fa-placeholder="example@example.com"
       data-en-placeholder="example@example.com">
 
@@ -321,7 +321,7 @@ langToggle.addEventListener('click', ()=>{
 
     <label for="message" data-fa="پیام" data-en="Message">پیام</label>
     <textarea id="message" name="message" rows="5" required
-      placeholder="متن پیام"
+      placeholder="your message"
       data-fa-placeholder="متن پیام"
       data-en-placeholder="Your message..."></textarea>
 
