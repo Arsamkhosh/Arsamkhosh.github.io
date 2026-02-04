@@ -338,7 +338,20 @@ langToggle.addEventListener('click', ()=>{
 
 
 <footer>
-  <p data-fa="© 2025 تمامی حقوق محفوظ است" data-en="© 2025 All Rights Reserved">© 2025 تمامی حقوق محفوظ است</p> 
+  <footer>
+  <p
+    data-fa="© 2025 — کلیه حقوق مادی و معنوی این وب‌سایت متعلق به Arsam Khosh بوده و هرگونه کپی‌برداری، بازنشر یا استفاده بدون مجوز، پیگرد قانونی دارد."
+    data-en="© 2025 — All intellectual and material rights of this website belong to Arsam Khosh. Any unauthorized copying or redistribution is prohibited.">
+    © 2025 — کلیه حقوق مادی و معنوی این وب‌سایت متعلق به Arsam Khosh بوده و هرگونه کپی‌برداری، بازنشر یا استفاده بدون مجوز، پیگرد قانونی دارد.
+  </p>
+
+  <p
+    data-fa="نسخه 1.0"
+    data-en="Version 1.0">
+    نسخه 1.0
+  </p>
+</footer>
+
   <p>Arsam_khosh</p>
   <a href="https://instagram.com/arsam.khosh" target="_blank" data-fa="اینستاگرام من" data-en="My Instagram">اینستاگرام من</a>
 </footer>
