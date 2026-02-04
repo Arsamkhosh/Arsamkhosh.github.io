@@ -260,7 +260,7 @@ langToggle.addEventListener('click', ()=>{
     </div>
     <div class="gallery-item">
       <img src="damavand_kohe.png" alt="تصویر 2">
-      <div class="tooltip" data-fa="ایران/استان تهران/کوه زیبای دماوند" data-en="Iran/Tehran Province/Beautiful Damavand Mountain">ایران/استان تهران/کوه زیبای دماوند</div>
+      <div class="tooltip" data-fa="ایران/استان تهران/کوه زیبای دماوند" data-en="Iran/Tehran Province/Damavand Mountain">ایران/استان تهران/کوه دماوند</div>
     </div>
     <div class="gallery-item">
       <img src="azadi_tehran.png" alt="تصویر 3">
@@ -300,7 +300,7 @@ langToggle.addEventListener('click', ()=>{
   <h2 data-fa="ارتباط" data-en="Contact">ارتباط با من</h2>
   <form id="contactForm" action="https://formspree.io/f/mnngzdlw" method="POST">
     <label for="name" data-fa="نام" data-en="Name">نام:</label>
-    <input type="text" id="name" name="name" required placeholder="your name" data-fa-placeholder="نام شما" data-en-placeholder="Your Name">
+    <input type="text" id="name" name="name" required placeholder="نام شما" data-fa-placeholder="نام شما" data-en-placeholder="Your Name">
     
     <label for="email" data-fa="ایمیل" data-en="Email">ایمیل:</label>
     <input type="email" id="email" name="email" required placeholder="example@example.com" data-fa-placeholder="example@example.com" data-en-placeholder="example@example.com">
