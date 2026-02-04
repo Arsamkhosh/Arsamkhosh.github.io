@@ -331,10 +331,7 @@ langToggle.addEventListener('click', ()=>{
       ارسال پیام
     </button>
 
-    <p id="formMessage"
-       data-fa="پیام شما با موفقیت ارسال شد ✅"
-       data-en="Your message has been sent successfully ✅">
-    </p>
+
 
   </form>
 </section>
