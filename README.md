@@ -350,7 +350,32 @@ langToggle.addEventListener('click', ()=>{
 </footer>
 
 
-  <p>Arsam_khosh</p>
+  <footer id="site-footer"></footer>
+
+<script>
+const footerText = {"text":"","extra":[{"text":"A","color":"#FF1E00","shadow_color":[0.01,0,0.25,1]},{"text":"r","color":"#FF2C00","shadow_color":[0.01,0,0.25,1]},{"text":"s","color":"#FF3B00","shadow_color":[0.01,0,0.25,1]},{"text":"a","color":"#FF4900","shadow_color":[0.01,0,0.25,1]},{"text":"m","color":"#FF5700","shadow_color":[0.01,0,0.25,1]},{"text":"_","color":"#FF6500","shadow_color":[0.01,0,0.25,1]},{"text":"k","color":"#FF7400","shadow_color":[0.01,0,0.25,1]},{"text":"h","color":"#FF8200","shadow_color":[0.01,0,0.25,1]},{"text":"o","color":"#FF9000","shadow_color":[0.01,0,0.25,1]},{"text":"s","color":"#FF9F00","shadow_color":[0.01,0,0.25,1]},{"text":"h","color":"#FFAD00","shadow_color":[0.01,0,0.25,1]}]};
+
+function renderFooter(json) {
+  const footer = document.getElementById('site-footer');
+  const p = document.createElement('p');
+
+  json.extra.forEach(item => {
+    const span = document.createElement('span');
+    span.textContent = item.text;
+    if(item.color) span.style.color = item.color;
+    if(item.shadow_color) {
+      const [x, y, blur, a] = item.shadow_color;
+      span.style.textShadow = `${x*100}px ${y*100}px ${blur*20}px rgba(0,0,0,${a})`;
+    }
+    p.appendChild(span);
+  });
+
+  footer.appendChild(p);
+}
+
+renderFooter(footerText);
+</script>
+
   <a href="https://instagram.com/arsam.khosh" target="_blank" data-fa="اینستاگرام من" data-en="My Instagram">اینستاگرام من</a>
   
 <script>
