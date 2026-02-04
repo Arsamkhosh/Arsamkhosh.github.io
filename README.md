@@ -353,7 +353,6 @@ langToggle.addEventListener('click', ()=>{
 
   <p>Arsam_khosh</p>
   <a href="https://instagram.com/arsam.khosh" target="_blank" data-fa="اینستاگرام من" data-en="My Instagram">اینستاگرام من</a>
-</footer>
   
 <script>
 // ترجمه کامل فارسی/انگلیسی
