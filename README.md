@@ -367,3 +367,16 @@ langToggle.addEventListener('click', ()=>{
   });
 });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const answer = item.querySelector('.answer');
+      answer.style.display =
+        answer.style.display === 'block' ? 'none' : 'block';
+    });
+  });
+
+});
+</script>
