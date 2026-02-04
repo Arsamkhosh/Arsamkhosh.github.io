@@ -297,24 +297,48 @@ langToggle.addEventListener('click', ()=>{
   </div>
 </section>
 <section id="contact-section">
-  <h2 data-fa="ارتباط" data-en="Contact">ارتباط با من</h2>
+  <h2 data-fa="ارتباط با من" data-en="Contact Me">ارتباط با من</h2>
+
   <form id="contactForm" action="https://formspree.io/f/mnngzdlw" method="POST">
-    <label for="name" data-fa="نام" data-en="Name">نام:</label>
-    <input type="text" id="name" name="name" required placeholder="نام شما" data-fa-placeholder="نام شما" data-en-placeholder="Your Name">
-    
-    <label for="email" data-fa="ایمیل" data-en="Email">ایمیل:</label>
-    <input type="email" id="email" name="email" required placeholder="example@example.com" data-fa-placeholder="example@example.com" data-en-placeholder="example@example.com">
-    
-    <label for="phone" data-fa="شماره تلفن" data-en="Phone">شماره تلفن:</label>
-    <input type="tel" id="phone" name="phone" placeholder="0912xxxxxxx" data-fa-placeholder="0912xxxxxxx" data-en-placeholder="0912xxxxxxx">
-    
-    <label for="message" data-fa="پیام" data-en="Message">پیام:</label>
-    <textarea id="message" name="message" rows="5" required placeholder="Message text" data-fa-placeholder="متن پیام" data-en-placeholder="Your Message..."></textarea>
-    
-    <button type="submit" data-fa="ارسال پیام" data-en="Send Message">ارسال پیام</button>
-    <p id="formMessage"></p>
+
+    <label for="name" data-fa="نام" data-en="Name">نام</label>
+    <input type="text" id="name" name="name" required
+      placeholder="نام شما"
+      data-fa-placeholder="نام شما"
+      data-en-placeholder="Your name">
+
+    <label for="email" data-fa="ایمیل" data-en="Email">ایمیل</label>
+    <input type="email" id="email" name="email" required
+      placeholder="example@example.com"
+      data-fa-placeholder="example@example.com"
+      data-en-placeholder="example@example.com">
+
+    <label for="phone" data-fa="شماره تلفن" data-en="Phone Number">شماره تلفن</label>
+    <input type="tel" id="phone" name="phone"
+      placeholder="0912xxxxxxx"
+      data-fa-placeholder="0912xxxxxxx"
+      data-en-placeholder="+1 234 567 890">
+
+    <label for="message" data-fa="پیام" data-en="Message">پیام</label>
+    <textarea id="message" name="message" rows="5" required
+      placeholder="متن پیام"
+      data-fa-placeholder="متن پیام"
+      data-en-placeholder="Your message..."></textarea>
+
+    <button type="submit"
+      data-fa="ارسال پیام"
+      data-en="Send Message">
+      ارسال پیام
+    </button>
+
+    <p id="formMessage"
+       data-fa="پیام شما با موفقیت ارسال شد ✅"
+       data-en="Your message has been sent successfully ✅">
+    </p>
+
   </form>
 </section>
+
 
 <footer>
   <p data-fa="© 2025 تمامی حقوق محفوظ است" data-en="© 2025 All Rights Reserved">© 2025 تمامی حقوق محفوظ است</p> 
