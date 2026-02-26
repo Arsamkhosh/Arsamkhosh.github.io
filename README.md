@@ -6,92 +6,108 @@
 <title>پروژه‌های من | Arsam Khosh</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-/* پایه */
+/* Paye */
 html { scroll-behavior: smooth; }
-body { margin:0; font-family:'Vazirmatn',sans-serif; background:#0a0a0a; color:#fff; text-align:center; overflow-x:hidden; cursor: none; }
-header, section, footer { padding: 60px 5%; opacity:0; transform:translateY(30px); transition:all 0.8s ease-out; }
-section.reveal { opacity:1; transform:translateY(0); }
+body { margin:0; font-family:'Vazirmatn',sans-serif; background:linear-gradient(135deg,#0a0a0a,#1a1a1a); color:#fff; text-align:center; overflow-x:hidden; cursor: none; }
+header, section, footer { padding: 40px 5%; opacity:0; transform:translateY(50px); transition:all 0.8s ease; }
+section.reveal, footer.reveal { opacity:1 !important; transform:translateY(0) !important; }
+h1 { font-size:2.8em; font-weight:900; background: linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px; text-shadow:0 0 10px rgba(0,255,255,0.5);}
+h2 { color:#00ffff; margin-bottom:20px; font-size:1.8em; font-weight:900; }
 
-/* افکت دنباله موس نئونی */
+/* Afakt Moos Neon */
 .cursor-dot { width: 8px; height: 8px; background-color: #00ffff; box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 10000; pointer-events: none; }
-.cursor-outline { width: 40px; height: 40px; border: 2px solid #ff00cc; box-shadow: 0 0 15px #ff00cc; position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9999; pointer-events: none; }
-.cursor-hover { transform: translate(-50%, -50%) scale(1.6); background-color: rgba(0, 255, 255, 0.1); border-color: #00ffff; }
+.cursor-outline { width: 40px; height: 40px; border: 2px solid #ff00cc; box-shadow: 0 0 15px #ff00cc; position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9999; pointer-events: none; transition: width 0.2s, height 0.2s, background-color 0.2s; }
+.cursor-hover { width: 60px; height: 60px; background-color: rgba(255, 0, 204, 0.1); border-color: #00ffff; }
 
-/* نوار بالا */
-nav { position: fixed; top: -80px; left:0; right:0; background: rgba(0,0,0,0.8); backdrop-filter: blur(15px); display:flex; justify-content:center; align-items:center; gap:20px; padding:15px; z-index:1000; border-bottom:1px solid rgba(0,255,255,0.2); transition:top 0.4s ease; }
+/* Navar Bala */
+nav { position: fixed; top: -70px; left:0; right:0; background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); display:flex; justify-content:center; gap:20px; padding:15px; z-index:1000; border-bottom:1px solid #00ffff44; transition:top 0.4s ease; }
 nav.visible { top:0; }
-nav a { color:#00ffff; text-decoration:none; font-weight:bold; font-size: 0.9em; transition:0.3s; }
+nav a { color:#00ffff; text-decoration:none; font-weight:bold; transition:0.3s; }
 nav a:hover { color:#ff00cc; text-shadow:0 0 10px #ff00cc; }
-#lang-toggle { margin-left:20px; padding:6px 15px; border-radius:10px; border:none; cursor:none; background:linear-gradient(45deg,#ff00cc,#00ffff); color:#000; font-weight:bold; }
+#lang-toggle { margin-left:20px; padding:5px 10px; border-radius:8px; border:none; cursor:none; background:#ff00cc; color:#fff; font-weight:bold; transition: 0.3s;}
+#lang-toggle:hover { transform: scale(1.1); box-shadow: 0 0 15px #ff00cc;}
 
-/* تیترها */
-h1 { font-size:3em; font-weight: 900; background: linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:0 0 15px rgba(0,255,255,0.3);}
-h2 { color:#00ffff; margin-bottom:40px; font-size:2.2em; font-weight: 900; text-transform: uppercase; }
+/* Porojeh-ha */
+.projects { display:flex; justify-content:center; flex-wrap:wrap; gap:30px; margin-top:20px; }
+.project-card { position:relative; background:rgba(255,255,255,0.08); padding:25px; width:300px; min-height:250px; border-radius:15px; border-left:5px solid #00ffff; box-shadow:0 4px 20px rgba(0,255,255,0.1); text-align:center; transition: 0.3s; cursor:none; }
+.project-card img { width:100%; border-radius:15px; margin-bottom:15px; transition: 0.3s; }
+.project-card:hover { transform:translateY(-10px) rotate(-1deg); box-shadow:0 0 30px #ff00cc,0 0 10px #00ffff; border-left:5px solid #ff00cc; }
+.project-card:hover img { transform: scale(1.05); }
+.project-title { font-size:1.4em; font-weight:bold; margin-bottom:10px; color:#00ffff; }
+.project-desc { color:#ccc; margin-bottom:10px; font-size:0.9em; }
+.project-tech { font-size:0.8em; color:#ff9900; font-weight:bold; }
+.like-btn { display:inline-block; padding:5px 10px; margin-top:10px; border-radius:10px; border:none; cursor:none; font-weight:bold; background:#00ffff; color:#000; transition:0.3s; }
+.like-btn.liked { background:#ff00cc; color:#fff; }
 
-/* درباره من */
-.about-card { max-width:800px; margin:0 auto; background: rgba(255,255,255,0.03); padding:40px; border-radius:24px; display:flex; align-items:center; direction:rtl; text-align:right; border: 1px solid rgba(0,255,255,0.1); }
-.profile-pic { width:130px; height:130px; border-radius:50%; background:url('profile.png') center/cover; margin-left:25px; border:4px solid #ff00cc; box-shadow:0 0 25px #00ffff; flex-shrink:0; animation: float 3s ease-in-out infinite alternate; }
-@keyframes float { 0%{transform:translateY(0);} 100%{transform:translateY(-20px);} }
-.about-text p { font-size:1.15em; line-height:1.9; color: #ddd; }
+/* Darbare Man */
+.about-card { max-width:600px; margin:20px auto; background: rgba(255,255,255,0.08); padding:30px; border-radius:20px; box-shadow:0 0 20px rgba(255,255,255,0.1); display:flex; align-items:center; direction:rtl; text-align:right; transition: all 0.3s ease; }
+.profile-pic { width:100px;height:100px; border-radius:50%; background:#00ffff; margin-left:20px; border:4px solid #ff00cc; overflow:hidden; box-shadow:0 0 15px #00ffff; flex-shrink:0; animation: float 3s ease-in-out infinite alternate; }
+@keyframes float {0%{transform:translateY(0);}100%{transform:translateY(-10px);} }
+.about-text p { font-size:1.1em; line-height:1.8; }
 
-/* پروژه‌ها */
-.projects { display:flex; justify-content:center; flex-wrap:wrap; gap:30px; }
-.project-card { position:relative; background:rgba(255,255,255,0.02); padding:25px; width:310px; border-radius:20px; border-left:5px solid #00ffff; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-.project-card:hover { transform:translateY(-15px); background:rgba(255,255,255,0.07); border-color:#ff00cc; box-shadow:0 15px 40px rgba(255,0,204,0.2); }
-.project-card img { width:100%; border-radius:15px; margin-bottom:15px; transition:0.4s; }
-.project-card:hover img { filter: brightness(1.2); transform: scale(1.03); }
-.project-title { font-size:1.5em; font-weight:bold; color:#00ffff; margin-bottom:10px; }
-.project-tech { color:#ff9900; font-size:0.85em; font-weight:bold; margin: 10px 0; }
-.like-btn { padding:8px 18px; border-radius:12px; border:none; background:#00ffff; color:#000; font-weight:bold; cursor:none; transition:0.3s; }
-.like-btn.liked { background:#ff00cc; color:#fff; box-shadow:0 0 15px #ff00cc; }
+/* Maharat-ha */
+.skills { max-width:600px; margin:30px auto; text-align:right; direction:rtl; }
+.skill { margin-bottom:15px; }
+.skill-bar { width:100%; height:15px; background:#222; border-radius:10px; overflow:hidden; }
+.skill-fill { width:0%; height:100%; background:linear-gradient(90deg,#00ffff,#ff00cc,#ff9900); border-radius:10px; transition: width 1s; }
 
-/* مهارت‌ها */
-.skills { max-width:650px; margin:0 auto; text-align:right; direction:rtl; }
-.skill { margin-bottom:25px; }
-.skill-bar { width:100%; height:16px; background:#1a1a1a; border-radius:20px; border:1px solid #333; overflow:hidden; }
-.skill-fill { width:0%; height:100%; background:linear-gradient(90deg,#00ffff,#ff00cc); transition: width 1.5s ease-in-out; }
+/* Blog */
+.blog { max-width:700px; margin:50px auto; text-align:right; direction:rtl; }
+.blog-item { background: rgba(255,255,255,0.08); padding:15px; border-radius:10px; margin-bottom:10px; text-align:right; border-right: 3px solid #00ffff;}
 
-/* بلاگ و FAQ */
-.blog, .faq { max-width:800px; margin:0 auto; direction:rtl; text-align:right; }
-.blog-item, .faq-item { background:rgba(255,255,255,0.04); padding:20px; border-radius:15px; margin-bottom:15px; border-right:4px solid #00ffff; transition:0.3s; cursor:none; }
-.faq-item:hover { background:rgba(255,255,255,0.08); border-color:#ff00cc; }
-.answer { display:none; padding:15px 0; color:#bbb; border-top:1px solid #333; margin-top:10px; }
+/* Form Tamas */
+form { max-width:500px; margin:40px auto; background: rgba(255,255,255,0.08); padding:25px; border-radius:15px; box-shadow:0 0 25px rgba(0,255,255,0.2); direction:rtl; text-align:right;}
+input,textarea{ width:100%; padding:12px; border-radius:10px; border:1px solid rgba(0,255,255,0.3); background-color: rgba(255,255,255,0.1); color:#fff; margin-bottom:15px; cursor:none;}
+input:focus, textarea:focus { outline: none; border-color: #ff00cc; }
+button[type="submit"] { background: linear-gradient(135deg,#00ffff,#ff00cc); color:#000; font-weight:bold; padding:10px 20px; border:none; border-radius:12px; cursor:none; transition:0.3s; width:100%;}
+button[type="submit"]:hover { transform: scale(1.05); box-shadow: 0 0 15px #ff00cc; }
 
-/* گالری */
-.gallery { display:flex; flex-wrap:wrap; gap:15px; justify-content:center; }
-.gallery-item { position:relative; width:280px; height:200px; border-radius:15px; overflow:hidden; cursor:none; }
-.gallery-item img { width:100%; height:100%; object-fit:cover; transition:0.5s; }
-.gallery-item:hover img { transform:scale(1.15); filter:brightness(1.2); }
+/* FAQ */
+.faq { max-width:800px; margin:50px auto; text-align:right; direction:rtl; }
+.faq-item { background: rgba(255,255,255,0.08); padding:15px; border-radius:10px; margin-bottom:10px; cursor:none; border:2px solid #00ffff; transition:0.3s; }
+.faq-item:hover { background: rgba(255,255,255,0.15); border-color: #ff00cc; transform: translateX(-5px); }
+.faq-item .answer { display:none; margin-top:10px; color:#ccc; font-size:0.9em; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);}
 
-/* فرم تماس */
-form { max-width:550px; margin:0 auto; background:rgba(255,255,255,0.03); padding:35px; border-radius:25px; border:1px solid rgba(0,255,255,0.1); direction:rtl; text-align:right; }
-input, textarea { width:100%; padding:15px; margin-bottom:20px; border-radius:12px; border:1px solid #333; background:rgba(0,0,0,0.4); color:#fff; box-sizing:border-box; cursor:none; }
-button[type="submit"] { width:100%; padding:15px; border-radius:12px; border:none; background:linear-gradient(45deg,#00ffff,#ff00cc); color:#000; font-weight:900; font-size:1.1em; cursor:none; }
+/* Gallery Ba Hover Effect */
+.gallery { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
+.gallery-item { position:relative; overflow:hidden; border-radius:15px; flex:1 1 250px; max-width:300px; transition: 0.3s; cursor:none; border: 2px solid transparent;}
+.gallery-item:hover { border-color: #00ffff; box-shadow: 0 0 15px rgba(0,255,255,0.4); }
+.gallery-item img { width:100%; height:200px; object-fit:cover; transition: 0.5s; display: block; }
+.gallery-item:hover img { transform: scale(1.1); filter: brightness(0.7); }
 
-/* لودینگ */
-#loading-screen { position:fixed; inset:0; background:#000; z-index:9999; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-#loading-fill { width:0%; height:100%; background:linear-gradient(90deg,#00ffff,#ff00cc); transition:0.1s; }
+/* Matn Rooye Gallery */
+.gallery-overlay { position: absolute; bottom: -100%; left: 0; width: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); color: #00ffff; padding: 15px 0; text-align: center; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); font-weight: bold; font-size: 0.9em; border-top: 2px solid #ff00cc; }
+.gallery-item:hover .gallery-overlay { bottom: 0; }
 
-/* ریسپانسیو */
-@media(max-width:768px){
+/* Loading */
+#loading-screen { position:fixed; top:0; left:0; right:0; bottom:0; background:#0f0f0f; display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:2000; color:#00ffff; }
+#loading-bar { width:300px; height:10px; background:#222; border-radius:10px; overflow:hidden; }
+#loading-fill { width:0%; height:100%; background:linear-gradient(90deg,#00ffff,#ff00cc); }
+
+/* Footer Jadid Instagram */
+footer { margin-top: 50px; padding-bottom: 40px; border-top: 1px solid rgba(0, 255, 255, 0.1); background: rgba(0, 0, 0, 0.3); display: flex; flex-direction: column; align-items: center; }
+.social-links { margin-bottom: 20px; text-align: center;}
+.instagram-link { display: inline-flex; align-items: center; gap: 10px; padding: 12px 25px; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); border-radius: 50px; color: white !important; text-decoration: none; font-weight: bold; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 5px 15px rgba(204, 35, 102, 0.4); cursor: none;}
+.instagram-link:hover { transform: scale(1.1) translateY(-5px); box-shadow: 0 10px 25px rgba(204, 35, 102, 0.6); }
+.ig-icon { width: 24px; height: 24px; }
+.copyright { font-size: 0.8em; color: #666; margin-top: 10px; }
+
+@media(max-width:650px){
     body { cursor: auto; }
     .cursor-dot, .cursor-outline { display:none; }
     .about-card { flex-direction:column; text-align:center; }
-    .profile-pic { margin:0 0 20px 0; }
 }
 </style>
 </head>
 <body>
 
-<div id="loading-screen">
-    <div style="color:#00ffff; font-family:monospace; font-size:1.5em; margin-bottom:20px;">LOADING ARSAM_KHOSH...</div>
-    <div style="width:300px; height:10px; background:#222; border-radius:10px; overflow:hidden; border:1px solid #00ffff;">
-        <div id="loading-fill"></div>
-    </div>
-</div>
-
 <div class="cursor-dot"></div>
 <div class="cursor-outline"></div>
+
+<div id="loading-screen">
+    <div id="loading-text" style="margin-bottom:20px; font-weight:bold;">Loading Arsam_khosh web...</div>
+    <div id="loading-bar"><div id="loading-fill"></div></div>
+</div>
 
 <nav>
     <a href="#about-me" data-fa="درباره من" data-en="About Me">درباره من</a>
@@ -103,12 +119,12 @@ button[type="submit"] { width:100%; padding:15px; border-radius:12px; border:non
     <button id="lang-toggle">EN</button>
 </nav>
 
-<section id="about-me" class="reveal">
+<section id="about-me">
     <h2 data-fa="درباره من" data-en="About Me">درباره من</h2>
     <div class="about-card">
         <div class="profile-pic"></div>
         <div class="about-text">
-            <p data-fa="سلام! من آرسام خوش‌اخلاق هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و وب و برنامه نویسی هستم و همچنین به ماینکرفت و سایر بازی ها علاقه دارم 🌐✨" 
+            <p data-fa="سلام! من آرسام خوش‌اخلاق هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و وب و برنامه نویسی هستم و همچنین به ماینکرفت و سایر بازی ها علاقه دارم 🌐✨"
                data-en="Hello! I'm Arsam Khosh akhlagh, a web developer and tech enthusiast. I love creativity in web design and programming, and also enjoy Minecraft and other games 🌐✨">
                سلام! من آرسام خوش‌اخلاق هستم. توسعه‌دهنده وب و علاقه‌مند به تکنولوژی‌ها. عاشق خلاقیت در طراحی و وب و برنامه نویسی هستم و همچنین به ماینکرفت و سایر بازی ها علاقه دارم 🌐✨
             </p>
@@ -116,124 +132,148 @@ button[type="submit"] { width:100%; padding:15px; border-radius:12px; border:non
     </div>
 </section>
 
-<section id="projects-section" class="reveal">
+<section id="projects-section">
     <h2 data-fa="پروژه‌ها" data-en="Projects">پروژه‌ها</h2>
     <div class="projects">
         <div class="project-card">
             <img src="minecraft.png" alt="Minecraft">
-            <div class="project-title" data-fa="🎮سرور ماینکرفت" data-en="🎮Minecraft Server">🎮سرور ماینکرفت</div>
-            <div class="project-desc" data-fa="سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم." data-en="I have a dedicated Minecraft server with custom plugins.">سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم.</div>
-            <div class="project-tech">Spigot / Bukkit</div>
+            <div class="project-title" data-fa="🎮سرور ماینکرفت " data-en="🎮Minecraft Server">🎮سرور ماینکرفت </div>
+            <div class="project-desc" data-fa="سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده"
+               data-en="I have a dedicated Minecraft server with custom plugins. Contact me via Instagram or the Contact section to collaborate.">
+               سرور اختصاصی برای ماینکرفت با پلاگین‌های مخصوص دارم و برای همکاری به اینستاگرام یا بخش ارتباط با ما پیام بده
+            </div>
+            <div class="project-tech">Spigot/Bukkit / Minecraft</div>
             <button class="like-btn">❤ 0</button>
         </div>
         <div class="project-card">
             <img src="site.png" alt="Site">
-            <div class="project-title" data-fa="🌐سایت شخصی" data-en="🌐Personal Website">🌐سایت شخصی</div>
-            <div class="project-desc" data-fa="من به طراحی سایت علاقه دارم و این سایت رو خودم نوشتم." data-en="I enjoy web design and built this website myself.">من به طراحی سایت علاقه دارم و این سایت رو خودم نوشتم.</div>
-            <div class="project-tech">HTML / CSS / JS</div>
+            <div class="project-title" data-fa="🌐سایت شخصی " data-en="🌐Personal Website">🌐سایت شخصی </div>
+            <div class="project-desc" data-fa="من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم"
+               data-en="I enjoy web design and built this website myself with a friend.">
+               من به طراحی سایت علاقه دارم و این سایت رو خودم و با کمک دوستم نوشتم
+            </div>
+            <div class="project-tech">HTML / CSS / JavaScript</div>
             <button class="like-btn">❤ 0</button>
         </div>
         <div class="project-card">
             <img src="edite.png" alt="Edit">
-            <div class="project-title" data-fa="🎬ادیت ویدیو" data-en="🎬Video Editing">🎬ادیت ویدیو</div>
-            <div class="project-desc" data-fa="به ادیت ویدیو علاقه دارم و کارهایم را در یوتیوب منتشر می‌کنم." data-en="I love video editing and share my work on YouTube.">به ادیت ویدیو علاقه دارم و کارهایم را در یوتیوب منتشر می‌کنم.</div>
-            <div class="project-tech">Capcut / Filmora</div>
+            <div class="project-title" data-fa="🎬ادیت ویدیو " data-en="🎬Video Editing">🎬ادیت ویدیو </div>
+            <div class="project-desc" data-fa="به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم"
+               data-en="I love video editing and share my work on YouTube.">
+               به ادیت ویدیو علاقه دارم و کارهای خود را در یوتیوب منتشر می‌کنم
+            </div>
+            <div class="project-tech">Capcut / Filmora / Shotcut</div>
             <button class="like-btn">❤ 0</button>
         </div>
     </div>
 </section>
 
-<section id="skills-section" class="reveal">
+<section id="skills-section" class="skills">
     <h2 data-fa="مهارت‌ها" data-en="Skills">مهارت‌ها</h2>
-    <div class="skills">
-        <div class="skill">
-            <div class="skill-name" data-fa="سرور ماینکرفت" data-en="Minecraft Server">سرور ماینکرفت</div>
-            <div class="skill-bar"><div class="skill-fill" data-value="95%"></div></div>
-        </div>
-        <div class="skill">
-            <div class="skill-name" data-fa="ادیت ویدیو" data-en="Video Editing">ادیت ویدیو</div>
-            <div class="skill-bar"><div class="skill-fill" data-value="80%"></div></div>
-        </div>
-        <div class="skill">
-            <div class="skill-name" data-fa="برنامه نویسی" data-en="Programming">برنامه نویسی</div>
-            <div class="skill-bar"><div class="skill-fill" data-value="60%"></div></div>
-        </div>
+    <div class="skill">
+        <div class="skill-name" data-fa="سرور ماینکرفت" data-en="Minecraft Server">سرور ماینکرفت</div>
+        <div class="skill-bar"><div class="skill-fill" data-value="95%"></div></div>
+    </div>
+    <div class="skill">
+        <div class="skill-name" data-fa="ادیت ویدیو" data-en="Video Editing">ادیت ویدیو</div>
+        <div class="skill-bar"><div class="skill-fill" data-value="80%"></div></div>
+    </div>
+    <div class="skill">
+        <div class="skill-name" data-fa="برنامه نویسی" data-en="Programming">برنامه نویسی</div>
+        <div class="skill-bar"><div class="skill-fill" data-value="60%"></div></div>
     </div>
 </section>
 
-<section id="blog-section" class="reveal">
+<section id="blog-section" class="blog">
     <h2 data-fa="اخبار" data-en="Blog">اخبار و بروزرسانی‌ها</h2>
-    <div class="blog">
-        <div class="blog-item" data-fa="پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!🚀" data-en="Weekly Post: New Minecraft server plugin is ready!🚀">پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!🚀</div>
-        <div class="blog-item" data-fa="پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.🌐" data-en="My personal website project updated with a new blog section.🌐">پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.🌐</div>
-        <div class="blog-item" data-fa="ایونت جدید در سرور🚀" data-en="New event on the server🚀">ایونت جدید در سرور🚀</div>
-    </div>
+    <div class="blog-item" data-fa="پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!🚀" data-en="Weekly Post: New Minecraft server plugin is ready!🚀">پست هفته: پلاگین جدید سرور ماینکرفت آماده شد!🚀</div>
+    <div class="blog-item" data-fa="پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.🌐" data-en="My personal website project updated with a new blog section.🌐">پروژه سایت شخصی من آپدیت شد و بخش بلاگ اضافه شد.🌐</div>
+    <div class="blog-item" data-fa="ایونت جدید در سرور🚀" data-en="New event on the server🚀">ایونت جدید در سرور🚀</div>
 </section>
 
-<section id="gallery-section" class="reveal">
+<section id="gallery-section">
     <h2 data-fa="گالری" data-en="Gallery">گالری</h2>
     <div class="gallery">
-        <div class="gallery-item"><img src="jade_chaloos.png" alt="چالوس"></div>
-        <div class="gallery-item"><img src="damavand_kohe.png" alt="دماوند"></div>
-        <div class="gallery-item"><img src="azadi_tehran.png" alt="آزادی"></div>
-        <div class="gallery-item"><img src="shiraz.png" alt="شیراز"></div>
-        <div class="gallery-item"><img src="esfahan.png" alt="اصفهان"></div>
-    </div>
-</section>
-
-<section class="reveal">
-    <h2 data-fa="پرسش و پاسخ" data-en="FAQ">پرسش و پاسخ</h2>
-    <div class="faq">
-        <div class="faq-item">
-            <div data-fa="این سایت با چه زبانی ساخته شده؟" data-en="What languages is this site built with?">این سایت با چه زبانی ساخته شده؟</div>
-            <div class="answer" data-fa="این سایت با HTML، CSS و JavaScript ساخته شده است." data-en="Built with HTML, CSS, and JS.">این سایت با HTML، CSS و JavaScript ساخته شده است.</div>
+        <div class="gallery-item">
+            <img src="jade_chaloos.png" alt="چالوس">
+            <div class="gallery-overlay" data-fa="استان مازندران / جاده زیبای چالوس" data-en="Mazandaran Province / Chaloos Road">استان مازندران / جاده زیبای چالوس</div>
         </div>
-        <div class="faq-item">
-            <div data-fa="آموزش به صورت رایگان میدی؟" data-en="Do you give free tutorials?">آموزش به صورت رایگان میدی؟</div>
-            <div class="answer" data-fa="آموزش میدم ولی رایگان نه" data-en="I teach, but not for free.">آموزش میدم ولی رایگان نه</div>
+        <div class="gallery-item">
+            <img src="damavand_kohe.png" alt="دماوند">
+            <div class="gallery-overlay" data-fa="استان مازندران / قله دماوند" data-en="Mazandaran Province / Mount Damavand">استان مازندران / قله دماوند</div>
         </div>
-        <div class="faq-item">
-            <div data-fa="میشه بیام توی سرورتون برای کمک؟" data-en="Can I join your server to help?">میشه بیام توی سرورتون برای کمک؟</div>
-            <div class="answer" data-fa="بله حتما با اینستاگرام به من بگو" data-en="Yes, contact me on IG.">بله حتما با اینستاگرام به من بگو</div>
+        <div class="gallery-item">
+            <img src="azadi_tehran.png" alt="آزادی">
+            <div class="gallery-overlay" data-fa="استان تهران / برج آزادی" data-en="Tehran Province / Azadi Tower">استان تهران / برج آزادی</div>
         </div>
-        <div class="faq-item">
-            <div data-fa="سفارش سایت و سرور میگیری؟" data-en="Do you take website/server orders?">سفارش سایت و سرور میگیری؟</div>
-            <div class="answer" data-fa="بله سایت و سرور ماینکرفت می‌سازم." data-en="Yes, I build sites and servers.">بله سایت و سرور ماینکرفت می‌سازم.</div>
+        <div class="gallery-item">
+            <img src="shiraz.png" alt="شیراز">
+            <div class="gallery-overlay" data-fa="استان فارس / حافظیه شیراز" data-en="Fars Province / Hafezieh Shiraz">استان فارس / حافظیه شیراز</div>
+        </div>
+        <div class="gallery-item">
+            <img src="esfahan.png" alt="اصفهان">
+            <div class="gallery-overlay" data-fa="استان اصفهان / میدان نقش جهان" data-en="Isfahan Province / Naqsh-e Jahan Square">استان اصفهان / میدان نقش جهان</div>
         </div>
     </div>
 </section>
 
-<section id="contact-section" class="reveal">
+<section class="faq">
+    <h2 data-fa="پرسش و پاسخ" data-en="FAQ">پرسش و پاسخ پر تکرار</h2>
+    <div class="faq-item">
+        <div class="question" data-fa="این سایت با چه زبانی ساخته شده؟" data-en="What languages is this site built with?">این سایت با چه زبانی ساخته شده؟</div>
+        <div class="answer" data-fa="این سایت با HTML، CSS و JavaScript ساخته شده است." data-en="This site is built with HTML, CSS, and JavaScript.">این سایت با HTML، CSS و JavaScript ساخته شده است.</div>
+    </div>
+    <div class="faq-item">
+        <div class="question" data-fa="آموزش به صورت رایگان میدی؟" data-en="Do you give free tutorials?">آموزش به صورت رایگان میدی؟</div>
+        <div class="answer" data-fa="آموزش میدم ولی رایگان نه" data-en="I provide tutorials, but not for free.">آموزش میدم ولی رایگان نه</div>
+    </div>
+    <div class="faq-item">
+        <div class="question" data-fa="میشه بیام توی سرورتون برای کمک؟" data-en="Can I join your server to help?">میشه بیام توی سرورتون برای کمک؟</div>
+        <div class="answer" data-fa="بله حتما با استفاده از فرم تماس و اینستاگرام به من بگو" data-en="Yes, definitely! Let me know via the contact form or Instagram.">بله حتما با استفاده از فرم تماس و اینستاگرام به من بگو</div>
+    </div>
+    <div class="faq-item">
+        <div class="question" data-fa="سفارش سایت و سرور میگیری؟" data-en="Do you take website/server orders?">سفارش سایت و سرور میگیری؟</div>
+        <div class="answer" data-fa="بله سایت و سرور ماینکرفت براتون می‌سازم ولی در ازای مبلغی" data-en="Yes, I can make websites and Minecraft servers for you for a fee.">بله سایت و سرور ماینکرفت براتون می‌سازم ولی در ازای مبلغی</div>
+    </div>
+</section>
+
+<section id="contact-section">
     <h2 data-fa="ارتباط با من" data-en="Contact Me">ارتباط با من</h2>
     <form action="https://formspree.io/f/mnngzdlw" method="POST">
-        <input type="text" name="name" required data-fa-placeholder="نام شما" data-en-placeholder="Your Name" placeholder="نام شما">
-        <input type="email" name="email" required data-fa-placeholder="ایمیل" data-en-placeholder="Email" placeholder="ایمیل">
-        <textarea name="message" rows="5" required data-fa-placeholder="پیام شما" data-en-placeholder="Your Message" placeholder="پیام شما"></textarea>
+        <input type="text" name="name" required placeholder="نام شما" data-fa-placeholder="نام شما" data-en-placeholder="Your Name">
+        <input type="email" name="email" required placeholder="ایمیل" data-fa-placeholder="ایمیل" data-en-placeholder="Email">
+        <textarea name="message" rows="5" required placeholder="پیام شما" data-fa-placeholder="پیام شما" data-en-placeholder="Message"></textarea>
         <button type="submit" data-fa="ارسال پیام" data-en="Send Message">ارسال پیام</button>
     </form>
 </section>
 
-<footer class="reveal">
-    <a href="https://instagram.com/arsam.khosh" target="_blank">Instagram: @arsam.khosh</a>
-    <p>© 2026 Arsam Khosh - All Rights Reserved.</p>
+<footer>
+    <div class="social-links">
+        <p data-fa="من را در فضای مجازی دنبال کنید:" data-en="Follow me on social media:" style="margin-bottom: 15px;">من را در فضای مجازی دنبال کنید:</p>
+        <a href="https://instagram.com/arsam.khosh" target="_blank" class="instagram-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ig-icon"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            <span>Instagram: @arsam.khosh</span>
+        </a>
+    </div>
+    <p class="copyright" data-fa="© 2026 آرسام خوش — تمامی حقوق محفوظ است" data-en="© 2026 Arsam Khosh — All Rights Reserved">© 2026 آرسام خوش — تمامی حقوق محفوظ است</p>
 </footer>
 
 <script>
-// ۱. لودینگ
+// Loading
 let load = 0;
 const fill = document.getElementById('loading-fill');
 const screen = document.getElementById('loading-screen');
-const loadingInt = setInterval(() => {
+const interval = setInterval(() => {
     load += 2;
     fill.style.width = load + '%';
     if(load >= 100) {
-        clearInterval(loadingInt);
+        clearInterval(interval);
         screen.style.display = 'none';
-        checkReveal();
+        revealSections();
     }
 }, 30);
 
-// ۲. دنباله موس
+// Moos
 const dot = document.querySelector('.cursor-dot');
 const outline = document.querySelector('.cursor-outline');
 window.addEventListener('mousemove', (e) => {
@@ -241,17 +281,33 @@ window.addEventListener('mousemove', (e) => {
     dot.style.top = e.clientY + 'px';
     outline.animate({ left: e.clientX + 'px', top: e.clientY + 'px' }, { duration: 500, fill: "forwards" });
 });
-document.querySelectorAll('a, button, input, textarea, .project-card, .faq-item').forEach(el => {
+
+// Interaction Moos
+document.querySelectorAll('a, button, .project-card, .faq-item, .gallery-item, input, textarea').forEach(el => {
     el.onmouseenter = () => outline.classList.add('cursor-hover');
     el.onmouseleave = () => outline.classList.remove('cursor-hover');
 });
 
-// ۳. تغییر زبان
-const btn = document.getElementById('lang-toggle');
+// Scroll Va Nemayesh
+function revealSections() {
+    document.querySelectorAll('header, section, footer').forEach(s => {
+        if(s.getBoundingClientRect().top < window.innerHeight - 100) s.classList.add('reveal');
+    });
+    document.querySelectorAll('.skill-fill').forEach(b => {
+        if(b.getBoundingClientRect().top < window.innerHeight) b.style.width = b.dataset.value;
+    });
+}
+window.addEventListener('scroll', () => {
+    document.querySelector('nav').classList.toggle('visible', window.scrollY > 50);
+    revealSections();
+});
+
+// Zaban
+const langBtn = document.getElementById('lang-toggle');
 let isEn = false;
-btn.onclick = () => {
+langBtn.onclick = () => {
     isEn = !isEn;
-    btn.textContent = isEn ? 'FA' : 'EN';
+    langBtn.textContent = isEn ? 'FA' : 'EN';
     document.querySelectorAll('[data-fa]').forEach(el => {
         if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
             el.placeholder = isEn ? el.dataset.enPlaceholder : el.dataset.faPlaceholder;
@@ -261,21 +317,7 @@ btn.onclick = () => {
     });
 };
 
-// ۴. افکت اسکرول
-function checkReveal() {
-    document.querySelectorAll('section, footer').forEach(s => {
-        if(s.getBoundingClientRect().top < window.innerHeight - 100) s.classList.add('reveal');
-    });
-    document.querySelectorAll('.skill-fill').forEach(b => {
-        if(b.getBoundingClientRect().top < window.innerHeight) b.style.width = b.dataset.value;
-    });
-}
-window.addEventListener('scroll', () => {
-    document.querySelector('nav').classList.toggle('visible', window.scrollY > 50);
-    checkReveal();
-});
-
-// ۵. FAQ
+// FAQ
 document.querySelectorAll('.faq-item').forEach(i => {
     i.onclick = () => {
         const a = i.querySelector('.answer');
@@ -283,7 +325,7 @@ document.querySelectorAll('.faq-item').forEach(i => {
     }
 });
 
-// ۶. لایک
+// Like
 document.querySelectorAll('.like-btn').forEach(b => {
     b.onclick = (e) => {
         e.stopPropagation();
