@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>برق‌یار تهران - سامانه اطلاع‌رسانی خاموشی‌ها</title>
+    <!-- Vazirmatn Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Background Neon Glows -->
+    <div class="neon-background">
+        <div class="glow-blob blob-1"></div>
+        <div class="glow-blob blob-2"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="glass-panel header-panel">
+            <div class="brand">
+                <div class="lightning-icon-wrapper">
+                    <i class="fa-solid fa-bolt-lightning neon-pulse"></i>
+                </div>
+                <div class="brand-title">
+                    <h1>برق‌یار تهران</h1>
+                    <span id="selectedAreaHeader">غرب تهران</span>
+                </div>
+            </div>
+            
+            <div class="header-meta">
+                <div class="meta-item">
+                    <i class="fa-regular fa-calendar-days"></i>
+                    <span id="headerDate">--/--/--</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fa-regular fa-clock"></i>
+                    <span id="headerClock">--:--:--</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Dashboard Card -->
+        <section class="glass-panel summary-panel">
+            <div class="summary-info">
+                <h2>خاموشی‌های امروز غرب تهران</h2>
+                <p>برنامه رسمی و منظم قطع برق نواحی مختلف تهران</p>
+            </div>
+            <div class="stats-row">
+                <div class="stat-box">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <div>
+                        <span class="stat-number" id="statCount">0</span>
+                        <span class="stat-label">مناطق درگیر</span>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <i class="fa-solid fa-rotate"></i>
+                    <div>
+                        <span class="stat-number" id="statUpdate">--:--</span>
+                        <span class="stat-label">آخرین بروزرسانی</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Bar Section -->
+        <section class="search-section">
+            <div class="search-box glass-panel">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" placeholder="جستجوی محله (مثلاً: شهرک غرب، پونک، سعادت آباد)...">
+                <button id="clearSearch" class="clear-btn" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </section>
+
+        <!-- Outage Cards Grid -->
+        <main class="grid-container" id="cardsGrid">
+            <!-- Cards will be injected dynamically from config.js -->
+        </main>
+
+        <!-- Empty State (Hidden by default) -->
+        <div class="glass-panel empty-state" id="emptyState" style="display: none;">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <h3>محله مورد نظر یافت نشد</h3>
+            <p>لطفاً نام محله دیگری را جستجو کنید یا املای آن را بررسی نمایید.</p>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>سامانه اطلاع‌رسانی هوشمند برق‌یار  غرب تهران ساخته شده توسط Arsam &copy; ۱۴۰۵</p>
+        </footer>
+    </div>
+
+    <!-- Configuration File -->
+    <script src="config.js"></script>
+    <!-- Main Logic Script -->
+    <script src="script.js"></script>
+</body>
+</html>
