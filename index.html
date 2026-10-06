@@ -6,12 +6,13 @@
 
   <title>ارزیابی تهران | قیمت لحظه‌ای ارز و طلا</title>
 
-  <!-- Favicon سایت -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="arzyabi2.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     * {
       box-sizing: border-box;
@@ -95,13 +96,23 @@
     }
 
     @keyframes auraFloat1 {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(-30px, 40px) scale(1.1); }
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      100% {
+        transform: translate(-30px, 40px) scale(1.1);
+      }
     }
 
     @keyframes auraFloat2 {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(40px, -30px) scale(1.05); }
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      100% {
+        transform: translate(40px, -30px) scale(1.05);
+      }
     }
 
     .container {
@@ -124,9 +135,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, rgba(243, 202, 108, 0.25), rgba(255, 255, 255, 0.03));
+      background: linear-gradient(
+        135deg,
+        rgba(243, 202, 108, 0.25),
+        rgba(255, 255, 255, 0.03)
+      );
       border: 1px solid rgba(243, 202, 108, 0.4);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 25px var(--gold-glow);
+      box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.4),
+        0 0 25px var(--gold-glow);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       font-size: 30px;
@@ -136,7 +153,11 @@
       font-size: clamp(24px, 5vw, 36px);
       font-weight: 800;
       letter-spacing: -0.5px;
-      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #cbd5e1 100%
+      );
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 6px;
@@ -184,9 +205,20 @@
     }
 
     @keyframes pulse {
-      0% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
-      100% { opacity: 1; transform: scale(1); }
+      0% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.4;
+        transform: scale(0.85);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     .search-box {
@@ -259,7 +291,11 @@
     }
 
     .tab.active {
-      background: linear-gradient(135deg, rgba(243, 202, 108, 0.2), rgba(243, 202, 108, 0.05));
+      background: linear-gradient(
+        135deg,
+        rgba(243, 202, 108, 0.2),
+        rgba(243, 202, 108, 0.05)
+      );
       color: var(--gold);
       border-color: rgba(243, 202, 108, 0.4);
       box-shadow: 0 4px 15px var(--gold-glow);
@@ -321,7 +357,11 @@
       bottom: 0;
       left: 0;
       border-radius: 18px;
-      background: radial-gradient(circle at top right, var(--gold-glow), transparent 70%);
+      background: radial-gradient(
+        circle at top right,
+        var(--gold-glow),
+        transparent 70%
+      );
       opacity: 0;
       transition: opacity 0.3s ease;
       pointer-events: none;
@@ -336,7 +376,9 @@
     .price-card:active {
       transform: translateY(-3px);
       border-color: var(--card-hover-border);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 18px var(--gold-glow);
+      box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.4),
+        0 0 18px var(--gold-glow);
     }
 
     .card-top {
@@ -419,6 +461,7 @@
       min-height: 20px;
       font-size: 11px;
       line-height: 1;
+      flex-wrap: wrap;
     }
 
     .daily-change .arrow {
@@ -455,6 +498,110 @@
       text-shadow: 0 0 10px var(--red-glow);
     }
 
+    /* =========================
+       UPDATE NOTICE
+       ========================= */
+
+    .update-notice {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%) translateY(30px);
+      width: min(92%, 460px);
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(15, 18, 27, 0.96);
+      border: 1px solid rgba(243, 202, 108, 0.35);
+      box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.55),
+        0 0 30px rgba(243, 202, 108, 0.12);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
+    }
+
+    .update-notice.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .update-notice-content {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .update-notice-icon {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      border-radius: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(243, 202, 108, 0.12);
+      border: 1px solid rgba(243, 202, 108, 0.2);
+      color: var(--gold);
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .update-notice-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .update-notice-title {
+      color: var(--text-main);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .update-notice-description {
+      color: var(--text-muted);
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    .update-notice-button {
+      width: 100%;
+      margin-top: 12px;
+      height: 42px;
+      border: 0;
+      border-radius: 12px;
+      background: linear-gradient(
+        135deg,
+        var(--gold),
+        #d9aa45
+      );
+      color: #111;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow:
+        0 6px 18px rgba(243, 202, 108, 0.18);
+    }
+
+    .update-notice-button:hover {
+      transform: translateY(-1px);
+      box-shadow:
+        0 8px 22px rgba(243, 202, 108, 0.28);
+    }
+
+    .update-notice-button:active {
+      transform: scale(0.98);
+    }
+
     footer {
       margin-top: 40px;
       padding-top: 24px;
@@ -473,7 +620,11 @@
       border-radius: 14px;
       text-decoration: none;
       color: var(--text-main);
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.05));
+      background: linear-gradient(
+        135deg,
+        rgba(59, 130, 246, 0.2),
+        rgba(59, 130, 246, 0.05)
+      );
       border: 1px solid rgba(59, 130, 246, 0.35);
       font-weight: 600;
       transition: all 0.25s ease;
@@ -546,6 +697,26 @@
         width: 100vw;
         height: 100vw;
       }
+
+      .update-notice {
+        bottom: 14px;
+        width: calc(100% - 20px);
+        padding: 14px;
+      }
+
+      .update-notice-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 19px;
+      }
+
+      .update-notice-title {
+        font-size: 12px;
+      }
+
+      .update-notice-description {
+        font-size: 10px;
+      }
     }
 
     @media (max-width: 380px) {
@@ -567,20 +738,44 @@
   <div class="container">
 
     <header>
+
       <div class="logo">📊</div>
+
       <h1>ارزیابی تهران</h1>
-      <div class="subtitle">قیمت لحظه‌ای ارز، طلا، سکه و حواله‌جات</div>
+
+      <div class="subtitle">
+        قیمت لحظه‌ای ارز، طلا، سکه و حواله‌جات
+      </div>
 
       <div id="status" class="status">
         <span class="status-dot"></span>
-        <span id="statusText">در حال دریافت اطلاعات...</span>
+        <span id="statusText">
+          در حال دریافت اطلاعات...
+        </span>
       </div>
+
     </header>
 
     <div class="search-box">
-      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+      <svg
+        class="search-icon"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
         <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        <line
+          x1="21"
+          y1="21"
+          x2="16.65"
+          y2="16.65"
+        ></line>
       </svg>
 
       <input
@@ -589,21 +784,53 @@
         placeholder="جستجوی سریع (مثلا: یورو، USD، طلا)..."
         autocomplete="off"
       >
+
     </div>
 
     <div class="tabs">
-      <button class="tab active" data-category="all">⚡ همه موارد</button>
-      <button class="tab" data-category="currency">💵 ارزهای رایج</button>
-      <button class="tab" data-category="gold">🥇 طلا و انس</button>
-      <button class="tab" data-category="havaleh">💱 حواله‌ها</button>
+
+      <button
+        class="tab active"
+        data-category="all"
+      >
+        ⚡ همه موارد
+      </button>
+
+      <button
+        class="tab"
+        data-category="currency"
+      >
+        💵 ارزهای رایج
+      </button>
+
+      <button
+        class="tab"
+        data-category="gold"
+      >
+        🥇 طلا و انس
+      </button>
+
+      <button
+        class="tab"
+        data-category="havaleh"
+      >
+        💱 حواله‌ها
+      </button>
+
     </div>
 
     <main id="content"></main>
 
     <footer>
+
       <div>
         آخرین بروزرسانی داده‌ها:
-        <strong id="updatedAt" style="color: var(--text-main);">---</strong>
+        <strong
+          id="updatedAt"
+          style="color: var(--text-main);"
+        >
+          ---
+        </strong>
       </div>
 
       <div class="updated">
@@ -616,18 +843,76 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
           <path d="M22 2L11 13"></path>
-          <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+          <path
+            d="M22 2l-7 20-4-9-9-4 20-7z"
+          ></path>
         </svg>
+
         عضویت در کانال تلگرام
+
       </a>
+
     </footer>
 
   </div>
 
+  <!-- =========================
+       UPDATE NOTICE
+       ========================= -->
+
+  <div
+    id="updateNotice"
+    class="update-notice"
+    role="alert"
+    aria-live="polite"
+  >
+
+    <div class="update-notice-content">
+
+      <div class="update-notice-icon">
+        ↻
+      </div>
+
+      <div class="update-notice-text">
+
+        <div class="update-notice-title">
+          به نظر می‌رسد قیمت‌ها به‌روز شده‌اند
+        </div>
+
+        <div class="update-notice-description">
+          برای دریافت آخرین قیمت‌ها، صفحه را رفرش کنید.
+        </div>
+
+      </div>
+
+    </div>
+
+    <button
+      id="refreshPageButton"
+      class="update-notice-button"
+      type="button"
+    >
+      دریافت آخرین قیمت‌ها
+    </button>
+
+  </div>
+
   <script>
-    const API_URL = "https://dolar.arsam2260139122.workers.dev/api/site";
+
+    const API_URL =
+      "https://dolar.arsam2260139122.workers.dev/api/site";
 
     const items = [
 
@@ -912,109 +1197,153 @@
         unit: "تومان",
         flag: "https://flagcdn.com/w40/ae.png"
       }
+
     ];
 
     let prices = {};
     let activeCategory = "all";
     let searchText = "";
 
-    /*
-     * ==========================================
-     * DAILY CHANGE SYSTEM
-     * ==========================================
-     *
-     * برای هر روز یک کلید جداگانه ساخته می‌شود.
-     * مثال:
-     * arzyabi_daily_start_2026-10-06
-     */
+    // =========================
+    // DAILY CHANGE SYSTEM
+    // =========================
 
     function getTehranDateKey() {
-      const parts = new Intl.DateTimeFormat("en-CA", {
-        timeZone: "Asia/Tehran",
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit"
-      }).formatToParts(new Date());
+
+      const parts =
+        new Intl.DateTimeFormat("en-CA", {
+          timeZone: "Asia/Tehran",
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit"
+        }).formatToParts(new Date());
 
       const data = {};
 
       parts.forEach(part => {
+
         if (part.type !== "literal") {
           data[part.type] = part.value;
         }
+
       });
 
       return `${data.year}-${data.month}-${data.day}`;
     }
 
     function getDailyStorageKey() {
-      return "arzyabi_daily_start_" + getTehranDateKey();
+      return "arzyabi_daily_start_" +
+        getTehranDateKey();
     }
 
     function getDailyStartPrices() {
+
       try {
-        const key = getDailyStorageKey();
-        const saved = localStorage.getItem(key);
+
+        const key =
+          getDailyStorageKey();
+
+        const saved =
+          localStorage.getItem(key);
 
         if (!saved) return {};
 
-        const parsed = JSON.parse(saved);
+        const parsed =
+          JSON.parse(saved);
 
-        if (!parsed || typeof parsed !== "object") {
+        if (
+          !parsed ||
+          typeof parsed !== "object"
+        ) {
           return {};
         }
 
         return parsed;
+
       } catch (error) {
-        console.error("Daily start prices error:", error);
+
+        console.error(
+          "Daily start prices error:",
+          error
+        );
+
         return {};
       }
     }
 
     function saveDailyStartPrices(data) {
+
       try {
+
         localStorage.setItem(
           getDailyStorageKey(),
           JSON.stringify(data)
         );
+
       } catch (error) {
-        console.error("Save daily prices error:", error);
+
+        console.error(
+          "Save daily prices error:",
+          error
+        );
       }
     }
 
-    function initializeDailyStartPrices(currentPrices) {
-      const dailyStart = getDailyStartPrices();
+    function initializeDailyStartPrices(
+      currentPrices
+    ) {
+
+      const dailyStart =
+        getDailyStartPrices();
+
       let changed = false;
 
       items.forEach(item => {
-        const value = Number(currentPrices[item.key]);
+
+        const value =
+          Number(currentPrices[item.key]);
 
         if (
           dailyStart[item.key] === undefined &&
           Number.isFinite(value) &&
           value > 0
         ) {
-          dailyStart[item.key] = value;
+
+          dailyStart[item.key] =
+            value;
+
           changed = true;
         }
+
       });
 
       if (changed) {
-        saveDailyStartPrices(dailyStart);
+        saveDailyStartPrices(
+          dailyStart
+        );
       }
 
       return dailyStart;
     }
 
-    function calculateDailyChange(item, currentValue, dailyStart) {
-      const value = Number(currentValue);
-      const start = Number(dailyStart[item.key]);
+    function calculateDailyChange(
+      item,
+      currentValue,
+      dailyStart
+    ) {
+
+      const value =
+        Number(currentValue);
+
+      const start =
+        Number(dailyStart[item.key]);
 
       if (
         !Number.isFinite(value) ||
         !Number.isFinite(start) ||
         start <= 0
       ) {
+
         return {
           direction: "neutral",
           amount: 0,
@@ -1022,10 +1351,14 @@
         };
       }
 
-      const amount = value - start;
-      const percent = (amount / start) * 100;
+      const amount =
+        value - start;
+
+      const percent =
+        (amount / start) * 100;
 
       if (amount > 0) {
+
         return {
           direction: "positive",
           amount,
@@ -1034,6 +1367,7 @@
       }
 
       if (amount < 0) {
+
         return {
           direction: "negative",
           amount,
@@ -1049,6 +1383,7 @@
     }
 
     function formatNumber(value) {
+
       if (
         value === null ||
         value === undefined ||
@@ -1058,270 +1393,423 @@
         return "---";
       }
 
-      return Number(value).toLocaleString("fa-IR");
+      return Number(value)
+        .toLocaleString("fa-IR");
     }
 
     function formatChangeAmount(value) {
-      const number = Number(value);
+
+      const number =
+        Number(value);
 
       if (!Number.isFinite(number)) {
         return "---";
       }
 
       if (number > 0) {
-        return "+" + formatNumber(number);
+        return "+" +
+          formatNumber(number);
       }
 
       if (number < 0) {
-        return "−" + formatNumber(Math.abs(number));
+        return "−" +
+          formatNumber(
+            Math.abs(number)
+          );
       }
 
       return "0";
     }
 
     function formatPercent(value) {
-      const number = Number(value);
+
+      const number =
+        Number(value);
 
       if (!Number.isFinite(number)) {
         return "0.00%";
       }
 
       if (number > 0) {
-        return "+" + number.toFixed(2) + "%";
+        return "+" +
+          number.toFixed(2) +
+          "%";
       }
 
       if (number < 0) {
-        return "−" + Math.abs(number).toFixed(2) + "%";
+        return "−" +
+          Math.abs(number).toFixed(2) +
+          "%";
       }
 
       return "0.00%";
     }
 
     function formatDate(timestamp) {
-      if (!timestamp) return "---";
 
-      const date = new Date(Number(timestamp));
-
-      if (Number.isNaN(date.getTime())) {
+      if (!timestamp) {
         return "---";
       }
 
-      return date.toLocaleString("fa-IR", {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-        hour: "2-digit",
-        minute: "2-digit"
-      });
+      const date =
+        new Date(Number(timestamp));
+
+      if (
+        Number.isNaN(
+          date.getTime()
+        )
+      ) {
+        return "---";
+      }
+
+      return date.toLocaleString(
+        "fa-IR",
+        {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit"
+        }
+      );
     }
 
-    function renderDailyChange(item, value, dailyStart) {
-      const change = calculateDailyChange(
-        item,
-        value,
-        dailyStart
-      );
+    function renderDailyChange(
+      item,
+      value,
+      dailyStart
+    ) {
 
-      if (change.direction === "positive") {
+      const change =
+        calculateDailyChange(
+          item,
+          value,
+          dailyStart
+        );
+
+      if (
+        change.direction ===
+        "positive"
+      ) {
+
         return `
           <div class="daily-change positive">
-            <span class="arrow">↑</span>
-            <span class="change-value">
-              ${formatChangeAmount(change.amount)} ${item.unit}
+
+            <span class="arrow">
+              ↑
             </span>
+
+            <span class="change-value">
+              ${formatChangeAmount(change.amount)}
+              ${item.unit}
+            </span>
+
             <span class="change-percent">
               ${formatPercent(change.percent)}
             </span>
+
           </div>
         `;
       }
 
-      if (change.direction === "negative") {
+      if (
+        change.direction ===
+        "negative"
+      ) {
+
         return `
           <div class="daily-change negative">
-            <span class="arrow">↓</span>
-            <span class="change-value">
-              ${formatChangeAmount(change.amount)} ${item.unit}
+
+            <span class="arrow">
+              ↓
             </span>
+
+            <span class="change-value">
+              ${formatChangeAmount(change.amount)}
+              ${item.unit}
+            </span>
+
             <span class="change-percent">
               ${formatPercent(change.percent)}
             </span>
+
           </div>
         `;
       }
 
       return `
         <div class="daily-change neutral">
-          <span class="arrow">—</span>
-          <span class="change-value">بدون تغییر</span>
-          <span class="change-percent">0.00%</span>
+
+          <span class="arrow">
+            —
+          </span>
+
+          <span class="change-value">
+            بدون تغییر
+          </span>
+
+          <span class="change-percent">
+            0.00%
+          </span>
+
         </div>
       `;
     }
 
+    // =========================
+    // RENDER
+    // =========================
+
     function render() {
-      const content = document.getElementById("content");
+
+      const content =
+        document.getElementById(
+          "content"
+        );
 
       content.innerHTML = "";
 
-      const dailyStart = getDailyStartPrices();
+      const dailyStart =
+        getDailyStartPrices();
 
-      const filtered = items.filter(item => {
-        const categoryMatch =
-          activeCategory === "all" ||
-          item.category === activeCategory;
+      const filtered =
+        items.filter(item => {
 
-        const searchMatch =
-          !searchText ||
-          item.name.toLowerCase().includes(searchText) ||
-          item.code.toLowerCase().includes(searchText);
+          const categoryMatch =
+            activeCategory === "all" ||
+            item.category ===
+              activeCategory;
 
-        return categoryMatch && searchMatch;
-      });
+          const searchMatch =
+            !searchText ||
+            item.name
+              .toLowerCase()
+              .includes(searchText) ||
+            item.code
+              .toLowerCase()
+              .includes(searchText);
+
+          return (
+            categoryMatch &&
+            searchMatch
+          );
+        });
 
       const categories = [
+
         {
           id: "currency",
           title: "ارزهای رایج",
           icon: "💵"
         },
+
         {
           id: "gold",
           title: "طلا و شاخص‌ها",
           icon: "🥇"
         },
+
         {
           id: "havaleh",
           title: "حواله‌جات",
           icon: "💱"
         }
+
       ];
 
-      categories.forEach(category => {
+      categories.forEach(
+        category => {
 
-        if (
-          activeCategory !== "all" &&
-          activeCategory !== category.id
-        ) {
-          return;
-        }
+          if (
+            activeCategory !==
+              "all" &&
+            activeCategory !==
+              category.id
+          ) {
+            return;
+          }
 
-        const categoryItems = filtered.filter(
-          item => item.category === category.id
-        );
-
-        if (!categoryItems.length) return;
-
-        const section = document.createElement("section");
-        section.className = "section";
-
-        const title = document.createElement("div");
-        title.className = "section-title";
-
-        title.innerHTML = `
-          <span>${category.icon}</span>
-          ${category.title}
-        `;
-
-        const grid = document.createElement("div");
-        grid.className = "grid";
-
-        categoryItems.forEach(item => {
-
-          const card = document.createElement("div");
-          card.className = "price-card";
-
-          const value = prices[item.key];
-
-          const flagHtml = item.flag
-            ? `
-              <img
-                class="flag"
-                src="${item.flag}"
-                alt=""
-                loading="lazy"
-                onerror="this.style.display='none'"
-              >
-            `
-            : "";
-
-          const dailyChangeHtml =
-            renderDailyChange(
-              item,
-              value,
-              dailyStart
+          const categoryItems =
+            filtered.filter(
+              item =>
+                item.category ===
+                category.id
             );
 
-          card.innerHTML = `
-            <div class="card-top">
+          if (
+            !categoryItems.length
+          ) {
+            return;
+          }
 
-              <div class="name-wrap">
-                ${flagHtml}
-                <div class="name">
-                  ${item.name}
-                </div>
-              </div>
+          const section =
+            document.createElement(
+              "section"
+            );
 
-              <div class="code">
-                ${item.code}
-              </div>
+          section.className =
+            "section";
 
-            </div>
+          const title =
+            document.createElement(
+              "div"
+            );
 
-            <div class="price-container">
+          title.className =
+            "section-title";
 
-              <div class="price">
-                ${formatNumber(value)}
-              </div>
+          title.innerHTML = `
+            <span>
+              ${category.icon}
+            </span>
 
-              <div class="unit">
-                ${item.unit}
-              </div>
-
-              ${dailyChangeHtml}
-
-            </div>
+            ${category.title}
           `;
 
-          grid.appendChild(card);
-        });
+          const grid =
+            document.createElement(
+              "div"
+            );
 
-        section.appendChild(title);
-        section.appendChild(grid);
+          grid.className =
+            "grid";
 
-        content.appendChild(section);
-      });
+          categoryItems.forEach(
+            item => {
+
+              const card =
+                document.createElement(
+                  "div"
+                );
+
+              card.className =
+                "price-card";
+
+              const value =
+                prices[item.key];
+
+              const flagHtml =
+                item.flag
+                  ? `
+                    <img
+                      class="flag"
+                      src="${item.flag}"
+                      alt=""
+                      loading="lazy"
+                      onerror="this.style.display='none'"
+                    >
+                  `
+                  : "";
+
+              const dailyChangeHtml =
+                renderDailyChange(
+                  item,
+                  value,
+                  dailyStart
+                );
+
+              card.innerHTML = `
+
+                <div class="card-top">
+
+                  <div class="name-wrap">
+
+                    ${flagHtml}
+
+                    <div class="name">
+                      ${item.name}
+                    </div>
+
+                  </div>
+
+                  <div class="code">
+                    ${item.code}
+                  </div>
+
+                </div>
+
+                <div class="price-container">
+
+                  <div class="price">
+                    ${formatNumber(value)}
+                  </div>
+
+                  <div class="unit">
+                    ${item.unit}
+                  </div>
+
+                  ${dailyChangeHtml}
+
+                </div>
+              `;
+
+              grid.appendChild(
+                card
+              );
+
+            }
+          );
+
+          section.appendChild(
+            title
+          );
+
+          section.appendChild(
+            grid
+          );
+
+          content.appendChild(
+            section
+          );
+
+        }
+      );
     }
+
+    // =========================
+    // LOAD PRICES
+    // =========================
 
     async function loadPrices() {
 
       const status =
-        document.getElementById("status");
+        document.getElementById(
+          "status"
+        );
 
       const statusText =
-        document.getElementById("statusText");
+        document.getElementById(
+          "statusText"
+        );
 
-      status.className = "status";
+      status.className =
+        "status";
 
       statusText.textContent =
         "در حال بروزرسانی قیمت‌ها...";
 
       try {
 
-        const response = await fetch(
-          API_URL + "?t=" + Date.now(),
-          {
-            method: "GET",
-            headers: {
-              "Accept": "application/json"
-            },
-            cache: "no-store"
-          }
-        );
+        const response =
+          await fetch(
+            API_URL +
+              "?t=" +
+              Date.now(),
+            {
+              method: "GET",
+              headers: {
+                "Accept":
+                  "application/json"
+              },
+              cache: "no-store"
+            }
+          );
 
         if (!response.ok) {
+
           throw new Error(
-            "HTTP " + response.status
+            "HTTP " +
+            response.status
           );
         }
 
@@ -1333,18 +1821,18 @@
           result.success !== true ||
           !result.prices
         ) {
+
           throw new Error(
             "Invalid API response"
           );
         }
 
-        prices = result.prices;
+        prices =
+          result.prices;
 
-        /*
-         * ثبت قیمت شروع روز
-         * فقط اگر برای آن ارز هنوز مبنا وجود نداشته باشد.
-         */
-        initializeDailyStartPrices(prices);
+        initializeDailyStartPrices(
+          prices
+        );
 
         localStorage.setItem(
           "arzyabi_tehran_prices",
@@ -1353,12 +1841,14 @@
 
         document.getElementById(
           "updatedAt"
-        ).textContent = formatDate(
-          prices.timestamp ||
-          result.updatedAt
-        );
+        ).textContent =
+          formatDate(
+            prices.timestamp ||
+            result.updatedAt
+          );
 
-        status.className = "status ok";
+        status.className =
+          "status ok";
 
         statusText.textContent =
           "قیمت‌ها بروزرسانی شدند";
@@ -1389,7 +1879,8 @@
               result.prices
             ) {
 
-              prices = result.prices;
+              prices =
+                result.prices;
 
               initializeDailyStartPrices(
                 prices
@@ -1421,7 +1912,6 @@
             "Cache error:",
             cacheError
           );
-
         }
 
         status.className =
@@ -1462,8 +1952,10 @@
               button.dataset.category;
 
             render();
+
           }
         );
+
       });
 
     // =========================
@@ -1482,6 +1974,77 @@
               .toLowerCase();
 
           render();
+
+        }
+      );
+
+    // =========================
+    // UPDATE NOTICE
+    // =========================
+
+    const UPDATE_NOTICE_DELAY =
+      15 * 60 * 1000;
+
+    let updateNoticeTimer =
+      null;
+
+    function showUpdateNotice() {
+
+      const notice =
+        document.getElementById(
+          "updateNotice"
+        );
+
+      if (!notice) return;
+
+      notice.classList.add(
+        "show"
+      );
+    }
+
+    function hideUpdateNotice() {
+
+      const notice =
+        document.getElementById(
+          "updateNotice"
+        );
+
+      if (!notice) return;
+
+      notice.classList.remove(
+        "show"
+      );
+    }
+
+    function startUpdateNoticeTimer() {
+
+      if (updateNoticeTimer) {
+
+        clearTimeout(
+          updateNoticeTimer
+        );
+      }
+
+      updateNoticeTimer =
+        setTimeout(
+          showUpdateNotice,
+          UPDATE_NOTICE_DELAY
+        );
+    }
+
+    document
+      .getElementById(
+        "refreshPageButton"
+      )
+      .addEventListener(
+        "click",
+        () => {
+
+          hideUpdateNotice();
+
+          // رفرش کامل صفحه
+          window.location.reload();
+
         }
       );
 
@@ -1491,14 +2054,11 @@
 
     loadPrices();
 
-    // بروزرسانی هر ۱۵ دقیقه
-    setInterval(
-      loadPrices,
-      15 * 60 * 1000
-    );
+    // بعد از ۱۵ دقیقه فقط پیام نمایش داده می‌شود
+    // و سایت خودش رفرش یا قیمت‌ها را تغییر نمی‌دهد.
+    startUpdateNoticeTimer();
 
   </script>
 
 </body>
 </html>
-```
