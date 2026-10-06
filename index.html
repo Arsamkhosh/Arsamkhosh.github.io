@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -147,6 +148,16 @@
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       font-size: 30px;
+      overflow: hidden;
+    }
+
+    /* عکس لوگوی شخصی */
+    .logo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: 21px;
     }
 
     h1 {
@@ -739,7 +750,13 @@
 
     <header>
 
-      <div class="logo">📊</div>
+      <!-- عکس خودت -->
+      <div class="logo">
+        <img
+          src="profile.png"
+          alt="ارزیابی تهران"
+        >
+      </div>
 
       <h1>ارزیابی تهران</h1>
 
@@ -916,10 +933,6 @@
 
     const items = [
 
-      // =========================
-      // CURRENCY
-      // =========================
-
       {
         id: "dollar",
         name: "دلار آمریکا",
@@ -1060,10 +1073,6 @@
         flag: "https://flagcdn.com/w40/af.png"
       },
 
-      // =========================
-      // GOLD
-      // =========================
-
       {
         id: "gold18",
         name: "طلای ۱۸ عیار",
@@ -1103,10 +1112,6 @@
         unit: "دلار",
         flag: null
       },
-
-      // =========================
-      // HAVALEH
-      // =========================
 
       {
         id: "eur_hav",
@@ -1203,10 +1208,6 @@
     let prices = {};
     let activeCategory = "all";
     let searchText = "";
-
-    // =========================
-    // DAILY CHANGE SYSTEM
-    // =========================
 
     function getTehranDateKey() {
 
@@ -1494,20 +1495,14 @@
 
         return `
           <div class="daily-change positive">
-
-            <span class="arrow">
-              ↑
-            </span>
-
+            <span class="arrow">↑</span>
             <span class="change-value">
               ${formatChangeAmount(change.amount)}
               ${item.unit}
             </span>
-
             <span class="change-percent">
               ${formatPercent(change.percent)}
             </span>
-
           </div>
         `;
       }
@@ -1519,53 +1514,35 @@
 
         return `
           <div class="daily-change negative">
-
-            <span class="arrow">
-              ↓
-            </span>
-
+            <span class="arrow">↓</span>
             <span class="change-value">
               ${formatChangeAmount(change.amount)}
               ${item.unit}
             </span>
-
             <span class="change-percent">
               ${formatPercent(change.percent)}
             </span>
-
           </div>
         `;
       }
 
       return `
         <div class="daily-change neutral">
-
-          <span class="arrow">
-            —
-          </span>
-
+          <span class="arrow">—</span>
           <span class="change-value">
             بدون تغییر
           </span>
-
           <span class="change-percent">
             0.00%
           </span>
-
         </div>
       `;
     }
 
-    // =========================
-    // RENDER
-    // =========================
-
     function render() {
 
       const content =
-        document.getElementById(
-          "content"
-        );
+        document.getElementById("content");
 
       content.innerHTML = "";
 
@@ -1577,8 +1554,7 @@
 
           const categoryMatch =
             activeCategory === "all" ||
-            item.category ===
-              activeCategory;
+            item.category === activeCategory;
 
           const searchMatch =
             !searchText ||
@@ -1596,194 +1572,146 @@
         });
 
       const categories = [
-
         {
           id: "currency",
           title: "ارزهای رایج",
           icon: "💵"
         },
-
         {
           id: "gold",
           title: "طلا و شاخص‌ها",
           icon: "🥇"
         },
-
         {
           id: "havaleh",
           title: "حواله‌جات",
           icon: "💱"
         }
-
       ];
 
-      categories.forEach(
-        category => {
+      categories.forEach(category => {
 
-          if (
-            activeCategory !==
-              "all" &&
-            activeCategory !==
-              category.id
-          ) {
-            return;
-          }
+        if (
+          activeCategory !== "all" &&
+          activeCategory !== category.id
+        ) {
+          return;
+        }
 
-          const categoryItems =
-            filtered.filter(
-              item =>
-                item.category ===
-                category.id
+        const categoryItems =
+          filtered.filter(
+            item =>
+              item.category === category.id
+          );
+
+        if (!categoryItems.length) {
+          return;
+        }
+
+        const section =
+          document.createElement("section");
+
+        section.className = "section";
+
+        const title =
+          document.createElement("div");
+
+        title.className =
+          "section-title";
+
+        title.innerHTML = `
+          <span>${category.icon}</span>
+          ${category.title}
+        `;
+
+        const grid =
+          document.createElement("div");
+
+        grid.className = "grid";
+
+        categoryItems.forEach(item => {
+
+          const card =
+            document.createElement("div");
+
+          card.className =
+            "price-card";
+
+          const value =
+            prices[item.key];
+
+          const flagHtml =
+            item.flag
+              ? `
+                <img
+                  class="flag"
+                  src="${item.flag}"
+                  alt=""
+                  loading="lazy"
+                  onerror="this.style.display='none'"
+                >
+              `
+              : "";
+
+          const dailyChangeHtml =
+            renderDailyChange(
+              item,
+              value,
+              dailyStart
             );
 
-          if (
-            !categoryItems.length
-          ) {
-            return;
-          }
+          card.innerHTML = `
+            <div class="card-top">
 
-          const section =
-            document.createElement(
-              "section"
-            );
+              <div class="name-wrap">
+                ${flagHtml}
 
-          section.className =
-            "section";
+                <div class="name">
+                  ${item.name}
+                </div>
+              </div>
 
-          const title =
-            document.createElement(
-              "div"
-            );
+              <div class="code">
+                ${item.code}
+              </div>
 
-          title.className =
-            "section-title";
+            </div>
 
-          title.innerHTML = `
-            <span>
-              ${category.icon}
-            </span>
+            <div class="price-container">
 
-            ${category.title}
+              <div class="price">
+                ${formatNumber(value)}
+              </div>
+
+              <div class="unit">
+                ${item.unit}
+              </div>
+
+              ${dailyChangeHtml}
+
+            </div>
           `;
 
-          const grid =
-            document.createElement(
-              "div"
-            );
+          grid.appendChild(card);
 
-          grid.className =
-            "grid";
+        });
 
-          categoryItems.forEach(
-            item => {
+        section.appendChild(title);
+        section.appendChild(grid);
+        content.appendChild(section);
 
-              const card =
-                document.createElement(
-                  "div"
-                );
-
-              card.className =
-                "price-card";
-
-              const value =
-                prices[item.key];
-
-              const flagHtml =
-                item.flag
-                  ? `
-                    <img
-                      class="flag"
-                      src="${item.flag}"
-                      alt=""
-                      loading="lazy"
-                      onerror="this.style.display='none'"
-                    >
-                  `
-                  : "";
-
-              const dailyChangeHtml =
-                renderDailyChange(
-                  item,
-                  value,
-                  dailyStart
-                );
-
-              card.innerHTML = `
-
-                <div class="card-top">
-
-                  <div class="name-wrap">
-
-                    ${flagHtml}
-
-                    <div class="name">
-                      ${item.name}
-                    </div>
-
-                  </div>
-
-                  <div class="code">
-                    ${item.code}
-                  </div>
-
-                </div>
-
-                <div class="price-container">
-
-                  <div class="price">
-                    ${formatNumber(value)}
-                  </div>
-
-                  <div class="unit">
-                    ${item.unit}
-                  </div>
-
-                  ${dailyChangeHtml}
-
-                </div>
-              `;
-
-              grid.appendChild(
-                card
-              );
-
-            }
-          );
-
-          section.appendChild(
-            title
-          );
-
-          section.appendChild(
-            grid
-          );
-
-          content.appendChild(
-            section
-          );
-
-        }
-      );
+      });
     }
-
-    // =========================
-    // LOAD PRICES
-    // =========================
 
     async function loadPrices() {
 
       const status =
-        document.getElementById(
-          "status"
-        );
+        document.getElementById("status");
 
       const statusText =
-        document.getElementById(
-          "statusText"
-        );
+        document.getElementById("statusText");
 
-      status.className =
-        "status";
+      status.className = "status";
 
       statusText.textContent =
         "در حال بروزرسانی قیمت‌ها...";
@@ -1793,8 +1721,8 @@
         const response =
           await fetch(
             API_URL +
-              "?t=" +
-              Date.now(),
+            "?t=" +
+            Date.now(),
             {
               method: "GET",
               headers: {
@@ -1806,10 +1734,8 @@
           );
 
         if (!response.ok) {
-
           throw new Error(
-            "HTTP " +
-            response.status
+            "HTTP " + response.status
           );
         }
 
@@ -1821,7 +1747,6 @@
           result.success !== true ||
           !result.prices
         ) {
-
           throw new Error(
             "Invalid API response"
           );
@@ -1924,10 +1849,6 @@
       }
     }
 
-    // =========================
-    // CATEGORY TABS
-    // =========================
-
     document
       .querySelectorAll(".tab")
       .forEach(button => {
@@ -1939,14 +1860,10 @@
             document
               .querySelectorAll(".tab")
               .forEach(tab =>
-                tab.classList.remove(
-                  "active"
-                )
+                tab.classList.remove("active")
               );
 
-            button.classList.add(
-              "active"
-            );
+            button.classList.add("active");
 
             activeCategory =
               button.dataset.category;
@@ -1957,10 +1874,6 @@
         );
 
       });
-
-    // =========================
-    // SEARCH
-    // =========================
 
     document
       .getElementById("search")
@@ -1978,15 +1891,10 @@
         }
       );
 
-    // =========================
-    // UPDATE NOTICE
-    // =========================
-
     const UPDATE_NOTICE_DELAY =
       15 * 60 * 1000;
 
-    let updateNoticeTimer =
-      null;
+    let updateNoticeTimer = null;
 
     function showUpdateNotice() {
 
@@ -1997,9 +1905,7 @@
 
       if (!notice) return;
 
-      notice.classList.add(
-        "show"
-      );
+      notice.classList.add("show");
     }
 
     function hideUpdateNotice() {
@@ -2011,18 +1917,13 @@
 
       if (!notice) return;
 
-      notice.classList.remove(
-        "show"
-      );
+      notice.classList.remove("show");
     }
 
     function startUpdateNoticeTimer() {
 
       if (updateNoticeTimer) {
-
-        clearTimeout(
-          updateNoticeTimer
-        );
+        clearTimeout(updateNoticeTimer);
       }
 
       updateNoticeTimer =
@@ -2033,32 +1934,24 @@
     }
 
     document
-      .getElementById(
-        "refreshPageButton"
-      )
+      .getElementById("refreshPageButton")
       .addEventListener(
         "click",
         () => {
 
           hideUpdateNotice();
 
-          // رفرش کامل صفحه
           window.location.reload();
 
         }
       );
 
-    // =========================
-    // INITIAL LOAD
-    // =========================
-
     loadPrices();
 
-    // بعد از ۱۵ دقیقه فقط پیام نمایش داده می‌شود
-    // و سایت خودش رفرش یا قیمت‌ها را تغییر نمی‌دهد.
     startUpdateNoticeTimer();
 
   </script>
 
 </body>
 </html>
+```
