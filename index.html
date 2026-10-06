@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
   <title>ارزیابی تهران | قیمت لحظه‌ای ارز و طلا</title>
-  
-  <!-- Modern Persian Font -->
+
+  <!-- Favicon سایت -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
   <style>
     * {
       box-sizing: border-box;
@@ -30,6 +32,7 @@
       --green: #10b981;
       --green-glow: rgba(16, 185, 129, 0.2);
       --red: #ef4444;
+      --red-glow: rgba(239, 68, 68, 0.18);
       --purple-aura: rgba(139, 92, 246, 0.15);
       --blue-aura: rgba(59, 130, 246, 0.15);
     }
@@ -44,7 +47,6 @@
       overflow-x: hidden;
     }
 
-    /* AURA EFFECT BACKGROUND (Optimized for Mobile) */
     .aura-bg {
       position: fixed;
       top: 0;
@@ -71,7 +73,7 @@
       width: 60vw;
       height: 60vw;
       background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
-      animation: auraFloat1 18s ease-infinite alternate;
+      animation: auraFloat1 18s ease-in-out infinite alternate;
     }
 
     .aura-2 {
@@ -80,7 +82,7 @@
       width: 70vw;
       height: 70vw;
       background: radial-gradient(circle, var(--purple-aura) 0%, transparent 70%);
-      animation: auraFloat2 22s ease-infinite alternate;
+      animation: auraFloat2 22s ease-in-out infinite alternate;
     }
 
     .aura-3 {
@@ -89,7 +91,7 @@
       width: 50vw;
       height: 50vw;
       background: radial-gradient(circle, var(--blue-aura) 0%, transparent 70%);
-      animation: auraFloat1 15s ease-infinite alternate-reverse;
+      animation: auraFloat1 15s ease-in-out infinite alternate-reverse;
     }
 
     @keyframes auraFloat1 {
@@ -108,7 +110,6 @@
       padding: 32px 0 60px;
     }
 
-    /* HEADER */
     header {
       text-align: center;
       margin-bottom: 30px;
@@ -188,7 +189,6 @@
       100% { opacity: 1; transform: scale(1); }
     }
 
-    /* SEARCH */
     .search-box {
       margin-bottom: 20px;
       position: relative;
@@ -225,7 +225,6 @@
       pointer-events: none;
     }
 
-    /* TABS */
     .tabs {
       display: flex;
       gap: 8px;
@@ -266,7 +265,6 @@
       box-shadow: 0 4px 15px var(--gold-glow);
     }
 
-    /* SECTION */
     .section {
       margin-bottom: 32px;
     }
@@ -293,7 +291,6 @@
       font-size: 15px;
     }
 
-    /* GRID */
     .grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -307,7 +304,7 @@
       border: 1px solid var(--card-border);
       border-radius: 18px;
       padding: 18px;
-      min-height: 125px;
+      min-height: 155px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -316,7 +313,6 @@
       overflow: hidden;
     }
 
-    /* Aura inner glow on hover/touch */
     .price-card::after {
       content: '';
       position: absolute;
@@ -352,10 +348,30 @@
       z-index: 1;
     }
 
+    .name-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .flag {
+      width: 28px;
+      height: 20px;
+      object-fit: cover;
+      border-radius: 4px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
     .name {
       font-size: 14px;
       font-weight: 600;
       color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .code {
@@ -367,6 +383,7 @@
       padding: 2px 7px;
       border-radius: 6px;
       border: 1px solid rgba(255, 255, 255, 0.05);
+      flex-shrink: 0;
     }
 
     .price-container {
@@ -392,7 +409,52 @@
       font-weight: 400;
     }
 
-    /* FOOTER */
+    .daily-change {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 9px;
+      direction: ltr;
+      justify-content: flex-start;
+      min-height: 20px;
+      font-size: 11px;
+      line-height: 1;
+    }
+
+    .daily-change .arrow {
+      font-size: 17px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .daily-change .change-value {
+      font-weight: 600;
+    }
+
+    .daily-change .change-percent {
+      font-weight: 800;
+    }
+
+    .daily-change.positive {
+      color: var(--green);
+    }
+
+    .daily-change.negative {
+      color: var(--red);
+    }
+
+    .daily-change.neutral {
+      color: var(--text-muted);
+    }
+
+    .daily-change.positive .arrow {
+      text-shadow: 0 0 10px var(--green-glow);
+    }
+
+    .daily-change.negative .arrow {
+      text-shadow: 0 0 10px var(--red-glow);
+    }
+
     footer {
       margin-top: 40px;
       padding-top: 24px;
@@ -430,32 +492,72 @@
       opacity: 0.8;
     }
 
-    /* RESPONSIVE & MOBILE OPTIMIZATIONS */
     @media (max-width: 992px) {
-      .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 680px) {
-      .container { width: min(100% - 20px, 1200px); padding-top: 20px; }
-      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-      .price-card { padding: 14px; min-height: 110px; border-radius: 16px; }
-      .price { font-size: 17px; }
-      .name { font-size: 13px; }
-      
-      /* Mobile Aura Size Adjustments */
-      .aura-1 { width: 90vw; height: 90vw; }
-      .aura-2 { width: 100vw; height: 100vw; }
+      .container {
+        width: min(100% - 20px, 1200px);
+        padding-top: 20px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .price-card {
+        padding: 14px;
+        min-height: 145px;
+        border-radius: 16px;
+      }
+
+      .price {
+        font-size: 17px;
+      }
+
+      .name {
+        font-size: 13px;
+      }
+
+      .flag {
+        width: 25px;
+        height: 18px;
+      }
+
+      .daily-change {
+        gap: 5px;
+        font-size: 10px;
+      }
+
+      .daily-change .arrow {
+        font-size: 15px;
+      }
+
+      .aura-1 {
+        width: 90vw;
+        height: 90vw;
+      }
+
+      .aura-2 {
+        width: 100vw;
+        height: 100vw;
+      }
     }
 
     @media (max-width: 380px) {
-      .grid { grid-template-columns: 1fr; }
+      .grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- AURA BACKGROUND ANIMATION -->
   <div class="aura-bg">
     <div class="aura-blob aura-1"></div>
     <div class="aura-blob aura-2"></div>
@@ -468,19 +570,27 @@
       <div class="logo">📊</div>
       <h1>ارزیابی تهران</h1>
       <div class="subtitle">قیمت لحظه‌ای ارز، طلا، سکه و حواله‌جات</div>
+
       <div id="status" class="status">
         <span class="status-dot"></span>
         <span id="statusText">در حال دریافت اطلاعات...</span>
       </div>
     </header>
 
-    <!-- SEARCH -->
     <div class="search-box">
-      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-      <input id="search" type="text" placeholder="جستجوی سریع (مثلا: یورو، USD، طلا)..." autocomplete="off">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+
+      <input
+        id="search"
+        type="text"
+        placeholder="جستجوی سریع (مثلا: یورو، USD، طلا)..."
+        autocomplete="off"
+      >
     </div>
 
-    <!-- TABS -->
     <div class="tabs">
       <button class="tab active" data-category="all">⚡ همه موارد</button>
       <button class="tab" data-category="currency">💵 ارزهای رایج</button>
@@ -488,16 +598,28 @@
       <button class="tab" data-category="havaleh">💱 حواله‌ها</button>
     </div>
 
-    <!-- CONTENT -->
     <main id="content"></main>
 
-    <!-- FOOTER -->
     <footer>
-      <div>آخرین بروزرسانی داده‌ها: <strong id="updatedAt" style="color: var(--text-main);">---</strong></div>
-      <div class="updated">🔄 همگام‌سازی خودکار هوشمند هر ۱۵ دقیقه انجام می‌شود</div>
+      <div>
+        آخرین بروزرسانی داده‌ها:
+        <strong id="updatedAt" style="color: var(--text-main);">---</strong>
+      </div>
 
-      <a class="telegram" href="https://t.me/arzyabi_tehran" target="_blank" rel="noopener noreferrer">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
+      <div class="updated">
+        🔄 همگام‌سازی خودکار هوشمند هر ۱۵ دقیقه انجام می‌شود
+      </div>
+
+      <a
+        class="telegram"
+        href="https://t.me/arzyabi_tehran"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 2L11 13"></path>
+          <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+        </svg>
         عضویت در کانال تلگرام
       </a>
     </footer>
@@ -508,55 +630,481 @@
     const API_URL = "https://dolar.arsam2260139122.workers.dev/api/site";
 
     const items = [
+
+      // =========================
       // CURRENCY
-      { id: "dollar", name: "دلار آمریکا", code: "USD", category: "currency", key: "dollar", unit: "تومان" },
-      { id: "usdt", name: "تتر (دیجیتال)", code: "USDT", category: "currency", key: "usdt", unit: "تومان" },
-      { id: "euro", name: "یورو", code: "EUR", category: "currency", key: "euro", unit: "تومان" },
-      { id: "pound", name: "پوند انگلیس", code: "GBP", category: "currency", key: "pound", unit: "تومان" },
-      { id: "dirham", name: "درهم امارات", code: "AED", category: "currency", key: "dirham", unit: "تومان" },
-      { id: "lira", name: "لیر ترکیه", code: "TRY", category: "currency", key: "lira", unit: "تومان" },
-      { id: "baht", name: "بات تایلند", code: "THB", category: "currency", key: "baht", unit: "تومان" },
-      { id: "yen", name: "ین ژاپن", code: "JPY", category: "currency", key: "yen", unit: "تومان" },
-      { id: "aud", name: "دلار استرالیا", code: "AUD", category: "currency", key: "aud", unit: "تومان" },
-      { id: "nzd", name: "دلار نیوزیلند", code: "NZD", category: "currency", key: "nzd", unit: "تومان" },
-      { id: "cad", name: "دلار کانادا", code: "CAD", category: "currency", key: "cad", unit: "تومان" },
-      { id: "sgd", name: "دلار سنگاپور", code: "SGD", category: "currency", key: "sgd", unit: "تومان" },
-      { id: "chf", name: "فرانک سوئیس", code: "CHF", category: "currency", key: "chf", unit: "تومان" },
-      { id: "herat", name: "دلار هرات", code: "HERAT", category: "currency", key: "herat", unit: "تومان" },
+      // =========================
 
+      {
+        id: "dollar",
+        name: "دلار آمریکا",
+        code: "USD",
+        category: "currency",
+        key: "dollar",
+        unit: "تومان",
+        flag: "https://flagcdn.com/w40/us.png"
+      },
+
+      {
+        id: "usdt",
+        name: "تتر (دیجیتال)",
+        code: "USDT",
+        category: "currency",
+        key: "usdt",
+        unit: "تومان",
+        flag: null
+      },
+
+      {
+        id: "euro",
+        name: "یورو",
+        code: "EUR",
+        category: "currency",
+        key: "euro",
+        unit: "تومان",
+        flag: "https://flagcdn.com/w40/eu.png"
+      },
+
+      {
+        id: "pound",
+        name: "پوند انگلیس",
+        code: "GBP",
+        category: "currency",
+        key: "pound",
+        unit: "تومان",
+        flag: "https://flagcdn.com/w40/gb.png"
+      },
+
+      {
+        id: "dirham",
+        name: "درهم امارات",
+        code: "AED",
+        category: "currency",
+        key: "dirham",
+        unit: "تومان",
+        flag: "https://flagcdn.com/w40/ae.png"
+      },
+
+      {
+        id: "lira",
+        name: "لیر ترکیه",
+        code: "TRY",
+        category: "currency",
+        key: "lira",
+        unit: "تومان",
+        flag: "https://flagcdn.com/w40/tr.png"
+      },
+
+      {
+        id: "baht",
+        name: "بات تایلند",
+        code: "THB",
+        category: "currency",
+        key: "baht",
+        unit: "تومان",
+        flag: "https://flagcdn.com/w40/th.png"
+      },
+
+      {
+        id: "yen",
+        name: "ین ژاپن",
+        code: "JPY",
+        category: "currency",
+        key: "yen",
+        unit: "تومان",
+        flag: "https://flagcdn.com/w40/jp.png"
+      },
+
+      {
+        id: "aud",
+        name: "دلار استرالیا",
+        code: "AUD",
+        category: "currency",
+        key: "aud",
+        unit: "تومان",
+        flag: "https://flagcdn.com/w40/au.png"
+      },
+
+      {
+        id: "nzd",
+        name: "دلار نیوزیلند",
+        code: "NZD",
+        category: "currency",
+        key: "nzd",
+        unit: "تومان",
+        flag: "https://flagcdn.com/w40/nz.png"
+      },
+
+      {
+        id: "cad",
+        name: "دلار کانادا",
+        code: "CAD",
+        category: "currency",
+        key: "cad",
+        unit: "تومان",
+        flag: "https://flagcdn.com/w40/ca.png"
+      },
+
+      {
+        id: "sgd",
+        name: "دلار سنگاپور",
+        code: "SGD",
+        category: "currency",
+        key: "sgd",
+        unit: "تومان",
+        flag: "https://flagcdn.com/w40/sg.png"
+      },
+
+      {
+        id: "chf",
+        name: "فرانک سوئیس",
+        code: "CHF",
+        category: "currency",
+        key: "chf",
+        unit: "تومان",
+        flag: "https://flagcdn.com/w40/ch.png"
+      },
+
+      {
+        id: "herat",
+        name: "دلار هرات",
+        code: "HERAT",
+        category: "currency",
+        key: "herat",
+        unit: "تومان",
+        flag: "https://flagcdn.com/w40/af.png"
+      },
+
+      // =========================
       // GOLD
-      { id: "gold18", name: "طلای ۱۸ عیار", code: "18K", category: "gold", key: "gold18", unit: "تومان / گرم" },
-      { id: "bubble18", name: "حباب طلای ۱۸", code: "BUBBLE", category: "gold", key: "bubble18", unit: "تومان" },
-      { id: "gold24", name: "طلای ۲۴ عیار", code: "24K", category: "gold", key: "gold24", unit: "تومان / گرم" },
-      { id: "xau", name: "اونس جهانی طلا", code: "XAU", category: "gold", key: "xau", unit: "دلار" },
+      // =========================
 
+      {
+        id: "gold18",
+        name: "طلای ۱۸ عیار",
+        code: "18K",
+        category: "gold",
+        key: "gold18",
+        unit: "تومان / گرم",
+        flag: null
+      },
+
+      {
+        id: "bubble18",
+        name: "حباب طلای ۱۸",
+        code: "BUBBLE",
+        category: "gold",
+        key: "bubble18",
+        unit: "تومان",
+        flag: null
+      },
+
+      {
+        id: "gold24",
+        name: "طلای ۲۴ عیار",
+        code: "24K",
+        category: "gold",
+        key: "gold24",
+        unit: "تومان / گرم",
+        flag: null
+      },
+
+      {
+        id: "xau",
+        name: "اونس جهانی طلا",
+        code: "XAU",
+        category: "gold",
+        key: "xau",
+        unit: "دلار",
+        flag: null
+      },
+
+      // =========================
       // HAVALEH
-      { id: "eur_hav", name: "حواله یورو", code: "EUR", category: "havaleh", key: "eur_hav", unit: "تومان" },
-      { id: "gbp_hav", name: "حواله پوند", code: "GBP", category: "havaleh", key: "gbp_hav", unit: "تومان" },
-      { id: "aud_hav", name: "حواله دلار استرالیا", code: "AUD", category: "havaleh", key: "aud_hav", unit: "تومان" },
-      { id: "myr_hav", name: "حواله رینگیت مالزی", code: "MYR", category: "havaleh", key: "myr_hav", unit: "تومان" },
-      { id: "cny_hav", name: "حواله یوان چین", code: "CNY", category: "havaleh", key: "cny_hav", unit: "تومان" },
-      { id: "try_hav", name: "حواله لیر ترکیه", code: "TRY", category: "havaleh", key: "try_hav", unit: "تومان" },
-      { id: "jpy_hav", name: "حواله ین ژاپن", code: "JPY", category: "havaleh", key: "jpy_hav", unit: "تومان" },
-      { id: "cad_hav", name: "حواله دلار کانادا", code: "CAD", category: "havaleh", key: "cad_hav", unit: "تومان" },
-      { id: "aed_hav", name: "حواله درهم", code: "AED", category: "havaleh", key: "aed_hav", unit: "تومان" }
+      // =========================
+
+      {
+        id: "eur_hav",
+        name: "حواله یورو",
+        code: "EUR",
+        category: "havaleh",
+        key: "eur_hav",
+        unit: "تومان",
+        flag: "https://flagcdn.com/w40/eu.png"
+      },
+
+      {
+        id: "gbp_hav",
+        name: "حواله پوند",
+        code: "GBP",
+        category: "havaleh",
+        key: "gbp_hav",
+        unit: "تومان",
+        flag: "https://flagcdn.com/w40/gb.png"
+      },
+
+      {
+        id: "aud_hav",
+        name: "حواله دلار استرالیا",
+        code: "AUD",
+        category: "havaleh",
+        key: "aud_hav",
+        unit: "تومان",
+        flag: "https://flagcdn.com/w40/au.png"
+      },
+
+      {
+        id: "myr_hav",
+        name: "حواله رینگیت مالزی",
+        code: "MYR",
+        category: "havaleh",
+        key: "myr_hav",
+        unit: "تومان",
+        flag: "https://flagcdn.com/w40/my.png"
+      },
+
+      {
+        id: "cny_hav",
+        name: "حواله یوان چین",
+        code: "CNY",
+        category: "havaleh",
+        key: "cny_hav",
+        unit: "تومان",
+        flag: "https://flagcdn.com/w40/cn.png"
+      },
+
+      {
+        id: "try_hav",
+        name: "حواله لیر ترکیه",
+        code: "TRY",
+        category: "havaleh",
+        key: "try_hav",
+        unit: "تومان",
+        flag: "https://flagcdn.com/w40/tr.png"
+      },
+
+      {
+        id: "jpy_hav",
+        name: "حواله ین ژاپن",
+        code: "JPY",
+        category: "havaleh",
+        key: "jpy_hav",
+        unit: "تومان",
+        flag: "https://flagcdn.com/w40/jp.png"
+      },
+
+      {
+        id: "cad_hav",
+        name: "حواله دلار کانادا",
+        code: "CAD",
+        category: "havaleh",
+        key: "cad_hav",
+        unit: "تومان",
+        flag: "https://flagcdn.com/w40/ca.png"
+      },
+
+      {
+        id: "aed_hav",
+        name: "حواله درهم",
+        code: "AED",
+        category: "havaleh",
+        key: "aed_hav",
+        unit: "تومان",
+        flag: "https://flagcdn.com/w40/ae.png"
+      }
     ];
 
     let prices = {};
     let activeCategory = "all";
     let searchText = "";
 
+    /*
+     * ==========================================
+     * DAILY CHANGE SYSTEM
+     * ==========================================
+     *
+     * برای هر روز یک کلید جداگانه ساخته می‌شود.
+     * مثال:
+     * arzyabi_daily_start_2026-10-06
+     */
+
+    function getTehranDateKey() {
+      const parts = new Intl.DateTimeFormat("en-CA", {
+        timeZone: "Asia/Tehran",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+      }).formatToParts(new Date());
+
+      const data = {};
+
+      parts.forEach(part => {
+        if (part.type !== "literal") {
+          data[part.type] = part.value;
+        }
+      });
+
+      return `${data.year}-${data.month}-${data.day}`;
+    }
+
+    function getDailyStorageKey() {
+      return "arzyabi_daily_start_" + getTehranDateKey();
+    }
+
+    function getDailyStartPrices() {
+      try {
+        const key = getDailyStorageKey();
+        const saved = localStorage.getItem(key);
+
+        if (!saved) return {};
+
+        const parsed = JSON.parse(saved);
+
+        if (!parsed || typeof parsed !== "object") {
+          return {};
+        }
+
+        return parsed;
+      } catch (error) {
+        console.error("Daily start prices error:", error);
+        return {};
+      }
+    }
+
+    function saveDailyStartPrices(data) {
+      try {
+        localStorage.setItem(
+          getDailyStorageKey(),
+          JSON.stringify(data)
+        );
+      } catch (error) {
+        console.error("Save daily prices error:", error);
+      }
+    }
+
+    function initializeDailyStartPrices(currentPrices) {
+      const dailyStart = getDailyStartPrices();
+      let changed = false;
+
+      items.forEach(item => {
+        const value = Number(currentPrices[item.key]);
+
+        if (
+          dailyStart[item.key] === undefined &&
+          Number.isFinite(value) &&
+          value > 0
+        ) {
+          dailyStart[item.key] = value;
+          changed = true;
+        }
+      });
+
+      if (changed) {
+        saveDailyStartPrices(dailyStart);
+      }
+
+      return dailyStart;
+    }
+
+    function calculateDailyChange(item, currentValue, dailyStart) {
+      const value = Number(currentValue);
+      const start = Number(dailyStart[item.key]);
+
+      if (
+        !Number.isFinite(value) ||
+        !Number.isFinite(start) ||
+        start <= 0
+      ) {
+        return {
+          direction: "neutral",
+          amount: 0,
+          percent: 0
+        };
+      }
+
+      const amount = value - start;
+      const percent = (amount / start) * 100;
+
+      if (amount > 0) {
+        return {
+          direction: "positive",
+          amount,
+          percent
+        };
+      }
+
+      if (amount < 0) {
+        return {
+          direction: "negative",
+          amount,
+          percent
+        };
+      }
+
+      return {
+        direction: "neutral",
+        amount: 0,
+        percent: 0
+      };
+    }
+
     function formatNumber(value) {
-      if (value === null || value === undefined || value === "" || Number.isNaN(Number(value))) {
+      if (
+        value === null ||
+        value === undefined ||
+        value === "" ||
+        Number.isNaN(Number(value))
+      ) {
         return "---";
       }
+
       return Number(value).toLocaleString("fa-IR");
+    }
+
+    function formatChangeAmount(value) {
+      const number = Number(value);
+
+      if (!Number.isFinite(number)) {
+        return "---";
+      }
+
+      if (number > 0) {
+        return "+" + formatNumber(number);
+      }
+
+      if (number < 0) {
+        return "−" + formatNumber(Math.abs(number));
+      }
+
+      return "0";
+    }
+
+    function formatPercent(value) {
+      const number = Number(value);
+
+      if (!Number.isFinite(number)) {
+        return "0.00%";
+      }
+
+      if (number > 0) {
+        return "+" + number.toFixed(2) + "%";
+      }
+
+      if (number < 0) {
+        return "−" + Math.abs(number).toFixed(2) + "%";
+      }
+
+      return "0.00%";
     }
 
     function formatDate(timestamp) {
       if (!timestamp) return "---";
+
       const date = new Date(Number(timestamp));
-      if (Number.isNaN(date.getTime())) return "---";
+
+      if (Number.isNaN(date.getTime())) {
+        return "---";
+      }
 
       return date.toLocaleString("fa-IR", {
         year: "numeric",
@@ -567,13 +1115,64 @@
       });
     }
 
+    function renderDailyChange(item, value, dailyStart) {
+      const change = calculateDailyChange(
+        item,
+        value,
+        dailyStart
+      );
+
+      if (change.direction === "positive") {
+        return `
+          <div class="daily-change positive">
+            <span class="arrow">↑</span>
+            <span class="change-value">
+              ${formatChangeAmount(change.amount)} ${item.unit}
+            </span>
+            <span class="change-percent">
+              ${formatPercent(change.percent)}
+            </span>
+          </div>
+        `;
+      }
+
+      if (change.direction === "negative") {
+        return `
+          <div class="daily-change negative">
+            <span class="arrow">↓</span>
+            <span class="change-value">
+              ${formatChangeAmount(change.amount)} ${item.unit}
+            </span>
+            <span class="change-percent">
+              ${formatPercent(change.percent)}
+            </span>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="daily-change neutral">
+          <span class="arrow">—</span>
+          <span class="change-value">بدون تغییر</span>
+          <span class="change-percent">0.00%</span>
+        </div>
+      `;
+    }
+
     function render() {
       const content = document.getElementById("content");
+
       content.innerHTML = "";
 
+      const dailyStart = getDailyStartPrices();
+
       const filtered = items.filter(item => {
-        const categoryMatch = activeCategory === "all" || item.category === activeCategory;
-        const searchMatch = !searchText ||
+        const categoryMatch =
+          activeCategory === "all" ||
+          item.category === activeCategory;
+
+        const searchMatch =
+          !searchText ||
           item.name.toLowerCase().includes(searchText) ||
           item.code.toLowerCase().includes(searchText);
 
@@ -581,15 +1180,36 @@
       });
 
       const categories = [
-        { id: "currency", title: "ارزهای رایج", icon: "💵" },
-        { id: "gold", title: "طلا و شاخص‌ها", icon: "🥇" },
-        { id: "havaleh", title: "حواله‌جات", icon: "💱" }
+        {
+          id: "currency",
+          title: "ارزهای رایج",
+          icon: "💵"
+        },
+        {
+          id: "gold",
+          title: "طلا و شاخص‌ها",
+          icon: "🥇"
+        },
+        {
+          id: "havaleh",
+          title: "حواله‌جات",
+          icon: "💱"
+        }
       ];
 
       categories.forEach(category => {
-        if (activeCategory !== "all" && activeCategory !== category.id) return;
 
-        const categoryItems = filtered.filter(item => item.category === category.id);
+        if (
+          activeCategory !== "all" &&
+          activeCategory !== category.id
+        ) {
+          return;
+        }
+
+        const categoryItems = filtered.filter(
+          item => item.category === category.id
+        );
+
         if (!categoryItems.length) return;
 
         const section = document.createElement("section");
@@ -597,107 +1217,288 @@
 
         const title = document.createElement("div");
         title.className = "section-title";
-        title.innerHTML = `<span>${category.icon}</span>${category.title}`;
+
+        title.innerHTML = `
+          <span>${category.icon}</span>
+          ${category.title}
+        `;
 
         const grid = document.createElement("div");
         grid.className = "grid";
 
         categoryItems.forEach(item => {
+
           const card = document.createElement("div");
           card.className = "price-card";
+
           const value = prices[item.key];
+
+          const flagHtml = item.flag
+            ? `
+              <img
+                class="flag"
+                src="${item.flag}"
+                alt=""
+                loading="lazy"
+                onerror="this.style.display='none'"
+              >
+            `
+            : "";
+
+          const dailyChangeHtml =
+            renderDailyChange(
+              item,
+              value,
+              dailyStart
+            );
 
           card.innerHTML = `
             <div class="card-top">
-              <div class="name">${item.name}</div>
-              <div class="code">${item.code}</div>
+
+              <div class="name-wrap">
+                ${flagHtml}
+                <div class="name">
+                  ${item.name}
+                </div>
+              </div>
+
+              <div class="code">
+                ${item.code}
+              </div>
+
             </div>
+
             <div class="price-container">
-              <div class="price">${formatNumber(value)}</div>
-              <div class="unit">${item.unit}</div>
+
+              <div class="price">
+                ${formatNumber(value)}
+              </div>
+
+              <div class="unit">
+                ${item.unit}
+              </div>
+
+              ${dailyChangeHtml}
+
             </div>
           `;
+
           grid.appendChild(card);
         });
 
         section.appendChild(title);
         section.appendChild(grid);
+
         content.appendChild(section);
       });
     }
 
     async function loadPrices() {
-      const status = document.getElementById("status");
-      const statusText = document.getElementById("statusText");
+
+      const status =
+        document.getElementById("status");
+
+      const statusText =
+        document.getElementById("statusText");
 
       status.className = "status";
-      statusText.textContent = "در حال بروزرسانی قیمت‌ها...";
+
+      statusText.textContent =
+        "در حال بروزرسانی قیمت‌ها...";
 
       try {
-        const response = await fetch(API_URL + "?t=" + Date.now(), {
-          method: "GET",
-          headers: { "Accept": "application/json" },
-          cache: "no-store"
-        });
 
-        if (!response.ok) throw new Error("HTTP " + response.status);
+        const response = await fetch(
+          API_URL + "?t=" + Date.now(),
+          {
+            method: "GET",
+            headers: {
+              "Accept": "application/json"
+            },
+            cache: "no-store"
+          }
+        );
 
-        const result = await response.json();
-        if (!result || result.success !== true || !result.prices) throw new Error("Invalid API response");
+        if (!response.ok) {
+          throw new Error(
+            "HTTP " + response.status
+          );
+        }
+
+        const result =
+          await response.json();
+
+        if (
+          !result ||
+          result.success !== true ||
+          !result.prices
+        ) {
+          throw new Error(
+            "Invalid API response"
+          );
+        }
 
         prices = result.prices;
-        localStorage.setItem("arzyabi_tehran_prices", JSON.stringify(result));
 
-        document.getElementById("updatedAt").textContent = formatDate(prices.timestamp || result.updatedAt);
+        /*
+         * ثبت قیمت شروع روز
+         * فقط اگر برای آن ارز هنوز مبنا وجود نداشته باشد.
+         */
+        initializeDailyStartPrices(prices);
+
+        localStorage.setItem(
+          "arzyabi_tehran_prices",
+          JSON.stringify(result)
+        );
+
+        document.getElementById(
+          "updatedAt"
+        ).textContent = formatDate(
+          prices.timestamp ||
+          result.updatedAt
+        );
+
         status.className = "status ok";
-        statusText.textContent = "قیمت‌ها بروزرسانی شدند";
+
+        statusText.textContent =
+          "قیمت‌ها بروزرسانی شدند";
 
         render();
+
       } catch (error) {
-        console.error("Price API error:", error);
+
+        console.error(
+          "Price API error:",
+          error
+        );
 
         try {
-          const cached = localStorage.getItem("arzyabi_tehran_prices");
+
+          const cached =
+            localStorage.getItem(
+              "arzyabi_tehran_prices"
+            );
+
           if (cached) {
-            const result = JSON.parse(cached);
-            if (result && result.prices) {
+
+            const result =
+              JSON.parse(cached);
+
+            if (
+              result &&
+              result.prices
+            ) {
+
               prices = result.prices;
-              document.getElementById("updatedAt").textContent = formatDate(prices.timestamp || result.updatedAt);
-              status.className = "status";
-              statusText.textContent = "نمایش داده‌های آفلاین (ذخیره‌شده)";
+
+              initializeDailyStartPrices(
+                prices
+              );
+
+              document.getElementById(
+                "updatedAt"
+              ).textContent =
+                formatDate(
+                  prices.timestamp ||
+                  result.updatedAt
+                );
+
+              status.className =
+                "status";
+
+              statusText.textContent =
+                "نمایش داده‌های آفلاین (ذخیره‌شده)";
+
               render();
+
               return;
             }
           }
+
         } catch (cacheError) {
-          console.error("Cache error:", cacheError);
+
+          console.error(
+            "Cache error:",
+            cacheError
+          );
+
         }
 
-        status.className = "status error";
-        statusText.textContent = "خطا در دریافت قیمت‌ها";
+        status.className =
+          "status error";
+
+        statusText.textContent =
+          "خطا در دریافت قیمت‌ها";
+
         render();
       }
     }
 
+    // =========================
     // CATEGORY TABS
-    document.querySelectorAll(".tab").forEach(button => {
-      button.addEventListener("click", () => {
-        document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
-        button.classList.add("active");
-        activeCategory = button.dataset.category;
-        render();
+    // =========================
+
+    document
+      .querySelectorAll(".tab")
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            document
+              .querySelectorAll(".tab")
+              .forEach(tab =>
+                tab.classList.remove(
+                  "active"
+                )
+              );
+
+            button.classList.add(
+              "active"
+            );
+
+            activeCategory =
+              button.dataset.category;
+
+            render();
+          }
+        );
       });
-    });
 
+    // =========================
     // SEARCH
-    document.getElementById("search").addEventListener("input", event => {
-      searchText = event.target.value.trim().toLowerCase();
-      render();
-    });
+    // =========================
 
-    // INITIAL LOAD & AUTO UPDATE
+    document
+      .getElementById("search")
+      .addEventListener(
+        "input",
+        event => {
+
+          searchText =
+            event.target.value
+              .trim()
+              .toLowerCase();
+
+          render();
+        }
+      );
+
+    // =========================
+    // INITIAL LOAD
+    // =========================
+
     loadPrices();
-    setInterval(loadPrices, 15 * 60 * 1000);
+
+    // بروزرسانی هر ۱۵ دقیقه
+    setInterval(
+      loadPrices,
+      15 * 60 * 1000
+    );
+
   </script>
+
 </body>
 </html>
+```
