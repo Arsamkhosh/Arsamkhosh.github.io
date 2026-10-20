@@ -1,1955 +1,285 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0b0d">
 
-  <title>ارزیابی تهران | قیمت لحظه‌ای ارز و طلا</title>
-
-  <!-- Favicon -->
-<link rel="icon" type="image/png" href="arzyabi2.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>سایت در حال به‌روزرسانی | ارزیابی تهران</title>
 
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
     }
 
     :root {
-      --bg: #07080c;
-      --card-bg: rgba(18, 21, 31, 0.6);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --card-hover-border: rgba(243, 202, 108, 0.4);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --gold: #f3ca6c;
-      --gold-glow: rgba(243, 202, 108, 0.2);
-      --green: #10b981;
-      --green-glow: rgba(16, 185, 129, 0.2);
-      --red: #ef4444;
-      --red-glow: rgba(239, 68, 68, 0.18);
-      --purple-aura: rgba(139, 92, 246, 0.15);
-      --blue-aura: rgba(59, 130, 246, 0.15);
+      --bg: #0b0b0d;
+      --gold: #d7b56d;
+      --gold-light: #f5df9b;
+      --text: #f4f0e7;
+      --muted: #99979a;
     }
 
     body {
       min-height: 100vh;
-      background-color: var(--bg);
-      color: var(--text-main);
-      font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    .aura-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
-      pointer-events: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       overflow: hidden;
+      padding: 24px;
+      background:
+        radial-gradient(ellipse at 50% 40%,
+          rgba(215, 181, 109, 0.10), transparent 48%),
+        var(--bg);
+      color: var(--text);
+      font-family: Tahoma, Arial, sans-serif;
     }
 
-    .aura-blob {
-      position: absolute;
+    /* پس‌زمینه */
+
+    .background-glow {
+      position: fixed;
+      width: 350px;
+      height: 350px;
       border-radius: 50%;
-      filter: blur(80px);
-      will-change: transform;
-      transform: translateZ(0);
-      opacity: 0.6;
-    }
-
-    .aura-1 {
-      top: -10%;
-      right: -10%;
-      width: 60vw;
-      height: 60vw;
-      background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
-      animation: auraFloat1 18s ease-in-out infinite alternate;
-    }
-
-    .aura-2 {
-      bottom: -15%;
-      left: -15%;
-      width: 70vw;
-      height: 70vw;
-      background: radial-gradient(circle, var(--purple-aura) 0%, transparent 70%);
-      animation: auraFloat2 22s ease-in-out infinite alternate;
-    }
-
-    .aura-3 {
-      top: 40%;
-      left: 20%;
-      width: 50vw;
-      height: 50vw;
-      background: radial-gradient(circle, var(--blue-aura) 0%, transparent 70%);
-      animation: auraFloat1 15s ease-in-out infinite alternate-reverse;
-    }
-
-    @keyframes auraFloat1 {
-      0% {
-        transform: translate(0, 0) scale(1);
-      }
-
-      100% {
-        transform: translate(-30px, 40px) scale(1.1);
-      }
-    }
-
-    @keyframes auraFloat2 {
-      0% {
-        transform: translate(0, 0) scale(1);
-      }
-
-      100% {
-        transform: translate(40px, -30px) scale(1.05);
-      }
+      background: rgba(215, 181, 109, 0.07);
+      filter: blur(100px);
+      pointer-events: none;
     }
 
     .container {
-      width: min(1200px, calc(100% - 28px));
-      margin: auto;
-      padding: 32px 0 60px;
-    }
-
-    header {
+      width: 100%;
+      max-width: 620px;
       text-align: center;
-      margin-bottom: 30px;
       position: relative;
+      z-index: 1;
+      animation: appear 1s ease both;
     }
 
-.logo {
-  width: 85px;
-  height: 85px;
-  margin: 0 auto 18px;
-  border-radius: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(
-    135deg,
-    rgba(243, 202, 108, 0.25),
-    rgba(255, 255, 255, 0.03)
-  );
-  border: 1px solid rgba(243, 202, 108, 0.4);
-  box-shadow:
-    0 12px 30px rgba(0, 0, 0, 0.4),
-    0 0 25px var(--gold-glow);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  font-size: 36px;
-  overflow: hidden;
-}
+    /* لوگو */
 
-/* عکس لوگوی شخصی */
-.logo img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  border-radius: 23px;
-}
-
-    h1 {
-      font-size: clamp(24px, 5vw, 36px);
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      background: linear-gradient(
-        180deg,
-        #ffffff 0%,
-        #cbd5e1 100%
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 6px;
-    }
-
-    .subtitle {
-      color: var(--text-muted);
-      font-size: 14px;
-      font-weight: 400;
-    }
-
-    .status {
-      margin: 16px auto 0;
-      width: fit-content;
-      padding: 6px 14px;
-      border-radius: 99px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--card-border);
-      color: var(--text-muted);
-      font-size: 12px;
+    .logo {
+      width: 82px;
+      height: 82px;
+      margin: 0 auto 28px;
       display: flex;
       align-items: center;
-      gap: 8px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      justify-content: center;
+      border: 1px solid rgba(215, 181, 109, 0.55);
+      border-radius: 25px;
+      background: linear-gradient(
+        145deg,
+        rgba(215, 181, 109, 0.14),
+        rgba(215, 181, 109, 0.02)
+      );
+      box-shadow: 0 0 45px rgba(215, 181, 109, 0.08);
+      transform: rotate(-3deg);
+    }
+
+    .logo span {
+      color: var(--gold-light);
+      font-size: 35px;
+      font-weight: bold;
+      transform: rotate(3deg);
+    }
+
+    .brand {
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    /* تیتر اصلی */
+
+    h1 {
+      color: var(--gold-light);
+      font-size: clamp(25px, 5vw, 39px);
+      line-height: 1.9;
+      font-weight: 800;
+      margin-bottom: 18px;
+      text-shadow: 0 0 35px rgba(215, 181, 109, 0.12);
+    }
+
+    .description {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 2.2;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .description strong {
+      color: #e9d4a0;
+      font-weight: 600;
+    }
+
+    /* نشانگر وضعیت */
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 30px;
+      padding: 12px 19px;
+      border: 1px solid rgba(215, 181, 109, 0.22);
+      border-radius: 50px;
+      background: rgba(215, 181, 109, 0.045);
+      color: #d9c99f;
+      font-size: 12px;
     }
 
     .status-dot {
       width: 8px;
       height: 8px;
+      background: var(--gold);
       border-radius: 50%;
-      background: var(--text-muted);
-      display: inline-block;
+      box-shadow: 0 0 12px var(--gold);
+      animation: pulse 1.5s infinite;
     }
 
-    .status.ok .status-dot {
-      background: var(--green);
-      box-shadow: 0 0 10px var(--green);
-      animation: pulse 2s infinite;
+    /* نوار بارگذاری */
+
+    .progress {
+      width: 100%;
+      max-width: 300px;
+      height: 3px;
+      margin: 34px auto 0;
+      border-radius: 10px;
+      background: #292621;
+      overflow: hidden;
     }
 
-    .status.error .status-dot {
-      background: var(--red);
-      box-shadow: 0 0 10px var(--red);
+    .progress-bar {
+      height: 100%;
+      width: 35%;
+      border-radius: 10px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--gold),
+        var(--gold-light)
+      );
+      animation: loading 2s ease-in-out infinite;
+    }
+
+    .loading-text {
+      margin-top: 13px;
+      color: #77746c;
+      font-size: 11px;
+    }
+
+    /* پاورقی */
+
+    footer {
+      margin-top: 65px;
+      color: #65636a;
+      font-size: 11px;
+      line-height: 2;
+    }
+
+    footer span {
+      color: var(--gold);
     }
 
     @keyframes pulse {
-      0% {
+      0%, 100% {
         opacity: 1;
         transform: scale(1);
       }
-
       50% {
         opacity: 0.4;
-        transform: scale(0.85);
+        transform: scale(0.75);
       }
+    }
 
+    @keyframes loading {
+      0% {
+        transform: translateX(250%);
+      }
       100% {
+        transform: translateX(-350%);
+      }
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
         opacity: 1;
-        transform: scale(1);
+        transform: translateY(0);
       }
     }
 
-    .search-box {
-      margin-bottom: 20px;
-      position: relative;
-    }
-
-    .search-box input {
-      width: 100%;
-      height: 50px;
-      padding: 0 18px 0 46px;
-      border-radius: 16px;
-      border: 1px solid var(--card-border);
-      outline: none;
-      background: var(--card-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      color: var(--text-main);
-      font-size: 14px;
-      font-family: inherit;
-      transition: all 0.25s ease;
-    }
-
-    .search-box input:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 20px var(--gold-glow);
-      background: rgba(22, 26, 38, 0.8);
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-muted);
-      pointer-events: none;
-    }
-
-    .tabs {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      margin-bottom: 28px;
-      padding-bottom: 6px;
-      scrollbar-width: none;
-    }
-
-    .tabs::-webkit-scrollbar {
-      display: none;
-    }
-
-    .tab {
-      flex: 0 0 auto;
-      border: 1px solid var(--card-border);
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      color: var(--text-muted);
-      padding: 9px 18px;
-      border-radius: 14px;
-      cursor: pointer;
-      font-family: inherit;
-      font-size: 13px;
-      font-weight: 500;
-      transition: all 0.2s ease;
-    }
-
-    .tab:active {
-      transform: scale(0.96);
-    }
-
-    .tab.active {
-      background: linear-gradient(
-        135deg,
-        rgba(243, 202, 108, 0.2),
-        rgba(243, 202, 108, 0.05)
-      );
-      color: var(--gold);
-      border-color: rgba(243, 202, 108, 0.4);
-      box-shadow: 0 4px 15px var(--gold-glow);
-    }
-
-    .section {
-      margin-bottom: 32px;
-    }
-
-    .section-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-
-    .section-title span {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 30px;
-      height: 30px;
-      border-radius: 10px;
-      background: rgba(243, 202, 108, 0.12);
-      color: var(--gold);
-      font-size: 15px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .price-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 18px;
-      min-height: 155px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: all 0.25s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .price-card::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      border-radius: 18px;
-      background: radial-gradient(
-        circle at top right,
-        var(--gold-glow),
-        transparent 70%
-      );
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      pointer-events: none;
-    }
-
-    .price-card:hover::after,
-    .price-card:active::after {
-      opacity: 1;
-    }
-
-    .price-card:hover,
-    .price-card:active {
-      transform: translateY(-3px);
-      border-color: var(--card-hover-border);
-      box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.4),
-        0 0 18px var(--gold-glow);
-    }
-
-    .card-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .name-wrap {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      min-width: 0;
-    }
-
-    .flag {
-      width: 28px;
-      height: 20px;
-      object-fit: cover;
-      border-radius: 4px;
-      flex-shrink: 0;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .name {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-main);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .code {
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--text-muted);
-      direction: ltr;
-      background: rgba(255, 255, 255, 0.06);
-      padding: 2px 7px;
-      border-radius: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      flex-shrink: 0;
-    }
-
-    .price-container {
-      margin-top: 12px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .price {
-      font-size: 21px;
-      font-weight: 800;
-      color: var(--green);
-      direction: ltr;
-      text-align: right;
-      letter-spacing: -0.5px;
-      line-height: 1.2;
-    }
-
-    .unit {
-      margin-top: 4px;
-      color: var(--text-muted);
-      font-size: 11px;
-      font-weight: 400;
-    }
-
-    .daily-change {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      margin-top: 9px;
-      direction: ltr;
-      justify-content: flex-start;
-      min-height: 20px;
-      font-size: 11px;
-      line-height: 1;
-      flex-wrap: wrap;
-    }
-
-    .daily-change .arrow {
-      font-size: 17px;
-      font-weight: 900;
-      line-height: 1;
-    }
-
-    .daily-change .change-value {
-      font-weight: 600;
-    }
-
-    .daily-change .change-percent {
-      font-weight: 800;
-    }
-
-    .daily-change.positive {
-      color: var(--green);
-    }
-
-    .daily-change.negative {
-      color: var(--red);
-    }
-
-    .daily-change.neutral {
-      color: var(--text-muted);
-    }
-
-    .daily-change.positive .arrow {
-      text-shadow: 0 0 10px var(--green-glow);
-    }
-
-    .daily-change.negative .arrow {
-      text-shadow: 0 0 10px var(--red-glow);
-    }
-
-    /* =========================
-       UPDATE NOTICE
-       ========================= */
-
-    .update-notice {
-      position: fixed;
-      left: 50%;
-      bottom: 24px;
-      transform: translateX(-50%) translateY(30px);
-      width: min(92%, 460px);
-      padding: 16px;
-      border-radius: 18px;
-      background: rgba(15, 18, 27, 0.96);
-      border: 1px solid rgba(243, 202, 108, 0.35);
-      box-shadow:
-        0 18px 50px rgba(0, 0, 0, 0.55),
-        0 0 30px rgba(243, 202, 108, 0.12);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      z-index: 9999;
-      opacity: 0;
-      visibility: hidden;
-      transition:
-        opacity 0.3s ease,
-        transform 0.3s ease,
-        visibility 0.3s ease;
-    }
-
-    .update-notice.show {
-      opacity: 1;
-      visibility: visible;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    .update-notice-content {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .update-notice-icon {
-      width: 42px;
-      height: 42px;
-      flex-shrink: 0;
-      border-radius: 13px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(243, 202, 108, 0.12);
-      border: 1px solid rgba(243, 202, 108, 0.2);
-      color: var(--gold);
-      font-size: 22px;
-      font-weight: 800;
-    }
-
-    .update-notice-text {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .update-notice-title {
-      color: var(--text-main);
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .update-notice-description {
-      color: var(--text-muted);
-      font-size: 11px;
-      line-height: 1.7;
-    }
-
-    .update-notice-button {
-      width: 100%;
-      margin-top: 12px;
-      height: 42px;
-      border: 0;
-      border-radius: 12px;
-      background: linear-gradient(
-        135deg,
-        var(--gold),
-        #d9aa45
-      );
-      color: #111;
-      font-family: inherit;
-      font-size: 12px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow:
-        0 6px 18px rgba(243, 202, 108, 0.18);
-    }
-
-    .update-notice-button:hover {
-      transform: translateY(-1px);
-      box-shadow:
-        0 8px 22px rgba(243, 202, 108, 0.28);
-    }
-
-    .update-notice-button:active {
-      transform: scale(0.98);
-    }
-
-    footer {
-      margin-top: 40px;
-      padding-top: 24px;
-      border-top: 1px solid var(--card-border);
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 12px;
-    }
-
-    .telegram {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 14px;
-      padding: 11px 22px;
-      border-radius: 14px;
-      text-decoration: none;
-      color: var(--text-main);
-      background: linear-gradient(
-        135deg,
-        rgba(59, 130, 246, 0.2),
-        rgba(59, 130, 246, 0.05)
-      );
-      border: 1px solid rgba(59, 130, 246, 0.35);
-      font-weight: 600;
-      transition: all 0.25s ease;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    .telegram:active {
-      transform: scale(0.97);
-    }
-
-    .updated {
-      margin-top: 8px;
-      color: var(--text-muted);
-      font-size: 11px;
-      opacity: 0.8;
-    }
-
-    @media (max-width: 992px) {
-      .grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 680px) {
-      .container {
-        width: min(100% - 20px, 1200px);
-        padding-top: 20px;
+    @media (max-width: 480px) {
+      .logo {
+        width: 70px;
+        height: 70px;
+        border-radius: 21px;
       }
 
-      .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-      }
-
-      .price-card {
-        padding: 14px;
-        min-height: 145px;
-        border-radius: 16px;
-      }
-
-      .price {
-        font-size: 17px;
-      }
-
-      .name {
+      .description {
         font-size: 13px;
       }
 
-      .flag {
-        width: 25px;
-        height: 18px;
-      }
-
-      .daily-change {
-        gap: 5px;
-        font-size: 10px;
-      }
-
-      .daily-change .arrow {
-        font-size: 15px;
-      }
-
-      .aura-1 {
-        width: 90vw;
-        height: 90vw;
-      }
-
-      .aura-2 {
-        width: 100vw;
-        height: 100vw;
-      }
-
-      .update-notice {
-        bottom: 14px;
-        width: calc(100% - 20px);
-        padding: 14px;
-      }
-
-      .update-notice-icon {
-        width: 38px;
-        height: 38px;
-        font-size: 19px;
-      }
-
-      .update-notice-title {
-        font-size: 12px;
-      }
-
-      .update-notice-description {
-        font-size: 10px;
+      footer {
+        margin-top: 48px;
       }
     }
 
-    @media (max-width: 380px) {
-      .grid {
-        grid-template-columns: 1fr;
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
       }
     }
   </style>
 </head>
 
 <body>
+  <div class="background-glow"></div>
 
-  <div class="aura-bg">
-    <div class="aura-blob aura-1"></div>
-    <div class="aura-blob aura-2"></div>
-    <div class="aura-blob aura-3"></div>
-  </div>
+  <main class="container">
 
-  <div class="container">
-
-    <header>
-
-      <!-- عکس خودت -->
-      <div class="logo">
-        <img
-          src="profile.png"
-          alt="ارزیابی تهران"
-        >
-      </div>
-
-      <h1>ارزیابی تهران</h1>
-
-      <div class="subtitle">
-        قیمت لحظه‌ای ارز، طلا، سکه و حواله‌جات
-      </div>
-
-      <div id="status" class="status">
-        <span class="status-dot"></span>
-        <span id="statusText">
-          در حال دریافت اطلاعات...
-        </span>
-      </div>
-
-    </header>
-
-    <div class="search-box">
-
-      <svg
-        class="search-icon"
-        width="18"
-        height="18"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <circle cx="11" cy="11" r="8"></circle>
-        <line
-          x1="21"
-          y1="21"
-          x2="16.65"
-          y2="16.65"
-        ></line>
-      </svg>
-
-      <input
-        id="search"
-        type="text"
-        placeholder="جستجوی سریع (مثلا: یورو، USD، طلا)..."
-        autocomplete="off"
-      >
-
+    <div class="logo" aria-hidden="true">
+      <span>ا</span>
     </div>
 
-    <div class="tabs">
+    <div class="brand">ارزیابی تهران</div>
 
-      <button
-        class="tab active"
-        data-category="all"
-      >
-        ⚡ همه موارد
-      </button>
+    <h1>سایت در حال به‌روزرسانی می‌باشد</h1>
 
-      <button
-        class="tab"
-        data-category="currency"
-      >
-        💵 ارزهای رایج
-      </button>
+    <p class="description">
+      سایت با موفقیت <strong>آپدیت شده است</strong> و در حال
+      بارگذاری نسخه جدید هستیم.
+      <br>
+      از شکیبایی شما سپاسگزاریم.
+    </p>
 
-      <button
-        class="tab"
-        data-category="gold"
-      >
-        🥇 طلا و انس
-      </button>
-
-      <button
-        class="tab"
-        data-category="havaleh"
-      >
-        💱 حواله‌ها
-      </button>
-
+    <div class="status">
+      <span class="status-dot"></span>
+      در حال آماده‌سازی نسخه جدید
     </div>
 
-    <main id="content"></main>
+    <div class="progress">
+      <div class="progress-bar"></div>
+    </div>
+
+    <div class="loading-text">
+      لطفاً تا تکمیل فرایند به‌روزرسانی منتظر بمانید...
+    </div>
 
     <footer>
-
-      <div>
-        آخرین بروزرسانی داده‌ها:
-        <strong
-          id="updatedAt"
-          style="color: var(--text-main);"
-        >
-          ---
-        </strong>
-      </div>
-
-      <div class="updated">
-        🔄 همگام‌سازی خودکار هوشمند هر ۱۵ دقیقه انجام می‌شود
-      </div>
-
-      <a
-        class="telegram"
-        href="https://t.me/arzyabi_tehran"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="M22 2L11 13"></path>
-          <path
-            d="M22 2l-7 20-4-9-9-4 20-7z"
-          ></path>
-        </svg>
-
-        عضویت در کانال تلگرام
-
-      </a>
-
+      <span>ارزیابی تهران</span>
+      <br>
+      تجربه‌ای تازه، به‌زودی در دسترس شما
     </footer>
 
-  </div>
-
-  <!-- =========================
-       UPDATE NOTICE
-       ========================= -->
-
-  <div
-    id="updateNotice"
-    class="update-notice"
-    role="alert"
-    aria-live="polite"
-  >
-
-    <div class="update-notice-content">
-
-      <div class="update-notice-icon">
-        ↻
-      </div>
-
-      <div class="update-notice-text">
-
-        <div class="update-notice-title">
-          به نظر می‌رسد قیمت‌ها به‌روز شده‌اند
-        </div>
-
-        <div class="update-notice-description">
-          برای دریافت آخرین قیمت‌ها، صفحه را رفرش کنید.
-        </div>
-
-      </div>
-
-    </div>
-
-    <button
-      id="refreshPageButton"
-      class="update-notice-button"
-      type="button"
-    >
-      دریافت آخرین قیمت‌ها
-    </button>
-
-  </div>
-
-  <script>
-
-    const API_URL =
-      "https://dolar.arsam2260139122.workers.dev/api/site";
-
-    const items = [
-
-      {
-        id: "dollar",
-        name: "دلار آمریکا",
-        code: "USD",
-        category: "currency",
-        key: "dollar",
-        unit: "تومان",
-        flag: "https://flagcdn.com/w40/us.png"
-      },
-
-      {
-        id: "usdt",
-        name: "تتر (دیجیتال)",
-        code: "USDT",
-        category: "currency",
-        key: "usdt",
-        unit: "تومان",
-        flag: null
-      },
-
-      {
-        id: "euro",
-        name: "یورو",
-        code: "EUR",
-        category: "currency",
-        key: "euro",
-        unit: "تومان",
-        flag: "https://flagcdn.com/w40/eu.png"
-      },
-
-      {
-        id: "pound",
-        name: "پوند انگلیس",
-        code: "GBP",
-        category: "currency",
-        key: "pound",
-        unit: "تومان",
-        flag: "https://flagcdn.com/w40/gb.png"
-      },
-
-      {
-        id: "dirham",
-        name: "درهم امارات",
-        code: "AED",
-        category: "currency",
-        key: "dirham",
-        unit: "تومان",
-        flag: "https://flagcdn.com/w40/ae.png"
-      },
-
-      {
-        id: "lira",
-        name: "لیر ترکیه",
-        code: "TRY",
-        category: "currency",
-        key: "lira",
-        unit: "تومان",
-        flag: "https://flagcdn.com/w40/tr.png"
-      },
-
-      {
-        id: "baht",
-        name: "بات تایلند",
-        code: "THB",
-        category: "currency",
-        key: "baht",
-        unit: "تومان",
-        flag: "https://flagcdn.com/w40/th.png"
-      },
-
-      {
-        id: "yen",
-        name: "ین ژاپن",
-        code: "JPY",
-        category: "currency",
-        key: "yen",
-        unit: "تومان",
-        flag: "https://flagcdn.com/w40/jp.png"
-      },
-
-      {
-        id: "aud",
-        name: "دلار استرالیا",
-        code: "AUD",
-        category: "currency",
-        key: "aud",
-        unit: "تومان",
-        flag: "https://flagcdn.com/w40/au.png"
-      },
-
-      {
-        id: "nzd",
-        name: "دلار نیوزیلند",
-        code: "NZD",
-        category: "currency",
-        key: "nzd",
-        unit: "تومان",
-        flag: "https://flagcdn.com/w40/nz.png"
-      },
-
-      {
-        id: "cad",
-        name: "دلار کانادا",
-        code: "CAD",
-        category: "currency",
-        key: "cad",
-        unit: "تومان",
-        flag: "https://flagcdn.com/w40/ca.png"
-      },
-
-      {
-        id: "sgd",
-        name: "دلار سنگاپور",
-        code: "SGD",
-        category: "currency",
-        key: "sgd",
-        unit: "تومان",
-        flag: "https://flagcdn.com/w40/sg.png"
-      },
-
-      {
-        id: "chf",
-        name: "فرانک سوئیس",
-        code: "CHF",
-        category: "currency",
-        key: "chf",
-        unit: "تومان",
-        flag: "https://flagcdn.com/w40/ch.png"
-      },
-
-      {
-        id: "herat",
-        name: "دلار هرات",
-        code: "HERAT",
-        category: "currency",
-        key: "herat",
-        unit: "تومان",
-        flag: "https://flagcdn.com/w40/af.png"
-      },
-
-      {
-        id: "gold18",
-        name: "طلای ۱۸ عیار",
-        code: "18K",
-        category: "gold",
-        key: "gold18",
-        unit: "تومان / گرم",
-        flag: null
-      },
-
-      {
-        id: "bubble18",
-        name: "حباب طلای ۱۸",
-        code: "BUBBLE",
-        category: "gold",
-        key: "bubble18",
-        unit: "تومان",
-        flag: null
-      },
-
-      {
-        id: "gold24",
-        name: "طلای ۲۴ عیار",
-        code: "24K",
-        category: "gold",
-        key: "gold24",
-        unit: "تومان / گرم",
-        flag: null
-      },
-
-      {
-        id: "xau",
-        name: "اونس جهانی طلا",
-        code: "XAU",
-        category: "gold",
-        key: "xau",
-        unit: "دلار",
-        flag: null
-      },
-
-      {
-        id: "eur_hav",
-        name: "حواله یورو",
-        code: "EUR",
-        category: "havaleh",
-        key: "eur_hav",
-        unit: "تومان",
-        flag: "https://flagcdn.com/w40/eu.png"
-      },
-
-      {
-        id: "gbp_hav",
-        name: "حواله پوند",
-        code: "GBP",
-        category: "havaleh",
-        key: "gbp_hav",
-        unit: "تومان",
-        flag: "https://flagcdn.com/w40/gb.png"
-      },
-
-      {
-        id: "aud_hav",
-        name: "حواله دلار استرالیا",
-        code: "AUD",
-        category: "havaleh",
-        key: "aud_hav",
-        unit: "تومان",
-        flag: "https://flagcdn.com/w40/au.png"
-      },
-
-      {
-        id: "myr_hav",
-        name: "حواله رینگیت مالزی",
-        code: "MYR",
-        category: "havaleh",
-        key: "myr_hav",
-        unit: "تومان",
-        flag: "https://flagcdn.com/w40/my.png"
-      },
-
-      {
-        id: "cny_hav",
-        name: "حواله یوان چین",
-        code: "CNY",
-        category: "havaleh",
-        key: "cny_hav",
-        unit: "تومان",
-        flag: "https://flagcdn.com/w40/cn.png"
-      },
-
-      {
-        id: "try_hav",
-        name: "حواله لیر ترکیه",
-        code: "TRY",
-        category: "havaleh",
-        key: "try_hav",
-        unit: "تومان",
-        flag: "https://flagcdn.com/w40/tr.png"
-      },
-
-      {
-        id: "jpy_hav",
-        name: "حواله ین ژاپن",
-        code: "JPY",
-        category: "havaleh",
-        key: "jpy_hav",
-        unit: "تومان",
-        flag: "https://flagcdn.com/w40/jp.png"
-      },
-
-      {
-        id: "cad_hav",
-        name: "حواله دلار کانادا",
-        code: "CAD",
-        category: "havaleh",
-        key: "cad_hav",
-        unit: "تومان",
-        flag: "https://flagcdn.com/w40/ca.png"
-      },
-
-      {
-        id: "aed_hav",
-        name: "حواله درهم",
-        code: "AED",
-        category: "havaleh",
-        key: "aed_hav",
-        unit: "تومان",
-        flag: "https://flagcdn.com/w40/ae.png"
-      }
-
-    ];
-
-    let prices = {};
-    let activeCategory = "all";
-    let searchText = "";
-
-    function getTehranDateKey() {
-
-      const parts =
-        new Intl.DateTimeFormat("en-CA", {
-          timeZone: "Asia/Tehran",
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit"
-        }).formatToParts(new Date());
-
-      const data = {};
-
-      parts.forEach(part => {
-
-        if (part.type !== "literal") {
-          data[part.type] = part.value;
-        }
-
-      });
-
-      return `${data.year}-${data.month}-${data.day}`;
-    }
-
-    function getDailyStorageKey() {
-      return "arzyabi_daily_start_" +
-        getTehranDateKey();
-    }
-
-    function getDailyStartPrices() {
-
-      try {
-
-        const key =
-          getDailyStorageKey();
-
-        const saved =
-          localStorage.getItem(key);
-
-        if (!saved) return {};
-
-        const parsed =
-          JSON.parse(saved);
-
-        if (
-          !parsed ||
-          typeof parsed !== "object"
-        ) {
-          return {};
-        }
-
-        return parsed;
-
-      } catch (error) {
-
-        console.error(
-          "Daily start prices error:",
-          error
-        );
-
-        return {};
-      }
-    }
-
-    function saveDailyStartPrices(data) {
-
-      try {
-
-        localStorage.setItem(
-          getDailyStorageKey(),
-          JSON.stringify(data)
-        );
-
-      } catch (error) {
-
-        console.error(
-          "Save daily prices error:",
-          error
-        );
-      }
-    }
-
-    function initializeDailyStartPrices(
-      currentPrices
-    ) {
-
-      const dailyStart =
-        getDailyStartPrices();
-
-      let changed = false;
-
-      items.forEach(item => {
-
-        const value =
-          Number(currentPrices[item.key]);
-
-        if (
-          dailyStart[item.key] === undefined &&
-          Number.isFinite(value) &&
-          value > 0
-        ) {
-
-          dailyStart[item.key] =
-            value;
-
-          changed = true;
-        }
-
-      });
-
-      if (changed) {
-        saveDailyStartPrices(
-          dailyStart
-        );
-      }
-
-      return dailyStart;
-    }
-
-    function calculateDailyChange(
-      item,
-      currentValue,
-      dailyStart
-    ) {
-
-      const value =
-        Number(currentValue);
-
-      const start =
-        Number(dailyStart[item.key]);
-
-      if (
-        !Number.isFinite(value) ||
-        !Number.isFinite(start) ||
-        start <= 0
-      ) {
-
-        return {
-          direction: "neutral",
-          amount: 0,
-          percent: 0
-        };
-      }
-
-      const amount =
-        value - start;
-
-      const percent =
-        (amount / start) * 100;
-
-      if (amount > 0) {
-
-        return {
-          direction: "positive",
-          amount,
-          percent
-        };
-      }
-
-      if (amount < 0) {
-
-        return {
-          direction: "negative",
-          amount,
-          percent
-        };
-      }
-
-      return {
-        direction: "neutral",
-        amount: 0,
-        percent: 0
-      };
-    }
-
-    function formatNumber(value) {
-
-      if (
-        value === null ||
-        value === undefined ||
-        value === "" ||
-        Number.isNaN(Number(value))
-      ) {
-        return "---";
-      }
-
-      return Number(value)
-        .toLocaleString("fa-IR");
-    }
-
-    function formatChangeAmount(value) {
-
-      const number =
-        Number(value);
-
-      if (!Number.isFinite(number)) {
-        return "---";
-      }
-
-      if (number > 0) {
-        return "+" +
-          formatNumber(number);
-      }
-
-      if (number < 0) {
-        return "−" +
-          formatNumber(
-            Math.abs(number)
-          );
-      }
-
-      return "0";
-    }
-
-    function formatPercent(value) {
-
-      const number =
-        Number(value);
-
-      if (!Number.isFinite(number)) {
-        return "0.00%";
-      }
-
-      if (number > 0) {
-        return "+" +
-          number.toFixed(2) +
-          "%";
-      }
-
-      if (number < 0) {
-        return "−" +
-          Math.abs(number).toFixed(2) +
-          "%";
-      }
-
-      return "0.00%";
-    }
-
-    function formatDate(timestamp) {
-
-      if (!timestamp) {
-        return "---";
-      }
-
-      const date =
-        new Date(Number(timestamp));
-
-      if (
-        Number.isNaN(
-          date.getTime()
-        )
-      ) {
-        return "---";
-      }
-
-      return date.toLocaleString(
-        "fa-IR",
-        {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-          hour: "2-digit",
-          minute: "2-digit"
-        }
-      );
-    }
-
-    function renderDailyChange(
-      item,
-      value,
-      dailyStart
-    ) {
-
-      const change =
-        calculateDailyChange(
-          item,
-          value,
-          dailyStart
-        );
-
-      if (
-        change.direction ===
-        "positive"
-      ) {
-
-        return `
-          <div class="daily-change positive">
-            <span class="arrow">↑</span>
-            <span class="change-value">
-              ${formatChangeAmount(change.amount)}
-              ${item.unit}
-            </span>
-            <span class="change-percent">
-              ${formatPercent(change.percent)}
-            </span>
-          </div>
-        `;
-      }
-
-      if (
-        change.direction ===
-        "negative"
-      ) {
-
-        return `
-          <div class="daily-change negative">
-            <span class="arrow">↓</span>
-            <span class="change-value">
-              ${formatChangeAmount(change.amount)}
-              ${item.unit}
-            </span>
-            <span class="change-percent">
-              ${formatPercent(change.percent)}
-            </span>
-          </div>
-        `;
-      }
-
-      return `
-        <div class="daily-change neutral">
-          <span class="arrow">—</span>
-          <span class="change-value">
-            بدون تغییر
-          </span>
-          <span class="change-percent">
-            0.00%
-          </span>
-        </div>
-      `;
-    }
-
-    function render() {
-
-      const content =
-        document.getElementById("content");
-
-      content.innerHTML = "";
-
-      const dailyStart =
-        getDailyStartPrices();
-
-      const filtered =
-        items.filter(item => {
-
-          const categoryMatch =
-            activeCategory === "all" ||
-            item.category === activeCategory;
-
-          const searchMatch =
-            !searchText ||
-            item.name
-              .toLowerCase()
-              .includes(searchText) ||
-            item.code
-              .toLowerCase()
-              .includes(searchText);
-
-          return (
-            categoryMatch &&
-            searchMatch
-          );
-        });
-
-      const categories = [
-        {
-          id: "currency",
-          title: "ارزهای رایج",
-          icon: "💵"
-        },
-        {
-          id: "gold",
-          title: "طلا و شاخص‌ها",
-          icon: "🥇"
-        },
-        {
-          id: "havaleh",
-          title: "حواله‌جات",
-          icon: "💱"
-        }
-      ];
-
-      categories.forEach(category => {
-
-        if (
-          activeCategory !== "all" &&
-          activeCategory !== category.id
-        ) {
-          return;
-        }
-
-        const categoryItems =
-          filtered.filter(
-            item =>
-              item.category === category.id
-          );
-
-        if (!categoryItems.length) {
-          return;
-        }
-
-        const section =
-          document.createElement("section");
-
-        section.className = "section";
-
-        const title =
-          document.createElement("div");
-
-        title.className =
-          "section-title";
-
-        title.innerHTML = `
-          <span>${category.icon}</span>
-          ${category.title}
-        `;
-
-        const grid =
-          document.createElement("div");
-
-        grid.className = "grid";
-
-        categoryItems.forEach(item => {
-
-          const card =
-            document.createElement("div");
-
-          card.className =
-            "price-card";
-
-          const value =
-            prices[item.key];
-
-          const flagHtml =
-            item.flag
-              ? `
-                <img
-                  class="flag"
-                  src="${item.flag}"
-                  alt=""
-                  loading="lazy"
-                  onerror="this.style.display='none'"
-                >
-              `
-              : "";
-
-          const dailyChangeHtml =
-            renderDailyChange(
-              item,
-              value,
-              dailyStart
-            );
-
-          card.innerHTML = `
-            <div class="card-top">
-
-              <div class="name-wrap">
-                ${flagHtml}
-
-                <div class="name">
-                  ${item.name}
-                </div>
-              </div>
-
-              <div class="code">
-                ${item.code}
-              </div>
-
-            </div>
-
-            <div class="price-container">
-
-              <div class="price">
-                ${formatNumber(value)}
-              </div>
-
-              <div class="unit">
-                ${item.unit}
-              </div>
-
-              ${dailyChangeHtml}
-
-            </div>
-          `;
-
-          grid.appendChild(card);
-
-        });
-
-        section.appendChild(title);
-        section.appendChild(grid);
-        content.appendChild(section);
-
-      });
-    }
-
-    async function loadPrices() {
-
-      const status =
-        document.getElementById("status");
-
-      const statusText =
-        document.getElementById("statusText");
-
-      status.className = "status";
-
-      statusText.textContent =
-        "در حال بروزرسانی قیمت‌ها...";
-
-      try {
-
-        const response =
-          await fetch(
-            API_URL +
-            "?t=" +
-            Date.now(),
-            {
-              method: "GET",
-              headers: {
-                "Accept":
-                  "application/json"
-              },
-              cache: "no-store"
-            }
-          );
-
-        if (!response.ok) {
-          throw new Error(
-            "HTTP " + response.status
-          );
-        }
-
-        const result =
-          await response.json();
-
-        if (
-          !result ||
-          result.success !== true ||
-          !result.prices
-        ) {
-          throw new Error(
-            "Invalid API response"
-          );
-        }
-
-        prices =
-          result.prices;
-
-        initializeDailyStartPrices(
-          prices
-        );
-
-        localStorage.setItem(
-          "arzyabi_tehran_prices",
-          JSON.stringify(result)
-        );
-
-        document.getElementById(
-          "updatedAt"
-        ).textContent =
-          formatDate(
-            prices.timestamp ||
-            result.updatedAt
-          );
-
-        status.className =
-          "status ok";
-
-        statusText.textContent =
-          "قیمت‌ها بروزرسانی شدند";
-
-        render();
-
-      } catch (error) {
-
-        console.error(
-          "Price API error:",
-          error
-        );
-
-        try {
-
-          const cached =
-            localStorage.getItem(
-              "arzyabi_tehran_prices"
-            );
-
-          if (cached) {
-
-            const result =
-              JSON.parse(cached);
-
-            if (
-              result &&
-              result.prices
-            ) {
-
-              prices =
-                result.prices;
-
-              initializeDailyStartPrices(
-                prices
-              );
-
-              document.getElementById(
-                "updatedAt"
-              ).textContent =
-                formatDate(
-                  prices.timestamp ||
-                  result.updatedAt
-                );
-
-              status.className =
-                "status";
-
-              statusText.textContent =
-                "نمایش داده‌های آفلاین (ذخیره‌شده)";
-
-              render();
-
-              return;
-            }
-          }
-
-        } catch (cacheError) {
-
-          console.error(
-            "Cache error:",
-            cacheError
-          );
-        }
-
-        status.className =
-          "status error";
-
-        statusText.textContent =
-          "خطا در دریافت قیمت‌ها";
-
-        render();
-      }
-    }
-
-    document
-      .querySelectorAll(".tab")
-      .forEach(button => {
-
-        button.addEventListener(
-          "click",
-          () => {
-
-            document
-              .querySelectorAll(".tab")
-              .forEach(tab =>
-                tab.classList.remove("active")
-              );
-
-            button.classList.add("active");
-
-            activeCategory =
-              button.dataset.category;
-
-            render();
-
-          }
-        );
-
-      });
-
-    document
-      .getElementById("search")
-      .addEventListener(
-        "input",
-        event => {
-
-          searchText =
-            event.target.value
-              .trim()
-              .toLowerCase();
-
-          render();
-
-        }
-      );
-
-    const UPDATE_NOTICE_DELAY =
-      15 * 60 * 1000;
-
-    let updateNoticeTimer = null;
-
-    function showUpdateNotice() {
-
-      const notice =
-        document.getElementById(
-          "updateNotice"
-        );
-
-      if (!notice) return;
-
-      notice.classList.add("show");
-    }
-
-    function hideUpdateNotice() {
-
-      const notice =
-        document.getElementById(
-          "updateNotice"
-        );
-
-      if (!notice) return;
-
-      notice.classList.remove("show");
-    }
-
-    function startUpdateNoticeTimer() {
-
-      if (updateNoticeTimer) {
-        clearTimeout(updateNoticeTimer);
-      }
-
-      updateNoticeTimer =
-        setTimeout(
-          showUpdateNotice,
-          UPDATE_NOTICE_DELAY
-        );
-    }
-
-    document
-      .getElementById("refreshPageButton")
-      .addEventListener(
-        "click",
-        () => {
-
-          hideUpdateNotice();
-
-          window.location.reload();
-
-        }
-      );
-
-    loadPrices();
-
-    startUpdateNoticeTimer();
-
-  </script>
-
+  </main>
 </body>
 </html>
